@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>KSM — Production. Media House.</title>
+<meta name="description" content="KSM. Facem filme. Facem campanii. Facem brand-uri să trăiască. Cluj-Napoca." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Saira+Extra+Condensed:wght@800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+<style>
+  @font-face{font-family:'BentonSans UC';src:url('assets/fonts/BentonSansExtraComp-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans UC';src:url('assets/fonts/BentonSansExtraComp-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans UC';src:url('assets/fonts/BentonSansExtraComp-Black.ttf') format('truetype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('assets/fonts/BentonSansPro-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('assets/fonts/BentonSansPro-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('assets/fonts/BentonSansPro-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+  :root{
+    /* KSM colors inside the Tentacle visual system */
+    --violet:#5A20E6;      /* bold electric KSM violet — the dominant block color */
+    --violet-deep:#330C8F;  /* shadow / deep violet */
+    --magenta:#D946EF;
+    --orange:#FF5A1F;       /* punchy accent (Media House) */
+    --orange-deep:#B8350A;
+    --cream:#F2E8D5;        /* warm paper neutral */
+    --cream-2:#E9DcC2;
+    --ink:#140E22;          /* warm violet-black */
+    --char:#2b2926;         /* neutral warm charcoal (Tentacle-style dark) */
+    --muted:#9a948c;
+    --ease:cubic-bezier(.7,0,.2,1);
+    /* extruded hard 3D block shadow for sticker titles (Tentacle look) */
+    --ext:1px 1px 0 var(--ink),2px 2px 0 var(--ink),3px 3px 0 var(--ink),4px 4px 0 var(--ink),5px 5px 0 var(--ink),6px 6px 0 var(--ink),7px 7px 0 var(--ink),8px 8px 0 var(--ink),9px 9px 0 var(--ink);
+    --ext-sm:1px 1px 0 var(--ink),2px 2px 0 var(--ink),3px 3px 0 var(--ink),4px 4px 0 var(--ink);
+    --ext-lg:2px 2px 0 var(--ink),4px 4px 0 var(--ink),6px 6px 0 var(--ink),8px 8px 0 var(--ink),10px 10px 0 var(--ink),12px 12px 0 var(--ink),14px 14px 0 var(--ink),16px 16px 0 var(--ink),18px 18px 0 var(--ink);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  /* defer rendering of heavy below-fold sections so the intro/hero stay smooth */
+  .services,.ferows,.chipcard-wrap,.work,.contact,footer{content-visibility:auto;contain-intrinsic-size:auto 760px}
+  html,body{background:var(--ink);color:var(--cream);font-family:'BentonSans Pro','Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--orange);color:var(--ink)}
+
+  /* ---------- shared decorations (Tentacle DNA) ---------- */
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:1;mix-blend-mode:normal;
+    background-image:url('assets/noise.png');background-size:256px 256px;z-index:1}
+  .grain.dark{mix-blend-mode:normal;opacity:1}
+
+  /* chunky sticker display type with hard offset shadow */
+  .sticker{font-family:'Anton',sans-serif;text-transform:uppercase;line-height:.92;letter-spacing:-.01em;
+    color:var(--cream);
+    text-shadow:var(--ext);}
+  .sticker.on-cream{color:var(--cream);text-shadow:.045em .06em 0 var(--ink), .047em .062em 0 var(--ink);}
+  .sticker .o{color:var(--orange);text-shadow:var(--ext)}
+  .sticker .v{color:var(--violet);text-shadow:var(--ext)}
+
+  /* pill buttons */
+  .pill{position:relative;display:inline-flex;align-items:center;gap:12px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;
+    font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:15px 24px;border-radius:10px;
+    border:2px solid var(--ink);transition:top .2s var(--ease),left .2s var(--ease),background .3s var(--ease),color .3s var(--ease);cursor:pointer}
+  /* Tentacle-style halftone drop shadow — behind the button, small round dots */
+  .pill::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;
+    background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;background-position:0 0;
+    transform:translate(7px,8px);transition:transform .25s var(--ease)}
+  .pill.cream{background:var(--cream);color:var(--ink)}
+  .pill.orange{background:var(--orange);color:var(--ink)}
+  .pill.violet{background:var(--violet);color:var(--cream);border-color:var(--ink)}
+  .pill.ghost{background:transparent;color:var(--cream);border-color:var(--cream)}
+  .pill.ghost::after{background-image:radial-gradient(circle,rgba(242,232,213,.6) 1px,transparent 1.3px)}
+  /* hover: button lifts up-left off the halftone shadow (no transform on the button => shadow never flips in front); shadow pushes a touch further back */
+  .pill:hover{top:-3px;left:-3px}
+  .pill:hover::after{transform:translate(11px,13px)}
+  .pill:active{top:2px;left:2px}
+  .pill:active::after{transform:translate(5px,5px)}
+  .pill.sq{padding:13px;border-radius:10px}
+
+  /* tiny pill chip / tag */
+  .chip{display:inline-flex;align-items:center;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:600;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;padding:6px 13px;border-radius:999px;border:1.5px solid currentColor}
+
+  /* Tentacle-style device frame: rounded, dashed stitched border, soft float shadow */
+  .device{position:relative;border-radius:22px;background:var(--ink);padding:14px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
+  .device::before{content:'';position:absolute;inset:7px;border:2px dashed rgba(255,255,255,.18);border-radius:16px;pointer-events:none}
+  .device .screen{position:relative;border-radius:12px;overflow:hidden;background:#0c0816;aspect-ratio:16/10}
+  .device .target{position:absolute;right:10px;bottom:10px;width:26px;height:26px;border-radius:50%;
+    background:var(--orange);display:grid;place-items:center;z-index:4}
+  .device .target svg{width:14px;height:14px}
+
+  /* small chunky icon helper */
+  .ico{width:1em;height:1em;display:inline-block;vertical-align:-.12em}
+
+  /* ============ INTRO ============ */
+  .intro{position:fixed;inset:0;z-index:9998;background:var(--ink);display:flex;align-items:center;justify-content:center;pointer-events:none}
+  .intro .intro-letters{position:relative;z-index:4;width:min(40vw,440px);aspect-ratio:3222.8/2116.2}
+  @media(max-width:768px){.intro .intro-letters{width:64vw}}
+  .intro-load{position:absolute;bottom:10%;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:16px;z-index:3}
+  .intro-bar{width:min(58vw,340px);height:4px;background:rgba(242,232,213,.16);border-radius:99px;overflow:hidden}
+  .intro-bar span{display:block;height:100%;width:0%;background:var(--orange);border-radius:99px}
+  .intro-pct{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.04em;color:var(--cream);text-shadow:var(--ext-sm)}
+  .intro .ltr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:transform,opacity}
+  .intro .ltr img{width:100%;height:100%;object-fit:contain}
+  .intro .flash{position:absolute;inset:0;background:var(--cream);opacity:0}
+  body.loaded .intro{opacity:0;transition:opacity .7s var(--ease)}
+
+  /* ============ NAV ============ */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;
+    padding:18px 22px;transition:transform .4s var(--ease);pointer-events:none}
+  nav>*{pointer-events:auto}
+  nav .menu-pill{display:flex;align-items:center;gap:0;background:var(--cream);color:var(--ink);border:2px solid var(--ink);
+    border-radius:14px;overflow:hidden;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  nav .menu-pill button{background:transparent;border:0;font:inherit;color:inherit;padding:12px 16px;cursor:pointer;display:flex;align-items:center;gap:9px}
+  nav .menu-pill .div{width:2px;align-self:stretch;background:var(--ink)}
+  nav .menu-pill .globe{padding:12px 13px}
+  nav .brand{display:flex;align-items:center}
+  nav .brand img{height:78px;width:auto;display:block;filter:drop-shadow(1px 1px 0 var(--ink)) drop-shadow(2px 2px 0 var(--ink)) drop-shadow(3px 3px 0 var(--ink)) drop-shadow(4px 4px 0 var(--ink));transition:transform .35s var(--ease)}
+  nav .brand:hover img{transform:scale(1.05)}
+  @media(max-width:768px){nav .brand img{height:58px}nav{padding:14px}}
+
+  /* full-screen menu overlay */
+  .menu-overlay{position:fixed;inset:0;z-index:199;background:var(--violet);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .45s var(--ease)}
+  body.menu-open .menu-overlay{opacity:1;pointer-events:auto}
+  .menu-overlay .grain{opacity:1}
+  .menu-overlay a{position:relative;z-index:2;font-family:'Anton',sans-serif;text-transform:uppercase;
+    font-size:clamp(34px,8vw,76px);color:var(--cream);text-shadow:var(--ext);line-height:1.05;
+    transition:transform .3s var(--ease),color .3s var(--ease)}
+  .menu-overlay a:hover{color:var(--orange);transform:translateX(10px)}
+  .menu-overlay .close{position:absolute;top:24px;right:28px;z-index:5;font-size:clamp(54px,8vw,86px)}
+  /* while menu open: hide only the Contact pill, keep Menu + language */
+  body.menu-open nav .pill.orange{opacity:0!important;pointer-events:none!important;transition:opacity .3s var(--ease)}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:100svh;background:var(--char);display:flex;align-items:center;overflow:hidden}
+  .hero .wrap{position:relative;z-index:3;max-width:1400px;margin:0 auto;padding:140px 32px 90px;width:100%}
+  .hero .backlink{display:inline-flex;align-items:center;gap:9px;margin-bottom:30px;font-weight:700;font-size:12px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--cream);opacity:.85;transition:gap .3s var(--ease),opacity .3s var(--ease)}
+  .hero .backlink:hover{gap:14px;opacity:1}
+  .hero .backlink .ico{font-size:15px}
+  .hero h1{font-family:'Anton',sans-serif;text-transform:uppercase;color:var(--cream);
+    font-size:clamp(56px,11.6vw,182px);line-height:.9;letter-spacing:-.01em;text-shadow:var(--ext)}
+  .hero h1 .row{display:block;overflow:hidden;white-space:nowrap;padding:.2em .14em .08em 0}
+  /* EN title is wider ("WE MAKE CAMPAIGNS.") — shrink only in EN so it stays one line; RO keeps its locked size */
+  html[lang="en"] .hero h1{font-size:clamp(34px,10vw,156px)}
+  .hero h1 .row.big{font-size:1em}
+  .hero h1 .word{display:inline-block;will-change:transform}
+  .hero h1 .o{color:var(--orange)}
+  .hero h1 .v{color:var(--violet)}
+  .hero p.lead{font-family:'BentonSans Pro','Inter',sans-serif;text-align:left;margin-top:34px;max-width:760px;font-size:clamp(16px,1.5vw,20px);line-height:1.5;color:rgba(242,232,213,.92)}
+  .hero .actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  /* vertical orange playhead scroll-hint */
+  .scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scroll-hint .line{width:2px;height:46px;background:rgba(255,255,255,.25);position:relative;overflow:hidden;border-radius:2px}
+  .scroll-hint .line::after{content:'';position:absolute;left:0;top:-60%;width:100%;height:60%;background:var(--orange);animation:play 1.8s var(--ease) infinite}
+  @keyframes play{0%{top:-60%}100%{top:100%}}
+  .scroll-hint span{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,232,213,.7)}
+
+  /* sync-map mock (reusable) */
+  .syncmap{position:relative;height:100%;padding:14px 16px;display:flex;flex-direction:column;gap:11px;justify-content:center}
+  .syncmap .tchead{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .syncmap .tchead .dot{width:8px;height:8px;border-radius:50%;background:#4b4458;display:inline-block;margin-right:5px}
+  .syncmap .tc{font-family:'BentonSans Pro','Inter';font-size:12px;letter-spacing:.08em;color:#cfc8df}
+  .syncmap .track{display:flex;align-items:center;gap:10px}
+  .syncmap .track .ic{width:26px;height:26px;border-radius:7px;background:#2a2440;display:grid;place-items:center;color:#9a92b3;flex:none}
+  .syncmap .track .ic svg{width:14px;height:14px}
+  .syncmap .track .bars{flex:1;display:flex;gap:5px}
+  .syncmap .track .bars i{height:13px;border-radius:3px;display:block}
+  .syncmap .playhead{position:absolute;top:10px;bottom:10px;left:46%;width:2px;background:var(--cream);box-shadow:0 0 10px rgba(255,255,255,.6);animation:scan 4s var(--ease) infinite}
+  @keyframes scan{0%{left:30%}50%{left:82%}100%{left:30%}}
+
+  /* ============ MARQUEE STRIP ============ */
+  .strip{background:var(--ink);color:var(--cream);padding:16px 0;overflow:hidden;border-top:3px solid var(--cream);border-bottom:3px solid var(--cream)}
+  .strip .run{display:flex;white-space:nowrap;animation:run 32s linear infinite;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:18px;letter-spacing:.02em}
+  .strip .run span{padding:0 22px;display:inline-flex;align-items:center;gap:22px}
+  .strip .run .o{color:var(--orange)}
+  @keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ============ MANIFEST — orange noise card, overhanging title, illustration (Tentacle "find your cable" layout) ============ */
+  .manifest{position:relative;background:var(--orange);padding:40px 0 0;overflow:visible;border-top:5px solid var(--cream)}
+  .manifest > .grain.dark{opacity:1;mix-blend-mode:normal}
+  .manifest .inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;padding:0 32px}
+  .m-card{position:relative;padding:118px 6px 0}
+  /* MANIFEST title — top-right, no frame */
+  .m-card .m-heading{position:absolute;top:-100px;right:-220px;z-index:6;margin:0;text-align:right;
+    font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;
+    font-size:clamp(55px,7.7vw,125px);line-height:.9;color:var(--cream);
+    text-shadow:var(--ext-lg);transform:matrix(1,-0.14,0,1,0,0)}
+  .m-card .m-body{position:relative;z-index:2;min-height:300px}
+  .m-card .m-text{position:relative;z-index:3}
+  .m-card .m-text p{font-family:'BentonSans Pro','Inter',sans-serif;font-weight:500;font-size:clamp(18px,1.7vw,24px);line-height:1.5;color:var(--ink);max-width:640px}
+  .m-card .m-text p b{font-weight:700;color:var(--ink)}
+  .m-card .m-text p b.v{color:var(--violet)}
+  .m-card .m-text p b.o{color:var(--cream)}
+  .m-card .m-cta{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:var(--ink);color:var(--cream);
+    border:2px solid var(--ink);border-radius:12px;padding:15px 26px;font-weight:700;font-size:13px;letter-spacing:.1em;
+    text-transform:uppercase;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .m-card .m-cta:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(20,14,34,.5)}
+  .m-card .m-illus{position:absolute;right:120px;top:-135px;z-index:2;width:min(48%,660px);aspect-ratio:4/3;overflow:hidden}
+  .m-card .m-illus img{position:absolute;left:50%;top:50%;width:185%;max-width:none;height:auto;transform:translate(-50%,-50%);will-change:transform;animation:camFloat 7s ease-in-out infinite}
+  @keyframes camFloat{
+    0%{transform:translate(-50%,-50%) rotate(-1.6deg)}
+    50%{transform:translate(-50%,-54%) rotate(1.6deg)}
+    100%{transform:translate(-50%,-50%) rotate(-1.6deg)}
+  }
+  @media(prefers-reduced-motion:reduce){.m-card .m-illus img{animation:none}}
+  @keyframes ifloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(-1.4deg)}}
+  @media(max-width:860px){.manifest{padding:40px 0 40px}.m-card{padding:108px 0 0}.m-card .m-heading{top:6px;right:12px}.m-card .m-body{grid-template-columns:1fr;gap:26px}.m-card .m-illus{order:-1;height:auto}}
+
+  /* ============ PORTALS (dual brand color blocks) ============ */
+  .portals{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .pane{position:relative;overflow:hidden;padding:90px 56px 70px;min-height:78vh;display:flex;flex-direction:column;justify-content:space-between}
+  .pane.production{background:var(--violet)}
+  .pane.media{background:var(--orange)}
+  .pane .topline{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center}
+  .pane .num{font-family:'Anton',sans-serif;font-size:15px;color:var(--ink)}
+  .pane .kind{color:var(--ink)}
+  .pane .device{margin:26px 0 34px;position:relative;z-index:3}
+  .pane.production .device .screen{background:#180a3a}
+  .pane.media .device .screen{background:#3a1404}
+  .pane h2{position:relative;z-index:3;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(40px,5.4vw,86px);line-height:.9;color:var(--cream);text-shadow:var(--ext)}
+  .pane .logo-lockup{position:relative;z-index:3;margin-top:14px}
+  .pane .logo-lockup img{width:min(330px,70%);filter:drop-shadow(0 6px 0 rgba(20,14,34,.35))}
+  .pane p.lead{position:relative;z-index:3;margin-top:18px;max-width:420px;font-size:16px;line-height:1.5;color:var(--ink);font-weight:500}
+  .pane .cta{position:relative;z-index:3;margin-top:30px}
+  @media(max-width:900px){.portals{grid-template-columns:1fr}.pane{padding:64px 28px;min-height:auto}}
+
+  /* ============ WORK (charcoal grain) ============ */
+  .work{position:relative;background:var(--char);padding:120px 32px 180px}
+  .work .inner{max-width:1500px;margin:0 auto;position:relative;z-index:2}
+  .work .head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:64px}
+  .work .head h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(38px,6vw,90px);line-height:.9;color:var(--cream);text-shadow:var(--ext)}
+  .work .head .count{font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .work-list{border-top:2px solid rgba(242,232,213,.18)}
+  .work-item{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:28px;padding:30px 14px;
+    border-bottom:2px solid rgba(242,232,213,.18);position:relative;transition:padding-left .4s var(--ease),background .4s var(--ease)}
+  .work-item:hover{padding-left:30px;background:rgba(242,232,213,.04)}
+  .work-item .n{font-family:'Anton',sans-serif;font-size:15px;color:var(--muted)}
+  .work-item .title{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(22px,3.4vw,46px);line-height:1;color:var(--cream)}
+  .work-item:hover .title{color:var(--orange)}
+  .work-item .chip.prod{color:var(--magenta)}
+  .work-item .chip.mh{color:var(--orange)}
+  .work-item .go{width:42px;height:42px;border-radius:50%;border:2px solid var(--cream);display:grid;place-items:center;transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease)}
+  .work-item:hover .go{background:var(--orange);border-color:var(--orange);color:var(--ink);transform:rotate(-45deg)}
+  .work-item .preview{position:fixed;width:300px;border-radius:16px;opacity:0;pointer-events:none;z-index:120;
+    transform:translate(-50%,-50%) scale(.9);transition:opacity .3s var(--ease),transform .3s var(--ease);overflow:hidden}
+  .work-item .preview .device{padding:10px}
+  @media(max-width:720px){.work-item{grid-template-columns:40px 1fr auto;gap:12px}.work-item .pill{font-size:9px;padding:8px 11px;letter-spacing:.02em}}
+
+  /* ============ CONTACT (orange block) ============ */
+  .contact{position:relative;background:var(--orange);color:var(--ink);padding:156px 32px 110px;text-align:center;overflow:hidden}
+  .contact .inner{position:relative;z-index:3;max-width:1100px;margin:0 auto}
+  .contact .label{font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:30px}
+  .contact h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(54px,12vw,180px);line-height:.86;color:var(--cream);text-shadow:var(--ext);transform:rotate(-1.4deg)}
+  .contact .sub{margin:36px auto 0;max-width:none;white-space:nowrap;font-size:18px;line-height:1.5;color:var(--ink);font-weight:500}
+  @media(max-width:640px){.contact .sub{white-space:normal;max-width:90%;font-size:16px}}
+  .contact .actions{margin-top:46px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .contact .watermark{position:absolute;left:0;right:0;top:62%;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:26vw;line-height:1;color:rgba(20,14,34,.07);white-space:nowrap;z-index:1;pointer-events:none}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink);color:var(--cream);padding:80px 32px 40px}
+  footer .inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+  footer .brand-col .logo{font-family:'Anton',sans-serif;font-size:40px;text-shadow:var(--ext)}
+  footer .brand-col .logo .x{color:var(--orange)}
+  footer .brand-col p{margin-top:18px;max-width:300px;color:var(--muted);font-size:14px;line-height:1.5}
+  footer h4{font-family:'BentonSans Pro','Inter';font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  footer ul a{color:rgba(242,232,213,.8);font-size:14px;transition:color .3s var(--ease)}
+  footer ul a:hover{color:var(--orange)}
+  footer .bottom{max-width:1400px;margin:56px auto 0;padding-top:24px;border-top:1.5px solid rgba(242,232,213,.14);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);letter-spacing:.04em}
+  footer .brand-col .brand-logo{height:43px;width:auto;display:block;margin-left:0}
+  @media(max-width:760px){footer .inner{grid-template-columns:1fr 1fr}}
+
+  /* ============ CE FACEM — circular badge icons (Tentacle product-grid DNA) ============ */
+  .services{position:relative;z-index:5;background:var(--char);color:var(--cream);padding:64px 32px 130px;border-top:6px solid var(--ink)}
+  .services .grain.dark{opacity:1}
+  .services .inner{position:relative;z-index:2;max-width:1300px;margin:0 auto}
+  .services .head{text-align:center;margin-bottom:150px}
+  .services .head .label{font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream)}
+  .services .head h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(46px,7.5vw,108px);line-height:.92;margin-top:28px;color:var(--violet);text-shadow:var(--ext)}
+  .badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 24px;max-width:980px;margin:0 auto}
+  @media(max-width:900px){.badge-grid{grid-template-columns:repeat(2,1fr);gap:44px 18px}}
+  @media(max-width:480px){.badge-grid{grid-template-columns:repeat(2,1fr)}}
+  .badge{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer}
+  .badge .lbl{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;white-space:nowrap;font-size:clamp(28px,3.4vw,46px);line-height:.92;color:var(--cream);
+    text-shadow:var(--ext);margin-bottom:-30px;position:relative;z-index:3;transform:matrix(1,-0.14,0,1,0,0);transform-origin:center;transition:transform .35s var(--ease)}
+  .badge-grid{align-items:start}
+  .badge:nth-child(even) .lbl{transform:matrix(1,-0.14,0,1,0,0)}
+  .badge .disc-ring{position:relative;width:min(20vw,170px);height:min(20vw,170px);border-radius:50%;background:var(--cream);
+    display:grid;place-items:center;box-shadow:0 16px 30px -12px rgba(20,14,34,.45)}
+  .badge .disc{position:relative;width:78%;height:78%;border-radius:50%;display:grid;place-items:center;overflow:hidden;
+    transition:transform .4s var(--ease)}
+  .badge .disc .grain{opacity:1;mix-blend-mode:normal}
+  .badge .disc svg{width:46%;height:46%;color:var(--cream);position:relative;z-index:2;filter:drop-shadow(2px 3px 0 rgba(20,14,34,.55))}
+  .badge:hover .disc{transform:scale(1.08) rotate(4deg)}
+  .badge:hover .lbl{transform:matrix(1,-0.14,0,1,0,-5)}
+  .badge .disc.v{background:var(--violet)}
+  .badge .disc.o{background:var(--orange)}
+  .badge .disc.m{background:var(--magenta)}
+  .badge .disc.t{background:#2BB0A6}
+  /* real generated icon badges (cropped from icons-grid.svg) */
+  .badge .badge-disc{position:relative;display:block;width:min(20vw,170px);height:min(20vw,170px);border-radius:50%;overflow:hidden;
+    box-shadow:0 0 0 0 rgba(242,232,213,0);transition:transform .35s var(--ease),box-shadow .3s var(--ease);will-change:transform}
+  .badge .badge-img{display:block;width:100%;height:100%}
+  .badge .badge-zoom{display:block;width:100%;height:100%;transform-origin:center center;transition:transform .5s var(--ease);will-change:transform}
+  /* grain overlay that jitters on hover (Tentacle-style) */
+  .badge .badge-noise{position:absolute;inset:0;border-radius:50%;pointer-events:none;opacity:0;mix-blend-mode:overlay;
+    background-image:url('assets/noise.png');
+    background-size:150px 150px;transition:opacity .2s}
+  /* Tentacle-style: circle stays fixed (mask), the illustration zooms IN inside it;
+     plus a pronounced selection ring on hover (cream) and click (thicker, orange) */
+  .badge:hover .badge-disc{box-shadow:0 0 0 4px var(--char),0 0 0 10px var(--cream)}
+  .badge:hover .badge-zoom{transform:scale(1.18)}
+  .badge:hover .badge-noise{opacity:.5;animation:badgeJitter .18s steps(2,end) infinite}
+  .badge:active .badge-disc{box-shadow:0 0 0 4px var(--char),0 0 0 14px var(--orange)}
+  .badge:active .badge-zoom{transform:scale(1.28)}
+  @keyframes badgeJitter{0%{background-position:0 0}25%{background-position:9px -7px}50%{background-position:-7px 8px}75%{background-position:6px 6px}100%{background-position:-8px -6px}}
+  /* icon click → clean ZOOM-IN into the page (no slide/rotate) */
+  @keyframes pageExit{0%{opacity:1;transform:scale(1)}60%{opacity:.55}100%{opacity:0;transform:scale(1.85)}}
+  body.page-exit{animation:pageExit .8s cubic-bezier(.5,0,.2,1) forwards;transform-origin:center center;overflow:hidden}
+
+  /* ============ FEATURE ROWS — alternating text/device on grain (Tentacle body) ============ */
+  .ferows{position:relative;background:var(--char);padding:120px 32px 60px}
+  .ferows .grain.dark{opacity:1}
+  .ferows .inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:120px}
+  .ferow{display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center}
+  .ferow.flip .col-text{order:2}
+  .ferow.flip .col-media{order:1}
+  .ferow .col-text .kicker{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+  .ferow:not(.flip) .col-text .kicker{color:var(--violet)}
+  .ferow .col-text h3{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(36px,4.8vw,70px);line-height:1.1;color:var(--cream);text-shadow:var(--ext);margin:0 0 34px;transform:translateY(7px)}
+  .ferow .col-text p{font-size:16px;line-height:1.6;color:rgba(242,232,213,.82);max-width:460px}
+  .ferow .col-text p b{color:var(--orange);font-weight:700}
+  .ferow .col-text p .v{color:var(--magenta)}
+  .ferow .col-text .pill{margin-top:26px}
+  .ferow .device{width:100%}
+  .ferow .device .screen{aspect-ratio:16/10}
+  /* device frames from monitor/laptop images — existing animation runs on their screen */
+  .ferow .dev-frame{position:relative;width:100%;background-repeat:no-repeat;background-position:center;background-size:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.28))}
+  .ferow .dev-monitor{aspect-ratio:899/668;background-image:url('assets/device-monitor.png');width:90%;margin:0 auto}
+  .ferow .dev-laptop{aspect-ratio:900/793;background-image:url('assets/device-laptop.png')}
+  .ferow .dev-screen{position:absolute;overflow:hidden;border-radius:3px}
+  .ferow .dev-monitor .dev-screen{left:15.4%;top:21.6%;right:14.9%;bottom:23.8%}
+  .ferow .dev-laptop .dev-screen{left:16.2%;top:8.2%;right:16.3%;bottom:47.2%}
+  .ferow .dev-screen .syncmap{height:100%;padding:7px 9px;gap:7px}
+  .ferow .dev-screen .syncmap .tc{font-size:9px}
+  .ferow .dev-screen .syncmap .track .ic{width:18px;height:18px;border-radius:5px}
+  .ferow .dev-screen .syncmap .track .ic svg{width:10px;height:10px}
+  .ferow .dev-screen .syncmap .track .bars i{height:9px}
+  .ferow .dev-screen .syncmap .playhead{top:7px;bottom:7px}
+  /* camera viewfinder for the monitor — blinking REC + framing, no timeline */
+  .viewfinder{position:relative;width:100%;height:100%;
+    background-image:linear-gradient(rgba(242,232,213,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(242,232,213,.10) 1px,transparent 1px);
+    background-size:33.33% 33.33%;background-position:center}
+  .viewfinder .vf-corner{position:absolute;width:13%;height:18%;border:2px solid rgba(242,232,213,.85)}
+  .viewfinder .vf-corner.tl{left:7%;top:9%;border-right:0;border-bottom:0}
+  .viewfinder .vf-corner.tr{right:7%;top:9%;border-left:0;border-bottom:0}
+  .viewfinder .vf-corner.bl{left:7%;bottom:9%;border-right:0;border-top:0}
+  .viewfinder .vf-corner.br{right:7%;bottom:9%;border-left:0;border-top:0}
+  .viewfinder .vf-cross{position:absolute;left:50%;top:50%;width:22px;height:22px;transform:translate(-50%,-50%)}
+  .viewfinder .vf-cross::before{content:'';position:absolute;left:50%;top:0;width:2px;height:100%;background:rgba(242,232,213,.7);transform:translateX(-50%)}
+  .viewfinder .vf-cross::after{content:'';position:absolute;top:50%;left:0;height:2px;width:100%;background:rgba(242,232,213,.7);transform:translateY(-50%)}
+  .viewfinder .vf-rec{position:absolute;left:9%;top:13%;display:flex;align-items:center;gap:6px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;color:var(--cream)}
+  .viewfinder .vf-rec .vf-dot{width:9px;height:9px;border-radius:50%;background:#ff2e2e;box-shadow:0 0 9px #ff2e2e;animation:recblink 1.1s steps(1,end) infinite}
+  @keyframes recblink{0%,55%{opacity:1}56%,100%{opacity:.12}}
+  .viewfinder .vf-tc{position:absolute;right:9%;top:13%;font-family:'BentonSans Pro','Inter',sans-serif;font-size:11px;letter-spacing:.08em;color:rgba(242,232,213,.85)}
+  .viewfinder .vf-bat{position:absolute;right:9%;bottom:13%;font-family:'BentonSans Pro','Inter',sans-serif;font-size:10px;letter-spacing:.1em;color:rgba(242,232,213,.7)}
+  @media(max-width:860px){.ferow{grid-template-columns:1fr;gap:30px}.ferow.flip .col-text{order:2}.ferow.flip .col-media{order:1}.ferows .inner{gap:80px}}
+
+  /* ============ CHIP CARD (black "POST PRODUCTION" style) ============ */
+  .chipcard-wrap{position:relative;background:var(--char);padding:92px 32px 120px}
+  .chipcard-wrap .grain{opacity:1}
+  /* Tentacle "FIND YOUR CABLE"-style cream box: overhanging sticker title + halftone shadow */
+  .follow-box{position:relative;z-index:2;max-width:1080px;margin:80px auto 0}
+  .follow-box::before{content:'';position:absolute;inset:0;border-radius:24px;z-index:0;
+    background-image:radial-gradient(circle,var(--ink) 1.6px,transparent 2px);background-size:7px 7px;transform:translate(13px,16px)}
+  .follow-card{position:relative;z-index:1;background:#E6A81C;color:var(--ink);border:3px solid var(--ink);border-radius:24px;padding:62px 46px 46px;overflow:hidden}
+  .follow-card .grain{opacity:1}
+  .follow-title{position:absolute;z-index:5;top:-50px;left:30px;margin:0;font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(40px,5.6vw,86px);line-height:.9;color:var(--cream);text-shadow:var(--ext-lg);transform:rotate(-2.5deg)}
+  .follow-sub{position:relative;z-index:2;max-width:600px;font-family:'BentonSans Pro','Inter',sans-serif;font-size:clamp(16px,1.6vw,21px);line-height:1.5;color:rgba(20,14,34,.82);margin-bottom:30px}
+  .follow-btns{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:14px}
+  .follow-btns .pill svg{width:17px;height:17px}
+  .follow-phone{position:absolute;z-index:4;right:145px;top:-78px;width:min(22%,215px);aspect-ratio:328/600;pointer-events:none;
+    background:url('assets/tel-phone.png') no-repeat center/contain;
+    filter:drop-shadow(0 16px 24px rgba(0,0,0,.4));animation:gearFloat 6s ease-in-out infinite}
+  @keyframes gearFloat{0%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(2deg)}100%{transform:translateY(0) rotate(-3deg)}}
+  .follow-phone .phone-scr{position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);width:36%;aspect-ratio:1;display:grid;place-items:center}
+  .follow-phone .buf{position:absolute;inset:0;border-radius:50%;border:3px solid rgba(242,232,213,.22);border-top-color:var(--cream);animation:bufSpin .9s linear infinite}
+  @keyframes bufSpin{to{transform:rotate(360deg)}}
+  .follow-phone .play{width:42%;height:42%;background:var(--cream);clip-path:polygon(22% 14%,22% 86%,84% 50%);animation:playPulse 1.6s ease-in-out infinite}
+  @keyframes playPulse{0%,100%{opacity:.8;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}
+  @media(max-width:760px){.follow-phone{width:118px;right:20px;top:-86px}}
+  @media(max-width:680px){.follow-title{top:-34px;font-size:40px;left:18px}.follow-card{padding:48px 24px 30px}}
+
+  /* reveal helper */
+  .reveal{opacity:0;transform:translateY(40px)}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+  <div class="grain dark"></div>
+  <div class="flash" id="introFlash"></div>
+  <div class="intro-letters" id="introLetters">
+    <div class="ltr k"><img src="assets/logos/letters/k.svg" alt=""></div>
+    <div class="ltr s"><img src="assets/logos/letters/s.svg" alt=""></div>
+    <div class="ltr m"><img src="assets/logos/letters/m.svg" alt=""></div>
+  </div>
+  <div class="intro-load">
+    <div class="intro-bar"><span id="introBar"></span></div>
+    <div class="intro-pct"><span id="introPct">0</span>%</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="menu-pill">
+    <button id="menuBtn"><span class="bars">≡</span> <span data-i18n="nav.menu">Menu</span></button>
+    <span class="div"></span>
+    <button class="globe" id="langBtn" aria-label="Limbă / Language">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
+      <span class="lang-cur" id="langCur">RO</span>
+    </button>
+  </div>
+  <a href="#" class="brand"><img src="assets/logos/ksm.svg" alt="KSM" onerror="this.onerror=null;this.src='assets/logos/ksm.png'"></a>
+  <a href="#contact" class="pill orange" data-cursor>Contact →</a>
+</nav>
+
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="grain"></div>
+  <a href="#" class="close" id="menuClose" data-i18n-html="nav.close">Închide ✕</a>
+  <a href="#work" data-menu>Work</a>
+  <a href="production.html" data-menu>Production</a>
+  <a href="media-house.html" data-menu>Media House</a>
+  <a href="#contact" data-menu>Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="grain dark"></div>
+  <div class="wrap">
+    <h1 data-i18n-html="hero.h1">
+      <span class="row"><span class="word">Facem</span> <span class="word v">filme.</span></span>
+      <span class="row"><span class="word">Facem</span> <span class="word o">campanii.</span></span>
+      <span class="row"><span class="word">Facem brand-uri</span></span>
+      <span class="row big"><span class="word">să trăiască.</span></span>
+    </h1>
+    <p class="lead" data-i18n-html="hero.lead">O casă de producție și o agenție sub aceeași umbrelă. Două divizii, o singură obsesie: lucruri pe care nu poți să nu le privești.</p>
+    <div class="actions">
+      <a href="#services" class="pill cream" data-i18n="hero.explore">Explorează</a>
+      <a href="#contact" class="pill orange sq" aria-label="Brief">
+        <svg class="ico" style="font-size:18px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-hint"><div class="line"></div></div>
+</section>
+
+<!-- MANIFEST -->
+<section class="manifest" id="manifest">
+  <div class="grain dark"></div>
+  <div class="inner">
+    <div class="m-card">
+      <h2 class="m-heading">Manifest</h2>
+      <div class="m-body">
+        <div class="m-text">
+          <p data-i18n-html="manifest">Suntem o <b>casă de producție</b>. Și o <b>casă de idei</b>. Construim <b class="v">filme care rămân</b> și <b class="o">campanii care contează</b>. Două divizii, o singură obsesie.</p>
+        </div>
+        <div class="m-illus">
+          <img class="float" data-lazysrc="assets/manifest-camera.svg" alt="Camera KSM" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE FACEM — circular badges -->
+<section class="services" id="services">
+  <div class="grain dark"></div>
+  <div class="inner">
+    <div class="head">
+      <div class="label" data-i18n="serv.label">— Ce facem</div>
+      <h3 data-i18n="serv.h3">Tot ce-ți trebuie</h3>
+    </div>
+    <div class="badge-grid">
+      <a class="badge" href="production.html" data-flood="production">
+        <span class="lbl" data-i18n="b.film">Filme</span>
+        <span class="badge-disc" data-lazyhtml="%3Cspan%20class%3D%22badge-zoom%22%3E%3Csvg%20class%3D%22badge-img%22%20viewBox%3D%22480.810%20168.296%20166.702%20166.702%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20aria-hidden%3D%22true%22%3E%3Cimage%20href%3D%22assets/icons-grid.svg%22%20x%3D%220%22%20y%3D%220%22%20width%3D%221440%22%20height%3D%22810%22/%3E%3C/svg%3E%3C/span%3E"><span class="badge-noise"></span></span>
+      </a>
+      <a class="badge" href="production.html" data-flood="production">
+        <span class="lbl" data-i18n="b.doc">Documentare</span>
+        <span class="badge-disc" data-lazyhtml="%3Cspan%20class%3D%22badge-zoom%22%3E%3Csvg%20class%3D%22badge-img%22%20viewBox%3D%22636.879%20167.943%20167.127%20167.127%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20aria-hidden%3D%22true%22%3E%3Cimage%20href%3D%22assets/icons-grid.svg%22%20x%3D%220%22%20y%3D%220%22%20width%3D%221440%22%20height%3D%22810%22/%3E%3C/svg%3E%3C/span%3E"><span class="badge-noise"></span></span>
+      </a>
+      <a class="badge" href="production.html" data-flood="production">
+        <span class="lbl" data-i18n="b.ads">Reclame</span>
+        <span class="badge-disc" data-lazyhtml="%3Cspan%20class%3D%22badge-zoom%22%3E%3Csvg%20class%3D%22badge-img%22%20viewBox%3D%22792.438%20168.706%20166.202%20166.202%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20aria-hidden%3D%22true%22%3E%3Cimage%20href%3D%22assets/icons-grid.svg%22%20x%3D%220%22%20y%3D%220%22%20width%3D%221440%22%20height%3D%22810%22/%3E%3C/svg%3E%3C/span%3E"><span class="badge-noise"></span></span>
+      </a>
+      <a class="badge" href="media-house.html" data-flood="media">
+        <span class="lbl" data-i18n="b.strat">Strategie</span>
+        <span class="badge-disc" data-lazyhtml="%3Cspan%20class%3D%22badge-zoom%22%3E%3Csvg%20class%3D%22badge-img%22%20viewBox%3D%22480.725%20321.254%20166.750%20166.750%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20aria-hidden%3D%22true%22%3E%3Cimage%20href%3D%22assets/icons-grid.svg%22%20x%3D%220%22%20y%3D%220%22%20width%3D%221440%22%20height%3D%22810%22/%3E%3C/svg%3E%3C/span%3E"><span class="badge-noise"></span></span>
+      </a>
+      <a class="badge" href="media-house.html" data-flood="media">
+        <span class="lbl" data-i18n="b.reels">Reel / Social</span>
+        <span class="badge-disc" data-lazyhtml="%3Cspan%20class%3D%22badge-zoom%22%3E%3Csvg%20class%3D%22badge-img%22%20viewBox%3D%22636.610%20321.585%20166.242%20166.242%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20aria-hidden%3D%22true%22%3E%3Cimage%20href%3D%22assets/icons-grid.svg%22%20x%3D%220%22%20y%3D%220%22%20width%3D%221440%22%20height%3D%22810%22/%3E%3C/svg%3E%3C/span%3E"><span class="badge-noise"></span></span>
+      </a>
+      <a class="badge" href="media-house.html" data-flood="media">
+        <span class="lbl" data-i18n="b.prod">Producție</span>
+        <span class="badge-disc" data-lazyhtml="%3Cspan%20class%3D%22badge-zoom%22%3E%3Csvg%20class%3D%22badge-img%22%20viewBox%3D%22792.418%20321.534%20166.334%20166.334%22%20preserveAspectRatio%3D%22xMidYMid%20meet%22%20aria-hidden%3D%22true%22%3E%3Cimage%20href%3D%22assets/icons-grid.svg%22%20x%3D%220%22%20y%3D%220%22%20width%3D%221440%22%20height%3D%22810%22/%3E%3C/svg%3E%3C/span%3E"><span class="badge-noise"></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE ROWS (alternating, Tentacle body) -->
+<section class="ferows" id="portals">
+  <div class="grain dark"></div>
+  <div class="inner">
+
+    <!-- Row 1: Production -->
+    <div class="ferow">
+      <div class="col-text">
+        <h3 data-i18n="fr1.h3">Filme care rămân</h3>
+        <p data-i18n-html="fr1.p"><b style="color:#8A66FF">Producție de film la nivel internațional.</b> Reclame, documentare, conținut original. De la concept și scenariu până la imagine, regie și post — stories worth watching twice.</p>
+        <a href="production.html" class="pill violet" data-flood="production">KSM Production</a>
+      </div>
+      <div class="col-media">
+        <div class="dev-frame dev-monitor">
+          <div class="dev-screen">
+            <div class="viewfinder">
+              <span class="vf-corner tl"></span><span class="vf-corner tr"></span>
+              <span class="vf-corner bl"></span><span class="vf-corner br"></span>
+              <span class="vf-cross"></span>
+              <span class="vf-rec"><span class="vf-dot"></span>REC</span>
+              <span class="vf-tc">4K · 24FPS</span>
+              <span class="vf-bat">● ● ● 87%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Media House (flipped) -->
+    <div class="ferow flip">
+      <div class="col-text">
+        <h3 data-i18n="fr2.h3">Campanii care contează</h3>
+        <p data-i18n-html="fr2.p"><b>Agenția care mișcă brand-urile.</b> Reels, social, conținut și strategie — livrat rapid, ascuțit și loud. Pachete lunare pentru branduri care vor să fie privite, nu derulate.</p>
+        <a href="media-house.html" class="pill orange" data-flood="media">KSM Media House</a>
+      </div>
+      <div class="col-media">
+        <div class="dev-frame dev-laptop">
+          <div class="dev-screen">
+            <div class="syncmap">
+              <div class="tchead"><span><span class="dot"></span><span class="dot"></span></span><span class="tc">9:16 · REELS</span></div>
+              <div class="track"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg></span><span class="bars"><i style="flex:5;background:var(--orange)"></i><i style="flex:2;background:#ff7a47"></i><i style="flex:2;background:var(--orange)"></i></span></div>
+              <div class="track"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l16-7v16L3 13z"/><path d="M3 11v2"/></svg></span><span class="bars"><i style="flex:3;background:#ff7a47"></i><i style="flex:4;background:var(--orange)"></i><i style="flex:2;background:#ff7a47"></i></span></div>
+              <div class="playhead"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHIP CARD — formate -->
+<div class="chipcard-wrap">
+  <div class="grain dark"></div>
+  <div class="follow-box">
+    <h3 class="follow-title" data-i18n="follow.title">Urmărește-ne</h3>
+    <div class="follow-card">
+      <div class="grain"></div>
+      <p class="follow-sub" data-i18n="follow.sub">Reels, behind-the-scenes și lucrările noastre — zilnic pe social.</p>
+      <div class="follow-btns">
+        <a class="pill orange" href="https://youtube.com/@ksmproduction-cluj" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.8-.5-5.6a3 3 0 0 0-2.1-2.1C18.6 3.8 12 3.8 12 3.8s-6.6 0-8.4.5A3 3 0 0 0 1.5 6.4 31 31 0 0 0 1 12a31 31 0 0 0 .5 5.6 3 3 0 0 0 2.1 2.1c1.8.5 8.4.5 8.4.5s6.6 0 8.4-.5a3 3 0 0 0 2.1-2.1c.5-1.8.5-5.6.5-5.6Zm-13 3.6V8.4l6 3.6Z"/></svg>YouTube</a>
+        <a class="pill orange" href="https://www.tiktok.com/@ksm.media.house" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.3 1.8 4 4 4.2v3c-1.5.1-2.9-.4-4-1.2v6.7c0 3.4-2.7 6.1-6 6.1S4.4 19.1 4.4 15.7c0-3.1 2.3-5.7 5.3-6v3.1c-1.3.2-2.3 1.4-2.3 2.8 0 1.6 1.3 2.9 2.9 2.9s2.9-1.3 2.9-2.9V3Z"/></svg>TikTok</a>
+        <a class="pill orange" href="https://www.instagram.com/ksmproductionn/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor" stroke="none"/></svg>Instagram</a>
+      </div>
+    </div>
+    <div class="follow-phone" aria-hidden="true">
+      <span class="phone-scr"><span class="buf"></span><span class="play"></span></span>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="grain dark"></div>
+  <div class="inner">
+    <div class="head">
+      <h3 data-i18n="work.h3">Proiecte selectate</h3>
+      <div class="count">Selected · 2025 — 2026</div>
+    </div>
+    <div class="work-list">
+      <a class="work-item" data-flood="production" href="projects/dosarele-orasului-alb.html" data-c1="#330C8F" data-c2="#5A20E6">
+        <div class="n">01</div><div class="title">Dosarele Orașului Alb</div>
+        <span class="pill violet">KSM Production</span>
+      </a>
+      <a class="work-item" data-flood="production" href="projects/the-handler.html" data-c1="#0a0014" data-c2="#D946EF">
+        <div class="n">02</div><div class="title">Acel martie</div>
+        <span class="pill violet">KSM Production</span>
+      </a>
+      <a class="work-item" data-flood="production" href="projects/am-baut-drog.html" data-c1="#1a0a2e" data-c2="#D946EF">
+        <div class="n">03</div><div class="title">Am Băut Drog</div>
+        <span class="pill violet">KSM Production</span>
+      </a>
+      <a class="work-item" data-flood="media" href="projects/nanlite.html" data-c1="#5e2a0a" data-c2="#FF5A1F">
+        <div class="n">04</div><div class="title">Nanlite</div>
+        <span class="pill orange">KSM Media House</span>
+      </a>
+      <a class="work-item" data-flood="media" href="projects/plesa-films.html" data-c1="#1a0700" data-c2="#FF5A1F">
+        <div class="n">05</div><div class="title">Plesa Films</div>
+        <span class="pill orange">KSM Media House</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="grain"></div>
+  <div class="inner">
+    <h2 data-i18n-html="ct.h2">Să facem<br>ceva <span style="color:var(--violet);text-shadow:var(--ext)">loud.</span></h2>
+    <p class="sub" data-i18n="ct.sub">Brief, idee, întâlnire de cafea — orice. Spune ce vrei să construim împreună.</p>
+    <div class="actions">
+      <a href="mailto:hello@ksm.ro" class="pill cream">hello@ksm</a>
+      <a href="production.html" class="pill violet" data-flood="production">Contact Production</a>
+      <a href="media-house.html" class="pill orange" data-flood="media">Contact Media House</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="brand-col">
+      <img class="brand-logo" src="assets/logos/ksm-footer.svg" alt="KSM" />
+      <p data-i18n="ft.about">Casă de producție & media house. Filme, campanii, brand-uri care trăiesc. Făcut cu obsesie în Cluj-Napoca.</p>
+    </div>
+    <div>
+      <h4 data-i18n="ft.div">Divizii</h4>
+      <ul><li><a href="production.html">KSM Production</a></li><li><a href="media-house.html">KSM Media House</a></li></ul>
+    </div>
+    <div>
+      <h4>Social</h4>
+      <ul><li><a href="https://www.instagram.com/ksmproductionn/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@ksm.media.house" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://youtube.com/@ksmproduction-cluj" target="_blank" rel="noopener">YouTube</a></li></ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul><li><a href="mailto:hello@ksm.ro">hello@ksm</a></li><li><a href="#">Cluj-Napoca, RO</a></li></ul>
+    </div>
+  </div>
+  <div class="bottom"><span>© 2026 KSM · Est. 2025</span><span>Made with obsession.</span></div>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Lenis smooth scroll
+  let lenis;
+  if(!reduce){
+    lenis = new Lenis({ duration:1.4, smoothWheel:true, easing:t=>1-Math.pow(1-t,3.2) });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+  } else { gsap.registerPlugin(ScrollTrigger); }
+
+  // anchor links via lenis
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1){ const t=document.querySelector(id); if(t){ e.preventDefault(); if(lenis) lenis.scrollTo(t,{offset:0}); else t.scrollIntoView({behavior:'smooth'}); document.body.classList.remove('menu-open'); } }
+    });
+  });
+
+  // MENU overlay
+  const menuBtn=document.getElementById('menuBtn'), menuClose=document.getElementById('menuClose');
+  menuBtn.addEventListener('click',()=>{ const open=document.body.classList.toggle('menu-open'); if(lenis){ open?lenis.stop():lenis.start(); } });
+  function closeMenu(){document.body.classList.remove('menu-open'); if(lenis)lenis.start();}
+  menuClose.addEventListener('click',e=>{e.preventDefault();closeMenu();});
+  document.querySelectorAll('[data-menu]').forEach(a=>a.addEventListener('click',closeMenu));
+
+  // INTRO — K white / S violet / M orange slam-in then explode
+  gsap.set('#introLetters .k',{x:'-80vw',opacity:0});
+  gsap.set('#introLetters .s',{scale:0,opacity:0});
+  gsap.set('#introLetters .m',{x:'80vw',opacity:0});
+  const introPct=document.getElementById('introPct'), introBar=document.getElementById('introBar');
+  const introTL = gsap.timeline({
+    onUpdate:()=>{ const p=Math.round(introTL.progress()*100); if(introPct)introPct.textContent=p; if(introBar)introBar.style.width=p+'%'; },
+    onComplete:()=>{ if(introPct)introPct.textContent=100; if(introBar)introBar.style.width='100%'; document.body.classList.add('loaded'); setTimeout(()=>{const i=document.getElementById('intro'); if(i)i.remove();},800); }
+  });
+  introTL
+    .to('#introLetters .k',{x:0,opacity:1,duration:.8,ease:'expo.out'},0)
+    .to('#introLetters .m',{x:0,opacity:1,duration:.8,ease:'expo.out'},0)
+    .to('#introLetters .s',{scale:1,opacity:1,duration:.8,ease:'back.out(1.6)'},.22)
+    .to('#introLetters',{scale:1.06,duration:.22,ease:'power2.inOut'},'+=.05')
+    .to('#introFlash',{opacity:.9,duration:.07},'-=.1')
+    .to('#introFlash',{opacity:0,duration:.35})
+    .to('#introLetters',{scale:1,duration:.22},'<')
+    .to('#introLetters .k',{x:'-100vw',opacity:0,duration:.65,ease:'power3.in'},'+=.05')
+    .to('#introLetters .m',{x:'100vw',opacity:0,duration:.65,ease:'power3.in'},'<')
+    .to('#introLetters .s',{scale:9,opacity:0,duration:.75,ease:'power3.in'},'<');
+  // Failsafe: never let the intro trap the page if the timeline is throttled/slow
+  setTimeout(function(){ if(!document.body.classList.contains('loaded')){ document.body.classList.add('loaded'); var i=document.getElementById('intro'); if(i) i.remove(); } }, 4500);
+
+  // HERO words reveal after intro — livelier pop with rotation + overshoot
+  gsap.set('.hero h1 .word',{y:'120%',rotation:-7,transformOrigin:'left bottom'});
+  gsap.to('.hero h1 .word',{y:0,rotation:0,duration:1.1,ease:'back.out(1.5)',stagger:.06,delay:reduce?0:1.9});
+
+  // HERO mouse parallax — the headline reacts to the cursor (playful, alive)
+  if(!reduce){
+    const heroEl=document.querySelector('.hero'), h1El=document.querySelector('.hero h1');
+    heroEl.addEventListener('mousemove',e=>{
+      const x=e.clientX/window.innerWidth-.5, y=e.clientY/window.innerHeight-.5;
+      gsap.to(h1El,{x:x*30,y:y*18,rotation:x*2.2,duration:1.1,ease:'power3.out',overwrite:'auto'});
+    });
+    heroEl.addEventListener('mouseleave',()=>gsap.to(h1El,{x:0,y:0,rotation:0,duration:.9,ease:'power3.out'}));
+  }
+  gsap.from('.hero .eyebrow, .hero .lead, .hero .actions',{opacity:0,y:24,duration:.9,stagger:.12,delay:reduce?0:2.4,ease:'power3.out'});
+  gsap.from('.hero .hero-device',{opacity:0,x:60,duration:1.1,delay:reduce?0:2.5,ease:'expo.out'});
+  gsap.from('nav',{opacity:0,y:-20,duration:.9,delay:reduce?0:2.2,ease:'power3.out'});
+
+  // hero parallax watermark + device
+  if(!reduce){
+    gsap.to('.hero .watermark',{xPercent:-8,scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.to('.hero .hero-device',{y:-50,scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  }
+
+  // section reveals
+  function revealUp(sel,opt={}){ gsap.utils.toArray(sel).forEach(el=>{ gsap.fromTo(el,{opacity:0,y:opt.y||50},{opacity:1,y:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:opt.start||'top 82%'}}); }); }
+  revealUp('.m-card',{y:50});
+  revealUp('.ferow .col-text',{y:40});
+  revealUp('.ferow .col-media',{y:50});
+  revealUp('.follow-box',{y:40});
+  revealUp('.services .head',{y:30});
+  revealUp('.badge',{y:34,start:'top 92%'});
+  revealUp('.work .head',{y:40});
+  revealUp('.work-item',{y:30,start:'top 90%'});
+  revealUp('.contact .label, .contact h2, .contact .sub, .contact .actions',{y:40});
+
+  // manifest word emphasis on scrub
+  document.querySelectorAll('.manifest p b').forEach(b=>b.classList.add('mw'));
+
+  // WORK cursor-follow preview — disabled (no popup on hover)
+
+  // PAGE FLOOD transition on internal nav (color-block slide)
+  const floodColors={production:'var(--violet)',media:'var(--orange)'};
+  document.querySelectorAll('a[data-flood]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const href=a.getAttribute('href');
+      if(!href||href.startsWith('#')||href.startsWith('mailto'))return;
+      e.preventDefault();
+      // BADGE: iris zoom — the icon's circular frame (chenar) expands from the icon to fill the screen
+      if(a.classList.contains('badge') && !reduce){
+        if(lenis) lenis.stop();
+        try{ sessionStorage.setItem('ksm_enter','1'); }catch(e){}
+        const disc=a.querySelector('.badge-disc')||a;
+        const r=disc.getBoundingClientRect();
+        const cx=r.left+r.width/2, cy=r.top+r.height/2;
+        const rootCS=getComputedStyle(document.documentElement);
+        const col=a.dataset.flood==='media'?rootCS.getPropertyValue('--orange'):rootCS.getPropertyValue('--violet');
+        let maxd=0;[[0,0],[innerWidth,0],[0,innerHeight],[innerWidth,innerHeight]].forEach(c=>{const d=Math.hypot(c[0]-cx,c[1]-cy);if(d>maxd)maxd=d;});
+        const startSize=Math.max(r.width,40);
+        const scaleTo=((maxd*2)+80)/startSize;
+        const iris=document.createElement('div');
+        iris.style.cssText='position:fixed;z-index:9999;border-radius:50%;background:'+col+';border:5px solid var(--cream);box-sizing:border-box;left:'+cx+'px;top:'+cy+'px;width:'+startSize+'px;height:'+startSize+'px;transform:translate(-50%,-50%) scale(1);transform-origin:center center;transition:transform .75s cubic-bezier(.65,0,.2,1);will-change:transform;backface-visibility:hidden';
+        document.body.appendChild(iris);
+        // double rAF so the initial transform is committed before transitioning (smooth GPU scale)
+        requestAnimationFrame(()=>{requestAnimationFrame(()=>{ iris.style.transform='translate(-50%,-50%) scale('+scaleTo+')'; });});
+        setTimeout(()=>{window.location.href=href;}, 700);
+        return;
+      }
+      // OTHER internal links: color-block flood slide
+      const col=a.dataset.flood==='media'?getComputedStyle(document.documentElement).getPropertyValue('--orange'):getComputedStyle(document.documentElement).getPropertyValue('--violet');
+      const f=document.createElement('div');
+      f.style.cssText='position:fixed;inset:0;z-index:9990;transform:translateY(101%);background:'+col;
+      document.body.appendChild(f);
+      gsap.to(f,{y:'0%',duration:.6,ease:'expo.inOut',onComplete:()=>{window.location.href=href;}});
+    });
+  });
+
+  // hide nav on scroll down, show on up
+  let lastY=0;
+  (lenis||window).addEventListener?.('scroll',()=>{});
+  function navScroll(){ const y=window.scrollY; const nav=document.getElementById('nav'); if(y>lastY&&y>200){nav.style.transform='translateY(-120%)';}else{nav.style.transform='translateY(0)';} lastY=y; }
+  if(lenis) lenis.on('scroll',navScroll); else window.addEventListener('scroll',navScroll);
+
+  // ===== i18n RO / EN (RO = default, captured from DOM; EN from dict) =====
+  const I18N_EN = {
+    'nav.menu':'Menu',
+    'nav.close':'Close ✕',
+    'hero.back':'Two divisions · One umbrella',
+    'hero.h1':`<span class="row"><span class="word">We make</span> <span class="word v">films.</span></span>
+      <span class="row"><span class="word">We make</span> <span class="word o">campaigns.</span></span>
+      <span class="row"><span class="word">We make brands</span></span>
+      <span class="row big"><span class="word">come alive.</span></span>`,
+    'hero.lead':`A production house and an agency under one roof. Two divisions, one obsession: things you can't not watch.`,
+    'hero.explore':'Explore',
+    'marquee':`KSM Production <span class="o">✦</span> KSM Media House <span class="o">✦</span> Film <span class="o">✦</span> Campaigns <span class="o">✦</span> Brand <span class="o">✦</span> Cluj-Napoca <span class="o">✦</span>`,
+    'manifest':`We're a <b>production house</b>. And a <b>house of ideas</b>. We build <b class="v">films that last</b> and <b class="o">campaigns that matter</b>. Two divisions, one obsession.`,
+    'serv.label':'— What we do',
+    'serv.h3':'Everything you need',
+    'm.cta':"Let's talk →",
+    'b.film':'Films','b.ads':'Ads','b.doc':'Documentaries','b.reels':'Reels / Social','b.strat':'Strategy','b.prod':'Production',
+    'fr1.h3':'Films that last',
+    'fr1.p':`<b style="color:#8A66FF">Film production at an international level.</b> Ads, documentaries, original content. From concept and script to cinematography, directing and post — stories worth watching twice.`,
+    'fr2.h3':'Campaigns that matter',
+    'fr2.p':`<b>The agency that moves brands.</b> Reels, social, content and strategy — delivered fast, sharp and loud. Monthly packages for brands that want to be watched, not scrolled.`,
+    'fr3.kicker':`<span>03</span> — How we work`,
+    'fr3.h3':'From idea to delivery',
+    'fr3.p':`<b>One partner, two divisions.</b> Concept, production and post under one roof — no lost handoffs. Brief today, plan tomorrow, content that performs.`,
+    'fr3.cta':`Let's talk →`,
+    'chip.h3':`Any format,<br>one house`,
+    'chip.doc':'Documentary','chip.post':'Post',
+    'work.h3':'Selected work',
+    'follow.title':'Follow us',
+    'follow.sub':`Reels, behind-the-scenes and our work — daily on social.`,
+    'ct.label':`— Let's talk`,
+    'ct.h2':`Let's make<br>something <span style="color:var(--violet);text-shadow:var(--ext)">loud.</span>`,
+    'ct.sub':`A brief, an idea, a coffee — anything. Tell us what we should build together.`,
+    'ft.about':'Production house & media house. Films, campaigns, brands that live. Made with obsession in Cluj-Napoca.',
+    'ft.div':'Divisions'
+  };
+  (function(){
+    const nodes=[...document.querySelectorAll('[data-i18n],[data-i18n-html]')];
+    nodes.forEach(n=>{ n._ro = n.hasAttribute('data-i18n-html') ? n.innerHTML : n.textContent; });
+    function apply(lang){
+      nodes.forEach(n=>{
+        const html=n.hasAttribute('data-i18n-html');
+        const key=n.getAttribute('data-i18n')||n.getAttribute('data-i18n-html');
+        const val = lang==='en' ? (I18N_EN[key] ?? n._ro) : n._ro;
+        if(html) n.innerHTML=val; else n.textContent=val;
+      });
+      document.documentElement.lang=lang;
+      const cur=document.getElementById('langCur'); if(cur) cur.textContent=lang.toUpperCase();
+      try{ localStorage.setItem('ksm_lang',lang); }catch(e){}
+      // hero h1 innerHTML was swapped — re-run the word reveal so titles never get stuck
+      // in the captured "hidden" transform state (fixes the broken/skewed render on EN<->RO)
+      if(window.gsap){
+        gsap.killTweensOf('.hero h1 .word');
+        gsap.fromTo('.hero h1 .word',
+          {y:'120%',rotation:-7,transformOrigin:'left bottom'},
+          {y:0,rotation:0,duration:.7,ease:'back.out(1.5)',stagger:.05,overwrite:true});
+      }
+    }
+    let saved='ro'; try{ saved=localStorage.getItem('ksm_lang')||'ro'; }catch(e){}
+    if(saved==='en') apply('en');
+    const btn=document.getElementById('langBtn');
+    if(btn) btn.addEventListener('click',()=>{ apply(document.documentElement.lang==='en'?'ro':'en'); });
+  })();
+
+  // Lazy-render heavy SVGs (icons + camera) only when scrolled near
+  (function(){
+    var io=new IntersectionObserver(function(es,o){es.forEach(function(en){
+      if(!en.isIntersecting)return; var el=en.target;
+      if(el.dataset.lazysrc){ el.src=el.dataset.lazysrc; el.removeAttribute('data-lazysrc'); }
+      if(el.dataset.lazyhtml){ el.insertAdjacentHTML('afterbegin', decodeURIComponent(el.dataset.lazyhtml)); el.removeAttribute('data-lazyhtml'); }
+      o.unobserve(el);
+    });},{rootMargin:'250px'});
+    document.querySelectorAll('[data-lazysrc],[data-lazyhtml]').forEach(function(el){io.observe(el);});
+  })();
+</script>
+</body>
+</html>

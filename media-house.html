@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>KSM Media House — Social. Content. Brand.</title>
+<meta name="description" content="KSM Media House. Campanii care contează. Cluj-Napoca." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<style>
+  @font-face{font-family:'BentonSans UC';src:url('assets/fonts/BentonSansExtraComp-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans UC';src:url('assets/fonts/BentonSansExtraComp-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans UC';src:url('assets/fonts/BentonSansExtraComp-Black.ttf') format('truetype');font-weight:900;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('assets/fonts/BentonSansPro-Book.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('assets/fonts/BentonSansPro-Medium.otf') format('opentype');font-weight:500;font-style:normal;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('assets/fonts/BentonSansPro-Bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap}
+  :root{
+    --violet:#5A20E6;--violet-deep:#330C8F;--magenta:#D946EF;--orange:#FF5A1F;
+    --cream:#F2E8D5;--ink:#140E22;--char:#2b2926;--muted:#9a948c;--ease:cubic-bezier(.7,0,.2,1);
+    --ext:1px 1px 0 var(--ink),2px 2px 0 var(--ink),3px 3px 0 var(--ink),4px 4px 0 var(--ink),5px 5px 0 var(--ink),6px 6px 0 var(--ink),7px 7px 0 var(--ink),8px 8px 0 var(--ink),9px 9px 0 var(--ink);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  @keyframes pageEnter{0%{opacity:0;transform:scale(1.06)}100%{opacity:1;transform:none}}
+  body.page-enter{animation:pageEnter .6s cubic-bezier(.16,1,.3,1) forwards;transform-origin:center center}
+  html,body{background:var(--char);color:var(--cream);font-family:'BentonSans Pro','Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--orange);color:var(--ink)}
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:1;mix-blend-mode:normal;background-image:url('assets/noise.png');background-size:256px 256px;z-index:1}
+
+  .sticker{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;color:var(--cream);text-shadow:var(--ext)}
+  .pill{position:relative;display:inline-flex;align-items:center;gap:10px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:14px 24px;border-radius:10px;border:2px solid var(--ink);transition:top .2s var(--ease),left .2s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+  .pill::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;transform:translate(7px,8px);transition:transform .25s var(--ease)}
+  .pill.cream{background:var(--cream);color:var(--ink)}
+  .pill.violet{background:var(--violet);color:var(--cream);border-color:var(--ink)}
+  .pill.orange{background:var(--orange);color:var(--ink);border-color:var(--ink)}
+  .pill.ghost{background:transparent;color:var(--cream);border-color:var(--cream)}
+  .pill.ghost::after{background-image:radial-gradient(circle,rgba(242,232,213,.6) 1px,transparent 1.3px)}
+  .pill:hover{top:-3px;left:-3px}
+  .pill:hover::after{transform:translate(11px,13px)}
+  .pill:active{top:2px;left:2px}
+  .pill:active::after{transform:translate(5px,5px)}
+  .chip{display:inline-flex;align-items:center;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1.5px solid currentColor}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 22px}
+  nav .back{position:relative;display:inline-flex;align-items:center;gap:9px;background:var(--cream);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:12px 16px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;transition:top .2s var(--ease),left .2s var(--ease)}
+  nav .back::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;transform:translate(6px,7px);transition:transform .25s var(--ease)}
+  nav .back:hover{top:-3px;left:-3px}
+  nav .back:hover::after{transform:translate(9px,10px)}
+  nav .brand{display:flex;align-items:center}
+  nav .brand img{height:40px;width:auto;display:block}
+  @media(max-width:768px){nav .brand{font-size:24px}nav{padding:14px}}
+
+  /* HERO — violet block */
+  .hero{position:relative;min-height:100svh;background:var(--orange);display:flex;flex-direction:column;justify-content:center;padding:140px 32px 90px;overflow:hidden}
+  .hero .wrap{position:relative;z-index:3;max-width:1400px;margin:0 auto;width:100%}
+  .hero .crumbs{font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,232,213,.8);margin-bottom:26px}
+  .hero h1{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;color:var(--cream);font-size:clamp(64px,15vw,230px);line-height:.8;text-shadow:var(--ext);transform:matrix(1,-0.06,0,1,0,0)}
+  .hero h1 .row{display:block;overflow:hidden;padding:.08em .14em .02em 0}
+  .hero h1 .word{display:inline-block;will-change:transform}
+  .hero .tagline{margin-top:58px;margin-left:5px;max-width:830px;font-size:clamp(17px,1.7vw,23px);line-height:1.5;color:rgba(242,232,213,.92)}
+  .hero .meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-top:54px;margin-left:5px;font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,232,213,.85)}
+  .socials{display:flex;gap:14px}
+  .socials a{position:relative;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:10px;border:2px solid var(--ink);background:var(--violet);color:var(--cream);transition:top .2s var(--ease),left .2s var(--ease)}
+  .socials a::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;transform:translate(5px,6px);transition:transform .25s var(--ease)}
+  .socials a:hover{top:-3px;left:-3px}
+  .socials a:hover::after{transform:translate(8px,9px)}
+  .socials a svg{width:18px;height:18px}
+
+  /* INTRO statement + camera slideshow */
+  .intro-sec{position:relative;background:var(--char);padding:120px 0;border-top:5px solid var(--cream)}
+  .intro-sec .inner{position:relative;z-index:2;max-width:1500px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center}
+  .intro-sec .label{font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8A66FF;margin-bottom:26px}
+  .intro-sec .statement{font-family:'BentonSans Pro','Inter',sans-serif;font-weight:500;font-size:clamp(24px,2.7vw,42px);line-height:1.26;color:var(--cream);letter-spacing:-.01em}
+  .intro-sec .statement b{font-weight:700}
+  .intro-sec .statement b.v{color:#8A66FF}
+  .intro-text{text-align:center}
+  .intro-sec .intro-cam{order:-1}
+  .bts-title{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;color:var(--cream);text-shadow:var(--ext);font-size:clamp(46px,6.2vw,108px);line-height:.88;letter-spacing:-.01em;transform:matrix(1,-0.14,0,1,-30,0)}
+  .intro-cam{position:relative;width:100%;aspect-ratio:900/816;background:url('assets/intro-camera.png') no-repeat center/contain;filter:drop-shadow(0 22px 36px rgba(0,0,0,.45))}
+  .cam-screen{position:absolute;left:12%;top:35.5%;right:37.8%;bottom:23.7%;overflow:hidden;border-radius:4px}
+  .cam-strip{display:flex;height:100%;width:400%;animation:camNext 12s cubic-bezier(.7,0,.2,1) infinite}
+  .cam-strip .slide{flex:0 0 25%;height:100%;background-size:cover;background-position:center}
+  @keyframes camNext{0%,21%{transform:translateX(0)}25%,46%{transform:translateX(-25%)}50%,71%{transform:translateX(-50%)}75%,100%{transform:translateX(-75%)}}
+  @media(max-width:860px){.intro-sec .inner{grid-template-columns:1fr;gap:40px}.intro-cam{max-width:460px}}
+
+  /* PROJECTS */
+  .projects{position:relative;background:var(--char);padding:40px 0 80px}
+  .projects .grain{opacity:1}
+  .projects .inner{position:relative;z-index:2;max-width:1500px;margin:0 auto}
+  .projects .head{padding:20px 32px 64px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px}
+  .projects .head h2{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(40px,6vw,86px);line-height:.9;color:var(--cream);text-shadow:var(--ext)}
+  .projects .head h2 .v{color:var(--violet)}
+  .projects .head .count{font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .project{position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:28px;align-items:center;padding:30px 32px;border-top:2px solid rgba(242,232,213,.16);transition:padding-left .4s var(--ease),background .4s var(--ease)}
+  .project:last-child{border-bottom:2px solid rgba(242,232,213,.16)}
+  .project:hover{padding-left:44px;background:rgba(242,232,213,.04)}
+  .project .n{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;font-size:15px;color:var(--muted)}
+  .project .info h3{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(26px,4vw,52px);line-height:1;color:var(--cream)}
+  .project:hover .info h3{color:#8A66FF}
+  .project .meta{position:relative;display:inline-flex;align-items:center;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--cream);border:2px solid var(--ink);border-radius:10px;padding:11px 18px;white-space:nowrap}
+  .project .meta::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;transform:translate(6px,7px)}
+  @media(max-width:760px){.project{grid-template-columns:40px 1fr;gap:14px;padding:24px 20px}.project .meta{display:none}}
+
+  /* BACK / CTA — violet block */
+  .cta-sec{position:relative;background:var(--orange);padding:130px 32px;text-align:center;overflow:hidden;border-top:5px solid var(--cream)}
+  .cta-sec .inner{position:relative;z-index:2;max-width:1100px;margin:0 auto}
+  .cta-sec h2{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(48px,10vw,150px);line-height:.86;color:var(--cream);text-shadow:var(--ext)}
+  .cta-sec .actions{margin-top:44px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{background:var(--ink);color:var(--muted);padding:50px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;font-size:13px;letter-spacing:.04em}
+  footer a:hover{color:var(--cream)}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="back" data-exit>← KSM</a>
+  <a href="index.html#contact" class="pill violet">Contact →</a>
+</nav>
+
+<section class="hero">
+  <div class="grain"></div>
+  <div class="wrap">
+    <h1>
+      <span class="row"><span class="word">KSM</span></span>
+      <span class="row"><span class="word">Media House.</span></span>
+    </h1>
+    <p class="tagline">Agenția care mișcă brand-urile. Reels, social, conținut și strategie — livrat rapid, ascuțit și loud. Pachete lunare pentru branduri care vor să fie privite, nu derulate.</p>
+    <div class="meta">
+      <div>Cluj-Napoca · Est. 2025</div>
+      <div class="socials">
+        <a href="https://www.instagram.com/ksmproductionn/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg></a>
+        <a href="https://www.tiktok.com/@ksm.media.house" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.55a8.16 8.16 0 0 0 4.77 1.52V6.69z"/></svg></a>
+        <a href="https://youtube.com/@ksmproduction-cluj" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.1 31.1 0 0 0 0 12a31.1 31.1 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.1 31.1 0 0 0 24 12a31.1 31.1 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="intro-sec">
+  <div class="grain"></div>
+  <div class="inner">
+    <div class="intro-text">
+      <h2 class="bts-title">Behind the<br>scenes</h2>
+    </div>
+    <div class="intro-cam" aria-hidden="true">
+      <div class="cam-screen">
+        <div class="cam-strip">
+          <div class="slide" style="background:linear-gradient(135deg,#5e2a0a,#FF5A1F)"></div>
+          <div class="slide" style="background:linear-gradient(135deg,#1a0700,#ff7a47)"></div>
+          <div class="slide" style="background:linear-gradient(135deg,#330C8F,#7a4ff5)"></div>
+          <div class="slide" style="background:linear-gradient(135deg,#5e2a0a,#FF5A1F)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects">
+  <div class="grain"></div>
+  <div class="inner">
+    <div class="head">
+      <h2>Selected <span class="v">work</span></h2>
+      <div class="count">2025 — 2026</div>
+    </div>
+    <a class="project" href="projects/nanlite.html">
+      <div class="n">01</div>
+      <div class="info"><h3>Nanlite</h3></div>
+      <div class="meta">Brand content · 2025 · Social</div>
+    </a>
+    <a class="project" href="projects/plesa-films.html">
+      <div class="n">02</div>
+      <div class="info"><h3>Plesa Films</h3></div>
+      <div class="meta">Reels · 2025 · Ongoing</div>
+    </a>
+    <a class="project" href="index.html#contact">
+      <div class="n">03</div>
+      <div class="info"><h3>Brandul tău</h3></div>
+      <div class="meta">Pachet lunar · 2026 · Liber</div>
+    </a>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="grain"></div>
+  <div class="inner">
+    <h2>Hai să-ți<br>creștem brandul</h2>
+    <div class="actions">
+      <a href="index.html#contact" class="pill cream">Scrie-ne →</a>
+      <a href="production.html" class="pill violet" data-exit>Vezi Production</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 KSM Media House · Cluj-Napoca</span>
+  <a href="index.html" data-exit>← Înapoi la KSM</a>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lenis;
+  if(!reduce){ lenis = new Lenis({duration:1.3,smoothWheel:true,easing:t=>1-Math.pow(1-t,3.2)}); function raf(t){lenis.raf(t);requestAnimationFrame(raf)} requestAnimationFrame(raf); }
+  gsap.registerPlugin(ScrollTrigger);
+  if(lenis) lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.set('.hero h1 .word',{y:'120%',rotation:-7,transformOrigin:'left bottom'});
+  gsap.to('.hero h1 .word',{y:0,rotation:0,duration:1.1,ease:'back.out(1.5)',stagger:.06,delay:reduce?0:.35});
+  gsap.from('.hero .crumbs,.hero .tagline,.hero .meta',{opacity:0,y:24,duration:.9,stagger:.12,delay:.5,ease:'power3.out'});
+  gsap.from('nav',{opacity:0,y:-20,duration:.9,delay:.3,ease:'power3.out'});
+  gsap.utils.toArray('.project').forEach(p=>gsap.from(p,{opacity:0,y:36,duration:.9,ease:'power3.out',scrollTrigger:{trigger:p,start:'top 88%'}}));
+  ScrollTrigger.create({trigger:'.cta-sec',start:'top 78%',onEnter:()=>gsap.from('.cta-sec h2,.cta-sec .actions',{opacity:0,y:36,duration:1,stagger:.15,ease:'expo.out'})});
+
+  // page-exit transition on internal links
+  document.querySelectorAll('a[data-exit]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const href=a.getAttribute('href'); if(!href||href.startsWith('#')||href.startsWith('mailto'))return;
+      e.preventDefault(); if(lenis) lenis.stop();
+      try{ sessionStorage.setItem('ksm_enter','1'); }catch(_){}
+      document.body.style.transformOrigin='center center'; document.body.style.overflow='hidden';
+      gsap.to(document.body,{scale:1.25,rotation:4,opacity:0,duration:.6,ease:'power2.in',onComplete:()=>{window.location.href=href;}});
+    });
+  });
+</script>
+<script>try{if(sessionStorage.getItem("ksm_enter")){sessionStorage.removeItem("ksm_enter");document.body.classList.add("page-enter");}}catch(e){}</script>
+</body>
+</html>
