@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Acel martie — KSM KSM Production</title>
+<meta name="description" content="Acel martie — un thriller KSM Production." />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<style>
+  @font-face{font-family:'BentonSans UC';src:url('../assets/fonts/BentonSansExtraComp-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+  @font-face{font-family:'BentonSans UC';src:url('../assets/fonts/BentonSansExtraComp-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+  @font-face{font-family:'BentonSans UC';src:url('../assets/fonts/BentonSansExtraComp-Black.ttf') format('truetype');font-weight:900;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('../assets/fonts/BentonSansPro-Book.otf') format('opentype');font-weight:400;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('../assets/fonts/BentonSansPro-Medium.otf') format('opentype');font-weight:500;font-display:swap}
+  @font-face{font-family:'BentonSans Pro';src:url('../assets/fonts/BentonSansPro-Bold.otf') format('opentype');font-weight:700;font-display:swap}
+  :root{--violet:#5A20E6;--magenta:#D946EF;--orange:#FF5A1F;--cream:#F2E8D5;--ink:#140E22;--char:#2b2926;--muted:#9a948c;--ease:cubic-bezier(.7,0,.2,1);
+    --accent:var(--violet);--accent-lt:#8A66FF;
+    --ext:1px 1px 0 var(--ink),2px 2px 0 var(--ink),3px 3px 0 var(--ink),4px 4px 0 var(--ink),5px 5px 0 var(--ink),6px 6px 0 var(--ink),7px 7px 0 var(--ink),8px 8px 0 var(--ink),9px 9px 0 var(--ink);}
+  *{margin:0;padding:0;box-sizing:border-box}
+  @keyframes pageEnter{0%{opacity:0;transform:scale(1.06)}100%{opacity:1;transform:none}}
+  body.page-enter{animation:pageEnter .6s cubic-bezier(.16,1,.3,1) forwards}
+  html,body{background:var(--char);color:var(--cream);font-family:'BentonSans Pro','Inter',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none} img{display:block;max-width:100%}
+  ::selection{background:var(--accent);color:var(--cream)}
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:1;mix-blend-mode:normal;background-image:url('../assets/noise.png');background-size:256px 256px;z-index:1}
+  .sticker{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;color:var(--cream);text-shadow:var(--ext)}
+  .pill{position:relative;display:inline-flex;align-items:center;gap:10px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:14px 24px;border-radius:10px;border:2px solid var(--ink);transition:top .2s var(--ease),left .2s var(--ease)}
+  .pill::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;transform:translate(6px,7px);transition:transform .25s var(--ease)}
+  .pill.cream{background:var(--cream);color:var(--ink)} .pill.accent{background:var(--accent);color:var(--cream)} .pill.ghost{background:transparent;color:var(--cream);border-color:var(--cream)}
+  .pill.ghost::after{background-image:radial-gradient(circle,rgba(242,232,213,.6) 1px,transparent 1.3px)}
+  .pill:hover{top:-3px;left:-3px} .pill:hover::after{transform:translate(11px,13px)} .pill:active{top:2px;left:2px}
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;pointer-events:none}
+  nav>*{pointer-events:auto}
+  nav .back{position:relative;display:inline-flex;align-items:center;gap:9px;background:var(--cream);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:12px 16px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;transition:top .2s var(--ease),left .2s var(--ease)}
+  nav .back::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;transform:translate(6px,7px);transition:transform .25s var(--ease)}
+  nav .back:hover{top:-3px;left:-3px} nav .back:hover::after{transform:translate(9px,10px)}
+  /* HERO color block */
+  .hero{position:relative;min-height:92svh;background:var(--accent);display:flex;flex-direction:column;justify-content:flex-end;padding:140px 32px 170px;overflow:hidden}
+  .hero .wrap{position:relative;z-index:3;max-width:1500px;margin:0 auto;width:100%}
+  .hero .crumbs{font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:22px}
+  .hero .crumbs a{transition:opacity .3s} .hero .crumbs a:hover{opacity:.6} .hero .crumbs .sep{margin:0 9px;opacity:.5}
+  .hero .tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+  .hero .tags span{font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 15px;border:2px solid var(--ink);border-radius:999px;color:var(--ink);background:var(--cream)}
+  .hero h1{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;color:var(--cream);font-size:clamp(54px,11vw,180px);line-height:.85;text-shadow:var(--ext);transform:matrix(1,-0.05,0,1,0,0)}
+  .hero h1 .row{display:block;overflow:hidden;padding:.06em .14em .16em 0}
+  .hero h1 .word{display:inline-block;will-change:transform}
+  .hero .info-bar{display:flex;justify-content:space-between;align-items:flex-end;margin-top:40px;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);flex-wrap:wrap;gap:18px}
+  /* sections */
+  section.block{position:relative;padding:110px 32px;border-top:5px solid var(--cream)}
+  section.block .inner{position:relative;z-index:2;max-width:1400px;margin:0 auto}
+  .label{font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-lt);margin-bottom:26px}
+  .h-sticker{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(36px,5.5vw,82px);line-height:.9;color:var(--cream);text-shadow:var(--ext);margin-bottom:44px}
+  .h-sticker .a{color:var(--accent-lt)}
+  /* trailer */
+  .video{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#0c0a14;border:3px solid var(--ink);box-shadow:0 30px 60px -24px rgba(0,0,0,.7)}
+  .video .vplay-link{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(20,14,34,.32);transition:background .3s var(--ease)}
+  .video .vplay-link:hover{background:rgba(20,14,34,.12)}
+  .video .vplay{width:88px;height:88px;border-radius:50%;background:var(--orange);border:3px solid var(--ink);display:grid;place-items:center;color:var(--ink);font-size:30px;padding-left:6px;box-shadow:6px 7px 0 var(--ink);transition:transform .3s var(--ease)}
+  .video .vplay-link:hover .vplay{transform:scale(1.08)}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video .no-trailer{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:var(--muted);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+  .video .no-trailer .play{width:74px;height:74px;border-radius:50%;border:2px solid var(--accent-lt);display:grid;place-items:center;color:var(--accent-lt);font-size:26px;padding-left:5px}
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:46px;align-items:start}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:44px}}
+  .about-grid .body p{font-family:'BentonSans Pro','Inter',sans-serif;font-size:clamp(19px,1.9vw,27px);line-height:1.45;color:rgba(242,232,213,.86)}
+  .about-grid .body p+p{margin-top:22px} .about-grid .body p strong{color:var(--cream);font-weight:700} .about-grid .body p em{color:var(--accent-lt);font-style:normal}
+  .info-card{background:var(--cream);color:var(--ink);border:3px solid var(--ink);border-radius:18px;padding:34px;position:relative}
+  .info-card::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.4px,transparent 1.8px);background-size:5px 5px;transform:translate(10px,12px)}
+  .info-card dl{display:grid;grid-template-columns:auto 1fr;gap:13px 22px}
+  .info-card dt{font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7a7068;align-self:center}
+  .info-card dd{font-weight:700;font-size:15px;color:var(--ink)}
+  .info-card dd.cast{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .info-card .ext-link{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:30px;padding:15px 22px;background:var(--accent);color:var(--cream);border:2px solid var(--ink);border-radius:10px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.1em;transition:transform .3s var(--ease)}
+  .info-card .ext-link:hover{transform:translate(-2px,-2px)} .info-card .ext-link svg{width:16px;height:16px;flex-shrink:0}
+  /* bts slider */
+  .bts-slider{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#0c0a14;border:3px solid var(--ink)}
+  .bts-slider .slide{position:absolute;inset:0;opacity:0;transition:opacity .8s var(--ease);background-size:cover;background-position:center}
+  .bts-slider .slide.active{opacity:1} .bts-slider .slide.missing{display:none}
+  .bts-slider .slide video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .bts-slider .slide .cap{position:absolute;left:18px;bottom:18px;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);background:var(--cream);padding:7px 13px;border-radius:999px;border:2px solid var(--ink)}
+  .bts-arrows{position:absolute;inset:0;z-index:10;pointer-events:none}
+  .bts-arrows button{position:absolute;top:calc(50% - 25px);width:50px;height:50px;border:2px solid var(--ink);background:var(--orange);color:var(--ink);border-radius:10px;font-size:22px;cursor:pointer;pointer-events:auto;transition:top .2s var(--ease),left .2s var(--ease)}
+  .bts-arrows button::after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;border-radius:inherit;z-index:-1;background-image:radial-gradient(circle,var(--ink) 1.3px,transparent 1.7px);background-size:4px 4px;transform:translate(5px,6px);transition:transform .25s var(--ease)}
+  .bts-arrows .prev:hover{top:calc(50% - 28px);left:15px}
+  .bts-arrows .next:hover{top:calc(50% - 28px);right:21px}
+  .bts-arrows button:hover::after{transform:translate(8px,9px)} .bts-arrows .prev{left:16px} .bts-arrows .next{right:16px}
+  .bts-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:9px;z-index:10}
+  .bts-dots button{width:8px;height:8px;border-radius:50%;border:0;background:rgba(242,232,213,.4);padding:0;cursor:pointer;transition:all .3s var(--ease)}
+  .bts-dots button.active{background:var(--cream);width:26px;border-radius:99px}
+  /* next */
+  section.next{position:relative;padding:120px 32px;background:var(--accent);text-align:center;border-top:5px solid var(--cream);overflow:hidden}
+  .next .inner{position:relative;z-index:2} .next .label{color:var(--ink)}
+  .next .title{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(48px,8vw,140px);line-height:.86;color:var(--cream);text-shadow:var(--ext);transition:transform .5s var(--ease);display:inline-block}
+  .next a:hover .title{transform:translateX(18px)}
+  footer{background:var(--ink);color:var(--muted);padding:50px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px;font-size:13px;letter-spacing:.04em}
+  footer a:hover{color:var(--cream)}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../production.html" class="back" data-exit>← KSM</a>
+  <a href="../index.html#contact" class="pill accent">Contact →</a>
+</nav>
+
+<section class="hero">
+  <div class="grain"></div>
+  <div class="wrap">
+    <div class="crumbs"><a href="../index.html" data-exit>KSM</a><span class="sep">/</span><a href="../production.html" data-exit>KSM Production</a><span class="sep">/</span><span>Acel martie</span></div>
+    <div class="tags"><span>Lungmetraj</span><span>2026</span><span>Lansat</span></div>
+    <h1><span class="row"><span class="word">Acel</span></span>
+      <span class="row"><span class="word">martie.</span></span></h1>
+  </div>
+</section>
+
+<section class="block">
+  <div class="grain"></div>
+  <div class="inner">
+    <div class="label">— Trailer</div>
+    <h2 class="h-sticker">Watch the <span class="a">project.</span></h2>
+    <div class="video" style="background-image:url('https://img.youtube.com/vi/P1-sUIRbzUU/maxresdefault.jpg');background-size:cover;background-position:center">
+      <a class="vplay-link" href="https://www.youtube.com/watch?v=P1-sUIRbzUU" target="_blank" rel="noopener" aria-label="Vizionează trailerul pe YouTube"><span class="vplay">▶</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="grain"></div>
+  <div class="inner about-grid">
+    <div class="body"><p><strong>Acel martie</strong> — un agent de informații român urmărește un om de știință strălucit până în Spania, unde conspirații și agenți ruși se ciocnesc. Prinsă între misiune și propriile sentimente, Anabel are de făcut alegeri care pot schimba totul.</p>
+    <p>Thriller, regia <strong>Iura Luncașu</strong>, producție KSM. Premiera: 6 martie 2026.</p></div>
+    <aside class="info-card">
+      <dl><dt>Tip</dt><dd>Lungmetraj</dd>
+      <dt>Gen</dt><dd>Thriller</dd>
+      <dt>An</dt><dd>2026</dd>
+      <dt>Durată</dt><dd>1h 35min</dd>
+      <dt>Regizor</dt><dd>Iura Luncașu</dd>
+      <dt>Distribuție</dt><dd class="cast">Mădălina Bellariu Ion, Esther Acebo, Costas Mandylor, Eduard Trică</dd>
+      <dt>Producător</dt><dd>KSM Production</dd>
+      <dt>Locație</dt><dd>Cluj-Napoca / Spania</dd>
+      <dt>Premieră</dt><dd>6 mar. 2026</dd>
+      <dt>Status</dt><dd>Lansat</dd></dl>
+      <a href="https://www.imdb.com/title/tt37988531/" target="_blank" rel="noopener" class="ext-link"><span>Vezi pe IMDb</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg></a>
+    </aside>
+  </div>
+</section>
+
+<section class="block">
+  <div class="grain"></div>
+  <div class="inner">
+    <div class="label">— Galerie</div>
+    <h2 class="h-sticker">Imagini din <span class="a">film.</span></h2>
+    <div class="bts-slider">
+      <div class="slide" data-type="image" data-src="https://m.media-amazon.com/images/M/MV5BZWY5ZjNlYWEtZGYzZS00MmMzLWIzZjItYmU2ZmViMmE1YjIzXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"><div class="cap">Acel martie</div></div>
+      <div class="slide" data-type="image" data-src="https://m.media-amazon.com/images/M/MV5BZjI4ZDg3ZTMtNWZmNS00YzYxLTk1N2ItODEwM2M5MjlhMjAyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"><div class="cap">Acel martie</div></div>
+      <div class="slide" data-type="image" data-src="https://m.media-amazon.com/images/M/MV5BMWZmYjE2ODMtYzM1MS00ZWQ0LWE0ZTgtOGIzOTIzN2M0NDRkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"><div class="cap">Acel martie</div></div>
+      <div class="slide" data-type="image" data-src="https://m.media-amazon.com/images/M/MV5BNzgyODFkODctMDgxMy00MWQ3LWE3ODYtZDI0NzQ0ZDcxOThmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"><div class="cap">Acel martie</div></div>
+      <div class="slide" data-type="image" data-src="https://m.media-amazon.com/images/M/MV5BY2VkNTI2ZTktODc1Ni00MjM1LTg2ZWQtMjIyMjNjZDI0YTI2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"><div class="cap">Acel martie</div></div>
+
+      <div class="bts-arrows"><button class="prev" aria-label="Previous">‹</button><button class="next" aria-label="Next">›</button></div>
+      <div class="bts-dots"></div>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <div class="grain"></div>
+  <div class="inner">
+    <div class="label">— Next project</div>
+    <a href="am-baut-drog.html" data-exit><span class="title">Am Băut Drog →</span></a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 KSM KSM Production · Cluj-Napoca</div>
+  <a href="../production.html" data-exit>← Înapoi la KSM KSM Production</a>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lenis;
+  if(!reduce){ lenis=new Lenis({duration:1.3,smoothWheel:true,easing:t=>1-Math.pow(1-t,3.2)}); function raf(t){lenis.raf(t);requestAnimationFrame(raf)} requestAnimationFrame(raf); }
+  gsap.registerPlugin(ScrollTrigger);
+  if(lenis) lenis.on('scroll', ScrollTrigger.update);
+  gsap.set('.hero h1 .word',{y:'120%',rotation:-6,transformOrigin:'left bottom'});
+  gsap.to('.hero h1 .word',{y:0,rotation:0,duration:1.1,ease:'back.out(1.5)',stagger:.07,delay:reduce?0:.35});
+  gsap.from('.hero .crumbs,.hero .tags,.hero .info-bar',{opacity:0,y:22,duration:.9,stagger:.12,delay:.5,ease:'power3.out'});
+  gsap.from('nav',{opacity:0,y:-18,duration:.9,delay:.3,ease:'power3.out'});
+  document.querySelectorAll('section.block,section.next').forEach(s=>gsap.from(s.querySelectorAll('.inner > *'),{opacity:0,y:36,duration:.9,stagger:.1,ease:'power3.out',clearProps:'transform',scrollTrigger:{trigger:s,start:'top 82%'}}));
+  (function(){var f=document.querySelector('.video iframe'),n=document.querySelector('.no-trailer');if(f&&f.src.includes('YOUTUBE_VIDEO_ID')){f.style.display='none';n.style.display='flex';}})();
+  // page-exit
+  document.querySelectorAll('a[data-exit]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(!href||href.startsWith('#')||href.startsWith('mailto'))return;e.preventDefault();if(lenis)lenis.stop();try{sessionStorage.setItem('ksm_enter','1');}catch(_){}document.body.style.transformOrigin='center center';document.body.style.overflow='hidden';gsap.to(document.body,{scale:1.2,opacity:0,duration:.55,ease:'power2.in',onComplete:()=>{window.location.href=href;}});});});
+  // BTS slideshow
+  (function(){
+    const slider=document.querySelector('.bts-slider'); if(!slider)return;
+    const slides=Array.from(slider.querySelectorAll('.slide')); const dotsBox=slider.querySelector('.bts-dots'); let cur=0; const visible=[];
+    function probe(s,cb){const t=s.dataset.type,src=s.dataset.src;if(!src){cb(false);return;}if(t==='video'){const v=document.createElement('video');v.src=src;v.onloadeddata=()=>cb(true);v.onerror=()=>cb(false);setTimeout(()=>cb(!!v.videoWidth),1500);}else{const im=new Image();im.onload=()=>cb(true);im.onerror=()=>cb(false);im.src=src;}}
+    let pending=slides.length;
+    slides.forEach(s=>{probe(s,ok=>{if(ok){if(s.dataset.type==='video'){const v=document.createElement('video');v.src=s.dataset.src;v.muted=true;v.loop=true;v.playsInline=true;v.autoplay=true;s.appendChild(v);}else{s.style.backgroundImage=`url('${s.dataset.src}')`;}visible.push(s);const d=document.createElement('button');d.addEventListener('click',()=>go(visible.indexOf(s)));dotsBox.appendChild(d);}else{s.classList.add('missing');}pending--;if(pending===0)finalize();});});
+    function finalize(){if(visible.length===0){slider.innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#666;font-weight:700;font-size:12px;letter-spacing:.2em;text-transform:uppercase">— Behind-the-scenes coming soon —</div>';return;}go(0);}
+    function go(i){cur=(i+visible.length)%visible.length;visible.forEach((s,j)=>s.classList.toggle('active',j===cur));dotsBox.querySelectorAll('button').forEach((d,j)=>d.classList.toggle('active',j===cur));}
+    slider.querySelector('.prev').addEventListener('click',()=>go(cur-1)); slider.querySelector('.next').addEventListener('click',()=>go(cur+1));
+    let tx=null; slider.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;}); slider.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>40)go(cur+(dx<0?1:-1));tx=null;});
+    setInterval(()=>{if(visible.length>1)go(cur+1);},5500);
+  })();
+</script>
+<script>try{if(sessionStorage.getItem("ksm_enter")){sessionStorage.removeItem("ksm_enter");document.body.classList.add("page-enter");}}catch(e){}</script>
+</body>
+</html>
