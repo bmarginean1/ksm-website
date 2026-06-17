@@ -76,7 +76,7 @@
   @media(max-width:768px){
     .hero{justify-content:stretch}
     .hero .wrap{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center}
-    .hero .meta{position:absolute;left:0;right:0;bottom:5svh;margin:0}
+    .hero .meta{position:absolute;left:5px;right:5px;bottom:5svh;margin:0}
   }
 
   /* INTRO statement + camera slideshow */
@@ -94,7 +94,9 @@
   .cam-strip{display:flex;height:100%;width:400%;animation:camNext 12s cubic-bezier(.7,0,.2,1) infinite}
   .cam-strip .slide{flex:0 0 25%;height:100%;background-size:cover;background-position:center}
   @keyframes camNext{0%,21%{transform:translateX(0)}25%,46%{transform:translateX(-25%)}50%,71%{transform:translateX(-50%)}75%,100%{transform:translateX(-75%)}}
-  @media(max-width:860px){.intro-sec .inner{grid-template-columns:1fr;gap:40px}.intro-cam{max-width:460px}}
+  @media(max-width:860px){.intro-sec .inner{grid-template-columns:1fr;gap:40px}.intro-cam{max-width:460px}
+    /* MOBILE: put the "Behind the scenes" title ABOVE the camera (cancel the desktop order:-1) */
+    .intro-sec .intro-cam{order:0}}
 
   /* PROJECTS */
   .projects{position:relative;background:var(--char);padding:40px 0 80px}
