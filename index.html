@@ -448,7 +448,10 @@
     .follow-btns .pill{flex:1;min-width:0;padding:14px 5px;font-size:11px;gap:5px;letter-spacing:.01em;justify-content:center}
     .chipcard-wrap{padding:60px 22px 300px}
     .work{padding-top:60px}
-    .follow-phone{position:absolute;left:50%;top:100%;right:auto;transform:translateX(-50%);width:120px;margin:70px 0 0}
+    /* center with left+negative margin (NOT translateX) so gearFloat's transform can't knock it
+       off-center; tighter drop-shadow so it reads as a grounded shadow, not a detached blob */
+    .follow-phone{position:absolute;left:50%;top:100%;right:auto;transform:none;width:120px;margin:70px 0 0 -60px;
+      filter:drop-shadow(0 5px 9px rgba(0,0,0,.5))}
   }
 
   /* reveal helper */

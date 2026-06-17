@@ -71,6 +71,13 @@
   .socials a:hover{top:-3px;left:-3px}
   .socials a:hover::after{transform:translate(8px,9px)}
   .socials a svg{width:18px;height:18px}
+  /* MOBILE: drop the Cluj-Napoca + socials block to the bottom of the hero (icons near the
+     fold line); title/tagline stay vertically centered. Spacing between icons unchanged. */
+  @media(max-width:768px){
+    .hero{justify-content:stretch}
+    .hero .wrap{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center}
+    .hero .meta{position:absolute;left:0;right:0;bottom:5svh;margin:0}
+  }
 
   /* INTRO statement + camera slideshow */
   .intro-sec{position:relative;background:var(--char);padding:120px 0;border-top:5px solid var(--cream)}
