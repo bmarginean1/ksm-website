@@ -224,15 +224,17 @@
   @media(prefers-reduced-motion:reduce){.m-card .m-illus img{animation:none}}
   @keyframes ifloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(-1.4deg)}}
   @media(max-width:860px){
-    .manifest{padding:34px 0 44px}
+    .manifest{padding:34px 0 60px}
     .m-card{padding:4px 0 0}
     /* MANIFEST = centered title at the TOP of the orange (in flow, no longer straddling the seam) */
-    .m-card .m-heading{position:static;top:auto;right:auto;left:auto;width:100%;text-align:center;margin:0 0 26px}
+    .m-card .m-heading{position:static;top:auto;right:auto;left:auto;width:100%;text-align:center;margin:0 0 44px}
     .m-card .m-body{grid-template-columns:1fr;gap:0;min-height:0}
-    /* body text stays left-aligned; camera below it, centered, big & fully visible (not cropped) */
+    /* body text lower (title margin above); camera higher & smaller, rendered as a background so the
+       orange section always grows under it and never clips it. centered & fully visible. */
     .m-card .m-illus{position:relative;top:auto;right:auto;left:auto;display:block;
-      width:100%;max-width:none;height:300px;margin:40px auto 6px;overflow:hidden}
-    .m-card .m-illus img{width:300%}
+      width:100%;max-width:none;aspect-ratio:auto;height:260px;margin:24px auto 0;overflow:hidden;
+      background:url(assets/manifest-camera.svg) center/280% no-repeat}
+    .m-card .m-illus img{display:none}
   }
 
   /* ============ PORTALS (dual brand color blocks) ============ */
