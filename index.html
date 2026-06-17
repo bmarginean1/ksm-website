@@ -142,6 +142,8 @@
   .menu-overlay .close{position:absolute;top:24px;right:28px;z-index:5;font-size:clamp(54px,8vw,86px)}
   /* while menu open: hide only the Contact pill, keep Menu + language */
   body.menu-open nav .pill.orange{opacity:0!important;pointer-events:none!important;transition:opacity .3s var(--ease)}
+  /* MOBILE: hide the KSM nav logo while the menu is open (it overlapped the "ÎNCHIDE ✕") */
+  @media(max-width:768px){body.menu-open nav .brand{opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}}
 
   /* ============ HERO ============ */
   .hero{position:relative;min-height:100svh;background:var(--char);display:flex;align-items:center;overflow:hidden}
