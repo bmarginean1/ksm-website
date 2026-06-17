@@ -224,15 +224,15 @@
   @media(prefers-reduced-motion:reduce){.m-card .m-illus img{animation:none}}
   @keyframes ifloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(-1.4deg)}}
   @media(max-width:860px){
-    .manifest{padding:34px 0 60px}
+    .manifest{padding:34px 0 24px}
     .m-card{padding:4px 0 0}
     /* MANIFEST = centered title at the TOP of the orange (in flow, no longer straddling the seam) */
-    .m-card .m-heading{position:static;top:auto;right:auto;left:auto;width:100%;text-align:center;margin:0 0 60px}
+    .m-card .m-heading{position:static;top:auto;right:auto;left:auto;width:100%;text-align:center;margin:0 0 18px}
     .m-card .m-body{grid-template-columns:1fr;gap:0;min-height:0}
-    /* equal gaps above/below the paragraph => text sits at the MIDPOINT between title and camera.
-       camera a touch lower & ~10% smaller, as a background so the orange always grows under it (never clipped) */
+    /* tuned to two marks: paragraph bottom lands ~mid-section; camera (background, never clipped) sits lower
+       so the clapperboard bottom is near the bottom of the orange with a small margin below it */
     .m-card .m-illus{position:relative;top:auto;right:auto;left:auto;display:block;
-      width:100%;max-width:none;aspect-ratio:auto;height:250px;margin:60px auto 0;overflow:hidden;
+      width:100%;max-width:none;aspect-ratio:auto;height:250px;margin:48px auto 0;overflow:hidden;
       background:url(assets/manifest-camera.svg) center/252% no-repeat}
     .m-card .m-illus img{display:none}
   }
