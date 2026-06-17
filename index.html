@@ -227,12 +227,12 @@
     .manifest{padding:34px 0 24px}
     .m-card{padding:4px 0 0}
     /* MANIFEST = centered title at the TOP of the orange (in flow, no longer straddling the seam) */
-    .m-card .m-heading{position:static;top:auto;right:auto;left:auto;width:100%;text-align:center;margin:0 0 18px}
+    .m-card .m-heading{position:static;top:auto;right:auto;left:auto;width:100%;text-align:center;margin:0 0 96px}
     .m-card .m-body{grid-template-columns:1fr;gap:0;min-height:0}
-    /* tuned to two marks: paragraph bottom lands ~mid-section; camera (background, never clipped) sits lower
-       so the clapperboard bottom is near the bottom of the orange with a small margin below it */
+    /* big gap title->text pushes the paragraph well down (just above the camera); camera position kept
+       (background, never clipped) — clapperboard bottom near the bottom of the orange with a small margin */
     .m-card .m-illus{position:relative;top:auto;right:auto;left:auto;display:block;
-      width:100%;max-width:none;aspect-ratio:auto;height:250px;margin:48px auto 0;overflow:hidden;
+      width:100%;max-width:none;aspect-ratio:auto;height:250px;margin:14px auto 0;overflow:hidden;
       background:url(assets/manifest-camera.svg) center/252% no-repeat}
     .m-card .m-illus img{display:none}
   }
