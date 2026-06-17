@@ -314,8 +314,10 @@
   @media(max-width:480px){
     /* CE FACEM on mobile: icons ~2x bigger, tighter head gap & bottom padding so the badges
        fill the space instead of leaving a big empty gap before the next section */
-    .services{padding:48px 22px 380px}
-    .services .head{margin-bottom:600px}
+    /* top & bottom gaps = ~2x the icon (disc) height (disc is 49vw, so 2x = 98vw).
+       bottom: next section adds ~220px up to its title, so subtract it from the padding */
+    .services{padding:48px 22px calc(98vw - 220px)}
+    .services .head{margin-bottom:98vw}
     .badge-grid{grid-template-columns:repeat(2,1fr);gap:56px 6px;max-width:none}
     .badge .badge-disc{width:min(49vw,280px);height:min(49vw,280px)}
   }
