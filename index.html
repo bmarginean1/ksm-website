@@ -311,7 +311,14 @@
   .services .head h3{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(46px,7.5vw,108px);line-height:.92;margin-top:28px;color:var(--violet);text-shadow:var(--ext)}
   .badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 24px;max-width:980px;margin:0 auto}
   @media(max-width:900px){.badge-grid{grid-template-columns:repeat(2,1fr);gap:44px 18px}}
-  @media(max-width:480px){.badge-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){
+    /* CE FACEM on mobile: icons ~2x bigger, tighter head gap & bottom padding so the badges
+       fill the space instead of leaving a big empty gap before the next section */
+    .services{padding:48px 22px 56px}
+    .services .head{margin-bottom:60px}
+    .badge-grid{grid-template-columns:repeat(2,1fr);gap:48px 16px}
+    .badge .badge-disc{width:min(40vw,184px);height:min(40vw,184px)}
+  }
   .badge{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer}
   .badge .lbl{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;text-transform:uppercase;white-space:nowrap;font-size:clamp(28px,3.4vw,46px);line-height:.92;color:var(--cream);
     text-shadow:var(--ext);margin-bottom:-30px;position:relative;z-index:3;transform:matrix(1,-0.14,0,1,0,0);transform-origin:center;transition:transform .35s var(--ease)}
