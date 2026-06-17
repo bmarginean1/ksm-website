@@ -487,7 +487,7 @@
       <span class="lang-cur" id="langCur">RO</span>
     </button>
   </div>
-  <a href="#" class="brand"><img src="assets/logos/ksm.svg" alt="KSM" onerror="this.onerror=null;this.src='assets/logos/ksm.png'"></a>
+  <a href="#" id="menuBrand" class="brand"><img src="assets/logos/ksm.svg" alt="KSM" onerror="this.onerror=null;this.src='assets/logos/ksm.png'"></a>
   <a href="#contact" class="pill orange" data-cursor>Contact →</a>
 </nav>
 
@@ -714,7 +714,7 @@
     </div>
     <div>
       <h4>Contact</h4>
-      <ul><li><a href="mailto:hello@ksm.ro">hello@ksm</a></li><li><a href="#">Cluj-Napoca, RO</a></li></ul>
+      <ul><li><a href="mailto:hello@ksm.ro">hello@ksm</a></li><li><a href="https://www.google.com/maps/search/?api=1&query=Calea%20Turzii%20175%2C%20Cluj-Napoca" target="_blank" rel="noopener">Cluj-Napoca, RO</a></li></ul>
     </div>
   </div>
   <div class="bottom"><span>© 2026 KSM · Est. 2025</span><span>Made with obsession.</span></div>
@@ -746,6 +746,9 @@
   menuBtn.addEventListener('click',()=>{ const open=document.body.classList.toggle('menu-open'); if(lenis){ open?lenis.stop():lenis.start(); } });
   function closeMenu(){document.body.classList.remove('menu-open'); if(lenis)lenis.start();}
   menuClose.addEventListener('click',e=>{e.preventDefault();closeMenu();});
+  // menu KSM logo -> close menu + return to top (no dead # jump)
+  const menuBrand=document.getElementById('menuBrand');
+  if(menuBrand)menuBrand.addEventListener('click',e=>{e.preventDefault();closeMenu();if(lenis)lenis.scrollTo(0,{offset:0});else window.scrollTo({top:0,behavior:'smooth'});});
   document.querySelectorAll('[data-menu]').forEach(a=>a.addEventListener('click',closeMenu));
 
   // INTRO — K white / S violet / M orange slam-in then explode
