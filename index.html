@@ -231,9 +231,11 @@
     .m-card .m-body{grid-template-columns:1fr;gap:0;min-height:0}
     /* big gap title->text pushes the paragraph well down (just above the camera); camera position kept
        (background, never clipped) — clapperboard bottom near the bottom of the orange with a small margin */
+    /* use the TRANSPARENT png (not the filtered svg — mobile Safari ignores the feColorMatrix
+       black->alpha filter when the svg is a CSS background, leaving a black box) */
     .m-card .m-illus{position:relative;top:auto;right:auto;left:auto;display:block;
-      width:100%;max-width:none;aspect-ratio:auto;height:250px;margin:14px auto 0;overflow:hidden;
-      background:url(assets/manifest-camera.svg) center/252% no-repeat}
+      width:100%;max-width:420px;aspect-ratio:876/753;height:auto;margin:14px auto 0;overflow:visible;
+      background:url(assets/manifest-camera.png) center/contain no-repeat}
     .m-card .m-illus img{display:none}
   }
 
@@ -283,7 +285,13 @@
   .contact .label{font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);margin-bottom:30px}
   .contact h2{font-family:'Anton',sans-serif;text-transform:uppercase;font-size:clamp(54px,12vw,180px);line-height:.86;color:var(--cream);text-shadow:var(--ext);transform:rotate(-1.4deg)}
   .contact .sub{margin:36px auto 0;max-width:none;white-space:nowrap;font-size:18px;line-height:1.5;color:var(--ink);font-weight:500}
-  @media(max-width:640px){.contact .sub{white-space:normal;max-width:90%;font-size:16px}}
+  @media(max-width:640px){.contact .sub{white-space:normal;max-width:90%;font-size:16px}
+    /* heading ~40% bigger + nearly edge-to-edge + a touch higher */
+    .contact{padding:96px 16px 96px}
+    .contact h2{font-size:clamp(76px,22vw,120px)}
+    /* HELLO@KSM same width as the other two — stack full-width */
+    .contact .actions{flex-direction:column;align-items:stretch;gap:12px;margin-top:40px}
+    .contact .actions .pill{width:100%;justify-content:center}}
   .contact .actions{margin-top:46px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
   .contact .watermark{position:absolute;left:0;right:0;top:62%;font-family:'Anton',sans-serif;text-transform:uppercase;font-size:26vw;line-height:1;color:rgba(20,14,34,.07);white-space:nowrap;z-index:1;pointer-events:none}
 
@@ -432,10 +440,14 @@
   @keyframes playPulse{0%,100%{opacity:.8;transform:scale(.92)}50%{opacity:1;transform:scale(1.12)}}
   @media(max-width:760px){.follow-phone{width:118px;right:20px;top:-86px}}
   @media(max-width:680px){.follow-title{top:-34px;font-size:40px;left:18px}.follow-card{padding:48px 24px 30px}
-    /* MOBILE: 3 social buttons on a single row + phone moved below the card (not overlapping top-right) */
+    /* MOBILE: 3 social buttons on a single row + phone centered in the gap below the card.
+       Phone is absolute (NOT in flow) so .follow-box stays card-height and its halftone shadow
+       hugs the card again instead of ballooning over the whole empty zone. */
     .follow-btns{flex-wrap:nowrap;gap:8px}
     .follow-btns .pill{flex:1;min-width:0;padding:14px 5px;font-size:11px;gap:5px;letter-spacing:.01em;justify-content:center}
-    .follow-phone{position:static;width:150px;margin:34px auto 0;right:auto;top:auto;transform:none}
+    .chipcard-wrap{padding:60px 22px 300px}
+    .work{padding-top:60px}
+    .follow-phone{position:absolute;left:50%;top:100%;right:auto;transform:translateX(-50%);width:120px;margin:70px 0 0}
   }
 
   /* reveal helper */
