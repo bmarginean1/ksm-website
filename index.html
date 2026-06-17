@@ -231,12 +231,13 @@
     .m-card .m-body{grid-template-columns:1fr;gap:0;min-height:0}
     /* big gap title->text pushes the paragraph well down (just above the camera); camera position kept
        (background, never clipped) — clapperboard bottom near the bottom of the orange with a small margin */
-    /* use the TRANSPARENT png (not the filtered svg — mobile Safari ignores the feColorMatrix
-       black->alpha filter when the svg is a CSS background, leaving a black box) */
+    /* keep the camera as an <img> of the svg (mobile Safari applies the feColorMatrix
+       black->alpha filter on an <img>, but NOT on a CSS background — background left a black box).
+       fixed-height + overflow:hidden reserves flow space so the section grows (no clipping). */
     .m-card .m-illus{position:relative;top:auto;right:auto;left:auto;display:block;
-      width:100%;max-width:420px;aspect-ratio:876/753;height:auto;margin:14px auto 0;overflow:visible;
-      background:url(assets/manifest-camera.png) center/contain no-repeat}
-    .m-card .m-illus img{display:none}
+      width:100%;max-width:420px;height:300px;margin:14px auto 0;overflow:hidden;background:none}
+    .m-card .m-illus img{display:block;position:absolute;left:50%;top:50%;width:230%;max-width:none;
+      height:auto;transform:translate(-50%,-50%);animation:none}
   }
 
   /* ============ PORTALS (dual brand color blocks) ============ */
