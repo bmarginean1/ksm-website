@@ -161,6 +161,12 @@
   .hero h1 .v{color:var(--violet)}
   .hero p.lead{font-family:'BentonSans Pro','Inter',sans-serif;text-align:left;margin-top:34px;max-width:760px;font-size:clamp(16px,1.5vw,20px);line-height:1.5;color:rgba(242,232,213,.92)}
   .hero .actions{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  /* MOBILE-ONLY: shrink hero title so long rows (FACEM CAMPANII / BRAND-URI) never get clipped; desktop untouched */
+  @media(max-width:480px){
+    .hero .wrap{padding-left:16px;padding-right:16px}
+    .hero h1{font-size:clamp(38px,13vw,56px)}
+    html[lang="en"] .hero h1{font-size:clamp(34px,12vw,56px)}
+  }
   /* vertical orange playhead scroll-hint */
   .scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:10px}
   .scroll-hint .line{width:2px;height:46px;background:rgba(255,255,255,.25);position:relative;overflow:hidden;border-radius:2px}
@@ -734,6 +740,10 @@
       gsap.to(h1El,{x:x*30,y:y*18,rotation:x*2.2,duration:1.1,ease:'power3.out',overwrite:'auto'});
     });
     heroEl.addEventListener('mouseleave',()=>gsap.to(h1El,{x:0,y:0,rotation:0,duration:.9,ease:'power3.out'}));
+    // TOUCH devices have no cursor — give the headline a gentle left-right sway so it still feels alive
+    if(window.matchMedia('(pointer:coarse)').matches){
+      gsap.to(h1El,{x:7,rotation:.5,duration:3.4,ease:'sine.inOut',yoyo:true,repeat:-1,delay:reduce?0:2.8});
+    }
   }
   gsap.from('.hero .eyebrow, .hero .lead, .hero .actions',{opacity:0,y:24,duration:.9,stagger:.12,delay:reduce?0:2.4,ease:'power3.out'});
   gsap.from('.hero .hero-device',{opacity:0,x:60,duration:1.1,delay:reduce?0:2.5,ease:'expo.out'});
