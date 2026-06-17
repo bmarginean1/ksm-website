@@ -224,13 +224,12 @@
   @media(prefers-reduced-motion:reduce){.m-card .m-illus img{animation:none}}
   @keyframes ifloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(-1.4deg)}}
   @media(max-width:860px){
-    .manifest{padding:40px 0 44px}
-    .m-card{padding:34px 0 0}
-    /* MANIFEST straddles the cream seam between the section above (grey) and the orange — like desktop */
-    .m-card .m-heading{top:-100px;right:14px;left:auto}
+    .manifest{padding:34px 0 44px}
+    .m-card{padding:4px 0 0}
+    /* MANIFEST = centered title at the TOP of the orange (in flow, no longer straddling the seam) */
+    .m-card .m-heading{position:static;top:auto;right:auto;left:auto;width:100%;text-align:center;margin:0 0 26px}
     .m-card .m-body{grid-template-columns:1fr;gap:0;min-height:0}
-    /* camera moves OUT of absolute, into flow BELOW the text, centered, big & fully visible (not cropped).
-       fixed height (no aspect-ratio) so the orange section grows under it and never clips the camera */
+    /* body text stays left-aligned; camera below it, centered, big & fully visible (not cropped) */
     .m-card .m-illus{position:relative;top:auto;right:auto;left:auto;display:block;
       width:100%;max-width:none;height:300px;margin:40px auto 6px;overflow:hidden}
     .m-card .m-illus img{width:300%}
