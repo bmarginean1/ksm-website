@@ -224,14 +224,16 @@
   @media(prefers-reduced-motion:reduce){.m-card .m-illus img{animation:none}}
   @keyframes ifloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-12px) rotate(-1.4deg)}}
   @media(max-width:860px){
-    .manifest{padding:40px 0 46px}
+    .manifest{padding:40px 0 44px}
     .m-card{padding:34px 0 0}
     /* MANIFEST straddles the cream seam between the section above (grey) and the orange — like desktop */
     .m-card .m-heading{top:-100px;right:14px;left:auto}
     .m-card .m-body{grid-template-columns:1fr;gap:0;min-height:0}
-    /* camera moves OUT of absolute, into flow BELOW the text, full-bleed & ~2.5x larger */
-    .m-card .m-illus{position:relative;top:auto;right:auto;left:50%;transform:translateX(-50%);
-      width:min(440px,100vw);max-width:none;margin:30px 0 0;aspect-ratio:4/3;height:auto;display:block}
+    /* camera moves OUT of absolute, into flow BELOW the text, centered, big & fully visible (not cropped).
+       fixed height (no aspect-ratio) so the orange section grows under it and never clips the camera */
+    .m-card .m-illus{position:relative;top:auto;right:auto;left:auto;display:block;
+      width:100%;max-width:none;height:300px;margin:40px auto 6px;overflow:hidden}
+    .m-card .m-illus img{width:300%}
   }
 
   /* ============ PORTALS (dual brand color blocks) ============ */
