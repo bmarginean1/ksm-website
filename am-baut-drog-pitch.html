@@ -223,12 +223,13 @@
 
   @media print{
     @page{size:1280px 720px;margin:0}
-    html,body{overflow:visible;background:#fff}
-    #viewport{position:static;display:block}
+    html,body{overflow:visible;background:#0a0a0a}
+    *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;animation:none!important}
+    #viewport{position:static;display:block;background:#0a0a0a}
     #stage{transform:none!important;width:1280px;height:auto;box-shadow:none}
-    .slide{position:relative;opacity:1!important;visibility:visible!important;page-break-after:always;height:720px}
+    .slide{position:relative;opacity:1!important;visibility:visible!important;page-break-after:always;break-after:page;height:720px;width:1280px}
+    .slide:last-child{page-break-after:auto;break-after:auto}
     #hud,#progress,.hint,#notes,.strip{display:none!important}
-    *{animation:none!important}
   }
 </style>
 </head>
