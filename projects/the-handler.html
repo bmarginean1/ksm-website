@@ -63,6 +63,9 @@
   .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .video .no-trailer{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:var(--muted);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
   .video .no-trailer .play{width:74px;height:74px;border-radius:50%;border:2px solid var(--accent-lt);display:grid;place-items:center;color:var(--accent-lt);font-size:26px;padding-left:5px}
+  /* TV FRAME — trailer screen sits inside the TV svg (same size on every project page) */
+  .tv-frame{position:relative;width:100%;max-width:880px;margin:0 auto;aspect-ratio:398/270;background:url(../assets/tv-frame.svg) center/contain no-repeat;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
+  .tv-frame .video{position:absolute;left:10.6%;top:12.8%;width:78%;height:66%;max-width:none;margin:0;aspect-ratio:auto;border:0;border-radius:2px;box-shadow:none}
   /* about */
   .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:46px;align-items:start}
   @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:44px}}
@@ -122,8 +125,10 @@
   <div class="inner">
     <div class="label">— Trailer</div>
     <h2 class="h-sticker">Watch the <span class="a">project.</span></h2>
+    <div class="tv-frame">
     <div class="video" style="background-image:url('https://img.youtube.com/vi/P1-sUIRbzUU/maxresdefault.jpg');background-size:cover;background-position:center">
       <a class="vplay-link" href="https://www.youtube.com/watch?v=P1-sUIRbzUU" target="_blank" rel="noopener" aria-label="Vizionează trailerul pe YouTube"><span class="vplay">▶</span></a>
+    </div>
     </div>
   </div>
 </section>
