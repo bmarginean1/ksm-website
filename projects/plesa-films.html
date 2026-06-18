@@ -61,7 +61,28 @@
   .video .no-trailer .play{width:74px;height:74px;border-radius:50%;border:2px solid var(--accent-lt);display:grid;place-items:center;color:var(--accent-lt);font-size:26px;padding-left:5px}
   /* TV FRAME — trailer screen sits inside the TV svg (same size on every project page) */
   .tv-frame{position:relative;width:100%;max-width:880px;margin:0 auto;aspect-ratio:398/270;background:url(../assets/tv-frame.svg) center/contain no-repeat;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
-  .tv-frame .video{position:absolute;left:4.5%;top:6%;width:91%;height:79%;max-width:none;margin:0;aspect-ratio:auto;border:0;border-radius:2px;box-shadow:none}
+  .tv-frame .video{position:absolute;left:4.5%;top:6%;width:91%;height:79%;max-width:none;margin:0;aspect-ratio:auto;border:0;border-radius:2px;box-shadow:none;overflow:hidden}
+  /* TV channel-guide trailer menu (inside the screen) */
+  .tv-menu{position:absolute;inset:0;display:flex;flex-direction:column;background:radial-gradient(120% 90% at 28% 0%,#171022,#09060f);color:var(--cream)}
+  .tv-menu-head{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:clamp(8px,1.4vw,14px) clamp(12px,1.8vw,20px);font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:clamp(9px,1vw,12px);letter-spacing:.18em;text-transform:uppercase;color:var(--accent-lt);border-bottom:1px solid rgba(242,232,213,.12)}
+  .tv-menu-head .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:tvBlink 1.6s steps(1) infinite}
+  @keyframes tvBlink{50%{opacity:.25}}
+  .tv-list{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:clamp(5px,.8vw,9px);padding:clamp(8px,1.4vw,14px)}
+  .tv-ch{display:flex;align-items:center;gap:clamp(8px,1.4vw,16px);width:100%;text-align:left;cursor:pointer;color:var(--cream);background:rgba(242,232,213,.05);border:1.5px solid rgba(242,232,213,.14);border-radius:10px;padding:clamp(5px,.8vw,9px);font-family:inherit;position:relative;top:0;left:0;transition:background .25s var(--ease),color .25s var(--ease),top .2s var(--ease),left .2s var(--ease);animation:chIn .5s var(--ease) both}
+  .tv-ch:nth-child(1){animation-delay:.06s}.tv-ch:nth-child(2){animation-delay:.13s}.tv-ch:nth-child(3){animation-delay:.2s}.tv-ch:nth-child(4){animation-delay:.27s}.tv-ch:nth-child(5){animation-delay:.34s}
+  @keyframes chIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .tv-ch:hover{background:var(--accent);color:var(--ink);border-color:var(--ink);top:-2px;left:-2px}
+  .tv-ch .ch-n{font-family:'BentonSans UC','Anton',sans-serif;font-weight:900;font-size:clamp(14px,1.8vw,22px);opacity:.6;min-width:1.5em;text-align:center}
+  .tv-ch:hover .ch-n{opacity:1}
+  .tv-ch .ch-thumb{flex:0 0 auto;width:clamp(54px,9vw,104px);aspect-ratio:16/9;border-radius:6px;background:#000 center/cover no-repeat;border:1px solid rgba(0,0,0,.5)}
+  .tv-ch .ch-info{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+  .tv-ch .ch-title{font-weight:700;font-size:clamp(11px,1.25vw,15px);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tv-ch .ch-sub{font-size:clamp(8px,.95vw,11px);letter-spacing:.06em;text-transform:uppercase;opacity:.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tv-ch .ch-play{margin-left:auto;flex:0 0 auto;width:clamp(22px,2.6vw,30px);height:clamp(22px,2.6vw,30px);border-radius:50%;display:grid;place-items:center;font-size:clamp(9px,1vw,12px);padding-left:2px;border:1.5px solid currentColor}
+  .tv-player{position:absolute;inset:0;background:#000}
+  .tv-player .tv-embed,.tv-player .tv-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .tv-back{position:absolute;top:8px;left:8px;z-index:6;font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:var(--accent);border:2px solid var(--ink);border-radius:8px;padding:7px 12px;cursor:pointer;transition:transform .2s var(--ease)}
+  .tv-back:hover{background:var(--cream);transform:translate(-1px,-1px)}
   /* about */
   .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:46px;align-items:start}
   @media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:44px}}
@@ -123,8 +144,20 @@
     <h2 class="h-sticker">Watch the <span class="a">project.</span></h2>
     <div class="tv-frame">
     <div class="video">
-      <iframe src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID?rel=0&modestbranding=1" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="no-trailer" style="display:none"><div class="play">▶</div><div>Trailer coming soon</div></div>
+      <div class="tv-menu" id="tvMenu">
+        <div class="tv-menu-head"><span class="dot"></span>Trailere · Plesa Films</div>
+        <div class="tv-list">
+          <button class="tv-ch" data-yt="Ul1xP8fJTiI"><span class="ch-n">01</span><span class="ch-thumb" style="background-image:url('https://i.ytimg.com/vi/Ul1xP8fJTiI/mqdefault.jpg')"></span><span class="ch-info"><span class="ch-title">Chapter I — Le Serment</span><span class="ch-sub">Plesa Films</span></span><span class="ch-play">▶</span></button>
+          <button class="tv-ch" data-yt="_19yKWFxzto"><span class="ch-n">02</span><span class="ch-thumb" style="background-image:url('https://i.ytimg.com/vi/_19yKWFxzto/mqdefault.jpg')"></span><span class="ch-info"><span class="ch-title">Chapter II — L'Horizon</span><span class="ch-sub">Plesa Films</span></span><span class="ch-play">▶</span></button>
+          <button class="tv-ch" data-yt="dDf8dPZOUJ8"><span class="ch-n">03</span><span class="ch-thumb" style="background-image:url('https://i.ytimg.com/vi/dDf8dPZOUJ8/mqdefault.jpg')"></span><span class="ch-info"><span class="ch-title">Sempre in Cima</span><span class="ch-sub">Plesa Films</span></span><span class="ch-play">▶</span></button>
+          <button class="tv-ch" data-yt="c_JtDbwIF_U"><span class="ch-n">04</span><span class="ch-thumb" style="background-image:url('https://i.ytimg.com/vi/c_JtDbwIF_U/mqdefault.jpg')"></span><span class="ch-info"><span class="ch-title">Lost In Time — AWKN feat. Diana Căldăraru</span><span class="ch-sub">din „That March"</span></span><span class="ch-play">▶</span></button>
+          <button class="tv-ch" data-yt="QC4i2q7YRJs"><span class="ch-n">05</span><span class="ch-thumb" style="background-image:url('https://i.ytimg.com/vi/QC4i2q7YRJs/mqdefault.jpg')"></span><span class="ch-info"><span class="ch-title">Mi-ai promis că vii cu dor</span><span class="ch-sub">Camelia Crișan · Official Video</span></span><span class="ch-play">▶</span></button>
+        </div>
+      </div>
+      <div class="tv-player" id="tvPlayer" hidden>
+        <button class="tv-back" id="tvBack">‹ Meniu</button>
+        <div class="tv-embed" id="tvEmbed"></div>
+      </div>
     </div>
     </div>
   </div>
@@ -197,7 +230,17 @@
   gsap.from('.hero .crumbs,.hero .tags,.hero .info-bar',{opacity:0,y:22,duration:.9,stagger:.12,delay:.5,ease:'power3.out'});
   gsap.from('nav',{opacity:0,y:-18,duration:.9,delay:.3,ease:'power3.out'});
   document.querySelectorAll('section.block,section.next').forEach(s=>gsap.from(s.querySelectorAll('.inner > *'),{opacity:0,y:36,duration:.9,stagger:.1,ease:'power3.out',clearProps:'transform',scrollTrigger:{trigger:s,start:'top 82%'}}));
-  (function(){var f=document.querySelector('.video iframe'),n=document.querySelector('.no-trailer');if(f&&f.src.includes('YOUTUBE_VIDEO_ID')){f.style.display='none';n.style.display='flex';}})();
+  // TV channel-guide: pick a trailer -> plays inside the screen; back returns to the menu
+  (function(){
+    const menu=document.getElementById('tvMenu'),player=document.getElementById('tvPlayer'),embed=document.getElementById('tvEmbed'),back=document.getElementById('tvBack');
+    if(!menu||!player) return;
+    menu.querySelectorAll('.tv-ch').forEach(b=>b.addEventListener('click',()=>{
+      const id=b.getAttribute('data-yt');
+      embed.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      menu.style.display='none'; player.hidden=false;
+    }));
+    back.addEventListener('click',()=>{ embed.innerHTML=''; player.hidden=true; menu.style.display='flex'; });
+  })();
   // page-exit
   document.querySelectorAll('a[data-exit]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(!href||href.startsWith('#')||href.startsWith('mailto'))return;e.preventDefault();if(lenis)lenis.stop();try{sessionStorage.setItem('ksm_enter','1');}catch(_){}document.body.style.transformOrigin='center center';document.body.style.overflow='hidden';gsap.to(document.body,{scale:1.2,opacity:0,duration:.55,ease:'power2.in',onComplete:()=>{window.location.href=href;}});});});
   // BTS slideshow
