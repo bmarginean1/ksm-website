@@ -221,6 +221,21 @@
   .hint{position:fixed;bottom:56px;left:50%;transform:translateX(-50%);z-index:40;color:rgba(242,232,213,.32);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-family:'BentonSans Pro','Inter'}
   .hint b{color:rgba(242,232,213,.55)}
 
+  /* ---- entrance & ambient animations (do not alter the static design) ---- */
+  @keyframes rin{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fin{from{opacity:0}to{opacity:1}}
+  @keyframes kenburns{0%{transform:scale(1.04)}100%{transform:scale(1.13)}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  @keyframes glowpulse{0%,100%{box-shadow:0 16px 30px -12px rgba(20,14,34,.45)}50%{box-shadow:0 0 0 4px var(--char),0 0 0 10px var(--cream),0 16px 30px -12px rgba(20,14,34,.45)}}
+  .cover-art{animation:kenburns 22s ease-in-out infinite alternate}
+  .dev-frame{animation:floaty 7s ease-in-out infinite}
+  .pcard{transition:transform .35s var(--ease),border-color .35s var(--ease)}
+  .pcard:hover{transform:translateY(-8px)}
+  .node{transition:transform .3s var(--ease)}
+  .badge:hover .disc-ring{animation:glowpulse 1.4s ease-in-out infinite}
+  .badge .disc-ring{transition:transform .35s var(--ease)} .badge:hover .disc-ring{transform:scale(1.06)}
+  @media(prefers-reduced-motion:reduce){.cover-art,.dev-frame{animation:none!important}}
+
   @media print{
     @page{size:1280px 720px;margin:0}
     html,body{overflow:visible;background:#0a0a0a}
@@ -510,11 +525,40 @@ const slides=[...document.querySelectorAll('.slide')];
 let i=0; const tot=slides.length;
 document.getElementById('tot').textContent=tot;
 const notesEl=document.getElementById('notes');
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const ANIM_SEL='h1,h2,.lead,.logline,.row-chips,.kicker,.figlabel,.big-figure,.pcard,.stat,.node,.arrow,.proof,.refute>div,.lane,.badge,.creambox,.rights-note,.cline,.brandrow,.contact-info,.lbl';
+function revealSlide(slide){
+  if(RM) return;
+  const els=[...slide.querySelectorAll(ANIM_SEL)];
+  els.forEach(el=>{el.style.animation='none';});
+  void slide.offsetWidth;
+  els.forEach((el,k)=>{
+    const hasT=getComputedStyle(el).transform!=='none';
+    el.style.animation=(hasT?'fin':'rin')+' .6s var(--ease) both';
+    el.style.animationDelay=(0.04+k*0.05)+'s';
+  });
+}
+function countUp(slide){
+  if(RM) return;
+  slide.querySelectorAll('.stat .v').forEach(el=>{
+    const raw=el.dataset.final||el.textContent.trim(); el.dataset.final=raw;
+    const m=raw.match(/^([^\d]*)([\d.,]+)(.*)$/); if(!m){return;}
+    const pre=m[1], numStr=m[2], suf=m[3], hasC=numStr.includes(',');
+    let target,dec=0,thou=false;
+    if(hasC){target=parseFloat(numStr.replace(/\./g,'').replace(',','.'));dec=(numStr.split(',')[1]||'').length;}
+    else{target=parseInt(numStr.replace(/\./g,''),10);thou=numStr.includes('.');}
+    const dur=1100,t0=performance.now();
+    function fmt(v){let s;if(dec){s=v.toFixed(dec).replace('.',',');}else{s=Math.round(v).toString();if(thou)s=s.replace(/\B(?=(\d{3})+(?!\d))/g,'.');}return pre+s+suf;}
+    function step(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(step);else el.textContent=raw;}
+    requestAnimationFrame(step);
+  });
+}
 function render(){
   slides.forEach((s,j)=>s.classList.toggle('active',j===i));
   document.getElementById('cur').textContent=i+1;
   document.getElementById('progress').style.width=((i+1)/tot*100)+'%';
   const n=NOTES[i]; if(n) notesEl.innerHTML='<b class="tt">'+n.t+'</b>'+n.s+'<div class="sci">⚙ '+n.w+'</div>';
+  const act=slides[i]; revealSlide(act); if(act.querySelector('.stat')) setTimeout(()=>countUp(act),260);
 }
 function go(d){i=Math.max(0,Math.min(tot-1,i+d));render();}
 document.getElementById('next').onclick=()=>go(1);
