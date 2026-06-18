@@ -64,12 +64,12 @@
   .tv-frame .video{position:absolute;left:4.5%;top:6%;width:91%;height:79%;max-width:none;margin:0;aspect-ratio:auto;border:0;border-radius:2px;box-shadow:none;overflow:hidden}
   /* TV channel-guide trailer menu (inside the screen) */
   .tv-menu{position:absolute;inset:0;display:flex;flex-direction:column;background:radial-gradient(120% 90% at 28% 0%,#171022,#09060f);color:var(--cream)}
-  .tv-menu-head{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:clamp(8px,1.4vw,14px) clamp(12px,1.8vw,20px);font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:clamp(9px,1vw,12px);letter-spacing:.18em;text-transform:uppercase;color:var(--accent-lt);border-bottom:1px solid rgba(242,232,213,.12)}
+  .tv-menu-head{flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:clamp(6px,1vw,11px) clamp(12px,1.8vw,20px);font-family:'BentonSans Pro','Inter',sans-serif;font-weight:700;font-size:clamp(9px,1vw,12px);letter-spacing:.18em;text-transform:uppercase;color:var(--accent-lt);border-bottom:1px solid rgba(242,232,213,.12)}
   .tv-menu-head .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:tvBlink 1.6s steps(1) infinite}
   @keyframes tvBlink{50%{opacity:.25}}
-  .tv-list{flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;display:flex;flex-direction:column;gap:clamp(4px,.7vw,8px);padding:clamp(7px,1.1vw,12px)}
+  .tv-list{flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;display:flex;flex-direction:column;justify-content:center;gap:clamp(3px,.5vw,6px);padding:clamp(5px,.8vw,9px)}
   .tv-list::-webkit-scrollbar{width:0;height:0;display:none}
-  .tv-ch{display:flex;align-items:center;gap:clamp(8px,1.4vw,16px);width:100%;text-align:left;cursor:pointer;color:var(--cream);background:rgba(242,232,213,.05);border:1.5px solid rgba(242,232,213,.14);border-radius:10px;padding:clamp(4px,.65vw,7px);font-family:inherit;position:relative;top:0;left:0;transition:background .25s var(--ease),color .25s var(--ease),top .2s var(--ease),left .2s var(--ease);animation:chIn .5s var(--ease) both}
+  .tv-ch{display:flex;align-items:center;gap:clamp(8px,1.4vw,16px);width:100%;text-align:left;cursor:pointer;color:var(--cream);background:rgba(242,232,213,.05);border:1.5px solid rgba(242,232,213,.14);border-radius:10px;padding:clamp(3px,.5vw,5px);font-family:inherit;position:relative;top:0;left:0;transition:background .25s var(--ease),color .25s var(--ease),top .2s var(--ease),left .2s var(--ease);animation:chIn .5s var(--ease) both}
   .tv-ch:nth-child(1){animation-delay:.06s}.tv-ch:nth-child(2){animation-delay:.13s}.tv-ch:nth-child(3){animation-delay:.2s}.tv-ch:nth-child(4){animation-delay:.27s}.tv-ch:nth-child(5){animation-delay:.34s}
   @keyframes chIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
   .tv-ch:hover{background:var(--accent);color:var(--ink);border-color:var(--ink);top:-2px;left:-2px}
