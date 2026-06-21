@@ -491,7 +491,7 @@ function countUp(slide){
   });
 }
 function render(){
-  slides.forEach((s,j)=>s.classList.toggle('active',j===i));try{var __bg=getComputedStyle(slides[i]).backgroundColor;document.documentElement.style.background=__bg;document.body.style.background=__bg;}catch(e){}
+  slides.forEach((s,j)=>s.classList.toggle('active',j===i));try{var __bg=getComputedStyle(slides[i]).backgroundColor;var __vp=document.getElementById('viewport');if(__vp)__vp.style.background=__bg;document.body.style.background=__bg;}catch(e){}
   document.getElementById('cur').textContent=i+1;
   document.getElementById('progress').style.width=((i+1)/tot*100)+'%';
   const n=NOTES[i]; if(n) notesEl.innerHTML='<b class="tt">'+n.t+'</b>'+n.s+'<div class="sci">⚙ '+n.w+'</div>';
