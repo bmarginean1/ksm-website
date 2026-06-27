@@ -252,6 +252,14 @@ table.matrix td .big{font-family:var(--font-disp);font-size:24px;color:var(--bon
 .progress{position:fixed;top:0;left:0;height:3px;background:var(--ocru);z-index:50;width:0;transition:width .55s var(--ease);box-shadow:0 0 8px rgba(214,162,74,.6)}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}}
 </style>
+<style id="cast7css">
+.cast7 #castEN{max-width:74%;margin:20px auto 0}
+.cast7 .casttoggle{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.cast7 .casttoggle button{font-family:var(--font-head);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;cursor:pointer;border:1.5px solid var(--ocru);background:transparent;color:var(--ocru);border-radius:2px;transition:background .2s,color .2s}
+.cast7 .casttoggle button.act{background:var(--ocru);color:var(--char)}
+.cast7 .castro-empty{text-align:center;color:var(--ocru);opacity:.45;font-family:var(--font-head);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:12px;padding:90px 0}
+.cast7 .cast7note{max-width:62%;margin:20px auto 0;text-align:center;color:var(--ink);font-size:clamp(13px,1.15vw,16px);line-height:1.5;opacity:.92}
+</style>
 </head>
 <body>
 <div class="deck" id="deck">
@@ -420,26 +428,31 @@ table.matrix td .big{font-family:var(--font-disp);font-size:24px;color:var(--bon
 </section>
 
 <!-- 7 CAST -->
-<section class="slide bg-paper" data-key>
+<section class="slide bg-paper cast7" data-key>
   <div class="grain"></div>
   <span class="tab l"><span class="dot"></span><span data-en="Cast wishlist">Cast wishlist</span></span><span class="tab r">07</span>
   <div class="fill">
     <h2 class="title rise" style="--d:0" data-en="Cast wishlist">Distribuție dorită</h2>
-    <div class="grid g3 rise" style="--d:1;margin-top:26px">
-      <div style="display:flex;flex-direction:column;gap:18px">
+    <div class="casttoggle rise" style="--d:1">
+      <button id="bcEN" class="act" type="button" onclick="castSwitch('en')" data-en="English cast">Cast Engleză</button>
+      <button id="bcRO" type="button" onclick="castSwitch('ro')" data-en="Romanian cast">Cast Română</button>
+    </div>
+    <div id="castEN" class="grid g3 rise" style="--d:2">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <div class="castphoto" style="background:var(--i7) center 4%/cover"></div>
-        <div class="cut" style="text-align:center;padding:28px 30px"><div class="num" style="font-size:19px;color:var(--ink)"><a class="imdb" href="https://www.instagram.com/madalinabellariu/" target="_blank" rel="noopener">Mădălina Bellariu Ion</a></div><div class="kicker" style="margin-top:6px;color:var(--ink)">Silvia</div></div>
+        <div class="cut" style="text-align:center;padding:16px 18px"><div class="num" style="font-size:14px;color:var(--ink)"><a class="imdb" href="https://www.instagram.com/madalinabellariu/" target="_blank" rel="noopener">Mădălina Bellariu Ion</a></div><div class="kicker" style="margin-top:5px;color:var(--ink)">Silvia</div></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <div class="castphoto" style="background:var(--i8) center 16%/cover"></div>
-        <div class="cut" style="text-align:center;padding:28px 30px"><div class="num" style="font-size:19px;color:var(--ink)"><a class="imdb" href="https://www.instagram.com/realcostasmandylor/" target="_blank" rel="noopener">Costas Mandylor</a></div><div class="kicker" style="margin-top:6px;color:var(--ink)" data-en="The Stranger">Necunoscutul</div></div>
+        <div class="cut" style="text-align:center;padding:16px 18px"><div class="num" style="font-size:14px;color:var(--ink)"><a class="imdb" href="https://www.instagram.com/realcostasmandylor/" target="_blank" rel="noopener">Costas Mandylor</a></div><div class="kicker" style="margin-top:5px;color:var(--ink)" data-en="The Stranger">Necunoscutul</div></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;flex-direction:column;gap:14px">
         <div class="castphoto" style="background:var(--i9) center top/cover"></div>
-        <div class="cut" style="text-align:center;padding:28px 30px"><div class="num" style="font-size:19px;color:var(--ink)"><a class="imdb" href="https://www.instagram.com/luke_j_roberts/" target="_blank" rel="noopener">Luke Roberts</a></div><div class="kicker" style="margin-top:6px;color:var(--ink)">Lionel</div></div>
-      </div>
+        <div class="cut" style="text-align:center;padding:16px 18px"><div class="num" style="font-size:14px;color:var(--ink)"><a class="imdb" href="https://www.instagram.com/luke_j_roberts/" target="_blank" rel="noopener">Luke Roberts</a></div><div class="kicker" style="margin-top:5px;color:var(--ink)">Lionel</div></div>
       </div>
     </div>
+    <div id="castRO" class="castro-empty" style="display:none"><span data-en="Romanian cast — coming soon">Distribuția română — în curând</span></div>
+    <p class="cast7note rise" style="--d:3" data-en="One shoot, two films. Arșița is filmed simultaneously in Romanian and English — same locations, same crew, same budget. One production, double the reach: the local and the international market.">Un singur shoot, două filme. Arșița se filmează simultan în română și engleză — aceleași locații, aceeași echipă, aceeași investiție. O singură producție, dublă expunere: piața locală și cea internațională.</p>
   </div>
 </section>
 
@@ -643,6 +656,9 @@ const _os=show;
 show=function(n){_os(n);pb.style.width=((i+1)/tot*100)+'%';var s=slides[i];if(s)s.querySelectorAll('.big').forEach(function(el){if(el.dataset.done)return;var tx=el.textContent;var m=tx.match(/[\d.]+/);if(!m)return;el.dataset.done='1';var tg=parseInt(m[0].replace(/\./g,''))||0;var pre=tx.slice(0,m.index),suf=tx.slice(m.index+m[0].length);var t0=performance.now();function stp(t){var pr=Math.min(1,(t-t0)/1100);var v=Math.round(tg*(1-Math.pow(1-pr,3)));el.textContent=pre+v.toLocaleString('ro-RO')+suf;if(pr<1)requestAnimationFrame(stp);}requestAnimationFrame(stp);});};
 var _wl=false;addEventListener('wheel',function(e){if(_wl)return;_wl=true;setTimeout(function(){_wl=false;},800);go(e.deltaY>0?1:-1);},{passive:true});
 show(0);
+</script>
+<script id="cast7js">
+function castSwitch(l){var en=document.getElementById('castEN'),ro=document.getElementById('castRO'),bE=document.getElementById('bcEN'),bR=document.getElementById('bcRO');if(!en)return;if(l==='ro'){en.style.display='none';ro.style.display='block';bR.classList.add('act');bE.classList.remove('act');}else{en.style.display='';ro.style.display='none';bE.classList.add('act');bR.classList.remove('act');}}
 </script>
 </body>
 </html>
