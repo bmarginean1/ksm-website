@@ -703,12 +703,23 @@ function castSwitch(l){var en=document.getElementById('castEN'),ro=document.getE
   function setn(n){var s=String(n).padStart(2,'0'); if(cur)cur.textContent=s; if(cur2)cur2.textContent=s;}
   var deck=document.querySelector('.deck')||document.scrollingElement;
   var lastN=0;
+  function reveal(s){
+    if(s.dataset._rev) return; s.dataset._rev='1'; s.classList.add('inview');
+    var rs=s.querySelectorAll('.rise');
+    Array.prototype.forEach.call(rs,function(el,k){
+      var dl=(k*0.05)+'s';
+      el.style.transition='opacity .6s ease '+dl+', transform .7s cubic-bezier(.7,0,.2,1) '+dl;
+      requestAnimationFrame(function(){requestAnimationFrame(function(){
+        el.style.opacity='1'; el.style.transform='none';
+      });});
+    });
+  }
   function check(){
     var vh=window.innerHeight||document.documentElement.clientHeight;
     slides.forEach(function(s,idx){
       var r=s.getBoundingClientRect();
       if(r.top < vh*0.8 && r.bottom > vh*0.2){
-        if(!s.classList.contains('inview')) s.classList.add('inview');
+        reveal(s);
         if(idx+1!==lastN){lastN=idx+1; setn(idx+1);}
       }
     });
