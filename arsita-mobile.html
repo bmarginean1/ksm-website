@@ -714,7 +714,11 @@ function castSwitch(l){var en=document.getElementById('castEN'),ro=document.getE
     });
   }
   if(deck) deck.addEventListener('scroll', check, {passive:true});
+  window.addEventListener('scroll', check, {passive:true});
+  window.addEventListener('touchmove', check, {passive:true});
+  window.addEventListener('wheel', check, {passive:true});
   window.addEventListener('resize', check);
+  setInterval(check, 150);
   check(); setTimeout(check,200); setTimeout(check,600);
 })();
 </script>
