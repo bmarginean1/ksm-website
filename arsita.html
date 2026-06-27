@@ -253,12 +253,14 @@ table.matrix td .big{font-family:var(--font-disp);font-size:24px;color:var(--bon
 @media (prefers-reduced-motion: reduce){*{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}}
 </style>
 <style id="cast7css">
-.cast7 #castEN{max-width:74%;margin:20px auto 0}
+.cast7 #castEN,.cast7 #castRO{max-width:86%;margin:16px auto 0}
+.cast7 .num{font-size:20px!important}
+.cast7 .cut{padding:16px 18px!important}
 .cast7 .casttoggle{display:flex;gap:8px;justify-content:center;margin-top:16px}
 .cast7 .casttoggle button{font-family:var(--font-head);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;cursor:pointer;border:1.5px solid var(--ocru);background:transparent;color:var(--ocru);border-radius:2px;transition:background .2s,color .2s}
 .cast7 .casttoggle button.act{background:var(--ocru);color:var(--char)}
 .cast7 .castro-empty{text-align:center;color:var(--ocru);opacity:.45;font-family:var(--font-head);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:12px;padding:90px 0}
-.cast7 .cast7note{max-width:62%;margin:20px auto 0;text-align:center;color:var(--ink);font-size:clamp(13px,1.15vw,16px);line-height:1.5;opacity:.92}
+.cast7 .cast7note{max-width:66%;margin:14px auto 0;text-align:center;color:var(--ink);font-size:clamp(12px,1vw,14px);line-height:1.45;opacity:.92}
 </style>
 </head>
 <body>
@@ -451,7 +453,20 @@ table.matrix td .big{font-family:var(--font-disp);font-size:24px;color:var(--bon
         <div class="cut" style="text-align:center;padding:16px 18px"><div class="num" style="font-size:14px;color:var(--ink)"><a class="imdb" href="https://www.instagram.com/luke_j_roberts/" target="_blank" rel="noopener">Luke Roberts</a></div><div class="kicker" style="margin-top:5px;color:var(--ink)">Lionel</div></div>
       </div>
     </div>
-    <div id="castRO" class="castro-empty" style="display:none"><span data-en="Romanian cast — coming soon">Distribuția română — în curând</span></div>
+    <div id="castRO" class="grid g3 rise" style="--d:2;display:none">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="castphoto" style="background:var(--i7) center 4%/cover"></div>
+        <div class="cut" style="text-align:center;padding:16px 18px"><div class="num" style="color:var(--ink)"><a class="imdb" href="https://www.instagram.com/madalinabellariu/" target="_blank" rel="noopener">Mădălina Bellariu Ion</a></div><div class="kicker" style="margin-top:5px;color:var(--ink)">Silvia</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="castphoto" style="background:var(--i8) center 16%/cover"></div>
+        <div class="cut" style="text-align:center;padding:16px 18px"><div class="num" style="color:var(--ink)"><a class="imdb" href="https://www.instagram.com/realcostasmandylor/" target="_blank" rel="noopener">Costas Mandylor</a></div><div class="kicker" style="margin-top:5px;color:var(--ink)" data-en="The Stranger">Necunoscutul</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="castphoto" style="background:var(--i9) center top/cover"></div>
+        <div class="cut" style="text-align:center;padding:16px 18px"><div class="num" style="color:var(--ink)"><a class="imdb" href="https://www.instagram.com/luke_j_roberts/" target="_blank" rel="noopener">Luke Roberts</a></div><div class="kicker" style="margin-top:5px;color:var(--ink)">Lionel</div></div>
+      </div>
+    </div>
     <p class="cast7note rise" style="--d:3" data-en="One shoot, two films. Arșița is filmed simultaneously in Romanian and English — same locations, same crew, same budget. One production, double the reach: the local and the international market.">Un singur shoot, două filme. Arșița se filmează simultan în română și engleză — aceleași locații, aceeași echipă, aceeași investiție. O singură producție, dublă expunere: piața locală și cea internațională.</p>
   </div>
 </section>
