@@ -269,7 +269,7 @@ table.matrix td .big{font-family:var(--font-disp);font-size:24px;color:var(--bon
 <style id="mobi">
 html,body{height:100%;overflow:hidden}
 .deck{position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:y mandatory;overscroll-behavior-y:contain}
-.slide{position:relative!important;inset:auto!important;width:min(100vw,1080px)!important;margin-left:auto!important;margin-right:auto!important;min-height:max(100dvh, calc(min(100vw,1080px) * 16 / 9))!important;height:auto;opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important;transition:none!important;scroll-snap-align:start;scroll-snap-stop:always;overflow:visible}
+.slide{position:relative!important;inset:auto!important;width:min(100vw,1080px)!important;margin-left:auto!important;margin-right:auto!important;min-height:max(100dvh, calc(min(100vw,1080px) * 16 / 9))!important;height:auto;opacity:1!important;visibility:visible!important;transform:none!important;filter:none!important;transition:none!important;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
 .slide .rise{opacity:0;transform:translateY(24px)}
 .slide.inview .rise{opacity:1;transform:none;transition:opacity .7s var(--ease,cubic-bezier(.7,0,.2,1)),transform .8s var(--ease,cubic-bezier(.7,0,.2,1));transition-delay:calc(var(--d,0)*70ms)}
 .nav,.hint{display:none!important}
@@ -280,6 +280,9 @@ html,body{height:100%;overflow:hidden}
 .cast7 .casttoggle{top:0!important;margin-top:14px!important}
 #castEN,#castRO{width:100%!important;max-width:560px!important;margin-left:auto!important;margin-right:auto!important}
 .cast7 .cast7note{max-width:92%!important}
+.cast7 #castEN, .cast7 #castRO{overflow:visible!important}
+.cast7 #castEN > *, .cast7 #castRO > *{max-width:100%!important;overflow:hidden!important}
+.cast7 #castEN *, .cast7 #castRO *{max-width:100%!important}
 </style>
 <style>.slide{transition:none!important;animation:none!important}.rise,.cut.rise{transition:none!important;transition-delay:0s!important}</style></head>
 <body>
