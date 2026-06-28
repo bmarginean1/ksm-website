@@ -761,6 +761,34 @@ function castSwitch(l){var en=document.getElementById('castEN'),ro=document.getE
     });
     slides.forEach(function(s){ mo.observe(s,{attributes:true,attributeFilter:['class']}); });
   }catch(e){}
+  /* === Post-layout PNG-frame adjustments (enlarge torn frames so text is visually contained; cast title + side buttons) === */
+  try{
+    var SL=document.querySelectorAll('.slide');
+    // poza1: "patru moduri de a sustine" (slide 14) cards 1 & 2 bigger
+    if(SL[14]){var c1=SL[14].querySelectorAll('.cut'); [0,1].forEach(function(i){ if(c1[i]) c1[i].style.setProperty('padding','40px 64px 64px 64px','important'); });}
+    // poza2: pachete (#pak4) cards 3 & 4 bigger
+    var pak=document.getElementById('pak4');
+    if(pak){var pc=pak.children; [2,3].forEach(function(i){ if(pc[i]) pc[i].style.setProperty('padding','44px 50px 78px 56px','important'); });}
+    // poza3: synopsis Revelatia white box (slide 2) bigger
+    if(SL[2]){var rb=SL[2].querySelector('.cut'); if(rb) rb.style.setProperty('padding','46px 60px 74px 78px','important');}
+    // poza4: cast — title lower + side toggle buttons bigger/visible
+    var cast=document.querySelector('.cast7');
+    if(cast){
+      cast.style.setProperty('padding-top','120px','important');
+      var tog=cast.querySelector('.casttoggle'); if(tog) tog.style.setProperty('position','static','important');
+      var bE=document.getElementById('bcEN'), bR=document.getElementById('bcRO');
+      [bE,bR].forEach(function(b){ if(!b)return;
+        b.style.setProperty('position','absolute','important');
+        b.style.setProperty('top','50%','important');
+        b.style.setProperty('z-index','40','important');
+        b.style.setProperty('font-size','24px','important');
+        b.style.setProperty('padding','16px 22px','important');
+        b.style.setProperty('writing-mode','vertical-rl','important');
+      });
+      if(bE){bE.style.setProperty('left','14px','important'); bE.style.setProperty('transform','translateY(-50%) rotate(180deg)','important');}
+      if(bR){bR.style.setProperty('right','14px','important'); bR.style.setProperty('transform','translateY(-50%)','important');}
+    }
+  }catch(e){}
 })();
 </script>
 
