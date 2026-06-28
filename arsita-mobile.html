@@ -732,6 +732,23 @@ function castSwitch(l){var en=document.getElementById('castEN'),ro=document.getE
   window.addEventListener('resize', check);
   setInterval(check, 150);
   check(); setTimeout(check,200); setTimeout(check,600);
+  /* Layout-builder support ONLY. The builder previews one slide by toggling
+     .active and injects a <style id="__lbov"> into the doc. We use that style's
+     presence as the signal we're inside the builder, then scroll the stacked
+     deck to whichever slide is active. On a real phone #__lbov never exists, so
+     this never runs and the normal scroll/reveal is fully untouched. */
+  function inBuilder(){ return !!document.getElementById('__lbov'); }
+  function scrollToActive(){
+    if(!inBuilder()) return;
+    var a=document.querySelector('.slide.active');
+    if(a && deck){ try{ deck.scrollTop = a.offsetTop; }catch(e){} check(); }
+  }
+  try{
+    var mo=new MutationObserver(function(m){
+      for(var i=0;i<m.length;i++){ if(m[i].attributeName==='class'){ scrollToActive(); break; } }
+    });
+    slides.forEach(function(s){ mo.observe(s,{attributes:true,attributeFilter:['class']}); });
+  }catch(e){}
 })();
 </script>
 </body>
