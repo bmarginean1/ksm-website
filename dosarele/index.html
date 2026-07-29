@@ -203,9 +203,9 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
 }
 /* pe touch: marcajul de colt e vizibil permanent, hover-ul nu exista */
 @media (hover:none){
- .vbox::before{opacity:.34;transform:none}
- .vbox::after{transform:scaleX(1);opacity:.5}
+ .vbox::before,.vbox::after{display:none}
  .vbox h3::after{display:none}
+ .vbox{transform:none!important;box-shadow:none!important}
 }
 /* cross-platform: iOS nu mai umfla textul la rotire, fara flash albastru pe tap, scroll stabil */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overscroll-behavior-y:none}
@@ -213,6 +213,24 @@ body{-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased;
 img,canvas,svg,video{max-width:100%}
 @supports(padding:max(0px)){
  .pan{padding-left:max(clamp(24px,4.6vw,66px),env(safe-area-inset-left));padding-right:max(clamp(24px,4.6vw,66px),env(safe-area-inset-right))}
+}
+
+/* ——— TELEFON: casetele de logo — legenda SUB logo, logo redimensionat, fara suprapuneri ——— */
+@media (max-width:700px){
+ .nobox{flex-direction:column!important;justify-content:center!important;gap:18px;
+        aspect-ratio:auto!important;padding:32px 18px 18px!important;min-height:150px}
+ .nobox>div:not(.cap){width:100%!important;height:auto!important;display:flex;justify-content:center}
+ .nobox .lgsvg{width:86%;height:auto}
+ .nobox .dmono{width:42%;height:auto}
+ .nobox .cap{position:static!important;bottom:auto!important;left:auto!important;
+             padding:0;font-size:8.4px;letter-spacing:.1em;line-height:1.5;text-align:center;opacity:.62}
+ .g4{grid-template-columns:repeat(2,1fr);gap:11px}
+ .g2{gap:11px}
+ .stampx{margin-top:clamp(22px,6vw,34px);font-size:clamp(16px,5.4vw,24px);border-width:3px;padding:10px 18px}
+}
+@media (max-width:420px){
+ .g4{grid-template-columns:1fr}
+ .nobox .dmono{width:36%}
 }
 </style></head><body>
 <canvas class="grain" id="grain"></canvas><div class="prog" id="prog"></div>
