@@ -114,6 +114,10 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
 
+
+/* --- apariție mascată de jos (ca la referință) --- */
+.riseWrap{overflow:hidden;display:block;border-radius:14px}
+.riseWrap>*{display:block;will-change:transform}
 /* --- hover pe litere (ca la referinta) --- */
 .chars{display:inline-block;overflow:hidden;vertical-align:top}
 .chars .ch{display:inline-block;transition:transform .5s var(--ease),color .5s var(--ease);will-change:transform}
@@ -375,28 +379,36 @@ document.querySelectorAll('header nav a').forEach(function(a){
  a.appendChild(w);
  a.addEventListener('mouseenter',function(){ w.querySelectorAll('.ch').forEach(function(s,i){ s.style.transform='translateY(-2px)'; s.style.color='var(--red-br)'; setTimeout(function(){s.style.transform='';s.style.color='';},260+i*22); }); });
 });
-/* stagger reveal ca la referinta (culori, formate, carduri) */
+/* apariție mascată de jos, cu decalaj — ca la referință */
 (function(){
  var groups=document.querySelectorAll('.sw, .g3, .g4, .g2, .vg, .rr');
  groups.forEach(function(g){
   var kids=[].slice.call(g.children);
+  // ambalează fiecare copil într-o mască, ca să pară că urcă din spatele marginii
+  kids.forEach(function(k){
+   if(k.parentNode.classList.contains('riseWrap')) return;
+   var w=document.createElement('div'); w.className='riseWrap';
+   g.replaceChild(w,k); w.appendChild(k);
+   k.style.opacity=1; k.style.transform='translateY(102%)';
+  });
+  var wraps=[].slice.call(g.querySelectorAll(':scope > .riseWrap > *'));
   var pan=g.closest('.pan')||g;
-  gsap.set(kids,{opacity:0,y:26});
-  ScrollTrigger.create({trigger:pan,start:'top 70%',once:true,onEnter:function(){
-   gsap.to(kids,{opacity:1,y:0,duration:.85,ease:'expo.out',stagger:.08});
+  ScrollTrigger.create({trigger:pan,start:'top 72%',once:true,onEnter:function(){
+   gsap.to(wraps,{y:0,duration:1.15,ease:'expo.out',stagger:.11});
   }});
-  // siguranta: daca nu s-a declansat in 3.5s si panoul e vizibil, arata oricum
   setTimeout(function(){
    var r=pan.getBoundingClientRect();
-   if(r.top<innerHeight&&r.bottom>0) gsap.to(kids,{opacity:1,y:0,duration:.5,overwrite:true});
+   if(r.top<innerHeight&&r.bottom>0) gsap.to(wraps,{y:0,duration:.7,ease:'expo.out',stagger:.07,overwrite:true});
   },3500);
  });
- // plasa finala: nimic nu ramane invizibil
- setTimeout(function(){document.querySelectorAll('.sw>*,.g3>*,.g4>*,.g2>*,.vg>*,.rr>*').forEach(function(k){
-  if(parseFloat(getComputedStyle(k).opacity)<0.05){k.style.opacity=1;k.style.transform='none';}
- });},7000);
+ // plasă finală
+ setTimeout(function(){document.querySelectorAll('.riseWrap>*').forEach(function(k){
+  var t=getComputedStyle(k).transform;
+  if(t&&t!=='none'&&t.indexOf('matrix')===0){
+   try{var m=new DOMMatrix(t); if(m.m42>4) k.style.transform='none';}catch(e){}
+  }
+ });},8000);
 })();
-gsap.to('.heroBg',{y:90,scale:1.06,ease:'none',scrollTrigger:{trigger:'.heroPan',start:'top top',end:'bottom top',scrub:.5}});
 /* parallax subtil pe imaginile din carduri */
 gsap.utils.toArray('.card img').forEach(function(img){
  gsap.fromTo(img,{y:-14},{y:14,ease:'none',scrollTrigger:{trigger:img,start:'top bottom',end:'bottom top',scrub:.6}});
