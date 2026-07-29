@@ -86,7 +86,7 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 /* ——— hover pe casete: dosar care se ridica, colt de hartie indoit, bara de stampila ——— */
 .vbox{position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.16,.84,.24,1),border-color .4s ease,background .4s ease,box-shadow .5s ease}
 .vbox::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--red-br);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s cubic-bezier(.16,.84,.24,1)}
-.vbox::before{content:'';position:absolute;top:-22px;right:-22px;width:42px;height:42px;background:var(--paper);transform:rotate(45deg) translateY(8px);opacity:0;transition:opacity .4s ease,transform .5s cubic-bezier(.16,.84,.24,1)}
+.vbox::before{content:'';position:absolute;top:14px;right:14px;width:16px;height:16px;border-top:1px solid var(--red-br);border-right:1px solid var(--red-br);opacity:0;transform:translate(-5px,5px);transition:opacity .4s ease,transform .5s cubic-bezier(.16,.84,.24,1)}
 .vbox h3{transition:color .35s ease}
 .vbox h3::after{content:'';display:inline-block;width:.46em;height:.92em;margin-left:.16em;background:var(--red-br);vertical-align:-.1em;opacity:0;transition:opacity .25s ease}
 .vbox .who{transition:letter-spacing .45s ease,color .35s ease}
@@ -95,14 +95,14 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 @media (hover:hover){
  .vbox:hover{transform:translateY(-5px);border-color:rgba(168,67,58,.5);background:rgba(0,0,0,.34);box-shadow:0 18px 40px -22px rgba(0,0,0,.85)}
  .vbox:hover::after{transform:scaleX(1)}
- .vbox:hover::before{opacity:.9;transform:rotate(45deg) translateY(0)}
+ .vbox:hover::before{opacity:.75;transform:translate(0,0)}
  .vbox:hover h3{color:var(--paper)}
  .vbox:hover h3::after{opacity:1;animation:doaCaret .85s steps(1,end) infinite}
  .vbox:hover .who{letter-spacing:.21em}
  .vbox:hover li{opacity:.92}
  .p-paper .vbox:hover{background:rgba(0,0,0,.09);border-color:rgba(124,43,40,.38);box-shadow:0 16px 34px -24px rgba(0,0,0,.5)}
  .p-paper .vbox:hover h3{color:#1A1815}
- .p-paper .vbox::before{background:var(--ink)}
+ .p-paper .vbox::before{border-top-color:var(--red);border-right-color:var(--red)}
 }
 @media (prefers-reduced-motion:reduce){.vbox,.vbox::after,.vbox::before{transition:none}.vbox:hover{transform:none}}
 .vbox h3{font-family:'Special Elite','Courier Prime',monospace;text-transform:none;letter-spacing:0;font-size:clamp(17px,2vw,26px);line-height:1.12;margin-bottom:6px}
