@@ -114,18 +114,6 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
 
 
-/* --- roata de carduri (orbit pe arc, ca la referinta) --- */
-.wheel{position:relative;height:clamp(340px,52vh,540px);margin-top:34px;overflow:hidden}
-.wcard{position:absolute;left:0;top:0;width:clamp(220px,25vw,320px);
- border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(0,0,0,.30);
- backdrop-filter:blur(2px);will-change:transform,opacity;transform-origin:center center;
- transition:border-color .45s var(--ease)}
-.wcard:hover{border-color:var(--red-br)}
-.wcard .n{font-family:'DM Mono';font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-br)}
-.wcard h4{font-family:'Theonory','Giveny',serif;font-size:clamp(19px,2.2vw,27px);line-height:1.04;margin:7px 0 9px;font-weight:400}
-.wcard p{font-size:12.2px;line-height:1.5;opacity:.74}
-.wcard .kpi{display:block;font-family:'DM Mono';font-size:10.5px;letter-spacing:.1em;color:var(--paper2);margin-top:10px;opacity:.8}
-.wheel-rail{position:absolute;left:-10%;right:-10%;bottom:-2px;height:140%;border-radius:50%;border:1px solid rgba(217,207,187,.08);pointer-events:none}
 /* --- hover pe litere (ca la referinta) --- */
 .chars{display:inline-block;overflow:hidden;vertical-align:top}
 .chars .ch{display:inline-block;transition:transform .5s var(--ease),color .5s var(--ease);will-change:transform}
@@ -266,13 +254,20 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
 <section class="pan p-clay" id="s5"><div class="pan-inner">
  <div class="tag"><span class="mono">( 05 )</span><span class="mono">formate</span></div>
  <h2 class="serif">Fiecare serie<br>are o <em>funcție</em>.</h2>
- <div class="wheel"><div class="wheel-rail"></div>
-  <div class="wcard"><span class="n">( 01 · reach )</span><h4>Dosar #00X</h4><p>Reel 9:16, 12-16s. Copertă → 4-5 cadre → card cu întrebare.</p><span class="kpi">31K · 25K vizualizări</span></div>
-  <div class="wcard"><span class="n">( 02 · profunzime )</span><h4>Declarații</h4><p>Story. Filă de hârtie, scris de mână, nume acoperite.</p><span class="kpi">14 declarații · 1/zi</span></div>
-  <div class="wcard"><span class="n">( 03 · probe )</span><h4>Probă foto</h4><p>Două fotografii pe filă, ștampilă, numere de caz.</p><span class="kpi">21 story-uri</span></div>
-  <div class="wcard"><span class="n">( 04 · încredere )</span><h4>Cum se face frica</h4><p>Singurul format care recunoaște că e film.</p><span class="kpi">4 episoade</span></div>
-  <div class="wcard"><span class="n">( 05 · obsesie )</span><h4>arg — @arhivaalba</h4><p>Glife în creion. Nu confirmă niciodată filmul.</p><span class="kpi">cont separat</span></div>
-  <div class="wcard"><span class="n">( 06 · actori )</span><h4>Interogatoriu</h4><p>Actorii, în rol, la întrebări care nu li s-au pus.</p><span class="kpi">3 episoade</span></div>
+ <p class="lead">Nu le amestecăm: dosarele aduc reach, declarațiile aduc profunzime, culisele aduc încredere, arg-ul aduce obsesie.</p>
+ <div class="vg">
+  <div class="vbox rv"><div class="who">01 · reach</div><h3>Dosar #00X</h3>
+   <p style="font-size:13.5px;line-height:1.6;opacity:.8">Reel 9:16, 12-16s. Copertă de dosar → 4-5 cadre → card final cu întrebare.</p>
+   <ul><li>Hook în primele 4 cuvinte</li><li>Banner „Dosar #00X" fix, sus</li><li>Subtitrare arsă dacă se vorbește</li><li>31K și 25K vizualizări</li></ul></div>
+  <div class="vbox rv"><div class="who">02 · profunzime</div><h3>Declarații și probe</h3>
+   <p style="font-size:13.5px;line-height:1.6;opacity:.8">Story-uri. Filă de hârtie cu două fotografii-probă, sau declarație scrisă de mână.</p>
+   <ul><li>Numere de caz care se repetă</li><li>Bare negre peste nume și date</li><li>Fără logo, fără dată de premieră</li></ul></div>
+  <div class="vbox rv"><div class="who">03 · încredere</div><h3>Cum se face frica</h3>
+   <p style="font-size:13.5px;line-height:1.6;opacity:.8">Singurul format care recunoaște că e film. Machiaj, lumină, efecte.</p>
+   <ul><li>Ton cald, opus restului campaniei</li><li>Titlu mare, lizibil în grilă</li><li>4 episoade</li></ul></div>
+  <div class="vbox rv"><div class="who">04 · obsesie</div><h3>arg — @arhivaalba</h3>
+   <p style="font-size:13.5px;line-height:1.6;opacity:.8">Cont separat. Glife în creion pe suprafețe reale. Nu confirmă niciodată filmul.</p>
+   <ul><li>Zero tag-uri, zero colaborări</li><li>Text minim, uneori deloc</li><li>Nu răspunde direct</li></ul></div>
  </div>
  </div></section>
 
@@ -402,41 +397,6 @@ document.querySelectorAll('header nav a').forEach(function(a){
  });},7000);
 })();
 gsap.to('.heroBg',{y:90,scale:1.06,ease:'none',scrollTrigger:{trigger:'.heroPan',start:'top top',end:'bottom top',scrub:.5}});
-/* roata de carduri — orbit pe arc, condus de scroll */
-(function(){
- var wheels=[].slice.call(document.querySelectorAll('.wheel'));
- if(!wheels.length) return;
- function docTop(el){var t=0;while(el){t+=el.offsetTop;el=el.offsetParent;}return t;}
- function frame(){
-  var sy=window.scrollY||document.documentElement.scrollTop;
-  wheels.forEach(function(wh){
-   var cards=[].slice.call(wh.querySelectorAll('.wcard'));
-   var pan=wh.closest('.pan')||wh;
-   var top=docTop(pan), hgt=pan.offsetHeight||innerHeight;
-   var prog=(sy-top+innerHeight*0.40)/(hgt*0.62);
-   prog=Math.max(0,Math.min(1,prog));
-   var W=wh.clientWidth, H=wh.clientHeight;
-   var R=Math.max(W*1.15,1200);            // raza roatii
-   var cx=W/2, cy=H+R-Math.min(H*0.52,200); // centrul sub zona vizibila
-   var n=cards.length;
-   var step=26*Math.PI/180;                 // distanta unghiulara intre carduri
-   var sweep=(n-1)*step+step;               // cat parcurge
-   cards.forEach(function(c,idx){
-    var a=(idx*step) - prog*sweep + step*0.5;   // unghi curent (0 = varful arcului)
-    var x=cx+R*Math.sin(a)-c.offsetWidth/2;
-    var y=cy-R*Math.cos(a)-c.offsetHeight/2;
-    var rot=a*180/Math.PI*0.45;               // inclinare usoara, senzatie de arc
-    var d=Math.abs(a);
-    var op=Math.max(0,Math.min(1,1.25-d/(38*Math.PI/180)));
-    c.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0) rotate('+rot.toFixed(2)+'deg)';
-    c.style.opacity=op.toFixed(2);
-    c.style.zIndex=String(100-Math.round(d*100));
-   });
-  });
-  requestAnimationFrame(frame);
- }
- frame(); addEventListener('resize',function(){});
-})();
 /* parallax subtil pe imaginile din carduri */
 gsap.utils.toArray('.card img').forEach(function(img){
  gsap.fromTo(img,{y:-14},{y:14,ease:'none',scrollTrigger:{trigger:img,start:'top bottom',end:'bottom top',scrub:.6}});
