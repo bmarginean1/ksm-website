@@ -427,7 +427,7 @@ gsap.to('.heroBg',{y:90,scale:1.06,ease:'none',scrollTrigger:{trigger:'.heroPan'
    var inner=tr.querySelector('.htrack-inner'); if(!inner) return;
    var pan=tr.closest('.pan')||tr;
    var top=docTop(pan), hgt=pan.offsetHeight||innerHeight;
-   var prog=(sy-top+innerHeight*0.15)/(hgt*0.9);
+   var prog=(sy-top+innerHeight*0.35)/(hgt*0.55);
    prog=Math.max(0,Math.min(1,prog));
    var max=Math.max(0, inner.scrollWidth - tr.clientWidth + 30);
    inner.style.transform='translate3d('+(-max*prog).toFixed(1)+'px,0,0)';
