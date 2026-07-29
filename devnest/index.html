@@ -102,6 +102,9 @@ section{padding:clamp(70px,11vh,160px) 0;border-top:1px solid var(--line);positi
 .lnkx:hover .ar{transform:translateX(10px)}
 .lnkx:hover{color:var(--accent)}
 .lnkx.mag{will-change:transform}
+.lnkx.near{color:var(--accent)}
+.lnkx.near::after{transform:scaleX(1)}
+.lnkx.near .ar{transform:translateX(10px)}
 .dmark{width:auto;display:inline-block;color:currentColor}
 .mk{height:1em;width:auto;vertical-align:-.1em;color:var(--accent)}
 .shead .n{display:flex;align-items:center;gap:9px}
@@ -181,10 +184,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
 /* mask reveal for headlines */
 .mline{display:block;overflow:hidden}
 .mline>span{display:block;transform:translateY(105%)}
-/* cursor companion (does NOT hide native cursor) */
-.cc{position:fixed;top:0;left:0;width:34px;height:34px;border:1px solid var(--accent);border-radius:50%;pointer-events:none;z-index:150;opacity:0;transform:translate(-50%,-50%) scale(.4);transition:opacity .3s var(--ease),transform .3s var(--ease)}
-.cc.on{opacity:.85;transform:translate(-50%,-50%) scale(1)}
-@media(hover:none){.cc{display:none}}
+
 .no-anim .reveal,.no-anim .hero h1 .l span{opacity:1!important;transform:none!important}
 .no-anim #intro,.no-anim .curtain{display:none!important}
 .no-anim .mline>span{transform:none!important}
@@ -198,7 +198,6 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
 </svg>
 </div><div class="iln">devnest — brand system</div><div class="ibar"><i></i></div><div class="ipct">0%</div></div>
 <div class="curtain" id="curtain"></div>
-<div class="cc" id="cc"></div>
 <canvas class="grain" id="grain"></canvas>
 
 <div class="prog" id="prog"></div>
@@ -459,16 +458,6 @@ document.querySelectorAll('.mrev').forEach(function(h){
   document.querySelectorAll('.slideSkew').forEach(function(el){el.style.transform='skewY('+cur.toFixed(2)+'deg)';});
   requestAnimationFrame(loop);})();
 })();
-// cursor companion — appears only near interactive targets, native cursor stays
-(function(){
- var cc=document.getElementById('cc'),x=0,y=0,tx=0,ty=0;
- addEventListener('mousemove',function(e){tx=e.clientX;ty=e.clientY;});
- (function l(){x+=(tx-x)*.18;y+=(ty-y)*.18;cc.style.left=x+'px';cc.style.top=y+'px';requestAnimationFrame(l);})();
- document.querySelectorAll('a,button,.idxrow,.logobox,.markbox').forEach(function(el){
-  el.addEventListener('mouseenter',function(){cc.classList.add('on');});
-  el.addEventListener('mouseleave',function(){cc.classList.remove('on');});
- });
-})();
 // old hero reveal
 
 // section reveals
@@ -490,7 +479,28 @@ document.querySelectorAll('[data-count]').forEach(el=>{const to=+el.getAttribute
 // marquee
 let mqx=0;const mq=document.getElementById('mq');function mqLoop(){mqx-=0.6;if(Math.abs(mqx)>mq.scrollWidth/2)mqx=0;mq.style.transform='translateX('+mqx+'px)';requestAnimationFrame(mqLoop);}mqLoop();
 document.querySelectorAll('.gsc').forEach(function(cv){var ctx=cv.getContext('2d');function sz(){cv.width=Math.max(2,cv.clientWidth>>1);cv.height=Math.max(2,cv.clientHeight>>1);}sz();addEventListener('resize',sz);(function dr(){var w=cv.width,h=cv.height,im=ctx.createImageData(w,h),d=im.data;for(var i=0;i<d.length;i+=4){var v=Math.random()*255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;}ctx.putImageData(im,0,0);requestAnimationFrame(dr);})();});
-document.querySelectorAll('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();var x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform='translate('+x*0.25+'px,'+y*0.25+'px)';});b.addEventListener('mouseleave',function(){b.style.transform='';});});
+(function(){
+ var mags=[].slice.call(document.querySelectorAll('.mag'));
+ if(!mags.length)return;
+ var R=110; // raza de atractie
+ addEventListener('mousemove',function(e){
+  mags.forEach(function(el){
+   var r=el.getBoundingClientRect();
+   var cx=r.left+r.width/2, cy=r.top+r.height/2;
+   var dx=e.clientX-cx, dy=e.clientY-cy;
+   var dist=Math.sqrt(dx*dx+dy*dy);
+   var reach=Math.max(r.width,r.height)/2+R;
+   if(dist<reach){
+    var p=1-dist/reach;
+    gsap.to(el,{x:dx*0.32*p,y:dy*0.32*p,duration:.5,ease:'power3.out',overwrite:'auto'});
+    el.classList.add('near');
+   } else if(el.classList.contains('near')){
+    gsap.to(el,{x:0,y:0,duration:.8,ease:'elastic.out(1,.5)',overwrite:'auto'});
+    el.classList.remove('near');
+   }
+  });
+ },{passive:true});
+})();
 // grain (canvas noise ~ three noise replica)
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');function gsize(){gc.width=Math.ceil(innerWidth/2);gc.height=Math.ceil(innerHeight/2);}gsize();addEventListener('resize',gsize);
 function grain(){const w=gc.width,h=gc.height,img=gx.createImageData(w,h),d=img.data;for(let i=0;i<d.length;i+=4){const v=Math.random()*255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;}gx.putImageData(img,0,0);requestAnimationFrame(grain);}grain();
