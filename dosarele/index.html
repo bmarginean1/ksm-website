@@ -416,18 +416,18 @@ document.querySelectorAll('header nav a').forEach(function(a){
  });},7000);
 })();
 gsap.to('.heroBg',{y:90,scale:1.06,ease:'none',scrollTrigger:{trigger:'.heroPan',start:'top top',end:'bottom top',scrub:.5}});
-/* pista orizontala — calcul manual pe scroll, garantat */
+/* pista orizontala — progres calculat din pozitia panoului in document (sticky-safe) */
 (function(){
  var tracks=[].slice.call(document.querySelectorAll('.htrack'));
  if(!tracks.length) return;
+ function docTop(el){var t=0;while(el){t+=el.offsetTop;el=el.offsetParent;}return t;}
  function tick(){
+  var sy=window.scrollY||document.documentElement.scrollTop;
   tracks.forEach(function(tr){
    var inner=tr.querySelector('.htrack-inner'); if(!inner) return;
    var pan=tr.closest('.pan')||tr;
-   var r=pan.getBoundingClientRect();
-   var vh=innerHeight;
-   // progres 0..1 cat timp panoul traverseaza ecranul
-   var prog=(vh-r.top)/(vh+r.height);
+   var top=docTop(pan), hgt=pan.offsetHeight||innerHeight;
+   var prog=(sy-top+innerHeight*0.15)/(hgt*0.9);
    prog=Math.max(0,Math.min(1,prog));
    var max=Math.max(0, inner.scrollWidth - tr.clientWidth + 30);
    inner.style.transform='translate3d('+(-max*prog).toFixed(1)+'px,0,0)';
