@@ -24,7 +24,7 @@ body{background:var(--ink);color:var(--fg);font-family:'DM Sans',system-ui,sans-
 ::selection{background:var(--red);color:var(--paper)}
 a{color:inherit;text-decoration:none}
 .mono{font-family:'DM Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--mut)}
-.serif{font-family:'Theonory','Giveny',Georgia,serif;font-weight:400;line-height:.98;letter-spacing:-.015em}
+.serif{font-family:'Theonory','Giveny',Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:.005em}
 .tw{font-family:'Special Elite',monospace}
 .grain{position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.045;mix-blend-mode:overlay}
 .prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red-br);z-index:120}
@@ -32,7 +32,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-cont
 header nav{display:flex;gap:18px}
 .hdlogo{display:none}
 .hdwrap{display:none}
-.hdlogo-t{font-family:'Theonory','Giveny',serif;text-transform:uppercase;font-size:14px;letter-spacing:.05em;line-height:1;white-space:nowrap}
+.hdlogo-t{font-family:'Theonory','Giveny',serif;font-size:14px;letter-spacing:.05em;line-height:1;white-space:nowrap}
 .hdlogo-t .lgsvg{height:100%;width:auto;display:block;color:currentColor}
 .dmono{height:100%;width:auto;display:block;color:currentColor}
 header nav a{position:relative}
@@ -51,7 +51,7 @@ header nav a:hover::after{width:100%}
 h1.hero{font-size:clamp(42px,10.5vw,152px)}
 .herologo{display:none}
 .herowrap{display:none}
-.herotype{font-family:'Theonory','Giveny',serif;text-transform:uppercase;line-height:1.28;font-size:clamp(38px,8.2vw,120px);letter-spacing:.005em;margin-top:clamp(30px,5vw,70px)}
+.herotype{font-family:'Theonory','Giveny',serif;line-height:1.28;font-size:clamp(38px,8.2vw,120px);letter-spacing:.005em;margin-top:clamp(30px,5vw,70px)}
 .herowrap .lgsvg{width:100%;height:auto}
 h1.hero em,h2 em{font-style:italic;color:var(--red-br)}
 .p-paper h1.hero em,.p-paper h2 em{color:var(--red)}
@@ -77,7 +77,7 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 .vg{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:22px}
 @media(max-width:980px){.vg{grid-template-columns:1fr}}
 .vbox{border:1px solid var(--line);border-radius:16px;padding:clamp(16px,2.2vw,26px);background:rgba(0,0,0,.22)}
-.vbox h3{font-family:'Theonory','Giveny',serif;font-size:clamp(20px,2.4vw,32px);line-height:1;margin-bottom:4px}
+.vbox h3{font-family:'Theonory','Giveny',serif;text-transform:none;font-size:clamp(20px,2.4vw,32px);line-height:1;margin-bottom:4px}
 .vbox .who{font-family:'DM Mono';font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-br);margin-bottom:12px}
 .vbox .ex{font-family:'DM Mono';font-size:12px;line-height:1.85;border-left:2px solid var(--red-br);padding-left:12px;margin:11px 0;opacity:.9}
 .vbox ul{list-style:none;margin-top:11px}
@@ -173,8 +173,8 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
  <h2 class="serif">Patru registre.<br><em>Patru voci.</em></h2>
  <p class="lead">Serif-ul e memoria. Mașina de scris e documentul. Scrisul de mână e martorul — singurul element uman. Mono-ul e sistemul care le indexează.</p>
  <div style="margin-top:22px">
-  <div class="trow"><div class="lab">Titlu / Theonory</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">CAZ NEREZOLVAT</div></div>
-  <div class="trow"><div class="lab">Subtitlu / Giveny</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">Un cadavru. <em style="font-style:italic;color:var(--red)">Fără martori.</em></div></div>
+  <div class="trow"><div class="lab">Titlu / Theonory</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">Caz nerezolvat</div></div>
+  <div class="trow"><div class="lab">Subtitlu / Giveny</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">Un cadavru. <em style="font-style:italic;color:var(--red)">Fara martori.</em></div></div>
   <div class="trow"><div class="lab">Document / Special Elite</div><div class="tw" style="font-size:clamp(16px,2.4vw,29px)">DOSAR #004 · CAZ NEREZOLVAT</div></div>
   <div class="trow"><div class="lab">Martor / Autography</div><div style="font-family:'HandA',cursive;font-size:clamp(24px,3.6vw,46px);color:#2A3F63">L-am vazut. Nu era acolo.</div></div>
   <div class="trow"><div class="lab">Sistem / DM Mono</div><div class="mono" style="font-size:12px">( probă foto · confidențial · caz 03-C )</div></div>
@@ -251,7 +251,7 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
    <li><b>ARG-ul</b> nu recunoaște niciodată principalul, nu etichetează, nu vinde, nu răspunde direct.</li>
    <li><b>Fiecare postare</b> poartă un număr de caz, chiar dacă nu-l explică nimeni.</li>
    <li><b>Declarațiile scrise de mână</b> se scriu FĂRĂ diacritice — fonturile de mână nu le au și ies urât. „L-am vazut. Nu era acolo."</li>
-   <li><b>Titlurile</b> se scriu integral în <b>Theonory</b>. <b>Giveny</b> rămâne pentru subtitluri și texte de titlu secundare.</li>
+   <li><b>Titlurile</b> se scriu în <b>Theonory</b>, cu scriere normală (prima literă mare, restul mici) — NU cu majuscule forțate. Majusculele fontului sunt ornamentale, minusculele sunt versale serif.</li>
    <li><b>Logotipul oficial</b> există și ca SVG vectorizat, pentru print și dimensiuni mici.</li>
    <li><b>Caption obligatoriu:</b> disclaimer efecte speciale + © KSM Production · Next Spot 2026.</li>
    <li><b>Collab IG</b> (5): @vladmarin__ · @ksmproductionn · @iuraluncasu · @bogdan_bob_radulescu · @johanna_ioaana</li>
