@@ -102,6 +102,22 @@ section{padding:clamp(70px,11vh,160px) 0;border-top:1px solid var(--line);positi
 .mb-fill .mb-cap{color:rgba(5,6,10,.65)}
 @media(max-width:720px){.markgrid{grid-template-columns:repeat(2,1fr)}}
 .dot-mark{display:inline-block;height:.75em;width:auto;color:var(--accent);vertical-align:-.05em}
+.cur{display:inline-block;width:.52em;height:.11em;background:var(--accent);vertical-align:baseline;margin-left:.12em;animation:blink 1.05s steps(1,end) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.cur.thin{height:.08em;width:.42em}
+.termline{font-family:'DM Mono';font-size:clamp(13px,1.5vw,17px);color:var(--fg);letter-spacing:.01em}
+.termline .pfx{color:var(--accent);margin-right:.6em}
+.termline .dim{color:var(--muted)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.cmpbox{border:1px solid var(--line);border-radius:16px;padding:28px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
+.cmpbox.no{opacity:.45}
+.cmpbox .tag{font-family:'DM Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+.cmpbox.yes .tag{color:var(--accent)}
+.cmpbox.no .tag{color:#ff6b5e}
+.pixdemo{font-family:ui-monospace,monospace;font-size:clamp(20px,3vw,34px);letter-spacing:.06em;line-height:1.2;-webkit-font-smoothing:none;image-rendering:pixelated;text-shadow:2px 0 0 var(--muted)}
+.termdemo{font-family:'Komet','ZalandoSX',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(24px,3.4vw,42px);line-height:.95}
+.cmpnote{font-size:13px;line-height:1.5;color:var(--muted)}
+@media(max-width:720px){.cmp{grid-template-columns:1fr}}
 .atg{background:transparent;border:1px solid var(--line);border-radius:100px;padding:7px 14px;color:var(--muted);cursor:none;font-family:'DM Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:border-color .3s,color .3s}
 .atg:hover{border-color:var(--accent);color:var(--accent)}
 .atg b{color:var(--accent);font-weight:500}
@@ -152,6 +168,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
   <a href="#color" class="mono">Color</a>
   <a href="#type" class="mono">Type</a>
   <a href="#motion" class="mono">Motion</a>
+  <a href="#terminal" class="mono">Terminal</a>
   <a href="#voice" class="mono">Voice</a>
  </nav>
 </header>
@@ -162,7 +179,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
   <h1 class="disp">
    <span class="l"><span>Grow.</span></span>
    <span class="l"><span>Build.</span></span>
-   <span class="l"><span class="accentword">Enjoy.</span></span>
+   <span class="l"><span class="accentword">Enjoy.<i class="cur"></i></span></span>
   </h1>
   <div class="sub">
    <p>Aceeași esență — refăcută pentru 2026. Un sistem vizual dark, editorial și cinetic: tipografie masivă, spațiu generos, micro-etichete mono și mișcare cu intenție. Logo-ul rămâne. Restul respiră din nou.</p>
@@ -284,12 +301,34 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
   </div></div>
  </section>
 
+ <section id="terminal">
+  <div class="shead"><div class="n"><svg class="dmark" viewBox="0 0 23 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.5596 -1.88661e-06L17.4814 -3.41564e-06C16.7945 -3.41564e-06 16.215 0.563387 16.215 1.27846L16.2071 12.9637C14.7475 12.2703 13.1377 11.8803 11.4205 11.8803C5.11 11.8803 0.00146484 17.0374 0.00146484 23.3864C0.00146484 29.7353 5.11 34.9142 11.4205 34.9142C17.7311 34.9142 22.6035 29.9737 22.7967 23.7764C22.7967 23.6681 22.8182 23.5597 22.8182 23.4514L22.826 1.27846C22.826 0.563387 22.2679 -1.88661e-06 21.5596 -1.88661e-06ZM11.4205 28.2402C8.75896 28.2402 6.61251 26.0733 6.61251 23.3864C6.61251 20.6994 8.75896 18.5542 11.4205 18.5542C14.0821 18.5542 16.2071 20.7211 16.2071 23.3864C16.2071 26.0516 14.0607 28.2402 11.4205 28.2402Z" fill="currentColor"/>
+<path d="M22.8262 39.0239V42.2392C22.8262 43.1048 22.0961 43.8055 21.1942 43.8055H1.91105C0.858851 43.8055 -8.86823e-05 42.9811 -8.86823e-05 41.9712V39.0239C-8.86823e-05 38.1583 0.730009 37.4575 1.63189 37.4575H21.1942C22.0961 37.4575 22.8262 38.1583 22.8262 39.0239Z" fill="currentColor"/>
+</svg>
+ ( 05 )</div><div><h2 class="disp">Registrul: terminal, nu pixel</h2><p class="d">Underscore-ul din logo e deja un cursor de terminal. Îl exploatăm: cursor care clipește, prefixe de comandă, text care se decriptează. Aceeași energie tech — dar adultă, potrivită pentru fintech și enterprise. Pixel-art-ul ar spune „joc indie", nu „AI în producție".</p></div></div>
+  <div class="termline"><span class="pfx">$</span>devnest deploy --env production<i class="cur thin"></i></div>
+  <div class="termline" style="margin-top:10px"><span class="pfx">$</span><span class="dim">building AI systems that ship</span></div>
+  <div class="cmp">
+   <div class="cmpbox yes">
+    <span class="tag">( ✓ da — registru terminal )</span>
+    <div class="termdemo">Grow. Build.<br>Enjoy<i class="cur"></i></div>
+    <p class="cmpnote">Vine din propriul vostru logo. Citește ca inginerie, cod, sistem viu. Merge la fel de bine într-un deck pentru Fitch Ratings ca pe Instagram.</p>
+   </div>
+   <div class="cmpbox no">
+    <span class="tag">( ✗ nu — registru pixel )</span>
+    <div class="pixdemo">GROW. BUILD.<br>ENJOY_</div>
+    <p class="cmpnote">Retro-gaming, indie, nostalgic. Funcționează pentru un studio creativ, dar subminează credibilitatea când vindeți sisteme AI în producție pentru bănci.</p>
+   </div>
+  </div>
+ </section>
+
  <section id="voice">
   <div class="shead"><div class="n"><svg class="dmark" viewBox="0 0 23 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M21.5596 -1.88661e-06L17.4814 -3.41564e-06C16.7945 -3.41564e-06 16.215 0.563387 16.215 1.27846L16.2071 12.9637C14.7475 12.2703 13.1377 11.8803 11.4205 11.8803C5.11 11.8803 0.00146484 17.0374 0.00146484 23.3864C0.00146484 29.7353 5.11 34.9142 11.4205 34.9142C17.7311 34.9142 22.6035 29.9737 22.7967 23.7764C22.7967 23.6681 22.8182 23.5597 22.8182 23.4514L22.826 1.27846C22.826 0.563387 22.2679 -1.88661e-06 21.5596 -1.88661e-06ZM11.4205 28.2402C8.75896 28.2402 6.61251 26.0733 6.61251 23.3864C6.61251 20.6994 8.75896 18.5542 11.4205 18.5542C14.0821 18.5542 16.2071 20.7211 16.2071 23.3864C16.2071 26.0516 14.0607 28.2402 11.4205 28.2402Z" fill="currentColor"/>
 <path d="M22.8262 39.0239V42.2392C22.8262 43.1048 22.0961 43.8055 21.1942 43.8055H1.91105C0.858851 43.8055 -8.86823e-05 42.9811 -8.86823e-05 41.9712V39.0239C-8.86823e-05 38.1583 0.730009 37.4575 1.63189 37.4575H21.1942C22.0961 37.4575 22.8262 38.1583 22.8262 39.0239Z" fill="currentColor"/>
 </svg>
- ( 05 )</div><div><h2 class="disp">Voce &amp; lockup</h2><p class="d">Direct, sigur pe sine, fără corporate gol. Aceeași promisiune — dar lockup-ul vechi (gradient moale, font rotunjit, semnul exclamării) iese. În locul lui: grotesc lat, punct ferm, un accent unic.</p></div></div>
+ ( 06 )</div><div><h2 class="disp">Voce &amp; lockup</h2><p class="d">Direct, sigur pe sine, fără corporate gol. Aceeași promisiune — dar lockup-ul vechi (gradient moale, font rotunjit, semnul exclamării) iese. În locul lui: grotesc lat, punct ferm, un accent unic.</p></div></div>
   <div class="lockup">
    <div class="lk lk-a"><span>Grow.</span><span>Build.</span><span class="dot">Enjoy</span><span class="lkdot"><svg class="dmark" viewBox="0 0 23 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M21.5596 -1.88661e-06L17.4814 -3.41564e-06C16.7945 -3.41564e-06 16.215 0.563387 16.215 1.27846L16.2071 12.9637C14.7475 12.2703 13.1377 11.8803 11.4205 11.8803C5.11 11.8803 0.00146484 17.0374 0.00146484 23.3864C0.00146484 29.7353 5.11 34.9142 11.4205 34.9142C17.7311 34.9142 22.6035 29.9737 22.7967 23.7764C22.7967 23.6681 22.8182 23.5597 22.8182 23.4514L22.826 1.27846C22.826 0.563387 22.2679 -1.88661e-06 21.5596 -1.88661e-06ZM11.4205 28.2402C8.75896 28.2402 6.61251 26.0733 6.61251 23.3864C6.61251 20.6994 8.75896 18.5542 11.4205 18.5542C14.0821 18.5542 16.2071 20.7211 16.2071 23.3864C16.2071 26.0516 14.0607 28.2402 11.4205 28.2402Z" fill="currentColor"/>
@@ -297,7 +336,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
 </svg>
 </span></div>
    <div class="lkmeta mono">( lockup principal — stivuit, grotesc lat, punct final pe accent )</div>
-   <div class="lk lk-b" data-scramble>Grow. Build. Enjoy.</div>
+   <div class="lk lk-b"><span data-scramble>Grow. Build. Enjoy</span><i class="cur"></i></div>
    <div class="lkmeta mono">( lockup pe un rând — pentru header, semnături, footer )</div>
   </div>
  </section>
