@@ -192,6 +192,28 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
 .rv{opacity:0;transform:translateY(22px)}
 .no-anim .rv{opacity:1!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}.grain{display:none}.pan{position:relative}}
+
+/* ——— MOBIL / ECRANE MICI: panourile nu mai sunt sticky (altfel continutul inalt se taie) ——— */
+@media (max-width:900px),(max-height:560px){
+ .stack{contain:none}
+ .pan{position:relative;top:auto;min-height:auto;align-items:flex-start;
+      padding-top:clamp(54px,9vw,80px);padding-bottom:clamp(54px,9vw,80px);
+      box-shadow:0 -16px 40px rgba(0,0,0,.5)}
+ .pan.heroPan{min-height:100vh;min-height:100svh;align-items:center;padding-top:0;padding-bottom:0}
+}
+/* pe touch: marcajul de colt e vizibil permanent, hover-ul nu exista */
+@media (hover:none){
+ .vbox::before{opacity:.34;transform:none}
+ .vbox::after{transform:scaleX(1);opacity:.5}
+ .vbox h3::after{display:none}
+}
+/* cross-platform: iOS nu mai umfla textul la rotire, fara flash albastru pe tap, scroll stabil */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overscroll-behavior-y:none}
+body{-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img,canvas,svg,video{max-width:100%}
+@supports(padding:max(0px)){
+ .pan{padding-left:max(clamp(24px,4.6vw,66px),env(safe-area-inset-left));padding-right:max(clamp(24px,4.6vw,66px),env(safe-area-inset-right))}
+}
 </style></head><body>
 <canvas class="grain" id="grain"></canvas><div class="prog" id="prog"></div>
 <header><span class="hdlogo-t">Dosarele Orașului Alb</span>
@@ -430,7 +452,7 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script>
 if(!window.gsap||!window.Lenis){document.documentElement.classList.add('no-anim');}else{try{
-var lenis=new Lenis({duration:1.25,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});
+var lenis=new Lenis({duration:1.25,smoothTouch:false,syncTouch:false,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}});
 function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);
 gsap.registerPlugin(ScrollTrigger); lenis.on('scroll',ScrollTrigger.update);
 lenis.on('scroll',function(){var h=document.body.scrollHeight-innerHeight;document.getElementById('prog').style.width=(100*lenis.scroll/h)+'%';});
