@@ -24,8 +24,7 @@ body{background:var(--ink);color:var(--fg);font-family:'DM Sans',system-ui,sans-
 ::selection{background:var(--red);color:var(--paper)}
 a{color:inherit;text-decoration:none}
 .mono{font-family:'DM Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--mut)}
-.ini{font-family:'Theonory',cursive;font-size:1.34em;line-height:0;vertical-align:-.045em;margin-right:-.02em;display:inline-block}
-.serif{font-family:'Giveny','Instrument Serif',Georgia,serif;font-weight:400;line-height:.98;letter-spacing:-.015em}
+.serif{font-family:'Theonory','Giveny',Georgia,serif;font-weight:400;line-height:.98;letter-spacing:-.015em}
 .tw{font-family:'Special Elite',monospace}
 .grain{position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.045;mix-blend-mode:overlay}
 .prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red-br);z-index:120}
@@ -33,9 +32,8 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-cont
 header nav{display:flex;gap:18px}
 .hdlogo{display:none}
 .hdwrap{display:none}
-.hdlogo-t{font-family:'Giveny',serif;text-transform:uppercase;font-size:14px;letter-spacing:.05em;line-height:1;white-space:nowrap}
-.hdlogo-t .ini{font-size:1.3em;vertical-align:-.04em}
-.lgsvg{height:100%;width:auto;display:block;color:currentColor}
+.hdlogo-t{font-family:'Theonory','Giveny',serif;text-transform:uppercase;font-size:14px;letter-spacing:.05em;line-height:1;white-space:nowrap}
+.hdlogo-t .lgsvg{height:100%;width:auto;display:block;color:currentColor}
 .dmono{height:100%;width:auto;display:block;color:currentColor}
 header nav a{position:relative}
 header nav a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--fg);transition:width .45s var(--ease)}
@@ -53,7 +51,7 @@ header nav a:hover::after{width:100%}
 h1.hero{font-size:clamp(42px,10.5vw,152px)}
 .herologo{display:none}
 .herowrap{display:none}
-.herotype{font-family:'Giveny',serif;text-transform:uppercase;line-height:1.28;font-size:clamp(38px,8.2vw,120px);letter-spacing:.005em;margin-top:clamp(30px,5vw,70px)}
+.herotype{font-family:'Theonory','Giveny',serif;text-transform:uppercase;line-height:1.28;font-size:clamp(38px,8.2vw,120px);letter-spacing:.005em;margin-top:clamp(30px,5vw,70px)}
 .herowrap .lgsvg{width:100%;height:auto}
 h1.hero em,h2 em{font-style:italic;color:var(--red-br)}
 .p-paper h1.hero em,.p-paper h2 em{color:var(--red)}
@@ -79,7 +77,7 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 .vg{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:22px}
 @media(max-width:980px){.vg{grid-template-columns:1fr}}
 .vbox{border:1px solid var(--line);border-radius:16px;padding:clamp(16px,2.2vw,26px);background:rgba(0,0,0,.22)}
-.vbox h3{font-family:'Giveny','Instrument Serif',serif;font-size:clamp(20px,2.4vw,32px);line-height:1;margin-bottom:4px}
+.vbox h3{font-family:'Theonory','Giveny',serif;font-size:clamp(20px,2.4vw,32px);line-height:1;margin-bottom:4px}
 .vbox .who{font-family:'DM Mono';font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-br);margin-bottom:12px}
 .vbox .ex{font-family:'DM Mono';font-size:12px;line-height:1.85;border-left:2px solid var(--red-br);padding-left:12px;margin:11px 0;opacity:.9}
 .vbox ul{list-style:none;margin-top:11px}
@@ -95,7 +93,7 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 /* motion demos */
 .mdemo{border:1px solid var(--line);border-radius:16px;padding:20px;background:rgba(0,0,0,.22);min-height:150px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;overflow:hidden;position:relative}
 .mdemo .t{font-family:'DM Mono';font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--mut)}
-.mdemo .big{font-family:'Giveny','Instrument Serif',serif;font-size:clamp(20px,2.6vw,32px);line-height:1.05}
+.mdemo .big{font-family:'Theonory','Giveny',serif;font-size:clamp(20px,2.6vw,32px);line-height:1.05}
 .blink{display:inline-block;width:.5em;height:.09em;background:var(--red-br);vertical-align:baseline;margin-left:.1em;animation:bl 1.05s steps(1,end) infinite}
 @keyframes bl{0%,49%{opacity:1}50%,100%{opacity:0}}
 .redact{background:#12100E;color:transparent;border-radius:2px;padding:0 .25em;user-select:none;transition:color .4s var(--ease),background .4s var(--ease)}
@@ -103,7 +101,7 @@ h2{font-size:clamp(28px,5.6vw,80px);line-height:1.16}
 .p-paper .redact{background:#1A1815}
 /* locked */
 .lock{border:1px solid var(--red-br);border-radius:16px;padding:clamp(16px,2.2vw,26px);background:rgba(124,43,40,.1)}
-.lock h3{font-family:'Giveny','Instrument Serif',serif;font-size:clamp(19px,2.2vw,28px);margin-bottom:12px}
+.lock h3{font-family:'Theonory','Giveny',serif;font-size:clamp(19px,2.2vw,28px);margin-bottom:12px}
 .lock ol{margin-left:17px}
 .lock li{font-size:13px;line-height:1.75;margin-bottom:7px;opacity:.86}
 .lock li b{color:var(--red-br)}
@@ -175,8 +173,8 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
  <h2 class="serif">Patru registre.<br><em>Patru voci.</em></h2>
  <p class="lead">Serif-ul e memoria. Mașina de scris e documentul. Scrisul de mână e martorul — singurul element uman. Mono-ul e sistemul care le indexează.</p>
  <div style="margin-top:22px">
-  <div class="trow"><div class="lab">Inițiale / Theonory (per cuvânt)</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">CAZ NEREZOLVAT</div></div>
-  <div class="trow"><div class="lab">Titlu / Giveny (din film)</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">Un cadavru. <em style="font-style:italic;color:var(--red)">Fără martori.</em></div></div>
+  <div class="trow"><div class="lab">Titlu / Theonory</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">CAZ NEREZOLVAT</div></div>
+  <div class="trow"><div class="lab">Subtitlu / Giveny</div><div class="serif" style="font-size:clamp(26px,4.6vw,58px)">Un cadavru. <em style="font-style:italic;color:var(--red)">Fără martori.</em></div></div>
   <div class="trow"><div class="lab">Document / Special Elite</div><div class="tw" style="font-size:clamp(16px,2.4vw,29px)">DOSAR #004 · CAZ NEREZOLVAT</div></div>
   <div class="trow"><div class="lab">Martor / Autography</div><div style="font-family:'HandA',cursive;font-size:clamp(24px,3.6vw,46px);color:#2A3F63">L-am vazut. Nu era acolo.</div></div>
   <div class="trow"><div class="lab">Sistem / DM Mono</div><div class="mono" style="font-size:12px">( probă foto · confidențial · caz 03-C )</div></div>
@@ -253,7 +251,7 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
    <li><b>ARG-ul</b> nu recunoaște niciodată principalul, nu etichetează, nu vinde, nu răspunde direct.</li>
    <li><b>Fiecare postare</b> poartă un număr de caz, chiar dacă nu-l explică nimeni.</li>
    <li><b>Declarațiile scrise de mână</b> se scriu FĂRĂ diacritice — fonturile de mână nu le au și ies urât. „L-am vazut. Nu era acolo."</li>
-   <li><b>Prima literă a fiecărui cuvânt</b> din titlu se scrie în <b>Theonory</b> (script); restul literelor în <b>Giveny</b>. Niciodată tot cuvântul în script.</li>
+   <li><b>Titlurile</b> se scriu integral în <b>Theonory</b>. <b>Giveny</b> rămâne pentru subtitluri și texte de titlu secundare.</li>
    <li><b>Logotipul oficial</b> există și ca SVG vectorizat, pentru print și dimensiuni mici.</li>
    <li><b>Caption obligatoriu:</b> disclaimer efecte speciale + © KSM Production · Next Spot 2026.</li>
    <li><b>Collab IG</b> (5): @vladmarin__ · @ksmproductionn · @iuraluncasu · @bogdan_bob_radulescu · @johanna_ioaana</li>
@@ -270,30 +268,6 @@ footer{padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,
  <span class="mono">© KSM Production · Next Spot 2026</span>
 </footer>
 
-<script>
-/* INITIALE SCRIPT — prima litera a fiecarui cuvant */
-(function(){
- function ini(el){
-  if(el.dataset.iniDone) return; el.dataset.iniDone='1';
-  var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
-  var nodes=[],n; while(n=walker.nextNode()) nodes.push(n);
-  nodes.forEach(function(t){
-   if(!t.nodeValue.trim()) return;
-   if(t.parentNode.classList && t.parentNode.classList.contains('ini')) return;
-   var frag=document.createDocumentFragment();
-   t.nodeValue.split(/(\s+)/).forEach(function(w){
-    if(!w.trim()){ frag.appendChild(document.createTextNode(w)); return; }
-    var m=w.match(/^([A-Za-zĂÂÎȘȚăâîșț])(.*)$/);
-    if(m){ var s=document.createElement('span'); s.className='ini'; s.textContent=m[1].toUpperCase();
-           frag.appendChild(s); frag.appendChild(document.createTextNode(m[2]));
-    } else frag.appendChild(document.createTextNode(w));
-   });
-   t.parentNode.replaceChild(frag,t);
-  });
- }
- document.querySelectorAll('h2.serif, .herotype, .hdlogo-t, .vbox h3, .lk-a').forEach(ini);
-})();
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
