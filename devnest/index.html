@@ -15,7 +15,7 @@ body{background:var(--bg);color:var(--fg);font-family:'DM Sans',system-ui,sans-s
 a{color:inherit;text-decoration:none}
 .mono{font-family:'DM Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--muted)}
 .disp{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:-.01em;font-stretch:125%}
-.grain{position:fixed;inset:0;width:100%;height:100%;z-index:90;pointer-events:none;opacity:.06;mix-blend-mode:screen}
+.grain{position:fixed;inset:0;width:100%;height:100%;z-index:90;pointer-events:none;opacity:.028;mix-blend-mode:overlay}
 .cursor{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--fg);z-index:120;pointer-events:none;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),background .25s,opacity .3s;mix-blend-mode:difference}
 .cursor.big{width:56px;height:56px;background:var(--accent)}
 @media(hover:none){body{cursor:auto}.cursor{display:none}}
@@ -76,6 +76,9 @@ section{padding:clamp(70px,11vh,160px) 0;border-top:1px solid var(--line);positi
 .btn{display:inline-flex;align-items:center;gap:12px;font-family:'DM Mono';text-transform:uppercase;letter-spacing:.1em;font-size:12px;padding:16px 26px;border:1px solid var(--fg);border-radius:100px;background:transparent;color:var(--fg);cursor:none;transition:background .3s var(--ease),color .3s var(--ease),transform .2s var(--ease);align-self:flex-start}
 .btn:hover{background:var(--accent);border-color:var(--accent);color:#05060A}
 .btn.mag{will-change:transform}
+.atg{background:transparent;border:1px solid var(--line);border-radius:100px;padding:7px 14px;color:var(--muted);cursor:none;font-family:'DM Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;transition:border-color .3s,color .3s}
+.atg:hover{border-color:var(--accent);color:var(--accent)}
+.atg b{color:var(--accent);font-weight:500}
 .marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;margin-top:8px}
 .marquee .track{display:inline-block;will-change:transform}
 .marquee .track span{font-family:'Archivo';font-weight:800;font-stretch:125%;text-transform:uppercase;font-size:clamp(26px,4vw,54px);padding:0 26px;color:transparent;-webkit-text-stroke:1px var(--muted)}
@@ -116,6 +119,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
 </svg>
 </div>
  <nav>
+  <button id="accentToggle" class="mono atg">( accent: <b id="atgName">signal</b> )</button>
   <a href="#identity" class="mono">Identity</a>
   <a href="#color" class="mono">Color</a>
   <a href="#type" class="mono">Type</a>
@@ -278,6 +282,7 @@ document.querySelectorAll('.mag').forEach(b=>{b.addEventListener('mousemove',e=>
 // grain (canvas noise ~ three noise replica)
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');function gsize(){gc.width=Math.ceil(innerWidth/2);gc.height=Math.ceil(innerHeight/2);}gsize();addEventListener('resize',gsize);
 function grain(){const w=gc.width,h=gc.height,img=gx.createImageData(w,h),d=img.data;for(let i=0;i<d.length;i+=4){const v=Math.random()*255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;}gx.putImageData(img,0,0);requestAnimationFrame(grain);}grain();
+var ACC=[['signal','#D8FF3E','#05060A'],['electric','#7A5CFF','#ffffff'],['violet (actual)','#5B4FCF','#ffffff']];var ai=0;var tg=document.getElementById('accentToggle');if(tg){tg.addEventListener('click',function(){ai=(ai+1)%ACC.length;document.documentElement.style.setProperty('--accent',ACC[ai][1]);document.getElementById('atgName').textContent=ACC[ai][0];document.querySelectorAll('.lb-accent').forEach(function(b){b.style.color=ACC[ai][2];});});}
 setTimeout(function(){document.querySelectorAll('.hero h1 .l span').forEach(function(sp){try{var m=new DOMMatrix(getComputedStyle(sp).transform);if(m.m42>5){sp.style.transform='none';}}catch(e){}});document.querySelectorAll('.hero .kick,.hero .sub,.scrolltag').forEach(function(e){if(parseFloat(getComputedStyle(e).opacity)<0.15){e.style.opacity=1;e.style.transform='none';}});},2000);
 }catch(err){document.documentElement.classList.add('no-anim');console.error(err);}}
 </script>
