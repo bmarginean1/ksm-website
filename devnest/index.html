@@ -15,7 +15,7 @@ body{background:var(--bg);color:var(--fg);font-family:'DM Sans',system-ui,sans-s
 a{color:inherit;text-decoration:none}
 .mono{font-family:'DM Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--muted)}
 .disp{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;line-height:.86;letter-spacing:-.01em;font-stretch:125%}
-.grain{position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.055;mix-blend-mode:screen}
+.grain{position:fixed;inset:0;width:100%;height:100%;z-index:90;pointer-events:none;opacity:.06;mix-blend-mode:screen}
 .cursor{position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--fg);z-index:120;pointer-events:none;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),background .25s,opacity .3s;mix-blend-mode:difference}
 .cursor.big{width:56px;height:56px;background:var(--accent)}
 @media(hover:none){body{cursor:auto}.cursor{display:none}}
@@ -87,6 +87,9 @@ section{padding:clamp(70px,11vh,160px) 0;border-top:1px solid var(--line);positi
 footer{border-top:1px solid var(--line);padding:60px 0 40px}
 .frow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}
 .reveal{opacity:0;transform:translateY(28px)}
+.no-anim .reveal,.no-anim .hero h1 .l span{opacity:1!important;transform:none!important}
+.no-anim .hero .kick,.no-anim .hero .sub,.no-anim .scrolltag,.no-anim .shead{opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.reveal,.hero h1 .l span{opacity:1!important;transform:none!important}.grain,.cursor{display:none}}
 </style></head>
 <body>
 <canvas class="grain" id="grain"></canvas>
@@ -178,7 +181,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 40px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script>
-// smooth scroll
+if(!window.gsap||!window.Lenis){document.documentElement.classList.add('no-anim');}else{try{
 const lenis=new Lenis({duration:1.25,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
 function raf(t){lenis.raf(t);requestAnimationFrame(raf)}requestAnimationFrame(raf);
 lenis.on('scroll',()=>{const st=lenis.scroll,h=document.body.scrollHeight-innerHeight;document.getElementById('prog').style.width=(100*st/h)+'%';});
@@ -213,5 +216,7 @@ document.querySelectorAll('.mag').forEach(b=>{b.addEventListener('mousemove',e=>
 // grain (canvas noise ~ three noise replica)
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');function gsize(){gc.width=Math.ceil(innerWidth/2);gc.height=Math.ceil(innerHeight/2);}gsize();addEventListener('resize',gsize);
 function grain(){const w=gc.width,h=gc.height,img=gx.createImageData(w,h),d=img.data;for(let i=0;i<d.length;i+=4){const v=Math.random()*255;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;}gx.putImageData(img,0,0);requestAnimationFrame(grain);}grain();
+setTimeout(function(){document.querySelectorAll('.hero h1 .l span').forEach(function(sp){try{var m=new DOMMatrix(getComputedStyle(sp).transform);if(m.m42>5){sp.style.transform='none';}}catch(e){}});document.querySelectorAll('.hero .kick,.hero .sub,.scrolltag').forEach(function(e){if(parseFloat(getComputedStyle(e).opacity)<0.15){e.style.opacity=1;e.style.transform='none';}});},2000);
+}catch(err){document.documentElement.classList.add('no-anim');console.error(err);}}
 </script>
 </body></html>
