@@ -116,7 +116,7 @@ section{padding:clamp(70px,11vh,160px) 0;border-top:1px solid var(--line);positi
 .dmark{width:auto;display:inline-block;color:currentColor}
 .mk{height:1em;width:auto;vertical-align:-.1em;color:var(--accent)}
 .shead .n{display:flex;align-items:center;gap:9px}
-.shead .n .dmark{height:16px;color:var(--accent2)}
+.shead .n .dmark{height:16px;color:var(--accent)}
 .markgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
 .markbox{border:1px solid var(--line);border-radius:14px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .markbox .dmark{height:46%}
@@ -128,11 +128,11 @@ section{padding:clamp(70px,11vh,160px) 0;border-top:1px solid var(--line);positi
 .mb-fill .mb-cap{color:rgba(5,6,10,.65)}
 @media(max-width:720px){.markgrid{grid-template-columns:repeat(2,1fr)}}
 .dot-mark{display:inline-block;height:.75em;width:auto;color:var(--accent);vertical-align:-.05em}
-.cur{display:inline-block;width:.52em;height:.11em;background:var(--accent2);vertical-align:baseline;margin-left:.12em;animation:blink 1.05s steps(1,end) infinite}
+.cur{display:inline-block;width:.52em;height:.11em;background:var(--accent);vertical-align:baseline;margin-left:.12em;animation:blink 1.05s steps(1,end) infinite}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 .cur.thin{height:.08em;width:.42em}
 .termline{font-family:'DM Mono';font-size:clamp(13px,1.5vw,17px);color:var(--fg);letter-spacing:.01em}
-.termline .pfx{color:var(--accent2);margin-right:.6em}
+.termline .pfx{color:var(--accent);margin-right:.6em}
 .termline .dim{color:var(--muted)}
 .cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
 .cmpbox{border:1px solid var(--line);border-radius:16px;padding:28px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;gap:18px}
@@ -174,7 +174,7 @@ section{padding:clamp(70px,11vh,160px) 0;border-top:1px solid var(--line);positi
 .lk-a span{display:block}
 .lk-a .dot{color:var(--accent)}
 .lkdot{display:block;margin-top:-.06em}
-.lkdot .dmark{height:.42em;color:var(--accent2)}
+.lkdot .dmark{height:.42em;color:var(--accent)}
 .lk-b{font-size:clamp(22px,3.4vw,52px);color:var(--muted)}
 .lkmeta{margin-bottom:26px}
 /* footer */
@@ -183,7 +183,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 calc(40px + env(safe-area
 .reveal{opacity:0;transform:translateY(28px)}
 /* intro */
 #intro{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:26px}
-#intro .imk{height:64px;color:var(--accent2);opacity:0}
+#intro .imk{height:64px;color:var(--accent);opacity:0}
 #intro .iln{font-family:'DM Mono';font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 #intro .ibar{width:min(360px,54vw);height:1px;background:rgba(242,241,236,.15);position:relative;overflow:hidden}
 #intro .ibar i{position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left}
@@ -308,11 +308,11 @@ footer{border-top:1px solid var(--line);padding:60px 0 calc(40px + env(safe-area
 <path d="M22.8262 39.0239V42.2392C22.8262 43.1048 22.0961 43.8055 21.1942 43.8055H1.91105C0.858851 43.8055 -8.86823e-05 42.9811 -8.86823e-05 41.9712V39.0239C-8.86823e-05 38.1583 0.730009 37.4575 1.63189 37.4575H21.1942C22.0961 37.4575 22.8262 38.1583 22.8262 39.0239Z" fill="currentColor"/>
 </svg>
 <span class="mb-cap">watermark</span></div>
-    <div class="markbox mb-out reveal" style="color:var(--accent2)"><svg class="dmark" viewBox="0 0 23 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="markbox mb-out reveal" style="color:var(--accent)"><svg class="dmark" viewBox="0 0 23 44" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M21.5596 -1.88661e-06L17.4814 -3.41564e-06C16.7945 -3.41564e-06 16.215 0.563387 16.215 1.27846L16.2071 12.9637C14.7475 12.2703 13.1377 11.8803 11.4205 11.8803C5.11 11.8803 0.00146484 17.0374 0.00146484 23.3864C0.00146484 29.7353 5.11 34.9142 11.4205 34.9142C17.7311 34.9142 22.6035 29.9737 22.7967 23.7764C22.7967 23.6681 22.8182 23.5597 22.8182 23.4514L22.826 1.27846C22.826 0.563387 22.2679 -1.88661e-06 21.5596 -1.88661e-06ZM11.4205 28.2402C8.75896 28.2402 6.61251 26.0733 6.61251 23.3864C6.61251 20.6994 8.75896 18.5542 11.4205 18.5542C14.0821 18.5542 16.2071 20.7211 16.2071 23.3864C16.2071 26.0516 14.0607 28.2402 11.4205 28.2402Z" fill="currentColor"/>
 <path d="M22.8262 39.0239V42.2392C22.8262 43.1048 22.0961 43.8055 21.1942 43.8055H1.91105C0.858851 43.8055 -8.86823e-05 42.9811 -8.86823e-05 41.9712V39.0239C-8.86823e-05 38.1583 0.730009 37.4575 1.63189 37.4575H21.1942C22.0961 37.4575 22.8262 38.1583 22.8262 39.0239Z" fill="currentColor"/>
 </svg>
-<span class="mb-cap">accent secundar</span></div>
+<span class="mb-cap">accent</span></div>
    </div>
   </div>
  </section>
@@ -322,12 +322,12 @@ footer{border-top:1px solid var(--line);padding:60px 0 calc(40px + env(safe-area
 <path d="M21.5596 -1.88661e-06L17.4814 -3.41564e-06C16.7945 -3.41564e-06 16.215 0.563387 16.215 1.27846L16.2071 12.9637C14.7475 12.2703 13.1377 11.8803 11.4205 11.8803C5.11 11.8803 0.00146484 17.0374 0.00146484 23.3864C0.00146484 29.7353 5.11 34.9142 11.4205 34.9142C17.7311 34.9142 22.6035 29.9737 22.7967 23.7764C22.7967 23.6681 22.8182 23.5597 22.8182 23.4514L22.826 1.27846C22.826 0.563387 22.2679 -1.88661e-06 21.5596 -1.88661e-06ZM11.4205 28.2402C8.75896 28.2402 6.61251 26.0733 6.61251 23.3864C6.61251 20.6994 8.75896 18.5542 11.4205 18.5542C14.0821 18.5542 16.2071 20.7211 16.2071 23.3864C16.2071 26.0516 14.0607 28.2402 11.4205 28.2402Z" fill="currentColor"/>
 <path d="M22.8262 39.0239V42.2392C22.8262 43.1048 22.0961 43.8055 21.1942 43.8055H1.91105C0.858851 43.8055 -8.86823e-05 42.9811 -8.86823e-05 41.9712V39.0239C-8.86823e-05 38.1583 0.730009 37.4575 1.63189 37.4575H21.1942C22.0961 37.4575 22.8262 38.1583 22.8262 39.0239Z" fill="currentColor"/>
 </svg>
- ( 02 )</div><div><h2 class="disp mrev">Culoare</h2><p class="d">Negru profund, off-white pentru text — și <b>Electric</b>, un violet evoluat din cel actual, folosit chirurgical. Lime-ul rămâne — dar ca secundar. Fără gradiente moi: contrast, nu decor.</p></div></div>
+ ( 02 )</div><div><h2 class="disp mrev">Culoare</h2><p class="d">Negru profund, off-white pentru text — și <b>Electric</b>, un violet evoluat din cel actual, folosit chirurgical peste tot. Lime-ul rămâne doar ca rezervă, pentru situații punctuale. Fără gradiente moi: contrast, nu decor.</p></div></div>
   <div class="sw">
    <div class="swatch reveal"><div class="c" style="background:#050506"></div><div class="m"><b>Ink</b><span>#050506</span></div></div>
    <div class="swatch reveal"><div class="c" style="background:#0b0b0e"></div><div class="m"><b>Panel</b><span>#0B0B0E</span></div></div>
    <div class="swatch reveal"><div class="c" style="background:#7A5CFF"></div><div class="m"><b>Electric</b><span>#7A5CFF</span></div></div>
-   <div class="swatch reveal"><div class="c" style="background:#D8FF3E"></div><div class="m"><b>Signal (secundar)</b><span>#D8FF3E</span></div></div>
+   <div class="swatch reveal"><div class="c" style="background:#D8FF3E"></div><div class="m"><b>Signal (rezervă)</b><span>#D8FF3E</span></div></div>
    <div class="swatch reveal"><div class="c" style="background:#F2F1EC"></div><div class="m"><b>Off-white</b><span>#F2F1EC</span></div></div>
   </div>
  </section>
