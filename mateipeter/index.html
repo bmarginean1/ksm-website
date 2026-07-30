@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#1A0F09">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="Matei &amp; Peter — sistem de brand pentru serialul 3D de animație pentru copii de 2–6 ani. Canon vizual, personaje, locații, reguli de producție.">
+
+<!-- card pentru WhatsApp / Messenger / Telegram / Slack / iMessage.
+     og:image TREBUIE sa fie URL absolut (http/https) — la fisier local nu se genereaza previzualizare. -->
+<meta property="og:url" content="https://bmarginean1.github.io/ksm-website/mateipeter/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Matei &amp; Peter">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:title" content="Matei &amp; Peter — Sistem de brand">
+<meta property="og:description" content="Serial 3D pentru copii de 2–6 ani. Canonul vizual complet: personaje, unelte, locații, culoare, mișcare.">
+<meta property="og:image" content="https://bmarginean1.github.io/ksm-website/mateipeter/og-image.jpg">
+<meta property="og:image:secure_url" content="https://bmarginean1.github.io/ksm-website/mateipeter/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo Matei &amp; Peter pe fundalul cabanei-atelier">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Matei &amp; Peter — Sistem de brand">
+<meta name="twitter:description" content="Serial 3D pentru copii de 2–6 ani. Canonul vizual complet.">
+<meta name="twitter:image" content="https://bmarginean1.github.io/ksm-website/mateipeter/og-image.jpg">
+<link rel="icon" href="https://bmarginean1.github.io/ksm-website/mateipeter/f/fav.png">
+<link rel="apple-touch-icon" href="https://bmarginean1.github.io/ksm-website/mateipeter/f/fav.png">
+<title>Matei &amp; Peter — Sistem de brand</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://bmarginean1.github.io/ksm-website/mateipeter/f/app.css">
+</head>
+<body>
+<div class="grain"></div><div class="prog" id="prog"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img id="loaderlogo" alt="">
+  <div class="lbar"><i id="lbar"></i></div>
+  <div class="lpct" id="lpct">0%</div>
+</div>
+
+<!-- MENIU -->
+<div class="menu" id="menu">
+  <button class="close" id="menuclose">închide ✕</button>
+  <div id="menulinks"></div>
+</div>
+
+<svg style="display:none">
+ <symbol id="i-goggles" viewBox="0 0 100 100"><g fill="none" stroke="#1A0F09" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M8 46c0-4 3-7 7-7h70c4 0 7 3 7 7v10c0 10-8 18-18 18H26C16 74 8 66 8 56z" fill="#FFB703"/>
+  <path d="M22 48h22a4 4 0 0 1 4 4v6a8 8 0 0 1-8 8H26a8 8 0 0 1-8-8v-6a4 4 0 0 1 4-4z" fill="#F6EEDF"/>
+  <path d="M56 48h22a4 4 0 0 1 4 4v6a8 8 0 0 1-8 8H60a8 8 0 0 1-8-8v-6a4 4 0 0 1 4-4z" fill="#F6EEDF"/>
+  <path d="M8 44C8 32 26 26 50 26s42 6 42 18"/></g></symbol>
+ <symbol id="i-sun" viewBox="0 0 100 100"><g stroke="#1A0F09" stroke-width="5" stroke-linecap="round">
+  <circle cx="50" cy="50" r="19" fill="#FFB703"/><g fill="none">
+  <path d="M50 15v-6M50 91v-6M15 50H9M91 50h-6M25 25l-4-4M79 79l-4-4M75 25l4-4M21 79l4-4"/></g></g></symbol>
+ <symbol id="i-wood" viewBox="0 0 100 100"><g stroke="#1A0F09" stroke-width="5" stroke-linejoin="round">
+  <rect x="10" y="35" width="80" height="30" rx="9" fill="#965515"/>
+  <ellipse cx="27" cy="50" rx="8" ry="11" fill="#D98B31"/></g></symbol>
+ <symbol id="i-string" viewBox="0 0 100 100"><g fill="none" stroke="#1A0F09" stroke-width="5" stroke-linecap="round">
+  <circle cx="50" cy="50" r="29" fill="#D98B31"/><circle cx="50" cy="50" r="19"/><circle cx="50" cy="50" r="9"/>
+  <path d="M77 41c8-4 14-2 16 4"/></g></symbol>
+ <symbol id="i-paint" viewBox="0 0 100 100"><g stroke="#1A0F09" stroke-width="5" stroke-linejoin="round">
+  <path d="M50 17c13 15 23 26 23 37a23 23 0 0 1-46 0c0-11 10-22 23-37z" fill="#147C97"/>
+  <circle cx="41" cy="53" r="4.5" fill="#F6EEDF" stroke="none"/></g></symbol>
+ <symbol id="i-star" viewBox="0 0 100 100"><path d="M50 11l11 23 25 3-18 17 4 25-22-12-22 12 4-25-18-17 25-3z"
+  fill="#FFB703" stroke="#1A0F09" stroke-width="5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-paw" viewBox="0 0 100 100"><g fill="#D98B31" stroke="#1A0F09" stroke-width="5" stroke-linejoin="round">
+  <ellipse cx="50" cy="67" rx="20" ry="16"/><ellipse cx="27" cy="43" rx="8.5" ry="11.5"/>
+  <ellipse cx="43" cy="32" rx="8.5" ry="11.5"/><ellipse cx="60" cy="32" rx="8.5" ry="11.5"/>
+  <ellipse cx="76" cy="43" rx="8.5" ry="11.5"/></g></symbol>
+</svg>
+
+<div class="nav" id="nav"><div class="navin">
+  <a class="navmark" href="#top" aria-label="Matei &amp; Peter"><img id="navlogo" alt="Matei &amp; Peter"></a>
+  <div class="navnums" id="navnums"></div>
+  <button class="burger" id="burger">meniu</button>
+</div></div>
+
+<!-- ============ DIORAMA ============ -->
+
+<div class="world" id="world">
+  <div class="wl w-sky"></div>
+  <div class="wl w-haze" data-w="0.06">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+      <path d="M0 200V96c140-30 240 6 380-6 140-12 220-46 360-34 140 12 240 44 380 30 140-14 240-42 320-30v144z" fill="#D8D2A6" opacity=".5"/></svg></div>
+  <div class="wl w-far" data-w="0.13">
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="none"><g fill="#9BAB78" opacity=".85">
+      <path d="M0 240V150l40-70 32 70 26-50 30 50 36-84 40 84 28-46 30 46 44-92 46 92 30-52 32 52 40-74 42 74 30-44 32 44 44-88 46 88 30-50 32 50 40-78 42 78 30-46 32 46 44-86 46 86 30-48 32 48 40-72 42 72 28-44 30 44 44-80 46 80 30-46 32 46V240z"/></g></svg></div>
+  <div class="wl w-mid" data-w="0.22">
+    <svg viewBox="0 0 1440 260" preserveAspectRatio="none"><g fill="#6E8A5A" opacity=".9">
+      <path d="M0 260V162l48-92 44 92 34-60 36 60 52-104 54 104 34-62 36 62 50-96 52 96 34-58 36 58 50-100 52 100 34-60 36 60 50-94 52 94 34-58 36 58 50-98 52 98 34-56 36 56 48-90 50 90 34-58 36 58 48-88 50 88 36-60 38 60V260z"/></g></svg></div>
+  <div class="wl w-ground" data-w="0.34">
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+      <path d="M0 220V80c160-28 280 16 450 6 170-10 270-42 440-30 170 12 320 48 550 18v146z" fill="#8FA05E"/>
+      <path d="M0 220V132c190-22 310 14 480 6 170-8 290-34 460-22 170 12 330 36 500 12v92z" fill="#76884A"/></svg></div>
+</div>
+
+<div class="fg" id="fg">
+  <svg class="t l" viewBox="0 0 200 420"><g>
+    <path d="M96 420V180l-34-26 34 14V90h12v92l36-18-36 30v226z" fill="#3F2A16"/>
+    <path d="M100 0c34 0 62 22 62 50 0 10-4 20-11 27 6 6 9 14 9 22 0 24-27 42-60 42S40 123 40 99c0-8 3-16 9-22-7-7-11-17-11-27C38 22 66 0 100 0z" fill="#3A5230"/></g></svg>
+  <svg class="t r" viewBox="0 0 200 420"><g>
+    <path d="M96 420V200l-30-22 30 12V110h12v72l32-16-32 26v228z" fill="#3F2A16"/>
+    <path d="M100 20c30 0 54 20 54 44 0 9-3 17-9 24 5 5 8 12 8 19 0 21-24 37-53 37s-53-16-53-37c0-7 3-14 8-19-6-7-9-15-9-24 0-24 24-44 54-44z" fill="#44603A"/></g></svg>
+  <svg class="s l" viewBox="0 0 200 120"><path d="M18 120c-8-34 14-66 52-72 34-6 66 14 76 42 6 16 4 24 2 30z" fill="#7A6A4E" opacity=".9"/></svg>
+  <svg class="s r" viewBox="0 0 200 120"><path d="M182 120c8-30-12-60-48-66-32-6-62 12-72 38-5 14-4 22-2 28z" fill="#6E5F45" opacity=".9"/></svg>
+  <svg class="cl" style="top:12vh;left:-8vw;z-index:1" data-c="0.05" viewBox="0 0 200 80"><path d="M20 62c-11 0-20-8-20-18s9-18 20-18c2-15 15-26 30-26 13 0 25 8 29 20 4-3 9-5 14-5 13 0 23 10 23 23 0 1 0 3-1 4 10 2 17 10 17 20H20z" fill="#FFFDF7" opacity=".85"/></svg>
+  <svg class="cl" style="top:34vh;right:-6vw" data-c="0.08" viewBox="0 0 200 80"><path d="M20 62c-11 0-20-8-20-18s9-18 20-18c2-15 15-26 30-26 13 0 25 8 29 20 4-3 9-5 14-5 13 0 23 10 23 23 0 1 0 3-1 4 10 2 17 10 17 20H20z" fill="#FFFDF7" opacity=".7"/></svg>
+</div>
+
+<span id="top"></span>
+
+<!-- ============ SCENA: patru straturi suprapuse, ca la Supari ============ -->
+<div class="scene" id="scene">
+  <a class="skip" href="#s1">sari peste film ↓</a>
+  <div class="stage" id="stage">
+
+    <!-- L1 · CER + NORI -->
+    <div class="lay l1" id="l1">
+      <div class="sky"></div>
+      <svg class="sun" viewBox="0 0 100 100"><g stroke="#E09600" stroke-width="6" stroke-linecap="round">
+        <circle cx="50" cy="50" r="20" fill="#FFB703"/><g fill="none">
+        <path d="M50 14v-7M50 93v-7M14 50H7M93 50h-7M24 24l-5-5M81 81l-5-5M76 24l5-5M19 81l5-5"/></g></g></svg>
+      <svg class="cloud c1" viewBox="0 0 200 80"><path d="M20 62c-11 0-20-8-20-18s9-18 20-18c2-15 15-26 30-26 13 0 25 8 29 20 4-3 9-5 14-5 13 0 23 10 23 23 0 1 0 3-1 4 10 2 17 10 17 20H20z" fill="#FFFDF7"/></svg>
+      <svg class="cloud c2" viewBox="0 0 200 80"><path d="M20 62c-11 0-20-8-20-18s9-18 20-18c2-15 15-26 30-26 13 0 25 8 29 20 4-3 9-5 14-5 13 0 23 10 23 23 0 1 0 3-1 4 10 2 17 10 17 20H20z" fill="#FFFDF7" opacity=".85"/></svg>
+      <svg class="cloud c3" viewBox="0 0 200 80"><path d="M20 62c-11 0-20-8-20-18s9-18 20-18c2-15 15-26 30-26 13 0 25 8 29 20 4-3 9-5 14-5 13 0 23 10 23 23 0 1 0 3-1 4 10 2 17 10 17 20H20z" fill="#FFFDF7" opacity=".7"/></svg>
+    </div>
+
+    <!-- L2 · DEALUL ȘI PĂDUREA (masa din spatele cabanei) -->
+    <div class="lay l2" id="l2">
+      <svg class="hills" viewBox="0 0 1440 300" preserveAspectRatio="none">
+        <path d="M0 300V150c150-34 250 8 420-2 170-10 260-44 430-32 170 12 320 50 590 20v164z" fill="#9BAB78"/>
+      </svg>
+      <svg class="forest" viewBox="0 0 1440 260" preserveAspectRatio="none"><g fill="#6E8A5A">
+        <path d="M0 260V162l48-92 44 92 34-60 36 60 52-104 54 104 34-62 36 62 50-96 52 96 34-58 36 58 50-100 52 100 34-60 36 60 50-94 52 94 34-58 36 58 50-98 52 98 34-56 36 56 48-90 50 90 34-58 36 58 48-88 50 88 36-60 38 60V260z"/>
+      </g></svg>
+    </div>
+
+    <!-- L3 · CABANA cu FEREASTRA — înăuntru rulează filmul -->
+    <div class="cabin" id="cabin">
+      <svg class="roof" viewBox="0 0 440 150"><path d="M220 4 436 146H4z" fill="#5E1B05"/><path d="M220 22 400 146H40z" fill="#7A3F10"/></svg>
+      <div class="walls">
+        <div class="planks"></div>
+        <div class="window" id="window">
+          <div class="screen" id="screen">
+            <img id="filmimg" alt="">
+            <div class="glow"></div>
+          </div>
+          <div class="mull"><i class="v"></i><i class="h"></i></div>
+          <div class="frameline"></div>
+        </div>
+        <div class="door"><span></span></div>
+      </div>
+    </div>
+
+    <!-- L4 · PRIM-PLAN: pământ, copaci, personaje -->
+    <div class="lay l4" id="l4">
+      <svg class="ground" viewBox="0 0 1440 240" preserveAspectRatio="none">
+        <path d="M0 240V90c170-30 290 18 460 8 170-10 280-44 450-32 170 12 330 50 530 20v154z" fill="#8FA05E"/>
+        <path d="M0 240V150c190-22 310 14 480 6 170-8 290-34 460-22 170 12 330 36 500 12v94z" fill="#76884A"/>
+      </svg>
+      <svg class="tree tl" viewBox="0 0 220 340">
+        <path d="M104 340V180c0-16-16-26-30-34l32 10V130h16v54l30-14c-12 10-30 18-30 34v136z" fill="#3F2A16"/>
+        <path d="M108 10c26 0 44 12 52 26 16-4 32 6 36 22 14 4 22 18 18 32-4 14-16 22-30 22 4 12-2 26-14 32 2 14-8 26-24 28-10 12-28 16-42 8-14 10-34 6-42-8-16 0-28-12-26-26-14-4-22-18-18-32-12-8-16-24-8-36 6-10 18-14 28-12 6-16 24-26 40-22C88 16 96 10 108 10z" fill="#3A5230"/>
+        <g transform="translate(52 118)">
+          <ellipse cx="16" cy="19" rx="16" ry="19" fill="#8A5A3A"/>
+          <ellipse cx="16" cy="12" rx="14" ry="12" fill="#A67148"/>
+          <circle cx="10" cy="11" r="5" fill="#FFF6E2"/><circle cx="22" cy="11" r="5" fill="#FFF6E2"/>
+          <circle cx="10" cy="11" r="2.6" fill="#1A0F09"/><circle cx="22" cy="11" r="2.6" fill="#1A0F09"/>
+          <path d="M16 14.5l3.4 4.5h-6.8z" fill="#FFB703"/></g>
+      </svg>
+      <svg class="tree tr" viewBox="0 0 220 340">
+        <path d="M108 340V190l-30-22 30 12V120h14v66l32-16-32 26v144z" fill="#3F2A16"/>
+        <path d="M112 18c24 0 42 12 48 26 16-2 30 8 32 22 12 6 16 20 8 30-6 10-18 14-28 12-2 12-10 20-22 22-10 10-26 12-38 6-14 8-30 4-36-8-14 0-24-10-22-22-12-6-16-20-8-30 6-8 16-12 26-10 6-14 22-24 40-20 0-16 0-28 0-28z" fill="#44603A"/>
+      </svg>
+      <div class="chars" id="chars"><img id="charsimg" alt=""></div>
+    </div>
+
+    <!-- HUD -->
+    <div class="hud">
+      <div class="title" id="scenetitle">
+        <div class="kick">sistem de brand · ediția 2026</div>
+        <h1>Aici începe lumea</h1>
+      </div>
+      <div class="rail" id="rail"></div>
+      <div class="fcap" id="fcap"></div>
+      <div class="pct" id="pct">0%</div>
+      <div class="scrollcue">derulează ↓</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="xstack" id="xstack">
+
+<!-- 01 SERIALUL -->
+<section class="xpan p-ink" id="s1"><div class="xin">
+ <div class="xtag"><span class="xmono">( 01 )</span><span class="xmono">serialul</span></div>
+ <h2 class="xdisp xup">Fiecare episod începe<br>cu o problemă și se termină<br>cu <em>o creație</em>.</h2>
+ <span class="xsub">Serial 3D pentru copii de 2–6 ani. Episoade de 3–4 minute, o problemă pe zi.</span>
+ <p class="xlead xup">„Matei &amp; Peter" e un serial 3D de animație pentru copii de 2–6 ani. Episoade de 3–4 minute, un băiat de patru ani, un cățel care nu vorbește niciodată, un atelier cald și o problemă pe zi. Documentul ăsta e singura sursă de adevăr: dacă un lucru nu e aici, nu e încă în canon.</p>
+ <div class="xg4">
+  <div class="xvbox"><div class="who">public</div><h3>2–6 ani</h3><p>Preșcolari. Nu citesc, deci lumea nu are text.</p></div>
+  <div class="xvbox"><div class="who">durată</div><h3>3–4 minute</h3><p>Compilații de 25–40 min la fiecare 4–5 episoade.</p></div>
+  <div class="xvbox"><div class="who">format</div><h3>16:9</h3><p>3D stil Pixar, lumină caldă aurie, profunzime mică de câmp.</p></div>
+  <div class="xvbox"><div class="who">simbol</div><h3>Ochelarii galbeni</h3><p>În fiecare episod și pe fiecare produs. Nimic altceva nu are voie să fie semnul seriei.</p></div>
+ </div>
+ <div class="xg2" style="margin-top:16px">
+  <div class="xvbox"><div class="who">tema · nu se rostește niciodată</div><h3>Greșeala e un pas din construcție</h3>
+   <p class="ex">O problemă e doar ceva ce n-a fost construit încă — și fiecare greșeală e un pas din construcție.</p>
+   <p>Consecință obligatorie de structură: greșeala trebuie să fie a lui Matei, pe ecran. Un episod fără greșeală proprie nu e un episod din seria asta.</p></div>
+  <div class="xvbox"><div class="who">ce se rostește, în schimb</div><h3>Trei replici, atât</h3>
+   <ul><li>La mijloc: „Oops! Let's fix it!" — zâmbind, niciodată speriat</li><li>La final: „Together we can build anything!"</li><li>Bufnița, când sunt blocați: „What did the wood tell you?"</li></ul>
+   <p style="margin-top:10px">Greșeala e informație, nu vină.</p></div>
+ </div>
+ <div class="xstamp">dream · build · explore</div>
+</div></section>
+
+<!-- 02 LIMBA -->
+<section class="xpan p-wood" id="s2"><div class="xin">
+ <div class="xtag"><span class="xmono">( 02 )</span><span class="xmono">limba</span></div>
+ <h2 class="xdisp xup">Engleza e master.<br>Româna e <em>dublaj</em>.</h2>
+ <span class="xsub">O singură randare, două limbi. De aici vine toată disciplina de mai jos.</span>
+ <p class="xlead xup">Animația se generează o singură dată, în engleză, cu lipsync nativ. Româna se face pe episodul EN deja blocat: voce nouă și un pas de lipsync peste clipul randat. Nu se regenerează niciodată animația pentru RO.</p>
+ <div class="xg3">
+  <div class="xvbox"><div class="who">producție</div><h3>EN — versiunea care se randează</h3>
+   <ul><li>Dialogul se scrie în engleză</li><li>Lipsync nativ Seedance, pe EN</li><li>Tagline-ul din logo e EN</li><li>Se aprobă complet, întâi</li></ul></div>
+  <div class="xvbox"><div class="who">post-producție</div><h3>RO — pas de dublaj</h3>
+   <ul><li>Voce română, aceeași vârstă și timbru</li><li>Lipsync pe clipul deja randat</li><li>Piste separate: dialog / SFX / muzică</li><li>Zero re-randări</li></ul></div>
+  <div class="xvbox"><div class="who">consecința care schimbă totul</div><h3>De aici vine regula „fără text"</h3>
+   <p>Orice firmă lizibilă în cadru înseamnă un al doilea randat pentru RO. Textul din lume nu a fost scos din estetică — a fost scos ca versiunea română să fie gratuită.</p></div>
+ </div>
+ <div class="xg2" style="margin-top:16px">
+  <div class="xvbox"><h3>Cum se scrie, ca să se traducă</h3>
+   <ul><li>Replici scurte, sub 8 cuvinte</li><li>Fără joc de cuvinte și fără rimă care depinde de engleză</li><li>Cântecelul-semnătură: versuri traductibile 1:1, același număr de silabe</li></ul></div>
+  <div class="xvbox"><h3>Ordinea de livrare</h3>
+   <p>EN se aprobă întâi, complet, cu muzică și montaj. RO se face abia pe episodul EN blocat — altfel dublăm de două ori.</p></div>
+ </div>
+</div></section>
+
+<!-- 03 REGULILE DE AUR -->
+<section class="xpan p-ink" id="s3"><div class="xin">
+ <div class="xtag"><span class="xmono">( 03 )</span><span class="xmono">regulile de aur</span></div>
+ <h2 class="xdisp xup">Zece reguli.<br><em>Nu se încalcă</em> niciodată.</h2>
+ <span class="xsub">Cele zece lucruri care nu se discută la nicio ședință.</span>
+ <div class="xlock" style="margin-top:22px">
+  <h3>Regulile de aur</h3>
+  <ol>
+   <li><b>Matei și Peter</b> sunt mereu în centrul cadrului. Fundalul nu fură niciodată atenția.</li>
+   <li><b>O singură idee clară pe episod.</b> O construcție, o problemă.</li>
+   <li>Doar <b>mișcare lină</b> — fără panoramări bruște, fără tăieturi seci, fără stroboscop.</li>
+   <li>Muzica e mereu calmă și veselă și <b>niciodată generată în video</b> — se pune o singură dată, la montaj.</li>
+   <li><b>Peter nu rostește niciodată cuvinte.</b> Doar lătrat, scâncet, gâfâit.</li>
+   <li>Fără pericol, fără personaj negativ, fără țipat, fără întuneric care sperie. Obstacolele sunt practice.</li>
+   <li><b>Lumină caldă, aurie</b>, în fiecare cadru din atelier. Fără interioare reci, albastre.</li>
+   <li><b>Fără niciun text scris pe ecran</b>, în nicio limbă. Excepții: litera „P" de pe medalion și logo-ul de intro/outro.</li>
+   <li><b>Matei greșește în fiecare episod</b>, pe ecran, și își îndreaptă singur greșeala.</li>
+   <li><b>Greșeala nu se pedepsește și nu se ridiculizează.</b> Nimeni nu spune „greșit", nu există sunet comic de eșec.</li>
+  </ol>
+ </div>
+ <div class="xrr">
+  <div class="xdo"><span class="t">( ✓ așa da )</span><p>„Oops! Let's fix it!"<br>„Together we can build anything!"<br>„What did the wood tell you?"<br>Un cadru de constatare, unul de gând, apoi acțiune.</p></div>
+  <div class="xdont"><span class="t">( ✗ așa nu )</span><p>„Ai greșit."<br>Râs pe seama lui<br>Sunet comic de eșec<br>Peter sau Luca greșesc în locul lui</p></div>
+ </div>
+</div></section>
+
+<!-- 04 PERSONAJELE -->
+<section class="xpan p-paper" id="s4"><div class="xin">
+ <div class="xtag"><span class="xmono">( 04 )</span><span class="xmono">personajele</span></div>
+ <h2 class="xdisp xup">Patru entități cu nume.<br>Peste atât, <em>tăiem</em>.</h2>
+ <span class="xsub">Doi protagoniști, doi secundari. Plafonul e o decizie de cercetare, nu de gust.</span>
+ <p class="xlead xup">Un copil de patru ani prinde dintr-o privire ~2,8 obiecte; la cinci ani ține în memoria de lucru jumătate din cât un adult. De aici plafonul: maximum patru entități cu nume în cadru simultan. Testul de verificare: dacă acoperi cu mâna pe Matei și scena rămâne amuzantă, ai prea multe personaje secundare în ea.</p>
+ <div class="xg4">
+  <div class="xcard"><div class="im xslot fit" data-f="01_Personaje/Matei" data-src="layers/pers-1.webp"></div><div class="cap">01 · matei · canon</div></div>
+  <div class="xcard"><div class="im xslot fit" data-f="01_Personaje/Peter" data-src="layers/pers-2.webp"></div><div class="cap">02 · peter · canon</div></div>
+  <div class="xcard"><div class="im xslot fit" data-f="01_Personaje/Luca" data-src="layers/pers-3.webp"></div><div class="cap">03 · luca · design în ciornă</div></div>
+  <div class="xcard"><div class="im xslot fit" data-f="01_Personaje/Bufnita" data-src="layers/07-bufnita.webp"></div><div class="cap">04 · bufnița · design în ciornă</div></div>
+ </div>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">protagonist · prompt canon (EN)</div><h3>Matei, 4 ani</h3>
+   <p class="ex">Messy brown hair, big warm brown eyes. Yellow safety goggles pushed up on forehead, dark green ear-protection headphones around neck, plain teal t-shirt with a simple yellow sun symbol and absolutely no text, tool belt, denim shorts to the knee, brown boots.</p>
+   <ul><li class="yes">Mereu: ochelarii pe frunte, căștile la gât, centura de unelte</li><li class="yes">Pantaloni scurți de blugi, până la genunchi</li><li class="no">Vreun scris pe tricou. Doar logo-ul soare.</li><li class="no">Ochelarii pe creștet ca o bentiță</li><li class="no">Trist mai mult de un cadru</li></ul>
+   <p style="margin-top:10px"><b>Beat-ul ochelarilor:</b> coboară pe ochi doar când începe construcția, pe „Let's build!". E cel mai important gest de continuitate din serie.</p></div>
+  <div class="xvbox"><div class="who">partener · prompt canon (EN)</div><h3>Peter, cavapoo</h3>
+   <p class="ex">Fluffy curly apricot-golden fur, floppy ears. Yellow safety goggles and a brown leather collar with a round gold "P" tag. Tiny — about 35 cm at the shoulder.</p>
+   <ul><li class="no">Niciun cuvânt. Vreodată.</li><li class="no">Unelte ținute în lăbuțe, gesturi umane de mână</li><li class="no">Pierderea ochelarilor sau a zgărzii — eroare cunoscută în planurile largi</li><li class="no">Alt câine în serie</li></ul>
+   <p style="margin-top:10px"><b>Funcția dramatică:</b> Peter găsește ce Matei nu vede. Ajută aducând, săpând, mirosind, arătând cu nasul.</p></div>
+ </div>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">secundar · rol canon, design ciornă</div><h3>Luca, frățiorul</h3>
+   <p>~2 ani și jumătate. Salopetă portocalie-rust cu o bretea mereu căzută — contrast instantaneu cu teal-ul lui Matei. Cară mereu un obiect nepotrivit.</p>
+   <ul><li>Poznașul involuntar: creează un obstacol în plus, fără să vrea</li><li>Pozna lui ia locul obstacolului exterior, niciodată al greșelii lui Matei</li><li>Matei nu se supără pe el niciodată</li><li>Își răscumpără pozna în pasul 5</li><li class="no">Fără ochelari — a treia pereche e eveniment de final de sezon</li></ul>
+   <p style="margin-top:10px">Frecvență propusă: ~2 din 3 episoade.</p></div>
+  <div class="xvbox"><div class="who">secundar · rol canon, design ciornă</div><h3>Bufnița, în stejar</h3>
+   <p>Trăiește în copacul care se vede pe fereastra atelierului. Tot timpul, în fiecare episod. Nu în Pod.</p>
+   <ul><li>La mijloc: <b>întrebarea</b>. Niciodată soluția.</li><li>La final: o observație caldă, nu o morală</li><li class="no">Nu intră niciodată în atelier</li><li class="no">Nu atinge niciodată o unealtă</li><li class="no">Maximum 2 replici pe episod</li></ul>
+   <p style="margin-top:10px">Nu „ai învățat să ai răbdare", ci „lemnul strâmb tot casă a ajuns."</p></div>
+ </div>
+</div></section>
+
+<!-- 05 UNELTELE -->
+<section class="xpan p-forest" id="s5"><div class="xin">
+ <div class="xtag"><span class="xmono">( 05 )</span><span class="xmono">uneltele</span></div>
+ <h2 class="xdisp xup">Patru unelte.<br>Și <em>niciuna nu vorbește</em>.</h2>
+ <span class="xsub">Personalitate din mișcare, ritm și sunet — nu din replici.</span>
+ <p class="xlead xup">Uneltele au personalitate, dar personalitatea vine din mișcare, ritm și sunet. Dacă uneltele capătă replici, cade regula „Peter nu rostește cuvinte" și atelierul nu mai e un atelier pe care copilul îl poate imita acasă. Fără guri, fără ochi desenați, fără dialog.</p>
+ <div class="xg4">
+  <div class="xvbox"><div class="who">ciocan · episodul 1</div><h3>Bam</h3>
+   <p>Entuziast, nerăbdător, lovește înainte să se gândească. Sare pe loc, se smucește spre cui înainte de vreme.</p>
+   <p class="ex">bam-bam dublu, grăbit</p>
+   <p>Bam e graba lui Matei, scoasă în afara lui, într-un obiect. Când Matei îl oprește cu mâna, se vede pe ecran cum arată autocontrolul.</p></div>
+  <div class="xvbox"><div class="who">ruletă · episodul 2</div><h3>Snap</h3>
+   <p>Pedantă, ordonată, nu suportă aproximările. Se întinde singură pe lemn ca să corecteze, se retrage sec dacă e ignorată.</p>
+   <p class="ex">fșșș-clac</p>
+   <p>Singura unealtă care provoacă Beat-ul greșelii. „Măsoară de două ori" ca obiect, nu ca lecție rostită.</p></div>
+  <div class="xvbox"><div class="who">nivelă · episodul 4</div><h3>Bubble</h3>
+   <p>Calmă, tăcută, spune adevărul fără să judece. Bula fuge într-o parte când e strâmb, se așază la mijloc când e drept.</p>
+   <p class="ex">un ploc mic, mulțumit</p>
+   <p>Funcționează identic în EN și RO, fără traducere și fără lipsync. Cea mai ieftină unealtă pedagogică din atelier.</p></div>
+  <div class="xvbox"><div class="who">menghină · episodul 6</div><h3>Grip</h3>
+   <p>Bunicul calm, imobil, de încredere. Nu se mișcă niciodată; doar se strânge, ferm și lent.</p>
+   <p class="ex">scârțâit adânc de metal</p>
+   <p>Gratuită din punct de vedere al atenției: e prinsă de banc, nu concurează cu nimeni.</p></div>
+ </div>
+ <div class="xg4" style="margin-top:4px">
+  <div class="xcard"><div class="im xslot fit" data-f="Bam" data-src="layers/tool-1.webp"></div><div class="cap">bam · ciocanul</div></div>
+  <div class="xcard"><div class="im xslot fit" data-f="Snap" data-src="layers/tool-2.webp"></div><div class="cap">snap · ruleta</div></div>
+  <div class="xcard"><div class="im xslot fit" data-f="Bubble" data-src="layers/tool-3.webp"></div><div class="cap">bubble · nivela</div></div>
+  <div class="xcard"><div class="im xslot fit" data-f="Grip" data-src="layers/tool-4.webp"></div><div class="cap">grip · menghina</div></div>
+ </div>
+<div class="xg2">
+  <div class="xvbox"><div class="who">motorul episodului</div><h3>Bam ↔ Snap</h3>
+   <p>Bam vrea să bată acum, Snap vrea să măsoare întâi. Se contrazic fără o vorbă — un dialog vizual care se repetă în fiecare episod și pe care copilul îl învață ca pe un joc. Când Matei ține cu Bam, urmează greșeala. Când ține cu Snap, iese drept.</p>
+   <p style="margin-top:10px">Ordinea firească: Bam se grăbește → Snap protestează → Matei alege → Bubble arată rezultatul.</p></div>
+  <div class="xvbox"><div class="who">reguli de dozare</div><h3>Cât de des, și când</h3>
+   <ul><li>Maximum 4 entități cu nume în cadru simultan</li><li>O singură unealtă activă pe scenă — excepție perechea Bam ↔ Snap</li><li>Maximum 3 momente de unealtă pe episod, de 1–2 secunde</li><li>Introducere eșalonată, niciodată toate deodată</li><li class="no">Uneltele nu au niciodată subplot propriu</li><li class="no">O unealtă nu rezolvă problema în locul lui Matei</li></ul></div>
+ </div>
+ <p class="xlead">Restul atelierului — fierăstrăul, șurubelnița, cleștele, pensula, borcanul cu cuie — sunt unelte obișnuite. Pot vibra sau sclipi ca reacție de fundal, dar nu au nume, nu au caracter și nu se prezintă niciodată publicului.</p>
+</div></section>
+
+<!-- 06 LOCATIILE -->
+<section class="xpan p-teal" id="s6"><div class="xin">
+ <div class="xtag"><span class="xmono">( 06 )</span><span class="xmono">locațiile</span></div>
+ <h2 class="xdisp xup">Patru locuri.<br>Totul se leagă <em>fizic</em>.</h2>
+ <span class="xsub">Atelier, exterior, dormitor, cascadă. Nimic altceva fără intrare în biblie.</span>
+ <p class="xlead xup">Dormitorul sus → scara de lemn → atelierul jos → ușa → grădina și stejarul Bufniței → poteca prin pădure → cascada. Fără tăietură de teleportare. Un copil de patru ani poate desena harta după trei episoade — ăsta e testul.</p>
+ <div class="xg4">
+  <div class="xcard"><div class="im xslot" data-f="02_Locatii/Atelier" data-src="layers/17-atelier.webp"></div><div class="cap">01 · atelierul ideilor</div></div>
+  <div class="xcard"><div class="im xslot" data-f="02_Locatii/Exterior" data-src="layers/18-exterior.webp"></div><div class="cap">02 · exterior cabană</div></div>
+  <div class="xcard"><div class="im xslot" data-f="02_Locatii/Dormitor" data-src="layers/12-dormitor.webp"></div><div class="cap">03 · dormitorul din pod</div></div>
+  <div class="xcard"><div class="im xslot" data-f="02_Locatii/Cascada" data-src="layers/13-cascada.webp"></div><div class="cap">04 · cascada</div></div>
+ </div>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">interior · canon, element de regenerat</div><h3>Atelierul Ideilor</h3>
+   <p><b>Geografie fixă, nu se contrazice niciodată:</b> ușa stânga, fereastra arcuită dreapta, bancul centru, panoul cu unelte în spatele bancului, culcușul lui Peter colț dreapta, tabla lângă ușă, scara spre Pod în fund dreapta. Lumina intră mereu pe fereastra arcuită, din dreapta.</p>
+   <ul><li>Mereu în cadru, cel puțin două: panoul, bancul cu menghină, fereastra arcuită, lampa, culcușul, talașul</li><li>Pe fereastră se vede mereu același stejar, cu ramura la nivelul ferestrei</li><li class="no">Orice text scris, în orice limbă</li><li class="no">Lumină rece, lumină plată de sus</li><li class="no">Orice electric sau industrial</li></ul></div>
+  <div class="xvbox"><div class="who">exterior · canon</div><h3>Cabana și grădina</h3>
+   <p>Cabană-atelier de lemn între copaci verzi, raze de dimineață prin frunze, flori de câmp, o potecă mică spre ușă, păsări pe o ramură.</p>
+   <ul><li class="no">Alte case, drumuri, mașini sau oameni în fundal</li><li class="no">Cer acoperit sau ploaie, decât dacă problema episodului este ploaia</li><li>De promovat la element propriu — revine în deschiderea fiecărui episod</li></ul></div>
+ </div>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">noapte · design în ciornă</div><h3>Podul — dormitorul lor</h3>
+   <p>Cabana e casa lor: atelierul jos, dormitorul sus, o scară între ele. Două paturi — al lui Matei cu pătură teal, al lui Luca mai mic, cu pătură portocalie și bară. O fereastră rotundă spre același stejar. Un cârlig de lemn lângă patul lui Matei, unde se atârnă ochelarii.</p>
+   <ul><li>Singura locație de noapte din serie</li><li class="no">Fără întuneric adevărat, fără umbre lungi, fără colțuri negre</li><li class="no">Unelte în dormitor. Nici măcar Bam.</li><li class="no">Coșmaruri, plâns de noapte, frică de întuneric</li></ul>
+   <p style="margin-top:10px"><b>Părinții:</b> există, dar nu se văd și nu se aud niciodată. În clipa în care intră un adult în cadru, el devine cel care rezolvă problema.</p></div>
+  <div class="xvbox"><div class="who">proba · ciornă</div><h3>Cascada</h3>
+   <p>Se folosește doar în episoadele unde construcția trebuie testată de natură: barca, roata de apă, podul pentru furnici, barajul.</p>
+   <ul><li>Singura locație cu virare rece aprobată — dar soarele rămâne cald deasupra</li><li class="no">Apă adâncă, curent, înălțime, orice citire de „se poate îneca"</li><li class="no">Folosită ca decor generic</li></ul>
+   <p style="margin-top:10px">Cascada înseamnă: construcția e pe punctul de a fi testată.</p></div>
+ </div>
+</div></section>
+
+<!-- 07 RECUZITA -->
+<section class="xpan p-ink" id="s7"><div class="xin">
+ <div class="xtag"><span class="xmono">( 07 )</span><span class="xmono">recuzita</span></div>
+ <h2 class="xdisp xup">Trei obiecte poartă<br><em>toată</em> seria.</h2>
+ <span class="xsub">Ochelarii, Cutia Surpriză, Planul luminos. Restul e decor.</span>
+ <div class="xg3">
+  <div class="xvbox"><div class="who">simbolul seriei · canon</div><h3>Ochelarii galbeni</h3>
+   <p>Groși, lentile transparente, curea închisă. Ai lui Matei pe frunte; Peter are o pereche identică. Lentilele prind o sclipire pe beat-urile de poveste.</p>
+   <ul><li class="no">O a treia pereche pe altcineva</li><li class="no">Altă culoare, lentile fumurii, ochelari de soare</li><li class="no">Absenți dintr-un plan în care apare unul din cei doi</li></ul></div>
+  <div class="xvbox"><div class="who">singura magie · canon</div><h3>Cutia Surpriză</h3>
+   <p>Cutie de lemn ornată, cu soarele sculptat pe capac, pe bancul de lucru. Strălucește auriu-cald prin îmbinări, se deschide singură, clinchet blând.</p>
+   <ul><li>E mecanismul care livrează provocarea episodului. Nimic altceva.</li><li class="no">Magie care rezolvă problema</li><li class="no">Magie altundeva în lume</li><li class="no">Apariție de două ori în același episod</li></ul></div>
+  <div class="xvbox"><div class="who">canon</div><h3>Planul luminos</h3>
+   <p>Sul de hârtie cu linii aurii luminoase, arătând obiectul care trebuie construit. Iese din Cutia Surpriză.</p>
+   <ul><li class="no">Text tehnic lizibil — doar linii aurii și silueta clară a obiectului</li></ul></div>
+ </div>
+ <div class="xg4" style="margin-top:16px">
+  <div class="xcard wide"><div class="im xslot fit" data-f="Ochelarii" data-src="layers/09-ochelari.webp"></div><div class="cap">ochelarii · obiectul-erou</div></div>
+  <div class="xcard wide"><div class="im xslot fit" data-f="Cutia Surpriză" data-src="layers/11-cutia.webp"></div><div class="cap">cutia surpriză</div></div>
+  <div class="xcard wide"><div class="im xslot fit" data-f="Planul luminos" data-src="layers/10-plan.webp"></div><div class="cap">planul luminos</div></div>
+  <div class="xcard wide"><div class="im xslot fit" data-f="Grip" data-src="layers/tool-4.webp"></div><div class="cap">recuzita de decor</div></div>
+ </div>
+ <p class="xlead">Recuzită recurentă, fără nume: uneltele de pe panou, menghina, lăzile cu pictograme, tabla cu desene de cretă, culcușul cu amprentă de lăbuță, ghirlandele, scaunul verde, plantele, talașul, plăcuța de lemn cu ochelarii sculptați.</p>
+</div></section>
+
+<!-- 08 POVESTEA -->
+<section class="xpan p-paper" id="s8"><div class="xin">
+ <div class="xtag"><span class="xmono">( 08 )</span><span class="xmono">povestea</span></div>
+ <h2 class="xdisp xup">Șase pași.<br>Al treilea e <em>greșeala</em>.</h2>
+ <span class="xsub">Ritual identic la deschidere, șase pași la mijloc, greșeala în centru.</span>
+ <p class="xlead xup">Ritualul de deschidere e identic în fiecare episod și nu se scurtează, nu se reordonează, nu se sare. E contractul de familiaritate al seriei cu copilul.</p>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">ritualul de deschidere · canon</div><h3>Șase bătăi, mereu la fel</h3>
+   <ul><li>Ciripit de păsări</li><li>Peter ridică urechile</li><li>O rază de soare traversează fereastra arcuită</li><li>Cutia Surpriză începe să strălucească</li><li>Matei, zâmbind: „Peter… I think we have a new adventure!"</li><li>Sting-ul de logo → povestea</li></ul></div>
+  <div class="xvbox"><div class="who">coloana poveștii</div><h3>Șase pași</h3>
+   <ul><li><b>1</b> Descoperă provocarea — Cutia Surpriză, sau Luca o aduce din afară</li><li><b>2</b> Încearcă o soluție — ochelarii coboară: „Let's build!"</li><li><b>3</b> BEAT-UL GREȘELII — din cauza unei alegeri a lui Matei</li><li><b>4</b> O vede și o îndreaptă — la fereastra arcuită, Bufnița întreabă</li><li><b>5</b> Reușesc împreună — montajul cu cântecelul-semnătură</li><li><b>6</b> Zâmbet, apoi concluzia Bufniței. Ultimul cadru rămâne pe copii.</li></ul></div>
+ </div>
+ <div class="xg3" style="margin-top:16px">
+  <div class="xcard"><div class="im xslot" data-f="Beat-ul greșelii" data-src="layers/15-matei-vede.webp"></div><div class="cap">pasul 3 · constatarea</div></div>
+  <div class="xcard"><div class="im xslot" data-f="Greșeala vizibilă" data-src="layers/14-greseala.webp"></div><div class="cap">greșeala, vizibilă fizic</div></div>
+  <div class="xcard"><div class="im xslot" data-f="Reușesc împreună" data-src="layers/16-reusesc.webp"></div><div class="cap">pasul 5 · reușesc împreună</div></div>
+ </div>
+ <div class="xvbox" style="margin-top:16px"><div class="who">beat-ul greșelii · reguli tari</div><h3>Cadrul cel mai important al episodului</h3>
+  <ul><li>Greșeala e a lui Matei. Peter și Luca nu greșesc niciodată în locul lui.</li><li>Nu o repară nimeni pentru el — decizia și mâna sunt ale lui Matei.</li><li>Durează scurt: un cadru de constatare, unul de gând, apoi acțiune.</li><li class="no">Fără frustrare vizibilă mai mult de un cadru, fără plâns, fără aruncat unelte</li><li>Greșeala e mereu vizibilă fizic — copilul trebuie să vadă ce nu e drept, nu să deducă</li><li>Reparația se arată, nu se taie.</li></ul></div>
+</div></section>
+
+<!-- 09 MARCA -->
+<section class="xpan p-ink" id="s9"><div class="xin">
+ <div class="xtag"><span class="xmono">( 09 )</span><span class="xmono">marca</span></div>
+ <h2 class="xdisp xup">Logotipul e <em>sculptat</em>,<br>nu tastat.</h2>
+ <span class="xsub">Aceeași gramatică groasă, rotunjită, cu contur maro-ciocolată.</span>
+ <p class="xlead xup">Aceleași forme groase, rotunjite, cu contur maro-ciocolată ca tot restul lumii. Pictogramele se desenează în aceeași gramatică — dacă un semn nou nu arată ca și cum ar fi fost sculptat în același atelier, nu intră.</p>
+ <div class="xg4">
+  <div class="xcard"><div class="im lgbox lgf xslot" data-src="layers/logo-principal.webp"></div><div class="cap">principal · generic, materiale</div></div>
+  <div class="xcard"><div class="im lgbox lgf lt xslot" data-src="layers/logo-curat.webp"></div><div class="cap">curat · antet, endcard, fundal aglomerat</div></div>
+  <div class="xcard"><div class="im lgbox lgf xslot" data-src="layers/logo-emblema.webp"></div><div class="cap">emblemă · avatar, favicon, merch</div></div>
+  <div class="xcard"><div class="im lgbox lgf xslot" data-src="layers/logo-descriptor.webp"></div><div class="cap">cu descriptor · poster, prezentare</div></div>
+ </div>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">așa da</div><h3>Cum se folosește</h3>
+   <ul><li class="yes">Spațiu liber în jur cât înălțimea ochelarilor</li><li class="yes">Lățime minimă 140px digital / 32mm print</li><li class="yes">Pe fundal cald: crem, lemn, verde-pădure</li><li class="yes">Emblema pentru avatar, orizontalul pentru antet</li></ul></div>
+  <div class="xvbox"><div class="who">așa nu</div><h3>Ce nu se face niciodată</h3>
+   <ul><li class="no">Rescris cu alt font sau reconstruit</li><li class="no">Gradient, umbră lungă, contur în plus</li><li class="no">Înclinat, întins, rotit</li><li class="no">Pe fotografie aglomerată, fără contrast</li><li class="no">Pe fundal rece sau albastru</li></ul></div>
+ </div>
+ <div class="xg4" style="margin-top:16px" id="pictos"></div>
+</div></section>
+
+<!-- 10 CULOAREA -->
+<section class="xpan p-paper" id="s10"><div class="xin">
+ <div class="xtag"><span class="xmono">( 10 )</span><span class="xmono">culoarea</span></div>
+ <h2 class="xdisp xup">Paleta e <em>măsurată</em>,<br>nu aleasă.</h2>
+ <span class="xsub">Șapte culori extrase din materiale, plus conturul. Nu se adaugă altele.</span>
+ <p class="xlead xup">Culorile de mai jos au fost extrase din materialele deja generate, nu inventate la masă. Galbenul e semnul seriei și se păstrează pentru ochelari, soare și accent. Nu se adaugă altele.</p>
+ <div class="xsw" id="swatches"></div>
+ <div class="xg3" style="margin-top:20px">
+  <div class="xvbox"><h3>Cum se împart</h3>
+   <ul><li>Crem — fundalul implicit, hârtia lumii</li><li>Lemn și apricot — masa, cabana, blana lui Peter</li><li>Verde-pădure — natura, niciodată textul</li><li>Teal — accentul rece unic: tricoul, vopseaua, apa</li><li>Galben — doar semn: ochelari, soare, stea</li></ul></div>
+  <div class="xvbox"><h3>Ce nu se folosește</h3>
+   <ul><li class="no">Negru pur și alb pur</li><li class="no">Albastru rece dominant — excepție unică: fereastra dormitorului, noaptea</li><li class="no">Gradiente reci, neon, culori acide</li><li class="no">Roșu de alarmă</li></ul></div>
+  <div class="xvbox"><h3>Lumina</h3>
+   <p>Caldă, aurie, în fiecare cadru. Profunzime mică de câmp. Lumina intră pe fereastra arcuită, din dreapta. Cascada e singura locație cu virare rece aprobată — dar soarele de deasupra rămâne cald.</p></div>
+ </div>
+</div></section>
+
+<!-- 11 TIPOGRAFIA -->
+<section class="xpan p-panel" id="s11"><div class="xin">
+ <div class="xtag"><span class="xmono">( 11 )</span><span class="xmono">tipografia</span></div>
+ <h2 class="xdisp xup">Două voci.<br>Una <em>groasă</em>, una limpede.</h2>
+ <span class="xsub">Bouncer la titluri, Poppins la subtitluri, Comfortaa la text.</span>
+ <p class="xlead xup">Titlurile în fontul de afiș, rotund și gros, ca literele din logo. Textul în Comfortaa — rotund, deschis, cu diacritice complete. Orice font ales trebuie să aibă ă â î ș ț; butoanele de mai jos verifică asta singure, în browser.</p>
+ <div class="xg3" style="margin-top:22px">
+  <div class="xvbox"><div class="who">titluri</div>
+   <h3 style="font-size:clamp(26px,3.4vw,42px)">Super Bouncer</h3>
+   <p class="xsub" style="margin-top:6px">Aa Bb Cc · Ăă Ââ Îî Șș Țț · 0123</p>
+   <ul><li>Numai titluri și titluri de casetă</li><li>Diacritice complete, minuscule complete</li><li>Interlinie minimă 1,12 — are ascendere mare</li><li class="no">Nu se folosește la text curent</li></ul></div>
+  <div class="xvbox"><div class="who">subtitluri și text mic</div>
+   <h3 style="font-family:'Poppins Sub',sans-serif!important;font-weight:700!important;font-size:clamp(24px,3vw,36px)">Poppins</h3>
+   <p class="xsub" style="font-family:'Poppins Sub',sans-serif!important;margin-top:6px">Aa Bb Cc · Ăă Ââ Îî Șș Țț · 0123</p>
+   <ul><li>Subtitlul de sub fiecare titlu</li><li>Liste, etichete, capțiuni, numere de secțiune</li><li>Singurul care se citește curat sub 13px</li><li>Medium 500 la text, Bold 700 la etichete</li></ul></div>
+  <div class="xvbox"><div class="who">corp de text</div>
+   <h3 style="font-family:'Comfortaa',sans-serif!important;font-weight:700!important;font-size:clamp(24px,3vw,36px)">Comfortaa</h3>
+   <p class="xsub" style="font-family:'Comfortaa',sans-serif!important;margin-top:6px">Aa Bb Cc · Ăă Ââ Îî Șș Țț · 0123</p>
+   <ul><li>Paragrafe, lead-uri, citate</li><li>Regular 400 la text, Bold 700 la accente</li><li class="no">Nu sub 13px — literele sunt late, x-height mic</li></ul></div>
+ </div>
+ <div class="xtrow"><span class="xmono">titlu / afiș</span><div class="xdisp" style="font-size:clamp(26px,4vw,54px)">Împreună construim orice</div></div>
+ <div class="xtrow"><span class="xmono">subtitlu</span><div style="font-family:var(--dsp);font-weight:600;font-size:clamp(18px,2.4vw,30px)">Ochelarii coboară. Începe construcția.</div></div>
+ <div class="xtrow"><span class="xmono">text curent / nunito</span><div style="max-width:56ch;line-height:1.65;font-size:15px">Un atelier cald, o problemă pe zi și un cățel care găsește ce nu se vede. Șapte cuvinte cu diacritice: ăsta, început, țâșnește, așa, împărțit.</div></div>
+ <div class="xtrow"><span class="xmono">etichetă / sistem</span><div class="xmono">( canon · ciornă · lipsă · de regenerat )</div></div>
+ <div class="xg2" style="margin-top:20px">
+  <div class="xvbox"><h3>Reguli de scriere</h3>
+   <ul><li>Titlurile se scriu normal, nu forțat cu majuscule</li><li>Numele „Matei &amp; Peter" nu se traduce niciodată</li><li>Taglineul rămâne în engleză: DREAM · BUILD · EXPLORE</li><li>Fără majuscule pe blocuri lungi de text</li></ul></div>
+  <div class="xvbox"><h3>Unde NU apare tipografia</h3>
+   <p>Nicăieri în lumea filmată. Tipografia trăiește doar în materialele despre serie — deck, site, ambalaj, generic. În cadru nu există literă. Vezi secțiunea 13.</p></div>
+ </div>
+</div></section>
+
+<!-- 12 MISCARE SI SUNET -->
+<section class="xpan p-wood" id="s12"><div class="xin">
+ <div class="xtag"><span class="xmono">( 12 )</span><span class="xmono">mișcare și sunet</span></div>
+ <h2 class="xdisp xup">Nimic nu <em>sare</em>.<br>Totul se așază.</h2>
+ <span class="xsub">Fiecare animație face un singur lucru: arată ceva ce înainte nu se vedea.</span>
+ <div class="xg3">
+  <div class="xmdemo dm" tabindex="0">
+    <span class="t">bam · graba <i class="cue">trece cu mouse-ul</i></span>
+    <div class="dstage">
+      <i class="plank"></i><i class="nail"></i>
+      <img class="dbam" src="layers/tool-1.webp" alt="">
+      <i class="spark"></i>
+    </div>
+    <span class="t">două ezitări, apoi lovește. Nerăbdarea se vede din ritm.</span></div>
+
+  <div class="xmdemo dm" tabindex="0">
+    <span class="t">snap · precizia <i class="cue">trece cu mouse-ul</i></span>
+    <div class="dstage dsnap">
+      <i class="board"></i><i class="tape"></i><i class="tick"></i>
+    </div>
+    <span class="t">se întinde până se potrivește fix cu muchia. Măsoară de două ori.</span></div>
+
+  <div class="xmdemo dm" tabindex="0">
+    <span class="t">bubble · adevărul <i class="cue">trece cu mouse-ul</i></span>
+    <div class="dstage dbub">
+      <i class="lvl"><b class="bub"></b><s></s></i>
+    </div>
+    <span class="t">lemnul se îndreaptă, bula se așază la mijloc. Fără un cuvânt.</span></div>
+ </div>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">mișcare</div><h3>Reguli</h3>
+   <ul><li>Durată 0,8–1,2 s, easing expo.out — lent, cald, niciodată vioi</li><li class="no">Nimic nu sare, nimic nu face bounce</li><li>Reveal-urile se întâmplă o singură dată, nu la fiecare scroll</li><li class="no">Panoramări bruște, tăieturi seci, stroboscop, rotații 3D</li><li>Pe mobil, hover-urile devin declanșate de scroll</li></ul></div>
+  <div class="xvbox"><div class="who">sunet</div><h3>Ce se generează și ce nu</h3>
+   <ul><li>La generare: doar voce (EN) și SFX. Fiecare prompt video se termină cu „No background music".</li><li>La montaj: un singur underscore instrumental pe episod, ~120 s, ~108 BPM, tonalitate majoră</li><li>Cue magic 20–30 s · sting de logo 4 s · același BPM ca tema</li><li>Cântecelul-semnătură însoțește montajul de construcție</li><li class="no">Muzică într-un clip generat, voci în underscore, muzică peste dialog</li></ul></div>
+ </div>
+</div></section>
+
+<!-- 13 FARA TEXT -->
+<section class="xpan p-goggle" id="s13"><div class="xin">
+ <div class="xtag"><span class="xmono">( 13 )</span><span class="xmono">lumea fără text</span></div>
+ <h2 class="xdisp xup">Lumea asta<br><em>nu are text</em>.</h2>
+ <span class="xsub">Nicio literă în cadru. Pictograma spune același lucru, în orice limbă.</span>
+ <p class="xlead xup">Firma atelierului, tabla cu planul zilei și etichetele de pe lăzi — tăiate. Nu se scriu nici în engleză, nici în română. Nu există. Clauza obligatorie în fiecare prompt: <b>no text, no lettering, no signs, no written words anywhere</b>.</p>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">singurele excepții din toată seria</div><h3>Două locuri cu litere</h3>
+   <ul><li class="yes">Medalionul lui Peter — litera <b>P</b></li><li class="yes">Logo-ul de intro / outro — <b>Matei &amp; Peter</b> + DREAM · BUILD · EXPLORE</li></ul>
+   <p style="margin-top:10px">Asta e tot. Nicăieri altundeva, niciun cuvânt.</p></div>
+  <div class="xvbox"><div class="who">ce punem în loc</div><h3>Pictograme, nu cuvinte</h3>
+   <ul><li>Firma → plăcuță de lemn cu ochelarii sculptați și soarele</li><li>Tabla → desene cu creta: silueta obiectului de azi, plus bife</li><li>Lăzile → pictograme pictate: lemn, sfoară, vopsea, stea</li><li>Culcușul lui Peter → o amprentă de lăbuță pictată</li></ul></div>
+ </div>
+ <div class="xg4" style="margin-top:16px">
+  <div class="xvbox"><h3>Româna e gratuită</h3><p>Zero text ars în imagine = zero re-randări pentru dublaj.</p></div>
+  <div class="xvbox"><h3>Modelul nu mai greșește</h3><p>Litera scrisă greșit era cea mai frecventă eroare din fișele generate. Fără text, dispare o clasă întreagă de rebut.</p></div>
+  <div class="xvbox"><h3>Publicul nu citește</h3><p>Textul era pentru părinți și pentru noi. Pictograma vorbește direct cu copilul.</p></div>
+  <div class="xvbox"><h3>Orice teritoriu</h3><p>Seria se poate vinde oriunde fără să se atingă un singur cadru.</p></div>
+ </div>
+</div></section>
+
+<!-- 14 PRODUCTIA -->
+<section class="xpan p-ink" id="s14"><div class="xin">
+ <div class="xtag"><span class="xmono">( 14 )</span><span class="xmono">producția</span></div>
+ <h2 class="xdisp xup">Ordinea nu e<br><em>negociabilă</em>.</h2>
+ <span class="xsub">Elements, style master, découpage. Fiecare pas depinde de cel dinainte.</span>
+ <p class="xlead xup">Fiecare pas depinde de cel dinainte. Personajele și decorurile sunt Elements, nu Souls. Un cadru aprobat devine style master și se dă drept referință tuturor celorlalte cadre din secvență.</p>
+ <div class="xg2">
+  <div class="xvbox"><div class="who">coada de producție</div><h3>În ordinea asta, fără excepții</h3>
+   <ul><li><b>1</b> Element Matei nou — pantaloni scurți, tricou curat → fișă nouă de 18 cadre</li><li><b>2</b> Element Atelier nou — zero text, pictograme, stejar la fereastră</li><li><b>3</b> Style master nou pe cele două → referința întregii serii</li><li><b>4</b> Cadrele 1–8 din secvența 1, refăcute</li><li><b>5</b> Element Luca + fișă, după aprobarea designului</li><li><b>6</b> Element Bufnița + fișă, după nume și design</li><li><b>7</b> Element Exterior cabană, cu stejarul</li><li><b>8</b> Fișe pentru Bam · Snap · Bubble · Grip</li><li><b>9</b> Element Dormitor — noapte, două paturi, cârligul</li><li><b>10</b> Element Cascada — abia la primul episod care are nevoie</li></ul></div>
+  <div class="xvbox"><div class="who">reguli de pipeline</div><h3>Cum se generează</h3>
+   <ul><li>Découpage ca la film: plan general → master → câmp/contracâmp → two-shot → insert</li><li>Un cadru ≈ un clip de 4–5 secunde</li><li>Video: start_image = cadrul aprobat; image_references = fișele din acel cadru</li><li>Orice personaj sau locație nouă: întâi biblie, apoi element, apoi master</li><li>Master-ul de sunet pe piste separate — dialog / SFX / muzică</li></ul></div>
+ </div>
+ <div class="xg3" style="margin-top:16px">
+  <div class="xvbox"><div class="who">de regenerat</div><h3>Ce e invalid acum</h3>
+   <ul><li>Elementul Matei — blugi lungi și text pe tricou</li><li>Fișa Matei, 18 fișiere</li><li>Elementul Atelier — semnalistică românească arsă în imagine</li><li>Style master secvența 1</li><li>Cadrele 1–8 din secvența 1</li></ul></div>
+  <div class="xvbox"><div class="who">valid</div><h3>Ce rămâne</h3>
+   <ul><li class="yes">Elementul Peter</li><li class="yes">Setul de referință Peter, 35 fișiere</li><li class="yes">Setul Atelier ca atmosferă — dar nu ca semnalistică</li><li class="yes">Logo-ul și pictogramele</li></ul></div>
+  <div class="xvbox"><div class="who">de decis</div><h3>Ce blochează restul</h3>
+   <ul><li>Designul lui Luca și frecvența de 2 din 3 episoade</li><li>Numele și designul Bufniței</li><li>Promovăm exteriorul cabanei la element propriu?</li><li>Părinții — niciodată în cadru, sau o voce de la parter?</li><li>Ritualul de seară în fiecare episod, sau doar seara?</li></ul></div>
+ </div>
+</div></section>
+
+<!-- 15 BLOCAT -->
+<section class="xpan p-panel" id="s15"><div class="xin">
+ <div class="xtag"><span class="xmono">( 15 )</span><span class="xmono">blocat — nu se modifică</span></div>
+ <h2 class="xdisp xup"><em>Canon</em>.</h2>
+ <span class="xsub">Ce s-a hotărât rămâne hotărât.</span>
+ <div class="xlock" style="margin-top:20px">
+  <h3>Deciziile blocate</h3>
+  <ol>
+   <li><b>Tema</b> — greșeala ca pas din construcție. Beat-ul greșelii e obligatoriu în fiecare episod.</li>
+   <li><b>Limba</b> — engleza e master, româna e dublată cu lipsync, pe episodul EN blocat.</li>
+   <li><b>Plafonul</b> — maximum 4 entități cu nume în cadru simultan.</li>
+   <li><b>Lumea nu are text</b> — doar pictograme. Excepții: „P" pe medalion, logo-ul de intro/outro.</li>
+   <li><b>Cabana e casa lor</b> — atelier jos, dormitor sus, o scară între ele.</li>
+   <li><b>Patru locații</b> — atelier, exterior, dormitor, cascadă. Orice altceva intră întâi în biblie.</li>
+   <li><b>Patru unelte</b>, mute — Bam, Snap, Bubble, Grip. Restul, recuzită fără nume.</li>
+   <li><b>Peter nu vorbește</b> niciodată și nu pierde niciodată ochelarii sau zgarda.</li>
+   <li><b>Culorile</b> sunt fixe: crem, lemn, apricot, verde, teal, galben, contur maro-ciocolată.</li>
+   <li><b>Ritualul de deschidere</b> nu se scurtează, nu se reordonează, nu se sare.</li>
+  </ol>
+ </div>
+ <div class="xrr">
+  <div class="xdo"><span class="t">( ✓ așa arată seria )</span><p>Un atelier cald și o problemă practică<br>O greșeală vizibilă, îndreptată de el<br>Un cățel care găsește ce nu se vede<br>O bufniță care întreabă, nu care predă</p></div>
+  <div class="xdont"><span class="t">( ✗ așa nu arată niciodată )</span><p>Un personaj negativ sau o amenințare<br>Un adult care rezolvă problema<br>Șapte unelte care vorbesc<br>Un cadru cu text scris în el</p></div>
+ </div>
+</div></section>
+
+</div>
+
+<footer class="xfoot">
+ <span class="xmono">Matei &amp; Peter — sistem de brand · ediția 2026</span>
+ <span class="xmono">canon 30.07.2026 · biblia seriei</span>
+ <span class="xmono">© KSM Production</span>
+</footer>
+
+
+<div class="toast" id="toast">copiat</div>
+
+
+<script src="https://bmarginean1.github.io/ksm-website/mateipeter/f/app.js" defer></script>
+</body>
+</html>

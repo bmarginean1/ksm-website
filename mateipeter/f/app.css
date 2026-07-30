@@ -1,0 +1,1488 @@
+
+
+
+:root{
+  --goggle:#FFB703; --teal:#147C97; --apricot:#D98B31; --moss:#49603A;
+  --wood:#965515; --wood-deep:#5E1B05;
+  --cream:#F6EEDF; --paper:#FCF8F0; --ink:#1A0F09; --ink-2:#3C2A1D;
+  --muted:#8C7561; --line:rgba(26,15,9,.15);
+  --pad:clamp(20px,5vw,64px); --maxw:1240px; --e:cubic-bezier(.16,1,.3,1);
+  --dsp:'Bouncer'; --dsp-w:400; --dsp-tr:.004em; --body:'Comfortaa';
+}
+*{box-sizing:border-box}
+html{background:var(--cream)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--body),'Avenir Next','Helvetica Neue','Segoe UI',system-ui,sans-serif;
+  font-feature-settings:'locl' 1;font-variant-ligatures:none;
+  font-size:clamp(15.5px,1.05vw,17px);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{margin:0;font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui,sans-serif;font-feature-settings:'locl' 1;
+  font-weight:var(--dsp-w);line-height:1.02;letter-spacing:var(--dsp-tr)}
+p{margin:0} a{color:inherit;text-decoration:none} img{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.03;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:70;padding:10px 0;transition:.45s var(--e)}
+.nav.stuck{background:rgba(246,238,223,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line)}
+.navin{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;gap:20px}
+.navmark{display:flex;align-items:center;flex:none}
+.navmark img{height:clamp(42px,4.6vw,64px);width:auto;display:block;
+  filter:drop-shadow(0 4px 10px rgba(26,15,9,.18));
+  transition:height .4s var(--e),transform .4s var(--e)}
+.nav.stuck .navmark img{height:clamp(34px,3.4vw,46px)}
+.navmark:hover img{transform:translateY(-2px) scale(1.03)}
+.navnums{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.navnums a{font-size:11px;font-weight:700;color:var(--muted);padding:7px 10px;border-radius:100px;transition:.3s}
+.navnums a:hover{color:var(--ink)} .navnums a.on{color:var(--ink);background:rgba(26,15,9,.07)}
+@media(max-width:1500px){.navnums{display:none}}
+.prog{position:fixed;top:0;left:0;height:3px;background:var(--goggle);z-index:80;width:0}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 0 60px;position:relative}
+.herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,60px);align-items:center}
+@media(max-width:900px){.herogrid{grid-template-columns:1fr}}
+.eyebrow{display:flex;gap:14px;align-items:center;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.eyebrow i{flex:1;height:1px;background:var(--line)}
+.hero h1{font-size:clamp(46px,9.5vw,132px);line-height:.92}
+.hero h1 span{color:var(--wood)}
+.hero .sub{margin-top:26px;max-width:46ch;color:var(--ink-2);font-size:clamp(15px,1.15vw,18px)}
+.badge{display:inline-block;margin-top:26px;font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;border:1.5px solid var(--ink);border-radius:100px;padding:11px 20px}
+.herologo img{width:100%;filter:drop-shadow(0 26px 50px rgba(26,15,9,.22))}
+
+/* SECTIONS */
+section{padding:clamp(52px,7vh,96px) 0;border-top:1px solid var(--line)}
+.paper{background:var(--paper)}
+.dark{background:var(--ink);color:var(--cream);border-top-color:#3a2415}
+.dark .lead,.dark p,.dark li{color:#D6C7B4}
+.dark .num{color:var(--goggle)} .dark h2 i{color:var(--goggle)}
+.dark .card{background:#241609;border-color:#3d2718}
+.shead{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,4vw,52px);align-items:start}
+@media(max-width:760px){.shead{grid-template-columns:1fr;gap:12px}}
+.num{font-size:11px;font-weight:700;letter-spacing:.16em;color:var(--muted);padding-top:.75em;white-space:nowrap}
+h2{font-size:clamp(29px,4.4vw,58px);max-width:21ch}
+h2 i{font-style:italic;color:var(--wood)}
+.lead{margin-top:20px;max-width:60ch;color:var(--ink-2);font-size:clamp(15.5px,1.2vw,18.5px)}
+
+/* CARDS */
+.cards{display:grid;gap:14px;margin-top:clamp(30px,5vh,58px)}
+.c2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.c3{grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.c4{grid-template-columns:repeat(auto-fit,minmax(185px,1fr))}
+.card{background:var(--cream);border:1.5px solid var(--line);border-radius:16px;padding:clamp(20px,2.2vw,30px)}
+.paper .card{background:var(--paper)}
+.card .k{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.card h3{font-size:clamp(18px,1.55vw,23px);margin-bottom:9px}
+.card p{color:var(--ink-2);font-size:15.5px}
+.card ul{margin:10px 0 0;padding:0;list-style:none}
+.card li{position:relative;padding-left:15px;margin:7px 0;font-size:15px;color:var(--ink-2)}
+.card li:before{content:"";position:absolute;left:0;top:.65em;width:5px;height:1.5px;background:var(--muted);border-radius:2px}
+.card.ok{border-color:rgba(73,96,58,.5)} .card.ok .k{color:var(--moss)}
+.card.ko{border-color:rgba(162,69,43,.45)} .card.ko .k{color:#A2452B}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:rgba(26,15,9,.07);padding:1px 5px;border-radius:4px}
+
+/* PALETTE */
+.sw{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:12px;margin-top:clamp(30px,5vh,58px)}
+.chip{cursor:pointer;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:var(--cream);
+  transition:transform .35s var(--e),box-shadow .35s var(--e)}
+.chip:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(26,15,9,.13)}
+.chip .box{height:clamp(120px,17vh,180px)}
+.chip .m{padding:12px 13px 15px;border-top:1.5px solid var(--line)}
+.chip b{display:block;font-size:13px;font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w)}
+.chip code{display:block;margin-top:4px;background:none;padding:0;color:var(--muted)}
+.chip small{display:block;margin-top:7px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.bar{display:flex;height:clamp(64px,8vh,96px);margin-top:22px;border-radius:12px;overflow:hidden;border:1.5px solid var(--line)}
+.bar div{display:flex;align-items:flex-end;padding:10px;font-size:12px;font-weight:700;
+  transition:flex 1.1s var(--e)}
+.hint{margin-top:13px;font-size:13.5px;color:var(--muted)}
+
+/* TYPE */
+.fsw{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(28px,5vh,50px)}
+.fsw button{background:none;border:1.5px solid var(--line);border-radius:100px;padding:9px 17px;cursor:pointer;
+  font-family:inherit;color:var(--ink-2);text-align:left;line-height:1.25;transition:.3s var(--e)}
+.fsw button b{display:block;font-size:15px}
+.fsw button small{display:block;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.fsw button:hover{border-color:var(--ink)}
+.fsw button.on{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.fsw button.on small{color:var(--goggle)}
+.spec{border-top:1px solid var(--line);padding:clamp(22px,3.5vh,38px) 0;display:grid;
+  grid-template-columns:130px 1fr;gap:clamp(16px,3vw,40px);align-items:baseline}
+@media(max-width:700px){.spec{grid-template-columns:1fr;gap:8px}}
+.spec .lbl{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.t-xl{font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:clamp(32px,5.6vw,78px);letter-spacing:var(--dsp-tr);line-height:1.02}
+.t-l{font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:clamp(21px,2.5vw,35px);letter-spacing:var(--dsp-tr)}
+.t-b{font-size:16.5px;max-width:56ch;color:var(--ink-2)}
+.t-k{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.diac{margin-top:11px;font-size:13px;color:var(--moss);font-weight:700}
+
+/* FILM */
+.film{height:300vh;position:relative;background:var(--ink);color:var(--cream)}
+.stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(65% 55% at 50% 45%,rgba(255,183,3,.13),transparent 72%)}
+#filmimg{max-width:min(74vw,900px);max-height:70vh}
+.rail{position:absolute;left:var(--pad);top:50%;transform:translateY(-50%);z-index:3}
+.rail div{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(246,238,223,.3);padding:6px 0;transition:.4s var(--e)}
+.rail div.on{color:var(--goggle)}
+.pct{position:absolute;right:var(--pad);bottom:var(--pad);font-family:var(--dsp),'Avenir Next',system-ui;font-weight:var(--dsp-w);
+  font-size:clamp(18px,2.4vw,34px);color:rgba(246,238,223,.4);z-index:3;letter-spacing:.02em}
+.fcap{position:absolute;left:var(--pad);bottom:var(--pad);max-width:42ch;z-index:3}
+.fcap b{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--goggle);margin-bottom:7px}
+.fcap p{font-size:clamp(15px,1.35vw,18px);color:#D6C7B4}
+.skip{position:absolute;right:var(--pad);top:calc(var(--pad) + 26px);font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(246,238,223,.45);z-index:4}
+.skip:hover{color:var(--goggle)}
+@media(max-width:760px){.rail{display:none}}
+
+/* MARQUEE */
+.mq{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:13px 0;display:flex}
+.mq span{font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:clamp(24px,4vw,52px);
+  letter-spacing:var(--dsp-tr);padding-right:.35em;animation:mq 28s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+
+/* ICONS */
+.icons{display:grid;grid-template-columns:repeat(auto-fit,minmax(136px,1fr));gap:12px;margin-top:clamp(30px,5vh,58px)}
+.ic{border:1.5px solid var(--line);border-radius:16px;background:var(--cream);padding:22px 14px 18px;text-align:center;transition:.35s var(--e)}
+.paper .ic{background:var(--paper)}
+.ic:hover{transform:translateY(-4px);box-shadow:0 14px 26px rgba(26,15,9,.12)}
+.ic svg,.ic img{width:62px;height:62px;display:block;margin:0 auto 14px;object-fit:contain}
+.ic b{display:block;font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:14.5px}
+.ic small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.ic button{margin-top:12px;background:none;border:1.5px solid var(--line);color:var(--muted);border-radius:100px;
+  padding:5px 12px;font-family:inherit;font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;cursor:pointer;transition:.3s}
+.ic button:hover{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+
+/* LOCKUPS */
+.locks{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px;margin-top:clamp(30px,5vh,58px)}
+.lk{aspect-ratio:4/3;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  padding:24px;position:relative;overflow:hidden;border:1.5px solid var(--line)}
+.lk img{max-width:80%;max-height:76%;object-fit:contain}
+.lk span{position:absolute;left:15px;bottom:12px;font-size:9.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;opacity:.6}
+.on-cream{background:var(--cream)} .on-wood{background:var(--wood);color:var(--cream)}
+.on-ink{background:var(--ink);color:var(--cream)} .on-goggle{background:var(--goggle)}
+
+/* THUMBS */
+.thumbs{display:grid;grid-template-columns:repeat(auto-fit,minmax(295px,1fr));gap:16px;margin-top:clamp(30px,5vh,58px)}
+.th{border:1.5px solid var(--line);border-radius:16px;overflow:hidden;background:var(--cream)}
+.th .fr{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative}
+.th .fr.g{background:radial-gradient(120% 120% at 32% 22%,#C9903F,#8A4C13)}
+.th .fr.b{background:#E03A22}
+.th .fr img{max-width:56%;max-height:78%}
+.th .tag{position:absolute;top:11px;left:11px;font-size:9px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:5px 10px;border-radius:100px}
+.th .cap{padding:14px 16px;font-size:13.5px;color:var(--ink-2);border-top:1.5px solid var(--line)}
+
+/* RULES */
+.rules{margin-top:clamp(30px,5vh,58px);border-top:1px solid var(--line)}
+.rule{display:grid;grid-template-columns:48px 1fr;gap:clamp(12px,2vw,28px);padding:20px 0;
+  border-bottom:1px solid var(--line);align-items:start}
+.rule .n{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);padding-top:.3em}
+.rule p{font-size:16px}
+
+/* STACK */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:clamp(30px,5vh,58px)}
+.st{background:#241609;border:1.5px solid #3d2718;border-radius:16px;padding:22px 20px}
+.st a{font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:17px;border-bottom:2px solid var(--goggle);padding-bottom:1px}
+.st p{margin-top:9px;font-size:14px}
+
+footer{background:var(--ink);color:#C9B8A4;padding:clamp(56px,8vh,100px) 0 36px}
+footer .big{font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:clamp(30px,6vw,84px);
+  letter-spacing:var(--dsp-tr);color:var(--cream);line-height:1}
+footer .fb{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:46px;
+  padding-top:20px;border-top:1px solid #3d2718;font-size:12.5px}
+
+/* REVEAL */
+html.js .r{opacity:0;transform:translateY(26px);transition:opacity .8s var(--e),transform .8s var(--e)}
+html.js .r.in{opacity:1;transform:none}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,24px);opacity:0;z-index:95;
+  background:var(--ink);color:var(--cream);padding:11px 21px;border-radius:100px;font-size:12.5px;
+  font-weight:700;transition:.4s var(--e);pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+
+/* ============ LOADER ============ */
+.loader{position:fixed;inset:0;z-index:200;background:var(--wood-deep);color:var(--cream);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  transition:opacity .9s var(--e),visibility .9s}
+.loader.gone{opacity:0;visibility:hidden}
+.loader img{width:min(46vw,340px);opacity:0;transform:scale(.9);transition:1s var(--e)}
+.loader.show img{opacity:1;transform:none}
+.lbar{width:min(56vw,320px);height:3px;background:rgba(246,238,223,.18);border-radius:9px;overflow:hidden}
+.lbar i{display:block;height:100%;width:0;background:var(--goggle);transition:width .3s linear}
+.lpct{font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:13px;letter-spacing:.2em;color:var(--goggle)}
+
+/* ============ DIORAMA HERO ============ */
+.dio{position:relative;height:210vh;
+  background:transparent}
+.diostage{position:sticky;top:0;height:100vh;overflow:hidden;
+  background:linear-gradient(#F7E7C4 0%,#F3E2C8 42%,#F6EEDF 100%)}
+.diostage>*{will-change:transform,opacity}
+/* portalul: fereastra atelierului care crește peste tot ecranul */
+.portal{position:absolute;left:50%;top:50%;width:300px;height:340px;transform:translate(-50%,-50%);
+  z-index:9;pointer-events:none;opacity:0}
+.portal .glass{position:absolute;inset:0;border-radius:999px 999px 18px 18px;background:#1A0F09;
+  border:14px solid #5E1B05;box-shadow:0 0 0 200vmax rgba(26,15,9,0);overflow:hidden}
+.portal .glow{position:absolute;inset:0;border-radius:999px 999px 10px 10px;
+  background:radial-gradient(60% 55% at 50% 45%,rgba(255,183,3,.22),transparent 72%)}
+.dl{position:absolute;left:0;right:0;bottom:0;width:100%;will-change:transform}
+.dl svg{display:block;width:100%;height:auto}
+.dl-sun{top:7vh;left:auto;right:12%;bottom:auto;width:clamp(70px,7.5vw,110px);opacity:.9}
+.dl-cloud{top:0;height:100%}
+.dl-cloud .c{position:absolute;opacity:.9}
+.dio .title{position:absolute;left:0;right:0;bottom:5.5vh;text-align:center;z-index:8;padding:0 var(--pad)}
+.dio .title .kick{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream);opacity:.75;margin-bottom:8px}
+.dio .title h1{font-size:clamp(24px,3.6vw,50px);line-height:1;color:var(--cream);
+  text-shadow:0 3px 12px rgba(26,15,9,.45)}
+.dio .title h1 span{color:var(--goggle);-webkit-text-stroke:2px var(--wood-deep);paint-order:stroke fill}
+.dio .logo{position:absolute;left:50%;top:37vh;transform:translate(-50%,-50%);width:min(42vw,520px);z-index:7}
+.dio .logo img{width:100%;filter:drop-shadow(0 24px 44px rgba(26,15,9,.3))}
+.scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:8;font-size:10.5px;
+  font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-deep);opacity:.6;
+  animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+@media(max-width:760px){.dio .logo{width:78vw;top:56vh}.dio .title{top:16vh}}
+
+/* ============ FEREASTRA / FILM ============ */
+.win{height:210vh;position:relative;background:var(--wood)}
+.win .stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.frame{position:relative;width:min(58vw,700px);aspect-ratio:4/3;border-radius:min(38vw,440px) min(38vw,440px) 24px 24px;
+  background:var(--ink);border:clamp(10px,1.6vw,22px) solid var(--wood-deep);overflow:hidden;
+  box-shadow:0 40px 90px rgba(26,15,9,.45), inset 0 0 80px rgba(0,0,0,.55)}
+.frame:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 55% at 50% 42%,rgba(255,183,3,.16),transparent 74%)}
+.frame img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  max-width:64%;max-height:58%;width:auto;object-fit:contain}
+.mullion{position:absolute;inset:0;pointer-events:none;z-index:3}
+.mullion i{position:absolute;background:var(--wood-deep);opacity:.9}
+.mullion i.v{left:50%;top:0;bottom:0;width:clamp(6px,.8vw,11px);transform:translateX(-50%)}
+.mullion i.h{left:0;right:0;top:56%;height:clamp(6px,.8vw,11px)}
+@media(max-width:760px){.frame{width:88vw}}
+
+/* ============ MENIU FULLSCREEN ============ */
+.burger{margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:100px;
+  padding:8px 15px;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;cursor:pointer;color:var(--ink)}
+.burger:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.menu{position:fixed;inset:0;z-index:120;background:var(--wood-deep);color:var(--cream);
+  display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad);
+  opacity:0;visibility:hidden;transition:.6s var(--e)}
+.menu.on{opacity:1;visibility:visible}
+.menu a{display:block;font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);letter-spacing:var(--dsp-tr);
+  font-size:clamp(26px,6vw,74px);line-height:1.12;color:var(--cream);opacity:.55;transition:.3s var(--e)}
+.menu a:hover{opacity:1;color:var(--goggle);transform:translateX(14px)}
+.menu a i{font-style:normal;font-size:.28em;letter-spacing:.2em;color:var(--goggle);
+  vertical-align:middle;margin-right:16px;opacity:.8}
+.menu .close{position:absolute;top:22px;right:var(--pad);font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--goggle);cursor:pointer;
+  font-family:var(--body);background:none;border:0}
+@media(max-width:900px){.burger{display:block}}
+
+
+/* ============ LOADER ============ */
+.loader{position:fixed;inset:0;z-index:200;background:var(--wood-deep);color:var(--cream);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+  transition:opacity .9s var(--e),visibility .9s}
+.loader.gone{opacity:0;visibility:hidden}
+.loader img{width:min(46vw,340px);opacity:0;transform:scale(.9);transition:1s var(--e)}
+.loader.show img{opacity:1;transform:none}
+.lbar{width:min(56vw,320px);height:3px;background:rgba(246,238,223,.18);border-radius:9px;overflow:hidden}
+.lbar i{display:block;height:100%;width:0;background:var(--goggle);transition:width .3s linear}
+.lpct{font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:13px;letter-spacing:.2em;color:var(--goggle)}
+
+/* ============ DIORAMA HERO ============ */
+.dio{position:relative;height:210vh;
+  background:transparent}
+.diostage{position:sticky;top:0;height:100vh;overflow:hidden;
+  background:linear-gradient(#F7E7C4 0%,#F3E2C8 42%,#F6EEDF 100%)}
+.diostage>*{will-change:transform,opacity}
+/* portalul: fereastra atelierului care crește peste tot ecranul */
+.portal{position:absolute;left:50%;top:50%;width:300px;height:340px;transform:translate(-50%,-50%);
+  z-index:9;pointer-events:none;opacity:0}
+.portal .glass{position:absolute;inset:0;border-radius:999px 999px 18px 18px;background:#1A0F09;
+  border:14px solid #5E1B05;box-shadow:0 0 0 200vmax rgba(26,15,9,0);overflow:hidden}
+.portal .glow{position:absolute;inset:0;border-radius:999px 999px 10px 10px;
+  background:radial-gradient(60% 55% at 50% 45%,rgba(255,183,3,.22),transparent 72%)}
+.dl{position:absolute;left:0;right:0;bottom:0;width:100%;will-change:transform}
+.dl svg{display:block;width:100%;height:auto}
+.dl-sun{top:7vh;left:auto;right:12%;bottom:auto;width:clamp(70px,7.5vw,110px);opacity:.9}
+.dl-cloud{top:0;height:100%}
+.dl-cloud .c{position:absolute;opacity:.9}
+.dio .title{position:absolute;left:0;right:0;bottom:5.5vh;text-align:center;z-index:8;padding:0 var(--pad)}
+.dio .title .kick{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream);opacity:.75;margin-bottom:8px}
+.dio .title h1{font-size:clamp(24px,3.6vw,50px);line-height:1;color:var(--cream);
+  text-shadow:0 3px 12px rgba(26,15,9,.45)}
+.dio .title h1 span{color:var(--goggle);-webkit-text-stroke:2px var(--wood-deep);paint-order:stroke fill}
+.dio .logo{position:absolute;left:50%;top:37vh;transform:translate(-50%,-50%);width:min(42vw,520px);z-index:7}
+.dio .logo img{width:100%;filter:drop-shadow(0 24px 44px rgba(26,15,9,.3))}
+.scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:8;font-size:10.5px;
+  font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-deep);opacity:.6;
+  animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+@media(max-width:760px){.dio .logo{width:78vw;top:56vh}.dio .title{top:16vh}}
+
+/* ============ FEREASTRA / FILM ============ */
+.win{height:210vh;position:relative;background:var(--wood)}
+.win .stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.frame{position:relative;width:min(58vw,700px);aspect-ratio:4/3;border-radius:min(38vw,440px) min(38vw,440px) 24px 24px;
+  background:var(--ink);border:clamp(10px,1.6vw,22px) solid var(--wood-deep);overflow:hidden;
+  box-shadow:0 40px 90px rgba(26,15,9,.45), inset 0 0 80px rgba(0,0,0,.55)}
+.frame:after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 55% at 50% 42%,rgba(255,183,3,.16),transparent 74%)}
+.frame img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  max-width:64%;max-height:58%;width:auto;object-fit:contain}
+.mullion{position:absolute;inset:0;pointer-events:none;z-index:3}
+.mullion i{position:absolute;background:var(--wood-deep);opacity:.9}
+.mullion i.v{left:50%;top:0;bottom:0;width:clamp(6px,.8vw,11px);transform:translateX(-50%)}
+.mullion i.h{left:0;right:0;top:56%;height:clamp(6px,.8vw,11px)}
+@media(max-width:760px){.frame{width:88vw}}
+
+/* ============ MENIU FULLSCREEN ============ */
+.burger{margin-left:auto;background:none;border:1.5px solid var(--line);border-radius:100px;
+  padding:8px 15px;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;cursor:pointer;color:var(--ink)}
+.burger:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.menu{position:fixed;inset:0;z-index:120;background:var(--wood-deep);color:var(--cream);
+  display:flex;flex-direction:column;justify-content:center;padding:0 var(--pad);
+  opacity:0;visibility:hidden;transition:.6s var(--e)}
+.menu.on{opacity:1;visibility:visible}
+.menu a{display:block;font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);letter-spacing:var(--dsp-tr);
+  font-size:clamp(26px,6vw,74px);line-height:1.12;color:var(--cream);opacity:.55;transition:.3s var(--e)}
+.menu a:hover{opacity:1;color:var(--goggle);transform:translateX(14px)}
+.menu a i{font-style:normal;font-size:.28em;letter-spacing:.2em;color:var(--goggle);
+  vertical-align:middle;margin-right:16px;opacity:.8}
+.menu .close{position:absolute;top:22px;right:var(--pad);font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--goggle);cursor:pointer;
+  font-family:var(--body);background:none;border:0}
+@media(max-width:900px){.burger{display:block}}
+
+/* majuscule pe titluri, opțional */
+html[data-up="1"] h2,html[data-up="1"] .dio .title h1,html[data-up="1"] footer .big,
+html[data-up="1"] .mq span{text-transform:uppercase;letter-spacing:-.01em}
+html[data-up="1"] h2{line-height:.98}
+
+
+/* ============ AUDIT SUPARI: ce lipsea ============ */
+/* 1. marquee pe mai multe rânduri, direcții alternante */
+.mqstack{margin:clamp(40px,7vh,90px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  position:relative}
+.mqstack:before,.mqstack:after{content:"";position:absolute;top:0;bottom:0;width:clamp(60px,10vw,160px);z-index:3;pointer-events:none}
+.mqstack:before{left:0;background:linear-gradient(90deg,#F6EEDF 20%,rgba(246,238,223,0))}
+.mqstack:after{right:0;background:linear-gradient(270deg,#F6EEDF 20%,rgba(246,238,223,0))}
+.mqrow{overflow:hidden;white-space:nowrap;display:flex;padding:5px 0;border-bottom:1px solid var(--line);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mqrow:last-child{border-bottom:0}
+.mqrow span{display:inline-block;padding-right:.3em;white-space:nowrap;
+  font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);
+  letter-spacing:var(--dsp-tr);font-size:clamp(22px,3.6vw,50px);line-height:1.1;
+  animation:mqA 34s linear infinite}
+.mqrow.rev span{animation-name:mqB}
+.mqrow.t2 span{font-size:clamp(16px,2.4vw,32px);color:var(--wood);opacity:.6}
+.mqrow.t3 span{font-size:clamp(18px,2.9vw,40px);
+  color:transparent;-webkit-text-stroke:1.6px var(--wood-deep);paint-order:stroke fill}
+@keyframes mqA{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+@keyframes mqB{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+
+/* 2. stele care plutesc, trei rânduri */
+.stars{position:relative;height:clamp(60px,9vh,120px);overflow:hidden}
+.stars .row{position:absolute;left:0;white-space:nowrap;display:flex;gap:clamp(60px,9vw,140px);opacity:.55;
+  animation:mqA 44s linear infinite}
+.stars .row:nth-child(2){top:34%;animation-duration:64s;animation-name:mqB;opacity:.6}
+.stars .row:nth-child(3){top:64%;animation-duration:52s;opacity:.4}
+.stars svg{width:clamp(14px,1.7vw,24px);height:auto;flex:none}
+
+/* 3. titlu tăiat de o imagine (THE / FAMILY) */
+.splitband{position:relative;padding:clamp(60px,10vh,130px) 0 clamp(70px,11vh,150px);background:var(--wood-deep);color:var(--cream);
+  overflow:hidden;text-align:center}
+.splitband h2{color:var(--cream);max-width:none;font-size:clamp(30px,6vw,78px);line-height:1;margin:0}
+.splitband .mid{margin:clamp(14px,2vh,26px) auto;width:min(24vw,240px);position:relative}
+.splitband .mid img{width:100%;filter:drop-shadow(0 20px 44px rgba(0,0,0,.45))}
+.splitband p{max-width:56ch;margin:26px auto 0;color:#D6C7B4;font-size:clamp(15px,1.25vw,18.5px)}
+.splitband .foot{display:inline-block;margin-bottom:12px;font-size:11px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--goggle);opacity:.8}
+
+/* 4. grilă de episoade cu video-slot */
+.eps{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:clamp(30px,5vh,58px)}
+.ep{position:relative;border-radius:18px;overflow:hidden;border:1.5px solid var(--line);background:var(--ink);
+  aspect-ratio:16/10;display:block;transition:transform .5s var(--e),box-shadow .5s var(--e)}
+html.js .ep:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(26,15,9,.28)}
+.ep .poster{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(120% 120% at 30% 20%,#C9903F,#7A3F10)}
+.ep .poster img{width:42%;opacity:.9;filter:drop-shadow(0 14px 26px rgba(0,0,0,.35))}
+.ep video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+.ep.playing video{opacity:1}
+.ep .meta{position:absolute;left:0;right:0;bottom:0;padding:18px 20px 20px;z-index:3;
+  background:linear-gradient(transparent,rgba(26,15,9,.35) 30%,rgba(26,15,9,.92))}
+.ep .meta b{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--goggle);margin-bottom:5px}
+.ep .meta span{display:block;font-family:var(--dsp),'Avenir Next',system-ui;font-weight:var(--dsp-w);
+  color:var(--cream);font-size:clamp(16px,1.5vw,21px);line-height:1.15;letter-spacing:var(--dsp-tr)}
+.ep .pv{position:absolute;top:12px;right:14px;z-index:4;font-size:9.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--cream);opacity:.55}
+
+/* 5. CTA gigant din footer, care e chiar linkul */
+.cta{display:block;padding:clamp(56px,10vh,130px) 0;background:var(--goggle);color:var(--ink);
+  text-align:center;position:relative;overflow:hidden}
+.cta h2{max-width:none;font-size:clamp(30px,7vw,96px);line-height:.94;color:var(--ink)}
+.cta .arrow{display:inline-block;margin-top:22px;font-size:clamp(28px,5vw,64px);
+  transition:transform .5s var(--e)}
+html.js .cta:hover .arrow{transform:translateX(22px)}
+html.js .cta:hover h2{opacity:.86}
+
+/* 6. contacte cu ton jucăuș + credite */
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;
+  margin-top:clamp(34px,5vh,60px)}
+.contacts h4{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--goggle);margin-bottom:12px;font-family:var(--body)}
+.contacts a,.contacts p{display:block;font-size:14px;color:#C9B8A4;margin:5px 0}
+.contacts a:hover{color:var(--cream)}
+.credits{margin-top:clamp(30px,4vh,50px);padding-top:18px;border-top:1px solid #3d2718;
+  display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;font-size:11.5px;color:#8A7460}
+
+
+
+
+/* ============ SCENA CU PATRU STRATURI ============ */
+.scene{position:relative;height:200vh;z-index:10}
+.scene .stage{position:sticky;top:0;height:100vh;overflow:hidden;background:#F3E2C8}
+.lay{position:absolute;inset:0;will-change:transform,opacity}
+/* L1 cer */
+.l1 .sky{position:absolute;inset:0;background:linear-gradient(#F7E7C4 0%,#F3E2C8 46%,#F0E6D2 100%)}
+.l1 .sun{position:absolute;top:8vh;right:13%;width:clamp(64px,7vw,104px)}
+.l1 .cloud{position:absolute;width:clamp(120px,18vw,260px)}
+.l1 .c1{top:13vh;left:6%}.l1 .c2{top:26vh;right:8%;width:clamp(90px,13vw,190px)}
+.l1 .c3{top:6vh;left:38%;width:clamp(80px,11vw,160px)}
+/* L2 dealuri + pădure */
+.l2 .hills{position:absolute;left:-4%;width:108%;bottom:22vh}
+.l2 .forest{position:absolute;left:-4%;width:108%;bottom:14vh}
+/* L3 cabana cu fereastra — filmul e ÎNĂUNTRU */
+.cabin{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
+  width:min(58vw,640px);z-index:3;will-change:transform}
+.cabin .roof{display:block;width:112%;margin:0 -6% -2px}
+.cabin .walls{position:relative;background:#965515;border-radius:0 0 10px 10px;
+  padding:clamp(16px,2.4vw,30px);display:flex;gap:clamp(12px,2vw,26px);align-items:flex-end;justify-content:center}
+.cabin .planks{position:absolute;inset:0;border-radius:0 0 10px 10px;pointer-events:none;
+  background:repeating-linear-gradient(#0000 0 22px,rgba(122,63,16,.55) 22px 25px)}
+.cabin .window{position:relative;width:62%;aspect-ratio:7/6;border-radius:999px 999px 12px 12px;
+  background:#1A0F09;overflow:hidden;box-shadow:inset 0 0 60px rgba(0,0,0,.75)}
+.cabin .screen{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.cabin .screen img{width:auto;height:auto;max-width:none;max-height:none;object-fit:contain}
+.cabin .screen .glow{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(58% 52% at 50% 44%,rgba(255,183,3,.20),transparent 74%)}
+.cabin .mull{position:absolute;inset:0;pointer-events:none;z-index:3}
+.cabin .mull i{position:absolute;background:#5E1B05}
+.cabin .mull i.v{left:50%;top:0;bottom:0;width:clamp(5px,.7vw,10px);transform:translateX(-50%)}
+.cabin .mull i.h{left:0;right:0;top:54%;height:clamp(5px,.7vw,10px)}
+.cabin .frameline{position:absolute;inset:0;pointer-events:none;z-index:4;
+  border:clamp(8px,1.2vw,16px) solid #5E1B05;border-radius:999px 999px 12px 12px}
+.cabin .door{width:26%;aspect-ratio:3/5;background:#5E1B05;border-radius:6px;position:relative}
+.cabin .door span{position:absolute;right:14%;top:52%;width:8%;aspect-ratio:1;border-radius:50%;background:#FFB703}
+/* L4 prim-plan */
+.l4{z-index:6}
+.l4 .ground{position:absolute;left:-6%;width:112%;bottom:0}
+.l4 .tree{position:absolute;bottom:-2vh;width:clamp(150px,20vw,320px)}
+.l4 .tl{left:-2%}.l4 .tr{right:-2%}
+.l4 .chars{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);width:min(34vw,380px);opacity:0}
+.l4 .chars img{width:100%}
+/* HUD */
+.scene .hud{position:absolute;inset:0;z-index:8;pointer-events:none}
+.scene .hud .title{position:absolute;left:0;right:0;top:9vh;text-align:center;padding:0 var(--pad)}
+.scene .hud .kick{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--wood-deep);opacity:.6;margin-bottom:8px}
+.scene .hud h1{font-size:clamp(26px,4.6vw,66px);line-height:1;color:var(--wood-deep)}
+.scene .rail{position:absolute;left:var(--pad);top:50%;transform:translateY(-50%)}
+.scene .rail div{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(26,15,9,.28);padding:6px 0;transition:.4s var(--e)}
+.scene .rail div.on{color:var(--wood-deep)}
+.scene .fcap{position:absolute;left:var(--pad);bottom:var(--pad);max-width:40ch}
+.scene .fcap b{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--wood);margin-bottom:6px}
+.scene .fcap p{font-size:clamp(14px,1.25vw,17px);color:var(--ink-2)}
+.scene .pct{position:absolute;right:var(--pad);bottom:var(--pad);
+  font-family:var(--dsp),system-ui;font-weight:var(--dsp-w);font-size:clamp(18px,2.4vw,34px);
+  color:rgba(26,15,9,.32)}
+.scene .scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:10.5px;
+  font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wood-deep);opacity:.55;
+  animation:bob 2.4s ease-in-out infinite}
+.scene .skip{position:absolute;right:var(--pad);top:calc(var(--pad) + 26px);z-index:12;font-size:10.5px;
+  font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--wood-deep);opacity:.6}
+.scene.dark-hud .hud h1,.scene.dark-hud .rail div.on,.scene.dark-hud .fcap p,
+.scene.dark-hud .scrollcue,.scene.dark-hud .skip{color:var(--cream)}
+.scene.dark-hud .fcap b{color:var(--goggle)}
+.scene.dark-hud .pct{color:rgba(246,238,223,.42)}
+@media(max-width:760px){.scene .rail{display:none}.cabin{width:78vw}}
+
+/* ============ LUMEA PERSISTENTĂ, ÎN STRATURI (ca la Supari) ============ */
+.world{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.world .wl{position:absolute;left:-4%;right:-4%;width:108%;will-change:transform}
+.world .wl svg{display:block;width:100%;height:auto}
+.w-sky{inset:0;background:linear-gradient(#F7E7C4 0%,#F3E2C8 38%,#F6EEDF 78%,#EFE3CB 100%)}
+.w-haze{bottom:46vh}.w-far{bottom:34vh}.w-mid{bottom:22vh}.w-ground{bottom:0}
+/* prim-plan care încadrează conținutul, ca „Left Tree / Right Tree / Stones" */
+.fg{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.fg .t{position:absolute;bottom:-2vh;width:clamp(120px,17vw,300px);opacity:.96}
+.fg .t.l{left:-3vw}.fg .t.r{right:-3vw}
+.fg .s{position:absolute;bottom:-1vh;width:clamp(90px,12vw,190px)}
+.fg .s.l{left:8vw}.fg .s.r{right:8vw}
+.fg .cl{position:absolute;width:clamp(140px,22vw,340px);opacity:.75}
+@media(max-width:900px){.fg .t{width:120px}.fg .s{display:none}}
+/* conținutul stă PESTE lume, pe panouri translucide */
+body{background:transparent}
+.nav,.prog,.loader,.menu,.cursor,.cursor-ring,.toast{z-index:120}
+section,.splitband,.cta,footer,.win,.dio,.wrap{position:relative;z-index:10}
+section{background:rgba(246,238,223,.985);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+section.paper{background:rgba(252,248,240,.99)}
+section.dark{background:rgba(26,15,9,.995);-webkit-backdrop-filter:none;backdrop-filter:none}
+.win{background:rgba(150,85,21,1)}
+.splitband{background:rgba(94,27,5,1)}
+/* colțuri rotunjite ca niște „plăci" așezate în lume */
+section,.splitband{border-radius:clamp(18px,2.4vw,34px);margin:0 clamp(0px,1.6vw,26px);
+  box-shadow:0 26px 60px rgba(26,15,9,.10)}
+section+section{border-top:0;margin-top:clamp(10px,1.6vw,22px)}
+
+/* ============ CANON: personaje, locații, producție ============ */
+.pers{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:clamp(30px,5vh,58px)}
+.pcard{border:1.5px solid var(--line);border-radius:20px;overflow:hidden;background:var(--cream);display:flex;flex-direction:column}
+.paper .pcard{background:var(--paper)}
+.pcard .pic{aspect-ratio:4/3;background:linear-gradient(140deg,#F0E4CC,#E4D5B8);display:flex;
+  align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1.5px solid var(--line)}
+.pcard .pic img{width:100%;height:100%;object-fit:contain;padding:14px}
+.pcard .slot{text-align:center;padding:22px;color:var(--muted)}
+.pcard .slot b{display:block;font-family:var(--dsp),system-ui;font-size:15px;color:var(--wood);margin-bottom:8px}
+.pcard .slot code{font-size:11px;background:rgba(26,15,9,.06);padding:2px 7px;border-radius:4px;display:inline-block;margin-top:6px}
+.pcard .st{position:absolute;top:12px;left:12px;font-size:9.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;padding:5px 10px;border-radius:100px;background:var(--ink);color:var(--cream)}
+.pcard .st.draft{background:var(--wood);color:var(--cream)}
+.pcard .body{padding:clamp(18px,2vw,26px);flex:1;display:flex;flex-direction:column;gap:12px}
+.pcard h3{font-size:clamp(19px,1.7vw,25px)}
+.pcard .role{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--wood)}
+.pcard .desc{font-size:14.5px;color:var(--ink-2)}
+.pcard .prompt{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;line-height:1.55;color:var(--muted);
+  background:rgba(26,15,9,.045);border-radius:10px;padding:11px 13px}
+.pcard ul{margin:0;padding:0;list-style:none}
+.pcard li{position:relative;padding-left:16px;margin:5px 0;font-size:13.5px;color:var(--ink-2)}
+.pcard li:before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;border-radius:50%}
+.pcard .yes li:before{background:var(--moss)} .pcard .no li:before{background:#A2452B}
+.pcard h4{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:5px;font-family:var(--body)}
+.beats{counter-reset:bt;margin-top:clamp(30px,5vh,58px);display:grid;gap:10px}
+.beat{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:16px 18px;border:1.5px solid var(--line);
+  border-radius:14px;background:var(--cream);align-items:start}
+.paper .beat{background:var(--paper)}
+.beat.key{border-color:var(--goggle);background:rgba(255,183,3,.07)}
+.beat b{font-family:var(--dsp),system-ui;font-size:17px;color:var(--wood)}
+.beat p{font-size:15px;color:var(--ink-2)}
+.beat span{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.pipe{display:grid;gap:8px;margin-top:clamp(30px,5vh,58px);counter-reset:pp}
+.pipe div{counter-increment:pp;display:flex;gap:16px;padding:13px 4px;
+  border-bottom:1px solid var(--line);align-items:baseline;font-size:15px}
+.pipe div p{margin:0;flex:1;min-width:0}
+.pipe div:before{content:counter(pp,decimal-leading-zero);font-size:11px;font-weight:700;color:var(--goggle);letter-spacing:.1em}
+.dark .pipe div{border-color:#3d2718}
+
+
+/* ============ STRUCTURĂ INDIGO: capitole, chenare, meniuri ============ */
+:root{--ch:#965515}                     /* accentul capitolului curent, se schimbă la scroll */
+.chapters{position:relative;z-index:10}
+.ch{position:relative;padding:0 0 clamp(60px,9vh,120px)}
+.ch .inner{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+
+/* eticheta în paranteze drepte — ticul lor */
+.lbl{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ch);display:inline-block}
+.lbl:before{content:"[ "}.lbl:after{content:" ]"}
+.lbl.mut{color:var(--muted)}
+
+/* copertă de capitol */
+.ch .cover{position:relative;height:min(72vh,660px);border-radius:22px;overflow:hidden;
+  margin:0 clamp(0px,1.6vw,26px);display:flex;align-items:flex-end;
+  border:1px solid var(--line);background:var(--cream-2)}
+.ch .cover .art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.ch .cover .art img{max-width:62%;max-height:70%;object-fit:contain;margin-bottom:6%;
+  filter:drop-shadow(0 30px 60px rgba(26,15,9,.25))}
+.ch .cover .veil{position:absolute;inset:0;background:linear-gradient(transparent 34%,rgba(26,15,9,.62))}
+.ch .cover .cap{position:relative;z-index:2;padding:clamp(22px,4vw,52px);color:var(--cream)}
+.ch .cover h2{font-size:clamp(38px,7vw,96px);line-height:.95;color:var(--cream)}
+.ch .cover p{max-width:42ch;margin-top:14px;color:#E7D9C4;font-size:clamp(15px,1.3vw,19px)}
+
+/* banda cu obiectul care se repetă */
+.floatband{overflow:hidden;white-space:nowrap;display:flex;gap:clamp(24px,3vw,54px);
+  padding:clamp(20px,3vh,40px) 0;align-items:center}
+.floatband svg,.floatband img{width:clamp(46px,5vw,78px);height:auto;flex:none;
+  animation:mqA 40s linear infinite;opacity:.9}
+
+/* marquee despicat, două rânduri în sens opus */
+.splitmq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.splitmq div{white-space:nowrap;display:flex;padding:6px 0}
+.splitmq span{font-family:var(--dsp),system-ui;font-weight:var(--dsp-w);letter-spacing:-.02em;
+  font-size:clamp(30px,6vw,86px);line-height:1;padding-right:.3em;color:var(--ch);
+  animation:mqA 36s linear infinite}
+.splitmq div:nth-child(2) span{animation-name:mqB;color:transparent;
+  -webkit-text-stroke:1.4px var(--ch)}
+
+/* grup editorial de imagini, asimetric */
+.edit{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:clamp(10px,1.6vw,22px);
+  align-items:center;margin-top:clamp(34px,6vh,70px)}
+.edit figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--cream-2)}
+.edit figure:nth-child(2){transform:translateY(-4%)}
+.edit img{width:100%;display:block;aspect-ratio:4/5;object-fit:contain;padding:16px}
+@media(max-width:820px){.edit{grid-template-columns:1fr 1fr}.edit figure:nth-child(3){display:none}}
+
+/* paragraf la persoana întâi */
+.voice{max-width:60ch;margin:clamp(34px,6vh,70px) 0 0;font-size:clamp(17px,1.6vw,24px);
+  line-height:1.5;color:var(--ink-2)}
+
+/* piesa principală + specificații, ca fișa de produs */
+.piece{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(20px,3vw,50px);
+  align-items:center;margin-top:clamp(40px,7vh,90px)}
+@media(max-width:900px){.piece{grid-template-columns:1fr}}
+.piece .shot{border-radius:20px;border:1px solid var(--line);background:var(--cream-2);
+  display:flex;align-items:center;justify-content:center;padding:clamp(20px,3vw,46px);min-height:clamp(280px,42vh,460px)}
+.piece .shot img{max-width:88%;max-height:88%;object-fit:contain}
+.piece h3{font-size:clamp(26px,3.4vw,46px);margin-bottom:16px}
+.piece ul{list-style:none;padding:0;margin:0 0 22px}
+.piece li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-2)}
+.btn{display:inline-block;border:1.5px solid var(--ink);border-radius:100px;padding:12px 24px;
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:.3s var(--e)}
+.btn:hover{background:var(--ink);color:var(--cream)}
+
+/* [POVESTE] / [MEȘTEȘUG] pe două coloane */
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,54px);margin-top:clamp(40px,7vh,90px)}
+@media(max-width:820px){.twocol{grid-template-columns:1fr}}
+.twocol h4{font-size:clamp(18px,2vw,26px);margin:10px 0 12px}
+.twocol p{font-size:15.5px;color:var(--ink-2);line-height:1.65}
+
+/* „sunetul dinăuntru" + play */
+.sound{margin-top:clamp(46px,8vh,100px);text-align:center;padding:clamp(34px,6vh,70px) var(--pad);
+  border-radius:22px;background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.sound .lbl{color:var(--goggle)}
+.sound h4{font-size:clamp(20px,3vw,40px);max-width:24ch;margin:14px auto 24px;color:var(--cream)}
+.play{width:clamp(64px,7vw,96px);height:clamp(64px,7vw,96px);border-radius:50%;border:1.5px solid var(--goggle);
+  background:none;color:var(--goggle);font-family:inherit;font-size:10.5px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:.35s var(--e)}
+.play:hover{background:var(--goggle);color:var(--ink);transform:scale(1.06)}
+
+/* colecția — galerie */
+.coll{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(10px,1.6vw,20px);
+  margin-top:clamp(26px,4vh,50px)}
+.coll a{display:block}
+.coll .thumb{border-radius:16px;border:1px solid var(--line);background:var(--cream-2);aspect-ratio:1;
+  display:flex;align-items:center;justify-content:center;padding:18px;transition:.4s var(--e)}
+.coll a:hover .thumb{transform:translateY(-6px);border-color:var(--ch)}
+.coll .thumb svg,.coll .thumb img{width:64%;height:auto}
+.coll h5{margin:12px 0 0;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.coll small{display:block;color:var(--muted);font-size:11.5px;margin-top:3px}
+
+/* citatul autorului + portret */
+.maker{margin-top:clamp(46px,8vh,100px);display:grid;grid-template-columns:1fr .8fr;
+  gap:clamp(20px,3vw,50px);align-items:end}
+@media(max-width:820px){.maker{grid-template-columns:1fr}}
+.maker blockquote{margin:0;font-size:clamp(17px,1.9vw,27px);line-height:1.45;color:var(--ink)}
+.maker .who{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.maker .port{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--cream-2);
+  aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;padding:20px}
+.maker .port img{max-width:90%;max-height:90%;object-fit:contain}
+
+/* rail fix cu capitolele */
+.chrail{position:fixed;left:var(--pad);top:50%;transform:translateY(-50%);z-index:60;display:grid;gap:12px}
+.chrail a{display:flex;align-items:center;gap:10px;font-family:ui-monospace,Menlo,monospace;
+  font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:.35s var(--e)}
+.chrail i{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:grid;
+  place-items:center;transition:.35s var(--e);background:var(--cream)}
+.chrail i svg{width:14px;height:14px}
+.chrail a.on{color:var(--ink)} .chrail a.on i{border-color:var(--ch);transform:scale(1.15)}
+@media(max-width:1560px){.chrail{display:none}}
+
+/* footer Indigo */
+#indigofooter{position:relative;z-index:10;background:var(--ink);color:#C9B8A4;
+  padding:clamp(60px,10vh,130px) 0 34px;border-radius:22px 22px 0 0;margin-top:clamp(30px,5vh,60px)}
+#indigofooter .big{font-family:var(--dsp),system-ui;font-weight:var(--dsp-w);
+  font-size:clamp(30px,6.4vw,92px);line-height:.98;color:var(--cream);letter-spacing:-.03em;text-align:center}
+.footmq{margin:clamp(34px,6vh,70px) 0;border-top:1px solid #3d2718;border-bottom:1px solid #3d2718;
+  overflow:hidden}
+.footmq div{display:flex;white-space:nowrap;padding:12px 0}
+.footmq a{font-family:var(--dsp),system-ui;font-weight:var(--dsp-w);font-size:clamp(20px,3.4vw,44px);
+  padding-right:.4em;color:var(--goggle);animation:mqA 30s linear infinite}
+#indigofooter .fbot{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);display:flex;
+  justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11.5px;color:#8A7460}
+
+
+/* ============ SLOTURI DE IMAGINE: se umplu automat când apar fișierele ============ */
+.ch .cover{background:var(--cream-2)}
+.ch .cover .bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0}
+.ch .cover.hasimg .bg{opacity:1}
+.ch .cover.hasimg .art{display:none}
+.ch .cover.hasimg .veil{background:linear-gradient(transparent 28%,rgba(26,15,9,.78))}
+.edit figure{position:relative}
+.edit figure.slot{background:repeating-linear-gradient(45deg,#EDE1C9 0 10px,#E7DAC0 10px 20px)}
+.edit figure.slot:after{content:attr(data-file);position:absolute;inset:auto 0 0;padding:8px;
+  font-family:ui-monospace,Menlo,monospace;font-size:9.5px;color:var(--muted);text-align:center;
+  background:rgba(246,238,223,.85)}
+.lookbook{margin-top:clamp(34px,6vh,70px);display:grid;grid-template-columns:1.6fr 1fr;
+  gap:clamp(12px,2vw,26px);align-items:end}
+@media(max-width:820px){.lookbook{grid-template-columns:1fr}}
+.lookbook .big,.lookbook .small{border-radius:18px;overflow:hidden;border:1px solid var(--line);
+  background:repeating-linear-gradient(45deg,#EDE1C9 0 10px,#E7DAC0 10px 20px);position:relative}
+.lookbook .big{aspect-ratio:16/10} .lookbook .small{aspect-ratio:4/5}
+.lookbook .big.hasimg,.lookbook .small.hasimg{background-size:cover;background-position:center}
+.lookbook span{position:absolute;left:0;right:0;bottom:0;padding:8px;text-align:center;
+  font-family:ui-monospace,Menlo,monospace;font-size:9.5px;color:var(--muted);background:rgba(246,238,223,.85)}
+.lookbook .hasimg span{display:none}
+.coll .thumb.slot{background:repeating-linear-gradient(45deg,#EDE1C9 0 10px,#E7DAC0 10px 20px)}
+.coll .thumb.hasimg{background-size:cover;background-position:center;padding:0}
+.coll .thumb.hasimg svg{display:none}
+.maker .port.hasimg{background-size:cover;background-position:center;padding:0}
+.maker .port.hasimg img{display:none}
+.piece .shot.hasimg{background-size:cover;background-position:center;padding:0}
+.piece .shot.hasimg img{display:none}
+
+/* ============ EFECTE ============ */
+/* cursor personalizat */
+@media(hover:hover) and (pointer:fine){
+ html.js.cur *{cursor:none !important}
+ .cursor{position:fixed;top:0;left:0;width:14px;height:14px;border-radius:50%;background:var(--goggle);
+  z-index:150;pointer-events:none;mix-blend-mode:normal;transform:translate(-50%,-50%);
+  transition:width .3s var(--e),height .3s var(--e),background .3s var(--e),opacity .3s}
+ .cursor.big{width:56px;height:56px;background:rgba(255,183,3,.28);border:1.5px solid var(--goggle)}
+ .cursor.dark{background:var(--cream)}
+ .cursor-ring{position:fixed;top:0;left:0;width:34px;height:34px;border-radius:50%;
+  border:1.5px solid rgba(26,15,9,.35);z-index:149;pointer-events:none;transform:translate(-50%,-50%)}
+ html.js .dark .cursor-ring,html.js .win .cursor-ring{border-color:rgba(246,238,223,.4)}
+}
+/* text pe cuvinte, cu mască */
+.sp{display:inline-block;overflow:hidden;vertical-align:bottom;padding:.16em .02em .16em;margin:-.16em 0}
+.sp>i{display:inline-block;font-style:inherit;transform:translateY(105%);
+  transition:transform .95s var(--e)}
+.sp.in>i{transform:none}
+/* contur pe un titlu */
+.stroked{color:transparent;-webkit-text-stroke:2px var(--wood);paint-order:stroke fill}
+.dark .stroked{-webkit-text-stroke-color:var(--goggle)}
+/* sticker hover pe carduri */
+html.js .card,html.js .ic,html.js .st{transition:transform .45s var(--e),box-shadow .45s var(--e),border-color .3s}
+html.js .card:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:0 20px 40px rgba(26,15,9,.14)}
+html.js .st:hover{transform:translateY(-6px) rotate(.5deg)}
+/* PLAY / PAUSE ca la ei */
+.pp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;
+  font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui;font-weight:var(--dsp-w);font-size:clamp(30px,5vw,66px);
+  letter-spacing:.02em;color:var(--cream);opacity:0;transition:.4s var(--e);
+  text-shadow:0 6px 30px rgba(0,0,0,.6);background:none;border:0;cursor:pointer}
+.frame:hover .pp{opacity:.92}
+.pp:hover{color:var(--goggle)}
+/* nori de tranziție între secțiuni */
+.wipe{position:absolute;left:0;right:0;top:-1px;height:clamp(40px,6vw,90px);pointer-events:none;
+  overflow:hidden;z-index:2}
+.wipe svg{position:absolute;left:0;width:200%;height:100%;animation:drift 34s linear infinite}
+@keyframes drift{to{transform:translateX(-50%)}}
+section{overflow:hidden}
+/* cerul care se schimbă la scroll */
+.dio{transition:none}
+@media(prefers-reduced-motion:reduce){
+  .sp>i{transform:none !important} .wipe svg{animation:none}
+  html.js .card:hover,html.js .st:hover{transform:none}
+}
+
+
+/* ============================================================
+   SISTEMUL INDIGO, cu culorile noastre din biblie
+   (tokeni extrași din CSS-ul lor: grilă, scară, chenare, timing)
+   ============================================================ */
+:root{
+  /* grila lor */
+  --grid-gutter:clamp(16px,1.1111vw,19.11px);
+  --grid-margin:clamp(24px,1.6667vw,28.67px);
+  --grid-gap:16px; --grid-max:1920px;
+  /* scara lor de mărimi */
+  --fs-xs:clamp(14px,.9722vw,16.72px);
+  --fs-s:clamp(16px,1.1111vw,19.11px);
+  --fs-m:clamp(18px,1.25vw,21.5px);
+  --fs-l:clamp(22px,1.5278vw,26.28px);
+  --fs-xl:clamp(30px,2.0833vw,35.83px);
+  --fs-2xl:clamp(50px,3.4722vw,59.72px);
+  --fs-3xl:clamp(100px,6.9444vw,119.44px);
+  --fs-mega:clamp(120px,16.6667vw,286.67px);
+  /* timpii lor */
+  --t-fast:.25s; --t-def:.4s; --t-mid:.5s; --t-slow:.75s; --t-slowest:1.2s;
+  --e-out:cubic-bezier(.16,1,.3,1); --e-inout:cubic-bezier(.65,.05,.36,1);
+  /* fonturile lor */
+  --font-sans:"Hanken Grotesk",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --font-mosaic:"Palette Mosaic",system-ui;
+  /* CULORILE NOASTRE, în rolurile lor */
+  --paper:#F6EEDF; --line-1:#1A0F09;
+}
+body{font-family:var(--font-sans);font-size:var(--fs-s);line-height:1.5;letter-spacing:0}
+h1,h2,h3,h4,h5{font-family:var(--font-sans);font-weight:900;letter-spacing:-.02em;line-height:1}
+
+/* colțuri drepte peste tot — la ei raza există doar la cercuri */
+.card,.pcard,.ic,.st,.ep,.th,.lk,.chip,.coll .thumb,.piece .shot,.maker .port,
+.edit figure,.lookbook .big,.lookbook .small,.ch .cover,.sound,section,.splitband,
+.btn,.fsw button,.play,.navnums a,.burger,.nav.stuck{border-radius:0 !important}
+.play,.chrail i,.navmark i{border-radius:50% !important}
+
+/* linii de 1px, nu borduri groase */
+.card,.pcard,.ic,.st,.ep,.th,.lk,.coll .thumb,.piece .shot,.maker .port,
+.edit figure,.lookbook .big,.lookbook .small,.ch .cover,.chip{
+  border:1px solid var(--line-1) !important;box-shadow:none !important}
+.cards{gap:0;background:none;border:0}
+.cards>*{border-right-width:0 !important}
+.cards>*:last-child{border-right-width:1px !important}
+section{border:0 !important;margin:0 !important;box-shadow:none !important;
+  background:var(--paper) !important;backdrop-filter:none !important}
+section.dark{background:var(--ink) !important}
+.ch{border-top:1px solid var(--line-1)}
+
+/* etichetele mono, ca la ei */
+.lbl,.num,.k,.chrail a,.navnums a,.burger,.fbot,.credits,.ic small,.coll small,
+.pcard .role,.spec .lbl{font-family:var(--font-mono) !important;font-weight:400;
+  font-size:var(--fs-xs) !important;letter-spacing:.02em !important;text-transform:uppercase}
+
+/* titluri pe scara lor */
+.ch .cover h2{font-size:var(--fs-3xl);letter-spacing:-.03em}
+h2{font-size:var(--fs-2xl)}
+.piece h3,.pcard h3,.card h3{font-size:var(--fs-xl)}
+.twocol h4{font-size:var(--fs-l)}
+.voice{font-size:var(--fs-l);line-height:1.35;max-width:none}
+.lead,.card p,.card li,.piece li{font-size:var(--fs-s)}
+
+/* cuvântul-capitol uriaș, ca „PULSE" la ei */
+.megaword{font-family:var(--font-mosaic),var(--font-sans);font-size:var(--fs-mega);
+  line-height:.82;text-align:center;padding:clamp(30px,6vh,90px) 0 0;color:var(--ch);
+  letter-spacing:-.02em;mix-blend-mode:multiply}
+
+/* grila de 12 coloane */
+.inner,.wrap{max-width:var(--grid-max);padding-left:var(--grid-margin);padding-right:var(--grid-margin)}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--grid-gutter)}
+@media(max-width:820px){.g12{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+/* marquee-uri: fără contur moale, cu blend */
+.splitmq span{font-family:var(--font-sans);font-weight:900}
+.splitmq div:nth-child(2) span{-webkit-text-stroke:1px var(--ch)}
+.floatband{border-top:1px solid var(--line-1);border-bottom:1px solid var(--line-1)}
+
+/* efectele lor */
+.ch .cover .veil{mix-blend-mode:multiply;background:linear-gradient(transparent 30%,rgba(26,15,9,.72))}
+.nav.stuck{backdrop-filter:blur(20px) !important;-webkit-backdrop-filter:blur(20px) !important;
+  background:rgba(246,238,223,.72) !important;border-bottom:1px solid var(--line-1)}
+.coll a:hover .thumb,.ic:hover,.card:hover{transform:var(--scale-hover,scale(1.03)) !important;
+  transition:transform var(--t-def) var(--e-out) !important;box-shadow:none !important}
+
+/* butoane pătrate, linie de 1px */
+.btn,.fsw button{border:1px solid var(--line-1) !important;font-family:var(--font-mono);
+  font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.02em;padding:12px 18px}
+
+
+
+/* ====== SISTEM „DOSARELE" — adaptat pe paleta si fonturile Matei & Peter ====== */
+:root{
+ --x-ink:#1A0F09; --x-panel:#241609; --x-paper:#F6EEDF; --x-paper2:#E8D9BE;
+ --x-wood:#965515; --x-forest:#49603A; --x-teal:#147C97; --x-apric:#D98B31;
+ --x-goggle:#FFB703; --x-acc:#FFB703; --x-acc2:#B25A12;
+ --x-fg:#F0E4CE; --x-mut:#B49E7E; --x-line:rgba(240,228,206,.18);
+ --x-e:cubic-bezier(.16,1,.3,1); --x-r:26px;
+}
+.xstack{position:relative;z-index:6}
+.xpan{isolation:isolate}
+/* neutralizez regulile vechi cu !important de pe <section> */
+section.xpan{box-shadow:0 -26px 70px rgba(26,15,9,.55)!important;border:0!important;margin:0!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;border-radius:var(--x-r)!important}
+section.p-ink{background:var(--x-ink)!important;color:var(--x-fg)!important}
+section.p-panel{background:var(--x-panel)!important;color:var(--x-fg)!important}
+section.p-wood{background:var(--x-wood)!important;color:#FFF3DF!important}
+section.p-forest{background:var(--x-forest)!important;color:#F2EEDC!important}
+section.p-teal{background:var(--x-teal)!important;color:#EAF6F8!important}
+section.p-apric{background:var(--x-apric)!important;color:#2B1706!important}
+section.p-goggle{background:var(--x-goggle)!important;color:var(--x-ink)!important}
+section.p-paper{background:var(--x-paper)!important;color:var(--x-ink)!important}
+.xpan{position:sticky;top:0;min-height:100vh;min-height:100svh;display:flex;align-items:center;
+ border-radius:var(--x-r);overflow:hidden;padding:clamp(24px,4.6vw,66px);
+ box-shadow:0 -26px 70px rgba(26,15,9,.55)}
+.xin{width:100%;max-width:1320px;margin:0 auto;position:relative;z-index:2}
+.p-ink{background:var(--x-ink);color:var(--x-fg)}
+.p-panel{background:var(--x-panel);color:var(--x-fg)}
+.p-wood{background:var(--x-wood);color:#FFF3DF}
+.p-forest{background:var(--x-forest);color:#F2EEDC}
+.p-teal{background:var(--x-teal);color:#EAF6F8}
+.p-apric{background:var(--x-apric);color:#2B1706}
+.p-goggle{background:var(--x-goggle);color:var(--x-ink)}
+.p-paper{background:var(--x-paper);color:var(--x-ink)}
+.p-paper .xmono,.p-goggle .xmono,.p-apric .xmono{color:#7A5A34}
+.p-paper .xvbox,.p-goggle .xvbox,.p-apric .xvbox{background:rgba(26,15,9,.05);border-color:rgba(26,15,9,.16)}
+.p-paper .xlead,.p-goggle .xlead,.p-apric .xlead{opacity:.8}
+
+.xmono{font-family:var(--body),system-ui,sans-serif;text-transform:uppercase;
+ letter-spacing:.17em;font-size:10.5px;font-weight:700;color:var(--x-mut)}
+.xtag{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:clamp(20px,3.2vw,40px)}
+.xdisp{font-family:var(--dsp),system-ui,sans-serif;font-weight:var(--dsp-w,800);
+ letter-spacing:var(--dsp-tr,-.02em);line-height:1.04;font-size:clamp(28px,5.6vw,78px)}
+.xdisp em{font-style:normal;color:var(--x-acc)}
+.p-paper .xdisp em,.p-goggle .xdisp em,.p-apric .xdisp em{color:var(--x-acc2)}
+.xlead{max-width:52ch;font-size:clamp(14px,1.4vw,17px);line-height:1.62;
+ margin-top:clamp(12px,2vw,24px);opacity:.86}
+.xstamp{display:inline-block;border:4px solid currentColor;color:var(--x-acc);
+ font-family:var(--dsp);font-size:clamp(16px,2.4vw,30px);letter-spacing:.03em;
+ padding:10px 22px;transform:rotate(-5deg);text-transform:uppercase;opacity:.92;margin-top:26px}
+.p-paper .xstamp{color:var(--x-acc2)}
+
+.xg2{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:16px}
+.xg3{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:20px}
+.xg4{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:20px}
+@media(max-width:980px){.xg3,.xg2{grid-template-columns:1fr}.xg4{grid-template-columns:repeat(2,1fr)}}
+
+/* ——— caseta, cu hover-ul din dosarele: se ridica, bara jos, coltul de dosar, caret ——— */
+.xvbox{position:relative;overflow:hidden;border:1px solid var(--x-line);border-radius:16px;
+ padding:clamp(15px,2.1vw,24px);background:rgba(0,0,0,.2);
+ transition:transform .5s cubic-bezier(.16,.84,.24,1),border-color .4s ease,background .4s ease,box-shadow .5s ease}
+.xvbox::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--x-acc);
+ transform:scaleX(0);transform-origin:0 50%;transition:transform .6s cubic-bezier(.16,.84,.24,1)}
+.xvbox::before{content:'';position:absolute;top:13px;right:13px;width:16px;height:16px;
+ border-top:1px solid var(--x-acc);border-right:1px solid var(--x-acc);opacity:0;
+ transform:translate(-5px,5px);transition:opacity .4s ease,transform .5s cubic-bezier(.16,.84,.24,1)}
+.xvbox h3{font-family:var(--dsp);font-weight:var(--dsp-w,800);font-size:clamp(17px,2vw,25px);
+ line-height:1.12;margin-bottom:6px;transition:color .35s ease}
+.xvbox h3::after{content:'';display:inline-block;width:.42em;height:.86em;margin-left:.16em;
+ background:var(--x-acc);vertical-align:-.08em;opacity:0;transition:opacity .25s ease}
+.xvbox .who{font-family:var(--body);font-weight:800;font-size:9.5px;letter-spacing:.15em;
+ text-transform:uppercase;color:var(--x-acc);margin-bottom:11px;transition:letter-spacing .45s ease}
+.p-paper .xvbox .who,.p-goggle .xvbox .who,.p-apric .xvbox .who{color:var(--x-acc2)}
+.xvbox p{font-size:13px;line-height:1.62;opacity:.84}
+.xvbox .ex{font-size:12.5px;line-height:1.8;border-left:2px solid var(--x-acc);padding-left:12px;
+ margin:11px 0;opacity:.9}
+.p-paper .xvbox .ex,.p-goggle .xvbox .ex{border-left-color:var(--x-acc2)}
+.xvbox ul{list-style:none;margin-top:11px}
+.xvbox li{font-size:12.5px;line-height:1.6;padding-left:15px;position:relative;opacity:.76;
+ transition:opacity .4s ease;margin-bottom:2px}
+.xvbox li::before{content:'—';position:absolute;left:0;color:var(--x-acc)}
+.p-paper .xvbox li::before,.p-goggle .xvbox li::before,.p-apric .xvbox li::before{color:var(--x-acc2)}
+.xvbox li.no::before{content:'✕';color:#C4574E}
+.xvbox li.yes::before{content:'✓';color:#7FA05A}
+@keyframes xcaret{0%,48%{opacity:1}49%,100%{opacity:0}}
+@media (hover:hover){
+ .xvbox:hover{transform:translateY(-5px);border-color:rgba(255,183,3,.5);background:rgba(0,0,0,.3);
+  box-shadow:0 18px 40px -22px rgba(0,0,0,.8)}
+ .xvbox:hover::after{transform:scaleX(1)}
+ .xvbox:hover::before{opacity:.8;transform:translate(0,0)}
+ .xvbox:hover h3{color:var(--x-paper)}
+ .xvbox:hover h3::after{opacity:1;animation:xcaret .85s steps(1,end) infinite}
+ .xvbox:hover .who{letter-spacing:.22em}
+ .xvbox:hover li{opacity:.94}
+ .p-paper .xvbox:hover,.p-goggle .xvbox:hover,.p-apric .xvbox:hover{background:rgba(26,15,9,.09);
+  border-color:rgba(178,90,18,.4);box-shadow:0 16px 34px -24px rgba(26,15,9,.5)}
+ .p-paper .xvbox:hover h3,.p-goggle .xvbox:hover h3,.p-apric .xvbox:hover h3{color:var(--x-ink)}
+ .p-paper .xvbox::before,.p-goggle .xvbox::before,.p-apric .xvbox::before{border-top-color:var(--x-acc2);border-right-color:var(--x-acc2)}
+ .p-paper .xvbox:hover h3::after,.p-goggle .xvbox:hover h3::after{background:var(--x-acc2)}
+}
+@media (hover:none){.xvbox::before,.xvbox::after,.xvbox h3::after{display:none}
+ .xvbox{transform:none!important;box-shadow:none!important}}
+
+/* carduri cu imagine */
+.xcard{position:relative;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.22);border:1px solid var(--x-line)}
+.xcard .im{width:100%;aspect-ratio:4/5;background-size:cover;background-position:center;
+ background-color:rgba(0,0,0,.25);display:block;transition:transform 1.2s var(--x-e)}
+.xcard:hover .im{transform:scale(1.05)}
+.xcard{transition:border-color .5s ease,box-shadow .6s ease}
+@media (hover:hover){.xcard:hover{border-color:rgba(255,183,3,.46);
+ box-shadow:inset 0 0 0 1px rgba(255,183,3,.22),0 20px 40px -28px rgba(0,0,0,.75)}}
+.xcard.wide .im{aspect-ratio:16/10}
+.xcard .cap{padding:10px 12px;font-family:var(--body);font-weight:700;font-size:9.5px;
+ letter-spacing:.13em;text-transform:uppercase;color:var(--x-mut)}
+.p-paper .xcard{background:rgba(26,15,9,.05);border-color:rgba(26,15,9,.14)}
+.p-paper .xcard .cap{color:#7A5A34}
+.xslot{position:relative}
+.xslot:not(.hasimg)::after{content:attr(data-f);position:absolute;inset:0;display:flex;align-items:center;
+ justify-content:center;text-align:center;padding:12px;font-family:var(--body);font-weight:700;
+ font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--x-mut);
+ background:repeating-linear-gradient(45deg,rgba(255,183,3,.07) 0 8px,transparent 8px 16px)}
+
+/* swatch-uri */
+.xsw{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}
+@media(max-width:980px){.xsw{grid-template-columns:repeat(2,1fr)}}
+.xswatch{border-radius:14px;overflow:hidden;border:1px solid rgba(26,15,9,.18);transition:transform .5s var(--x-e)}
+.xswatch:hover{transform:translateY(-6px)}
+.xswatch .c{height:clamp(70px,9vh,108px)}
+.xswatch .m{padding:9px 11px;background:rgba(26,15,9,.08)}
+.xswatch b{display:block;font-size:12.5px}
+.xswatch span{font-family:var(--body);font-weight:700;font-size:9.5px;opacity:.62}
+
+/* rand de tipografie */
+.xtrow{border-top:1px solid var(--x-line);padding:15px 0;display:grid;grid-template-columns:180px 1fr;
+ gap:16px;align-items:baseline}
+@media(max-width:980px){.xtrow{grid-template-columns:1fr;gap:5px}}
+
+/* asa da / asa nu */
+.xrr{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:18px}
+@media(max-width:980px){.xrr{grid-template-columns:1fr}}
+.xdo,.xdont{border-radius:16px;padding:18px;border:1px solid var(--x-line)}
+.xdo .t,.xdont .t{font-family:var(--body);font-weight:800;font-size:9.5px;letter-spacing:.15em;
+ text-transform:uppercase;display:block;margin-bottom:10px}
+.xdo .t{color:#8FAE72}.xdont .t{color:#C4574E}
+.xdo p,.xdont p{font-size:12.5px;line-height:1.85}
+.xdont p{opacity:.55;text-decoration:line-through}
+
+/* reguli blocate */
+.xlock{border:1px solid var(--x-acc);border-radius:16px;padding:clamp(16px,2.2vw,26px);
+ background:rgba(255,183,3,.08)}
+.xlock h3{font-family:var(--dsp);font-weight:var(--dsp-w,800);font-size:clamp(16px,1.9vw,23px);margin-bottom:12px}
+.xlock ol{margin-left:18px}
+.xlock li{font-size:13px;line-height:1.72;margin-bottom:7px;opacity:.88}
+.xlock li b{color:var(--x-acc)}
+.p-paper .xlock{border-color:rgba(178,90,18,.5);background:rgba(178,90,18,.07)}
+.p-paper .xlock li b{color:var(--x-acc2)}
+
+/* demo-uri de miscare */
+.xmdemo{border:1px solid var(--x-line);border-radius:16px;padding:20px;background:rgba(0,0,0,.2);
+ min-height:150px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;
+ overflow:hidden;position:relative}
+.xmdemo .t{font-family:var(--body);font-weight:800;font-size:9.5px;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--x-mut)}
+.xmdemo .big{font-family:var(--dsp);font-weight:var(--dsp-w,800);font-size:clamp(19px,2.5vw,30px);line-height:1.08}
+.xredact{position:relative;color:transparent;transition:color .45s var(--x-e) .12s}
+.xredact::before{content:'';position:absolute;left:-.18em;right:-.18em;top:-.06em;bottom:-.06em;
+ background:var(--x-paper);border-radius:3px;transform-origin:left;transition:transform .55s var(--x-e)}
+.xmdemo:hover .xredact{color:var(--x-paper)}
+.xmdemo:hover .xredact::before{transform:scaleX(0)}
+.xtw{font-family:var(--body);font-weight:700;font-size:clamp(15px,1.9vw,22px);line-height:1.5;min-height:2.6em}
+.xcaret{display:inline-block;width:.5em;height:1em;background:var(--x-acc);vertical-align:-.16em;
+ margin-left:.06em;animation:xcaret .9s steps(1,end) infinite}
+.xstackdemo{position:relative;flex:1;min-height:130px;border-radius:10px;background:rgba(0,0,0,.26);overflow:hidden}
+.xsheet{position:absolute;left:12%;right:12%;height:62px;border-radius:8px;border:1px solid rgba(240,228,206,.26);
+ background:linear-gradient(180deg,#3A250F,#25170A);box-shadow:0 -8px 20px rgba(0,0,0,.45)}
+.xsheet i{position:absolute;left:12px;top:12px;width:34%;height:6px;background:rgba(240,228,206,.3);border-radius:3px}
+.xsheet i+i{top:26px;width:56%;opacity:.5}
+.xsheet.s1{animation:xsl 4.6s var(--x-e) infinite}
+.xsheet.s2{animation:xsl 4.6s var(--x-e) infinite 1.5s}
+.xsheet.s3{animation:xsl 4.6s var(--x-e) infinite 3s}
+@keyframes xsl{0%{top:130px;opacity:0}18%{opacity:1}34%,100%{top:24px;opacity:1}}
+.xsheet.base{top:62px;background:linear-gradient(180deg,#4A3113,#2C1B0B)}
+
+/* aparitie mascata de jos */
+.xrise{overflow:hidden;display:block;border-radius:14px}
+.xrise>*{display:block;transform:translateY(102%);transition:transform 1.05s var(--x-e)}
+.xrise.go>*{transform:translateY(0)}
+.no-anim .xrise>*{transform:none!important}
+@media(prefers-reduced-motion:reduce){.xrise>*{transform:none!important}}
+
+/* titluri care urca o data */
+.xup{opacity:0;transform:translateY(34px);transition:opacity .95s var(--x-e),transform .95s var(--x-e)}
+.xup.go{opacity:1;transform:none}
+
+/* subsol */
+.xfoot{z-index:7;padding:52px clamp(16px,3vw,42px) calc(36px + env(safe-area-inset-bottom,0px));
+ border-top:1px solid var(--x-line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+ background:var(--x-ink);color:var(--x-fg);position:relative;z-index:3}
+
+/* MOBIL: panourile nu mai sunt lipite */
+@media (max-width:900px),(max-height:560px){
+ .xpan{position:relative!important;top:auto!important;min-height:auto;align-items:flex-start;
+  padding-top:clamp(50px,9vw,76px);padding-bottom:clamp(50px,9vw,76px);
+  box-shadow:0 -16px 40px rgba(26,15,9,.45)}
+}
+@supports(padding:max(0px)){
+ .xpan{padding-left:max(clamp(24px,4.6vw,66px),env(safe-area-inset-left));
+  padding-right:max(clamp(24px,4.6vw,66px),env(safe-area-inset-right))}
+}
+@media (hover:none){.xcard:hover .im{transform:none}}
+
+
+.fontsw{display:flex;flex-wrap:wrap;gap:9px}
+.fontsw button{cursor:pointer;border:1px solid var(--x-line);background:rgba(0,0,0,.2);color:inherit;
+ border-radius:12px;padding:10px 14px;text-align:left;font:inherit;transition:.35s var(--x-e)}
+.fontsw button b{display:block;font-size:14px;margin-bottom:2px}
+.fontsw button small{font-family:var(--body);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.fontsw button:hover{transform:translateY(-3px);border-color:var(--x-acc)}
+.fontsw button.on{background:var(--x-acc);color:var(--x-ink);border-color:var(--x-acc)}
+.lgbox{display:flex;align-items:center;justify-content:center;padding:18px;background-color:rgba(0,0,0,.28)!important;
+ aspect-ratio:4/3!important}
+.lgbox.lt{background-color:var(--x-paper)!important}
+.lgbox img{max-width:82%;max-height:76%;object-fit:contain;display:block}
+.lgbox.lgf{background-size:78% auto!important;background-repeat:no-repeat!important;
+ background-position:center!important;transition:background-size .6s var(--x-e)}
+.xcard:hover .lgbox.lgf{background-size:84% auto!important}
+.picto{display:flex;flex-direction:column;align-items:center;gap:10px;border:1px solid var(--x-line);
+ border-radius:16px;padding:20px 12px;background:rgba(0,0,0,.2);transition:.5s var(--x-e)}
+.picto:hover{transform:translateY(-6px);border-color:var(--x-acc)}
+.picto svg{width:clamp(46px,5.4vw,68px);height:auto}
+.picto i{display:block;width:clamp(64px,7.2vw,96px);height:clamp(64px,7.2vw,96px);
+ background-size:contain;background-repeat:no-repeat;background-position:center bottom;
+ transition:transform .55s var(--x-e)}
+.picto:hover i{transform:translateY(-3px) scale(1.06)}
+.picto span{font-family:var(--body);font-weight:700;font-size:9.5px;letter-spacing:.13em;
+ text-transform:uppercase;color:var(--x-mut)}
+
+
+@font-face{font-family:'Bouncer';src:url(https://bmarginean1.github.io/ksm-website/mateipeter/fonts/bouncer.woff2) format('woff2');font-weight:400;font-display:swap}
+:root{--duke:'Bouncer'}
+.xdisp,.xvbox h3,.xlock h3,.xmdemo .big,.fontsw button b,.xstamp{font-family:var(--duke),var(--dsp),system-ui,sans-serif!important;font-weight:400!important;letter-spacing:.004em!important}
+.xdisp{line-height:1.12;font-size:clamp(30px,5.6vw,80px)}
+.xvbox h3{line-height:1.14;margin-bottom:8px}
+.xlock h3{line-height:1.14}
+.xmdemo .big{line-height:1.18}
+
+
+@font-face{font-family:'Comfortaa';font-weight:400;font-style:normal;font-display:swap;src:url(https://bmarginean1.github.io/ksm-website/mateipeter/fonts/comfortaa-400.woff2) format('woff2')}
+@font-face{font-family:'Comfortaa';font-weight:700;font-style:normal;font-display:swap;src:url(https://bmarginean1.github.io/ksm-website/mateipeter/fonts/comfortaa-700.woff2) format('woff2')}
+@font-face{font-family:'Poppins Sub';font-weight:500;font-style:normal;font-display:swap;src:url(https://bmarginean1.github.io/ksm-website/mateipeter/fonts/poppins-500.woff2) format('woff2')}
+@font-face{font-family:'Poppins Sub';font-weight:700;font-style:normal;font-display:swap;src:url(https://bmarginean1.github.io/ksm-website/mateipeter/fonts/poppins-700.woff2) format('woff2')}
+
+:root{--x-body:'Comfortaa';--x-sub:'Poppins Sub'}
+/* CORP — Comfortaa, cum a cerut Margi */
+body,.xlead,.xvbox p,.xvbox .ex,.xin p,.xtrow div{font-family:var(--x-body),system-ui,sans-serif}
+.xlead{font-size:clamp(14.5px,1.42vw,17.5px);line-height:1.68;letter-spacing:-.004em}
+.xvbox p{font-size:13.5px;line-height:1.68}
+.xvbox .ex{font-size:13px;line-height:1.8}
+/* SUBTITLURI ȘI TEXT FUNCȚIONAL — Poppins: x-height mai mare, se citește la corp mic */
+.xmono,.xvbox .who,.xvbox li,.xvbox ul,.xlock li,.xlock ol,.xcard .cap,.xswatch b,.xswatch span,
+.xdo p,.xdont p,.xdo .t,.xdont .t,.xmdemo .t,.picto span,.fontsw button small,.xslot:not(.hasimg)::after,
+.xfoot .xmono,.xsub{font-family:var(--x-sub),system-ui,sans-serif!important}
+.xvbox li{font-size:12.5px;line-height:1.66;letter-spacing:.002em}
+.xlock li{font-size:13px;line-height:1.7}
+.xdo p,.xdont p{font-size:12.5px;line-height:1.8}
+.xmono{font-weight:500;letter-spacing:.16em}
+.xvbox .who{font-weight:700;letter-spacing:.14em}
+/* subtitlu de secțiune, sub titlu */
+.xsub{display:block;font-weight:500;font-size:clamp(15px,1.7vw,21px);line-height:1.42;
+ margin-top:14px;color:var(--x-acc);max-width:44ch}
+.p-paper .xsub,.p-goggle .xsub,.p-apric .xsub{color:var(--x-acc2)}
+
+
+/* Un panou mai inalt decat ecranul nu poate ramane lipit — altfel partea de jos
+   nu se vede niciodata. Cele care nu incap curg normal, dar pastreaza rama si umbra. */
+.xpan.tall{min-height:auto!important;align-items:flex-start!important;
+ padding-top:clamp(52px,6vw,92px)!important;padding-bottom:clamp(52px,6vw,92px)!important}
+/* panoul inalt ramane lipit, dar de FUNDUL ecranului: top negativ = vh - inaltimea lui.
+   Asa se vede pana la ultima linie si tot se suprapune peste cel dinainte. */
+@media (min-width:901px){.xpan.tall{position:sticky!important}}
+.xpan.tall .xin{width:100%}
+/* mai putin aer, ca panourile scurte sa ramana lipite */
+.xdisp{font-size:clamp(28px,5vw,68px)}
+.xg2,.xg3,.xg4,.xsw{gap:12px}
+.xtag{margin-bottom:clamp(16px,2.4vw,30px)}
+.xsub{margin-top:12px}
+.xlead{margin-top:clamp(10px,1.5vw,18px)}
+
+
+/* ================= BARA DE SUS — refacuta ================= */
+.nav{position:fixed!important;top:0;left:0;right:0;z-index:130!important;padding:0!important;
+ transition:background .45s var(--x-e),box-shadow .45s var(--x-e)}
+.nav .navin{max-width:none!important;margin:0!important;
+ padding:12px clamp(16px,3vw,42px)!important;display:flex!important;align-items:center!important;gap:16px!important}
+.nav.stuck{background:rgba(26,15,9,.82)!important;-webkit-backdrop-filter:blur(16px)!important;
+ -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;
+ box-shadow:0 1px 0 rgba(240,228,206,.14)!important;border:0!important}
+.navmark img{height:clamp(36px,3.6vw,48px)!important;filter:none!important}
+.nav.stuck .navmark img{height:clamp(30px,3vw,38px)!important}
+.navnums{display:none!important}                    /* numerele 01–15 — scoase */
+.navtitle{margin-left:14px;font-family:var(--x-sub),sans-serif;font-weight:500;font-size:10.5px;
+ letter-spacing:.2em;text-transform:uppercase;color:var(--x-mut);opacity:0;transform:translateY(4px);
+ transition:.5s var(--x-e);white-space:nowrap}
+.nav.stuck .navtitle{opacity:1;transform:none}
+@media(max-width:640px){.navtitle{display:none}}
+.burger{margin-left:auto!important;display:flex;align-items:center;gap:9px;
+ background:var(--x-goggle)!important;color:var(--x-ink)!important;border:0!important;
+ border-radius:100px!important;padding:10px 18px 10px 20px!important;cursor:pointer;
+ font-family:var(--x-sub),sans-serif!important;font-weight:700!important;font-size:10.5px!important;
+ letter-spacing:.18em!important;text-transform:uppercase;
+ transition:transform .4s var(--x-e),background .35s ease,box-shadow .4s var(--x-e);
+ box-shadow:0 6px 18px -8px rgba(26,15,9,.6)}
+.burger:hover{transform:translateY(-2px);background:#FFC93A!important;
+ box-shadow:0 10px 24px -10px rgba(26,15,9,.75)}
+.burger i{display:inline-flex;flex-direction:column;gap:3px;font-style:normal}
+.burger i b{display:block;width:14px;height:2px;background:currentColor;border-radius:2px;
+ transition:transform .4s var(--x-e),width .4s var(--x-e)}
+.burger:hover i b:first-child{width:9px}
+.burger:hover i b:last-child{width:9px;margin-left:5px}
+
+/* ================= MENIUL — refacut ================= */
+.menu{background:var(--x-ink)!important;color:var(--x-fg)!important;z-index:140!important;
+ padding:clamp(70px,9vh,120px) clamp(20px,6vw,90px)!important;justify-content:center!important;
+ opacity:0;visibility:hidden;transition:opacity .5s var(--x-e),visibility .5s}
+.menu::before{content:'';position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(1100px 620px at 78% 8%,rgba(255,183,3,.14),transparent 62%)}
+.menu .mwrap{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:0 clamp(24px,5vw,80px);align-content:center;max-width:1240px;margin:0 auto;width:100%}
+@media(max-width:820px){.menu .mwrap{grid-template-columns:1fr}}
+.menu a{display:block!important;font-family:var(--duke),sans-serif!important;font-weight:400!important;
+ font-size:clamp(21px,2.9vw,38px)!important;line-height:1.06!important;letter-spacing:.004em!important;
+ padding:clamp(9px,1.1vh,15px) 0!important;border-bottom:1px solid rgba(240,228,206,.12);
+ color:var(--x-fg)!important;opacity:.72;transform:none!important;
+ transition:opacity .4s var(--x-e),color .4s var(--x-e),padding-left .5s var(--x-e)}
+.menu a i{display:none!important}                   /* numerele din meniu — scoase */
+.menu a:hover{opacity:1;color:var(--x-goggle)!important;padding-left:18px!important;transform:none!important}
+.menu .mfoot{grid-column:1/-1;margin-top:clamp(20px,3vh,40px);display:flex;gap:20px;flex-wrap:wrap;
+ font-family:var(--x-sub),sans-serif;font-weight:500;font-size:10px;letter-spacing:.2em;
+ text-transform:uppercase;color:var(--x-mut)}
+.menu .close{top:clamp(18px,2.4vh,30px)!important;right:clamp(20px,3vw,42px)!important;
+ font-family:var(--x-sub),sans-serif!important;font-weight:700!important;font-size:10.5px!important;
+ letter-spacing:.18em!important;color:var(--x-ink)!important;background:var(--x-goggle);
+ border:0;border-radius:100px;padding:10px 18px;cursor:pointer;transition:transform .4s var(--x-e)}
+.menu .close:hover{transform:translateY(-2px)}
+
+/* ================= HERO: lista laterala si procentul — scoase ================= */
+#rail,#fcap,#pct{display:none!important}
+
+
+#chars{display:none}
+#chars.on{display:block}
+.lay .genlayer,.cabin .genlayer{position:absolute;inset:0;width:100%;height:100%;
+ object-fit:cover;object-position:bottom center;pointer-events:none}
+.lay.has-gen>svg,.lay.has-gen>.sky{opacity:0!important}
+.chars.has-gen>img{opacity:1}
+
+
+.scene .hud .title h1{text-shadow:0 2px 0 rgba(246,238,223,.65),0 10px 34px rgba(26,15,9,.35)}
+.scene .hud .kick{text-shadow:0 1px 0 rgba(246,238,223,.7)}
+
+
+/* pana se incarca imaginile, scena ramane crem - fara sa palpaie desenul vechi */
+#l1>svg,#l1>.sky,#l2>svg,#l4>.ground,#l4>.tree,#cabin .roof,#cabin .planks,#cabin .door{opacity:0}
+.scene .stage{background:linear-gradient(#FBF4E7 0%,#F6EEDF 58%,#EFE4CE 100%)}
+
+
+.xcard .im.fit{background-size:contain;background-repeat:no-repeat;background-position:center;
+ background-color:#F6EEDF;aspect-ratio:1/1}
+.p-forest .xcard .im.fit,.p-teal .xcard .im.fit,.p-ink .xcard .im.fit,.p-panel .xcard .im.fit{background-color:rgba(246,238,223,.94)}
+
+
+#l4,#l2,#l1{overflow:visible}
+.scene .stage{overflow:hidden}
+
+
+/* casa intra putin sub prim-plan, ca sa nu para lipita pe iarba */
+#cabin{margin-top:6vh}
+
+
+.scene .hud .title{top:calc(9vh + 70px)!important;bottom:auto!important;transform:none}
+.scene .hud .title h1{font-family:var(--duke),var(--dsp),system-ui,sans-serif!important;
+ font-weight:400!important;letter-spacing:.004em!important;line-height:1.1!important;
+ font-size:clamp(26px,4vw,58px)!important}
+.scene .hud .title .kick{margin-bottom:8px}
+@media(max-width:700px){.scene .hud .title{top:calc(11vh + 70px)!important}}
+
+
+/* ===== demo-uri de miscare: pornesc la interactiune, nu ruleaza in gol ===== */
+.dm{cursor:pointer;transition:transform .5s var(--x-e),box-shadow .5s var(--x-e),border-color .4s ease}
+.dm:hover,.dm:focus-visible{transform:translateY(-4px);border-color:rgba(255,183,3,.55);
+ box-shadow:0 20px 44px -26px rgba(0,0,0,.75);outline:none}
+.dm .t{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dm .cue{font-style:normal;font-size:8.5px;letter-spacing:.14em;padding:4px 9px;border-radius:100px;
+ border:1px solid currentColor;opacity:.42;white-space:nowrap;
+ transition:opacity .4s ease,background .4s ease,color .4s ease}
+.dm:hover .cue{opacity:1;background:var(--x-goggle);color:var(--x-ink);border-color:var(--x-goggle)}
+
+.dm .dstage{position:relative;flex:1;height:174px;min-height:174px;border-radius:12px;
+ background:radial-gradient(120% 90% at 50% 118%,rgba(255,183,3,.10),rgba(0,0,0,.20) 62%);
+ overflow:hidden;display:flex;align-items:center;justify-content:center}
+
+/* ---------- BAM: doua ezitari, apoi loveste cuiul ---------- */
+.dstage .plank{position:absolute;left:16%;right:16%;bottom:26px;height:20px;border-radius:5px;
+ background:linear-gradient(#B87A34,#8C5A20);box-shadow:0 5px 0 rgba(0,0,0,.3)}
+.dstage .nail{position:absolute;left:50%;bottom:44px;width:7px;height:26px;border-radius:3px 3px 1px 1px;
+ background:linear-gradient(#EFE0C4,#B9A88A);transform:translateX(-50%);
+ transition:height .16s cubic-bezier(.3,0,.2,1),bottom .16s cubic-bezier(.3,0,.2,1)}
+.dm:hover .nail{height:9px;bottom:44px;transition-delay:.86s}
+.dstage .dbam{position:absolute;left:50%;bottom:52px;height:118px;width:auto;
+ transform-origin:52% 96%;transform:translateX(-72%) rotate(-8deg);
+ filter:drop-shadow(0 12px 16px rgba(0,0,0,.34))}
+.dm:hover .dbam{animation:bamStrike 1.15s cubic-bezier(.32,0,.16,1) 1 both}
+@keyframes bamStrike{
+  0%  {transform:translateX(-72%) rotate(-8deg)}
+  12% {transform:translateX(-72%) rotate(-17deg)}   /* ezita */
+  22% {transform:translateX(-72%) rotate(-9deg)}
+  32% {transform:translateX(-72%) rotate(-18deg)}   /* ezita iar */
+  42% {transform:translateX(-72%) rotate(-10deg)}
+  62% {transform:translateX(-72%) rotate(-40deg)}   /* se incarca */
+  76% {transform:translateX(-72%) rotate(14deg)}    /* loveste */
+  86% {transform:translateX(-72%) rotate(6deg)}
+  100%{transform:translateX(-72%) rotate(-8deg)}}
+.dstage .spark{position:absolute;left:50%;bottom:64px;width:34px;height:34px;border-radius:50%;
+ transform:translateX(-50%) scale(.2);opacity:0;
+ background:radial-gradient(circle,rgba(255,183,3,.85),transparent 62%)}
+.dm:hover .spark{animation:sparkPop .34s ease-out .8s 1 both}
+@keyframes sparkPop{0%{opacity:.9;transform:translateX(-50%) scale(.2)}
+ 100%{opacity:0;transform:translateX(-50%) scale(1.5)}}
+
+/* ---------- SNAP: banda se intinde si se aliniaza fix cu muchia ---------- */
+.dsnap{flex-direction:column;gap:16px}
+.dsnap .board{position:relative;width:62%;height:22px;border-radius:5px;
+ background:linear-gradient(#B87A34,#8C5A20);box-shadow:0 5px 0 rgba(0,0,0,.28)}
+.dsnap .tape{width:62%;height:6px;border-radius:4px;background:var(--x-goggle);
+ transform-origin:0 50%;transform:scaleX(0);
+ box-shadow:0 0 0 0 rgba(255,183,3,0)}
+.dm:hover .tape{animation:tapeSnap 1.0s cubic-bezier(.22,1,.28,1) 1 both}
+@keyframes tapeSnap{
+  0%{transform:scaleX(0)}
+  58%{transform:scaleX(1.07)}    /* trece putin peste */
+  74%{transform:scaleX(.985)}    /* se corecteaza */
+  100%{transform:scaleX(1);box-shadow:0 0 0 4px rgba(255,183,3,.18)}}
+.dsnap .tick{position:absolute;width:2px;height:44px;background:var(--x-goggle);opacity:0;
+ left:81%;top:50%;transform:translateY(-50%)}
+.dm:hover .tick{animation:tickFlash .5s ease-out .62s 1 both}
+@keyframes tickFlash{0%{opacity:0}30%{opacity:.9}100%{opacity:0}}
+
+/* ---------- BUBBLE: lemnul se indreapta, bula se aseaza ---------- */
+.dbub .lvl{position:relative;width:66%;height:38px;border-radius:19px;
+ background:linear-gradient(#C08238,#94601F);box-shadow:inset 0 3px 8px rgba(0,0,0,.42),0 6px 0 rgba(0,0,0,.26);
+ transform:rotate(-5deg);transition:transform 1.05s cubic-bezier(.16,1,.3,1)}
+.dm:hover .lvl{transform:rotate(0deg)}
+.dbub .lvl s{position:absolute;left:50%;top:-9px;bottom:-9px;width:2px;
+ background:rgba(246,238,223,.42);transform:translateX(-50%)}
+.dbub .bub{position:absolute;top:50%;left:16%;width:22px;height:22px;border-radius:50%;
+ background:radial-gradient(circle at 34% 32%,#FFD86A,var(--x-goggle));
+ box-shadow:0 0 0 3px rgba(255,183,3,.24),inset 0 -2px 4px rgba(0,0,0,.2);
+ transform:translate(-50%,-50%);
+ transition:left 1.15s cubic-bezier(.16,1,.3,1) .12s,box-shadow .4s ease}
+.dm:hover .bub{left:50%;box-shadow:0 0 0 6px rgba(255,183,3,.2),inset 0 -2px 4px rgba(0,0,0,.2)}
+
+@media (hover:none){
+ .dm .cue{display:none}
+ .dm:hover .dbam,.dm:hover .tape,.dm:hover .spark,.dm:hover .tick{animation:none}
+ .dsnap .tape{transform:scaleX(1)} .dbub .lvl{transform:none} .dbub .bub{left:50%}}
+@media (prefers-reduced-motion:reduce){
+ .dm *,.dm:hover *{animation:none!important;transition:none!important}
+ .dsnap .tape{transform:scaleX(1)} .dbub .lvl{transform:none} .dbub .bub{left:50%}}
+
+
+/* ============================================================
+   HOVER PE CASETE — scos din canon, nu din alt proiect
+   1. Caseta stă puțin strâmb, ca un obiect pus pe masă de un copil.
+      La hover se ÎNDREAPTĂ — asta e Bubble: strâmb → drept.
+   2. Lumina vine dinspre dreapta-sus, ca pe fereastra arcuită a atelierului.
+   3. Ochelarii coboară de pe frunte pe ochi — semnul că începe lucrul.
+   ============================================================ */
+
+/* anulez complet decorul vechi de dosar */
+.xvbox::before,.xvbox::after{content:none!important;display:none!important}
+.xvbox h3::after{content:none!important;display:none!important}
+
+.xvbox{position:relative;overflow:visible;
+ transition:transform .85s cubic-bezier(.16,1,.3,1),
+            box-shadow .85s cubic-bezier(.16,1,.3,1),
+            border-color .5s ease, background .5s ease}
+
+/* 1 — fiecare casetă stă puțin altfel; la hover se așază dreaptă */
+.xvbox:nth-child(4n+1){transform:rotate(-.45deg)}
+.xvbox:nth-child(4n+2){transform:rotate(.35deg)}
+.xvbox:nth-child(4n+3){transform:rotate(.5deg)}
+.xvbox:nth-child(4n+4){transform:rotate(-.3deg)}
+@media (hover:hover){
+ .xvbox:hover{transform:rotate(0deg) translateY(-6px)!important;
+  border-color:rgba(255,183,3,.5);background:rgba(0,0,0,.3);
+  box-shadow:0 26px 50px -30px rgba(0,0,0,.8)}
+ .p-paper .xvbox:hover,.p-goggle .xvbox:hover,.p-apric .xvbox:hover{
+  background:rgba(26,15,9,.07);border-color:rgba(178,90,18,.42);
+  box-shadow:0 22px 44px -30px rgba(26,15,9,.55)}
+}
+
+/* 2 — lumina de la fereastră trece peste casetă, dinspre dreapta-sus */
+.xvbox .lum{position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+ overflow:hidden;opacity:0;transition:opacity .5s ease}
+.xvbox .lum::after{content:'';position:absolute;inset:0;border-radius:inherit;
+ background:radial-gradient(120% 100% at 50% -10%,rgba(255,214,120,.16),rgba(255,183,3,.05) 45%,transparent 78%);
+ transform:scale(.985);transition:transform 1.15s cubic-bezier(.16,1,.3,1)}
+/* chenarul se aprinde pe TOT conturul, nu pe o latura */
+.xvbox .lum::before{content:'';position:absolute;inset:0;border-radius:inherit;
+ box-shadow:inset 0 0 0 1px rgba(255,183,3,.42), inset 0 0 22px -6px rgba(255,183,3,.30);
+ opacity:0;transition:opacity .55s ease}
+@media (hover:hover){
+ .xvbox:hover .lum{opacity:1}
+ .xvbox:hover .lum::after{transform:scale(1)}
+ .xvbox:hover .lum::before{opacity:1}
+}
+
+/* 3 — ochelarii coboară de pe frunte pe ochi */
+.xvbox .gog{position:absolute;top:11px;right:13px;width:26px;height:26px;
+ opacity:0;transform:translateY(-7px) rotate(-6deg);pointer-events:none;
+ transition:opacity .45s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+.xvbox .gog svg{width:100%;height:100%;display:block;
+ filter:drop-shadow(0 3px 5px rgba(26,15,9,.35))}
+@media (hover:hover){
+ .xvbox:hover .gog{opacity:1;transform:translateY(5px) rotate(0deg)}
+}
+
+/* linia de accent creşte din stânga, ca banda lui Snap */
+.xvbox .who{position:relative;display:inline-block;padding-bottom:6px}
+.xvbox .who::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:100%;
+ background:currentColor;transform:scaleX(0);transform-origin:0 50%;opacity:.7;
+ transition:transform .9s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover){.xvbox:hover .who::after{transform:scaleX(1)}}
+
+@media (hover:none),(prefers-reduced-motion:reduce){
+ .xvbox{transform:none!important}
+ .xvbox .lum,.xvbox .gog{display:none}
+ .xvbox .who::after{transform:scaleX(1)}
+}
+
+
+/* ===== personajele se aseaza IN iarba, nu peste ea ===== */
+#chars{position:absolute}
+#chars .contact{position:absolute;left:50%;bottom:-2px;width:74%;height:26px;
+ transform:translateX(-50%);border-radius:50%;pointer-events:none;z-index:-1;
+ background:radial-gradient(ellipse at center,rgba(38,26,10,.5),rgba(38,26,10,.22) 46%,transparent 72%);
+ filter:blur(7px)}
+#charsimg{position:relative;
+ /* baza se stinge putin, ca firele de iarba sa se amestece cu talpile */
+ -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 93%,rgba(0,0,0,.55) 98%,transparent 100%);
+ mask-image:linear-gradient(to bottom,#000 0,#000 93%,rgba(0,0,0,.55) 98%,transparent 100%)}
+
+
+/* toate cardurile de imagine dintr-un rand au exact aceeasi caseta */
+.xg4 .xcard .im,.xg3 .xcard .im,.xg2 .xcard .im{aspect-ratio:1/1!important}
+.xcard.wide .im{aspect-ratio:1/1!important}
+.xcard{display:flex;flex-direction:column}
+.xcard .cap{margin-top:auto}
+
+
+.xg4 .xcard .im.fit{background-size:contain;background-repeat:no-repeat;
+ background-position:center;background-color:#F6EEDF}
+.xg4 .xcard .im.hasimg:not(.fit),.xg3 .xcard .im.hasimg:not(.fit){
+ background-size:cover;background-position:center}
+
+/* ---- AUDIT 31.07: lizibilitate pe panourile colorate ----
+   Eticheta mica (xmono) era maro-nisip pe lemn/padure/teal: contrast 1.9-2.7.
+   Pe fundal colorat saturat trebuie crem, altfel dispare la 10px. */
+.p-wood .xmono,.p-forest .xmono,.p-teal .xmono,.p-apric .xmono{color:rgba(246,238,223,.88)!important}
+.p-wood .xsub,.p-forest .xsub,.p-teal .xsub{color:rgba(246,238,223,.82)!important}
+.p-goggle .xmono{color:#5E3A05!important}
+
+/* ============================================================
+   COMPATIBILITATE — Safari/iOS, Chrome/Android, Edge/Windows
+   1. 100vh minte pe iOS: bara de adrese intra/iese si scena sare.
+      100svh = inaltimea mica, stabila. Fallback-ul ramane deasupra.
+   2. crestatura iPhone: continutul intra sub ea fara safe-area.
+   3. scroll cu inertie si fara bounce orizontal.
+   ============================================================ */
+@supports (height:100svh){
+  .hero{min-height:100svh}
+  .stage,.diostage,.win .stage,.scene .stage{height:100svh}
+  .xpan{min-height:100svh}
+}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
+body{overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+ overscroll-behavior-x:none}
+img,svg,video{max-width:100%}
+.xnav,.xmenu,.menu-btn,.xtop{
+ padding-left:max(0px,env(safe-area-inset-left));
+ padding-right:max(0px,env(safe-area-inset-right))}
+@supports (-webkit-touch-callout:none){
+  /* Safari iOS: background-attachment:fixed nu functioneaza, il neutralizez */
+  [style*="background-attachment"],.world{background-attachment:scroll!important}
+}
+@media (hover:none){
+  /* pe touch nu exista hover: arat starea finala, nu una moarta */
+  .xvbox{transform:none!important}
+  .xvbox .who::after{transform:scaleX(1)!important}
+  .picto i{transform:none!important}
+}
+@media print{
+  .xpan{position:static!important;min-height:auto!important;page-break-inside:avoid}
+  .xnav,.xmenu,.menu-btn{display:none!important}
+}
