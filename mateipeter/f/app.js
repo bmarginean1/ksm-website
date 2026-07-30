@@ -2,7 +2,7 @@
 try{
 
 
-var LOGO = {"orizontal":"https://bmarginean1.github.io/ksm-website/mateipeter/f/i1.webp","principal": "https://bmarginean1.github.io/ksm-website/mateipeter/f/i2.webp", "simplificat": "https://bmarginean1.github.io/ksm-website/mateipeter/f/i3.webp", "emblema": "https://bmarginean1.github.io/ksm-website/mateipeter/f/i4.webp"};
+var LOGO = {"orizontal":"https://bmarginean1.github.io/ksm-website/mateipeter/f/a1.webp","principal": "https://bmarginean1.github.io/ksm-website/mateipeter/f/a2.webp", "simplificat": "https://bmarginean1.github.io/ksm-website/mateipeter/f/a3.webp", "emblema": "https://bmarginean1.github.io/ksm-website/mateipeter/f/a4.webp"};
 
 /* logo peste tot */
 ['herologo','navlogo','filmimg','thumblogo'].forEach(function(id){
@@ -112,7 +112,9 @@ function sceneAt(p){
     if(!cabin._base){                       /* măsor abia când layout-ul e gata */
       var t=cabin.style.transform; cabin.style.transform='translate(-50%,-50%) scale(1)';
       var r=win.getBoundingClientRect();
-      if(r.width>60 && r.height>60) cabin._base={w:r.width,h:r.height};
+      /* pragul era 60px: pe telefon fereastra masoara ~54px, deci masuratoarea
+         nu trecea niciodata si zoom-ul nu pornea deloc. 20px e destul. */
+      if(r.width>20 && r.height>20) cabin._base={w:r.width,h:r.height};
       cabin.style.transform=t;
     }
     if(!cabin._base){ return; }            /* încă nu e gata — încerc la următorul cadru */

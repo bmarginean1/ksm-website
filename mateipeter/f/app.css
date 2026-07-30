@@ -1082,7 +1082,7 @@ section.p-paper{background:var(--x-paper)!important;color:var(--x-ink)!important
 
 /* MOBIL: panourile nu mai sunt lipite */
 @media (max-width:900px),(max-height:560px){
- .xpan{position:relative!important;top:auto!important;min-height:auto;align-items:flex-start;
+ .xpan{min-height:auto;align-items:flex-start;
   padding-top:clamp(50px,9vw,76px);padding-bottom:clamp(50px,9vw,76px);
   box-shadow:0 -16px 40px rgba(26,15,9,.45)}
 }
@@ -1465,8 +1465,11 @@ body,.xlead,.xvbox p,.xvbox .ex,.xin p,.xtrow div{font-family:var(--x-body),syst
   .stage,.diostage,.win .stage,.scene .stage{height:100svh}
   .xpan{min-height:100svh}
 }
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
-body{overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+/* ATENTIE: overflow-x:hidden pe html/body RUPE position:sticky —
+   creeaza un scroll container si scena de zoom nu mai ramane lipita.
+   overflow-x:clip taie la fel, dar nu strica sticky. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:clip;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
  overscroll-behavior-x:none}
 img,svg,video{max-width:100%}
 .xnav,.xmenu,.menu-btn,.xtop{
@@ -1486,3 +1489,26 @@ img,svg,video{max-width:100%}
   .xpan{position:static!important;min-height:auto!important;page-break-inside:avoid}
   .xnav,.xmenu,.menu-btn{display:none!important}
 }
+
+/* ============================================================
+   MOBIL — 31.07: panourile se comportau altfel decat pe desktop
+   1. .world (desenul SVG vechi) ramanea vizibil intre panouri,
+      pentru ca pe mobil ele nu mai erau lipite si nu-l acopereau.
+      Nu mai e folosit nicaieri — il scot definitiv.
+   2. Stivuirea lipita era oprita sub 900px. O repun: acelasi
+      mecanism ca pe desktop (top negativ calculat in JS), deci
+      panourile intra unul peste altul, cu aceeasi animatie.
+   ============================================================ */
+.world,#fg{display:none!important}
+@media (max-width:900px),(max-height:560px){
+ .xpan{position:sticky!important;min-height:auto;align-items:flex-start;
+  padding-top:clamp(50px,9vw,76px);padding-bottom:clamp(50px,9vw,76px);
+  box-shadow:0 -16px 40px rgba(26,15,9,.45)}
+}
+.xpan.tall{position:sticky!important}
+
+/* Scena are 200vh, dar zoom-ul se consuma in primii 100vh: restul ramanea
+   ecran gol pana venea primul panou. Trag stiva peste jumatatea goala —
+   panoul intra exact cand zoom-ul s-a terminat. */
+#xstack{margin-top:-18vh}
+@supports(height:100svh){#xstack{margin-top:-18svh}}
