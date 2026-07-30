@@ -15,7 +15,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);
   font-family:var(--body),'Avenir Next','Helvetica Neue','Segoe UI',system-ui,sans-serif;
   font-feature-settings:'locl' 1;font-variant-ligatures:none;
-  font-size:clamp(15.5px,1.05vw,17px);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  font-size:clamp(15.5px,1.05vw,17px);line-height:1.62;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{margin:0;font-family:var(--dsp),'Avenir Next','Helvetica Neue',system-ui,sans-serif;font-feature-settings:'locl' 1;
   font-weight:var(--dsp-w);line-height:1.02;letter-spacing:var(--dsp-tr)}
 p{margin:0} a{color:inherit;text-decoration:none} img{max-width:100%}
@@ -1469,8 +1469,9 @@ body,.xlead,.xvbox p,.xvbox .ex,.xin p,.xtrow div{font-family:var(--x-body),syst
    creeaza un scroll container si scena de zoom nu mai ramane lipita.
    overflow-x:clip taie la fel, dar nu strica sticky. */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{overflow-x:clip;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
  overscroll-behavior-x:none}
+@supports(overflow-x:clip){body{overflow-x:clip}}
 img,svg,video{max-width:100%}
 .xnav,.xmenu,.menu-btn,.xtop{
  padding-left:max(0px,env(safe-area-inset-left));
