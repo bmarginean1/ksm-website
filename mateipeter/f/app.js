@@ -274,7 +274,9 @@ setTimeout(function(){var c=document.getElementById('cabin');if(c)c._base=null;o
   var PAL=[['Crem','#F6EEDF','hârtia lumii'],['Galben ochelari','#FFB703','semnul seriei'],
    ['Lemn','#965515','masa, cabana'],['Apricot','#D98B31','blana lui Peter'],
    ['Teal','#147C97','accentul rece'],['Verde pădure','#49603A','natura'],
-   ['Umbră','#5E1B05','umbre calde'],['Contur','#1A0F09','linia groasă']];
+   ['Umbră','#5E1B05','umbre calde'],['Contur','#1A0F09','linia groasă'],
+   ['Ten','#EAA191','pielea copiilor'],
+   ['Teal randat','#327A84','teal pe textil, în lumină']];
   var sw=document.getElementById('swatches');
   if(sw) sw.innerHTML=PAL.map(function(c){
     return '<div class="xswatch"><div class="c" style="background:'+c[1]+'"></div>'+
