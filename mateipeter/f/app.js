@@ -2,7 +2,7 @@
 try{
 
 
-var LOGO = {"orizontal":"https://bmarginean1.github.io/ksm-website/mateipeter/f/a1.webp","principal": "https://bmarginean1.github.io/ksm-website/mateipeter/f/a2.webp", "simplificat": "https://bmarginean1.github.io/ksm-website/mateipeter/f/a3.webp", "emblema": "https://bmarginean1.github.io/ksm-website/mateipeter/f/a4.webp"};
+var LOGO = {"orizontal":"https://bmarginean1.github.io/ksm-website/mateipeter/f/a1.webp","principal":"https://bmarginean1.github.io/ksm-website/mateipeter/f/a2.webp","simplificat":"https://bmarginean1.github.io/ksm-website/mateipeter/f/a1.webp","emblema":"https://bmarginean1.github.io/ksm-website/mateipeter/f/a3.webp"};
 
 /* logo peste tot */
 ['herologo','navlogo','filmimg','thumblogo'].forEach(function(id){
@@ -47,19 +47,6 @@ setUp(su==='1');
     });
     return ok>=4;
   }
-  function mark(){
-    Array.prototype.forEach.call(fsw.children,function(b,i){
-      if(!FONTS[i])return;
-      var fam=FONTS[i][0], sm=b.querySelector('small'); if(!sm)return;
-      if(sm.getAttribute('data-checked'))return;
-      var ok=hasDiacritics(fam);
-      sm.setAttribute('data-checked','1');
-      sm.innerHTML=FONTS[i][6]+' · <span style="color:'+(ok?'#49603A':'#A2452B')+'">'+
-        (ok?'ăâîșț ✓':'fără ăâîșț')+'</span>';
-    });
-  }
-  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){setTimeout(mark,300)});
-  setTimeout(mark,1600); setTimeout(mark,3500);
 })();
 
 
