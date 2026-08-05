@@ -514,10 +514,11 @@ setTimeout(function(){var c=document.getElementById('cabin');if(c)c._base=null;o
     var h=document.getElementById('l4'); if(!h)return;
     [].slice.call(h.querySelectorAll('.ground,.tree')).forEach(function(x){x.style.display='none'});
     var e=document.createElement('img'); e.src=i.src; e.alt='';
-    /* scalat dupa inaltime: altfel coroanele copacilor ies din cadru si se taie */
-    e.style.cssText='position:absolute;left:50%;bottom:0;transform:translateX(-50%);'+
-      'height:100%;width:auto;min-width:100%;max-width:none;object-fit:contain;'+
-      'object-position:bottom center;pointer-events:none;z-index:2';
+    /* umple cadrul colt in colt: cover, ancorat jos — se taie putin din coroane, dar
+       nu mai raman benzi de fundal pe laterale la ecrane late */
+    e.style.cssText='position:absolute;left:0;top:0;width:100%;height:100%;'+
+      'object-fit:cover;object-position:center bottom;'+
+      'pointer-events:none;z-index:2';
     h.insertBefore(e,h.firstChild);
     /* aceeasi iarba, inca o data, DEASUPRA personajelor - le intra peste talpi */
     var g=e.cloneNode(); g.className='grassfront';
