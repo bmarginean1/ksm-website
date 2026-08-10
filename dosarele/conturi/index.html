@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ro"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dosarele Orașului Alb — conturi social media</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dosarele Orașului Alb — conturile voastre">
+<meta property="og:description" content="30 de secunde. Ca să vă putem eticheta în postările campaniei.">
+<meta property="og:url" content="https://bmarginean1.github.io/ksm-website/dosarele/conturi/">
+<meta name="theme-color" content="#12100E">
+<style>
+@font-face{font-family:'Theonory';src:url('https://bmarginean1.github.io/ksm-website/dosarele/f/theonory.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'HandA';src:url('https://bmarginean1.github.io/ksm-website/dosarele/f/handa.woff2') format('woff2');font-display:swap}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#12100E;color:#D9CFBB;font-family:'Special Elite',ui-monospace,monospace;
+ min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:26px 16px}
+.foaie{width:100%;max-width:520px;background:#E4D9BF;color:#1A1815;border-radius:4px;padding:34px 26px 30px;
+ box-shadow:0 30px 70px -30px rgba(0,0,0,.9);position:relative}
+.foaie::after{content:'';position:absolute;inset:0;pointer-events:none;
+ background:radial-gradient(120% 80% at 50% 0%,rgba(0,0,0,0) 60%,rgba(0,0,0,.10) 100%)}
+h1{font-family:'Theonory',serif;font-size:clamp(26px,7vw,38px);margin:0 0 4px;line-height:1.05;text-align:center}
+.sub{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6B6153;text-align:center;margin-bottom:22px}
+.rand{border-bottom:2px solid rgba(26,24,21,.22);border-top:1px solid rgba(26,24,21,.10);padding:0}
+label{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7C2B28;padding:12px 2px 2px}
+input,select{width:100%;border:0;background:transparent;font-family:'Special Elite',ui-monospace,monospace;
+ font-size:17px;color:#1A1815;padding:2px 2px 12px;outline:none}
+select{font-size:16px}
+input::placeholder{color:#a89c86}
+.hint{font-size:11px;color:#6B6153;padding:6px 2px 0;line-height:1.5}
+button{width:100%;margin-top:26px;padding:16px;border:0;border-radius:3px;background:#7C2B28;color:#E4D9BF;
+ font-family:'Special Elite',ui-monospace,monospace;font-size:16px;letter-spacing:.08em;cursor:pointer}
+button:active{transform:translateY(1px)}
+.nota{font-family:'HandA',cursive;color:#223458;font-size:19px;text-align:center;margin-top:18px;line-height:1.5}
+.err{color:#7C2B28;font-size:12px;text-align:center;margin-top:10px;min-height:16px}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+</head><body>
+
+<form class="foaie" id="f" onsubmit="return trimite(event)">
+  <h1>Dosarele Orașului Alb</h1>
+  <div class="sub">conturi pentru etichetare</div>
+
+  <div class="rand"><label>Nume și prenume</label>
+    <input id="nume" required placeholder="cum apari în distribuție"></div>
+
+  <div class="rand"><label>Rol</label>
+    <select id="rol">
+      <option>Cast</option><option>Crew</option><option>Producție</option><option>Altul</option>
+    </select></div>
+
+  <div class="rand"><label>Instagram</label>
+    <input id="ig" placeholder="@numele.tau"></div>
+
+  <div class="rand"><label>TikTok</label>
+    <input id="tt" placeholder="@numele.tau"></div>
+
+  <div class="rand"><label>Facebook</label>
+    <input id="fb" placeholder="link profil sau pagină"></div>
+
+  <div class="rand"><label>Vrei collab pe Instagram?</label>
+    <select id="collab">
+      <option>Da — postarea apare și pe profilul meu</option>
+      <option>Nu, doar etichetare</option>
+      <option>Nu știu ce e, explică-mi</option>
+    </select></div>
+
+  <div class="hint">Vă etichetăm prin rotație, nu toți la fiecare postare. Postăm de mai multe ori pe zi și nu vrem să vă umplem feedul.</div>
+
+  <button type="submit">TRIMITE PE WHATSAPP</button>
+  <div class="err" id="err"></div>
+  <div class="nota">mersi — ne vedem în cinema</div>
+</form>
+
+<script>
+var TELEFON = '40742001390'; // Bogdan
+function v(id){ return (document.getElementById(id).value||'').trim(); }
+function trimite(e){
+  e.preventDefault();
+  var nume=v('nume');
+  if(!nume){ document.getElementById('err').textContent='Scrie numele.'; return false; }
+  if(!v('ig') && !v('tt') && !v('fb')){
+    document.getElementById('err').textContent='Completează măcar un cont.'; return false; }
+  var t = 'CONTURI — Dosarele Orașului Alb\n'
+        + 'Nume: ' + nume + '\n'
+        + 'Rol: ' + v('rol') + '\n'
+        + 'Instagram: ' + (v('ig')||'-') + '\n'
+        + 'TikTok: ' + (v('tt')||'-') + '\n'
+        + 'Facebook: ' + (v('fb')||'-') + '\n'
+        + 'Collab: ' + v('collab');
+  location.href = 'https://wa.me/' + TELEFON + '?text=' + encodeURIComponent(t);
+  return false;
+}
+</script>
+</body></html>
