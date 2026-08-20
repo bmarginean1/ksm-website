@@ -98,7 +98,13 @@ h2.sticker{font-size:clamp(30px,6.2vw,86px);margin:14px 0 24px}
 @media(hover:hover){.film:hover{padding-left:12px}}
 .film .t{font-family:'Anton',Impact,sans-serif;font-size:clamp(19px,2.3vw,34px);text-transform:uppercase;line-height:1.05}
 .film .m{font-size:11.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;opacity:.68;margin-left:auto}
-@media(max-width:700px){.film .m{margin-left:0;width:100%}}
+@media(max-width:700px){.film .m{margin-left:0;width:100%;order:3}}
+.film .lk{display:inline-flex;gap:8px;flex-wrap:wrap}
+.film .lk a{text-decoration:none;border:2px solid currentColor;border-radius:8px;padding:6px 11px;
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:inherit;opacity:.75;
+  -webkit-tap-highlight-color:transparent;transition:background .25s var(--ease),color .25s var(--ease),opacity .25s var(--ease)}
+@media(hover:hover){.film .lk a:hover{background:var(--orange);border-color:var(--orange);color:var(--ink);opacity:1}}
+.film .lk a:active{background:var(--orange);border-color:var(--orange);color:var(--ink);opacity:1}
 
 .people{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
 @media(max-width:1000px){.people{grid-template-columns:repeat(2,1fr)}}
@@ -184,9 +190,21 @@ a.person:active{top:2px;left:2px;box-shadow:4px 5px 0 var(--ink)}
     <div class="kick rv">The work</div>
     <h2 class="sticker rv">Five features.<br><span class="v">Four on Netflix.</span></h2>
     <div class="films rv">
-      <div class="film"><span class="t">The Handler</span><span class="m">Acel martie · English-language · out internationally this year</span></div>
-      <div class="film"><span class="t">Dosarele Orașului Alb</span><span class="m">In cinemas 11 September</span></div>
-      <div class="film"><span class="t">Am Băut Drog</span><span class="m">In post for 2027</span></div>
+      <div class="film">
+        <span class="t">The Handler</span>
+        <span class="lk"><a href="https://www.imdb.com/title/tt37988531/" target="_blank" rel="noopener">IMDb ↗</a><a href="https://www.youtube.com/watch?v=P1-sUIRbzUU" target="_blank" rel="noopener">Trailer ▸</a></span>
+        <span class="m">Acel martie · English-language · out internationally this year</span>
+      </div>
+      <div class="film">
+        <span class="t">Dosarele Orașului Alb</span>
+        <span class="lk"><a href="https://www.imdb.com/title/tt37989931/" target="_blank" rel="noopener">IMDb ↗</a><a href="https://www.youtube.com/watch?v=MBnVWW-GrnU" target="_blank" rel="noopener">Trailer ▸</a></span>
+        <span class="m">In cinemas 11 September</span>
+      </div>
+      <div class="film">
+        <span class="t">Am Băut Drog</span>
+        <span class="lk"><a href="https://ksmproduction.ro/projects/am-baut-drog.html" target="_blank" rel="noopener">Project page ↗</a></span>
+        <span class="m">In post for 2027</span>
+      </div>
       <div class="film"><span class="t">+ Documentaries, brand films, commercials</span><span class="m">Monthly content packages via Media House</span></div>
     </div>
     <p class="lead rv" style="margin-top:24px;opacity:.82">A short portfolio lives on our site — the selected work rather than everything.</p>
