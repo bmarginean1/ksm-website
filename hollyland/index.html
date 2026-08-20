@@ -137,6 +137,17 @@ a.person:active{top:2px;left:2px;box-shadow:4px 5px 0 var(--ink)}
 @media(max-width:900px),(hover:none){.dots{display:none}}
 .prog{position:fixed;left:0;top:0;height:4px;background:var(--orange);z-index:70;width:0}
 
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,140%);z-index:90;
+  background:var(--cream);color:var(--ink);border:3px solid var(--ink);border-radius:12px;
+  box-shadow:8px 9px 0 var(--ink);padding:14px 18px;max-width:min(92vw,520px);
+  font-size:13px;line-height:1.5;transition:transform .35s var(--ease);pointer-events:none}
+.toast.on{transform:translate(-50%,0);pointer-events:auto}
+.toast b{display:block;font-family:'Anton',Impact,sans-serif;font-size:15px;letter-spacing:.02em;
+  text-transform:uppercase;margin-bottom:5px}
+.toast .adr{font-weight:700;word-break:break-all}
+.toast .alt{display:inline-flex;gap:14px;margin-top:9px;flex-wrap:wrap}
+.toast .alt a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:2px solid var(--orange)}
+
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
@@ -147,6 +158,14 @@ a.person:active{top:2px;left:2px;box-shadow:4px 5px 0 var(--ink)}
 
 <div class="prog" id="prog"></div>
 <nav class="dots" id="dots" aria-label="Slides"></nav>
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <b>Address copied</b>
+  <span class="adr">bogdan.marginean@ksmproduction.ro</span>
+  <span class="alt">
+    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=bogdan.marginean@ksmproduction.ro&amp;su=Hollyland%20%C3%97%20KSM%20Production" target="_blank" rel="noopener">Open in Gmail ↗</a>
+    <a href="https://outlook.live.com/mail/0/deeplink/compose?to=bogdan.marginean@ksmproduction.ro&amp;subject=Hollyland%20%C3%97%20KSM%20Production" target="_blank" rel="noopener">Open in Outlook ↗</a>
+  </span>
+</div>
 
 <!-- 01 -->
 <section class="slide bg-ink" data-label="Cover">
@@ -159,7 +178,7 @@ a.person:active{top:2px;left:2px;box-shadow:4px 5px 0 var(--ink)}
     </p>
     <div class="cta rv">
       <a class="pill orange" href="#s2">Start →</a>
-      <a class="pill ghost" href="mailto:bogdan.marginean@ksmproduction.ro?subject=Hollyland%20%C3%97%20KSM%20Production">Email Bogdan</a>
+      <a class="pill ghost" href="mailto:bogdan.marginean@ksmproduction.ro?subject=Hollyland%20%C3%97%20KSM%20Production" data-mail>Email Bogdan</a>
     </div>
   </div>
 </section>
@@ -267,7 +286,7 @@ a.person:active{top:2px;left:2px;box-shadow:4px 5px 0 var(--ink)}
       Happy to jump on a call any time, and I can send over our collaboration deck with visuals if that helps.
     </p>
     <div class="cta rv">
-      <a class="pill orange" href="mailto:bogdan.marginean@ksmproduction.ro?subject=Hollyland%20%C3%97%20KSM%20Production">Email Bogdan</a>
+      <a class="pill orange" href="mailto:bogdan.marginean@ksmproduction.ro?subject=Hollyland%20%C3%97%20KSM%20Production" data-mail>Email Bogdan</a>
       <a class="pill cream" href="tel:+40742001390">+40 742 001 390</a>
     </div>
     <div class="sig rv">
@@ -315,6 +334,25 @@ a.person:active{top:2px;left:2px;box-shadow:4px 5px 0 var(--ink)}
   window.addEventListener('scroll',sc,{passive:true});
   window.addEventListener('resize',sc,{passive:true});
   sc();
+
+  /* mail button: copy address + show fallback (mailto does nothing without a mail client) */
+  var ADR='bogdan.marginean@ksmproduction.ro', toast=document.getElementById('toast'), tt;
+  function showToast(){
+    toast.classList.add('on'); clearTimeout(tt);
+    tt=setTimeout(function(){toast.classList.remove('on')},9000);
+  }
+  function copy(txt){
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).catch(function(){}); return; }
+    var ta=document.createElement('textarea'); ta.value=txt;
+    ta.style.cssText='position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta); ta.select();
+    try{document.execCommand('copy')}catch(e){}
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('[data-mail]').forEach(function(a){
+    a.addEventListener('click', function(){ copy(ADR); showToast(); });
+  });
+  toast.addEventListener('click', function(e){ if(e.target.tagName!=='A') toast.classList.remove('on'); });
 
   function cur(){ var b=0,d=Infinity;
     slides.forEach(function(s,i){ var x=Math.abs(s.getBoundingClientRect().top); if(x<d){d=x;b=i;} }); return b; }
