@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MetaWin 2026 — Product Design Case Study</title>
+<meta name="description" content="Redesigning MetaWin Casino & introducing Sports Betting. Product design case study by Cynthia Mihaila.">
+<meta property="og:title" content="MetaWin 2026 — Product Design Case Study">
+<meta property="og:description" content="Redesigning MetaWin Casino & introducing Sports Betting.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bmarginean1.github.io/ksm-website/metawin/">
+<meta property="og:image" content="https://bmarginean1.github.io/ksm-website/metawin/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bmarginean1.github.io/ksm-website/metawin/og.jpg">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cyan:#00D1FF;
+  --ink:#ffffff;
+  --dim:#9BB0C9;
+  --dimmer:#6B819B;
+  --line:rgba(255,255,255,.14);
+  --card:rgba(255,255,255,.045);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+/* fundalul e purtat de body, full-screen cover — un singur strat, fara margini dublate.
+   Slide-urile sunt transparente; pe cover (slide 1) body comuta pe imaginea cu flare. */
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
+  background:url('img/bg-all.jpg') center/cover no-repeat #04060d}
+body.cover{background-image:url('img/bg-first.jpg')}
+
+/* ---------- stage ---------- */
+#stage{position:fixed;left:50%;top:50%;width:1920px;height:1080px;
+  transform-origin:center center;will-change:transform}
+.slide{position:absolute;inset:0;background:transparent;
+  padding:96px 110px;opacity:0;visibility:hidden;
+  transition:opacity .38s ease;overflow:hidden}
+.slide.on{opacity:1;visibility:visible}
+.slide.abs{padding:0}
+
+/* ---------- type ---------- */
+h1{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:74px;line-height:1.07;letter-spacing:-.02em}
+h2{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:52px;line-height:1.12;letter-spacing:-.015em;max-width:22ch}
+h2.wide{max-width:36ch}
+.kicker{font-family:Inter,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:15px;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:22px}
+.kicker.muted{color:var(--dimmer)}
+.lead{font-size:23px;line-height:1.5;color:var(--dim);max-width:52ch;margin-top:20px}
+.note{font-size:19px;line-height:1.5;color:var(--dimmer);max-width:58ch}
+.cy{color:var(--cyan)}
+
+/* ---------- layout ---------- */
+.row{display:flex;gap:56px;height:100%}
+.col{display:flex;flex-direction:column}
+.col.txt{width:640px;flex:none;justify-content:center}
+.col.grow{flex:1;min-width:0;justify-content:center}
+.mt{margin-top:auto}
+
+/* ---------- screens ----------
+   Toate ferestrele cu imagini: radius 8, stroke albastru, outer glow. */
+:root{
+  --stroke:rgba(0,209,255,.55);
+  --glow:0 0 0 1px rgba(0,209,255,.16), 0 0 30px rgba(0,209,255,.20), 0 40px 90px rgba(0,0,0,.62);
+  --glow-hi:0 0 0 1px rgba(0,209,255,.42), 0 0 54px rgba(0,209,255,.42), 0 50px 110px rgba(0,0,0,.78);
+}
+.shot{border-radius:8px;border:1px solid var(--stroke);
+  box-shadow:var(--glow);overflow:hidden;background:#0b0f1a;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.shot:hover{transform:scale(1.03);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+.sync .shot:hover{transform:none;border-color:var(--stroke);box-shadow:var(--glow)}
+.sync .pinwrap.hl .shot{border-color:var(--cyan)!important;box-shadow:var(--glow-hi)!important}
+
+.phone img{border-radius:8px;border:1px solid var(--stroke);box-shadow:var(--glow);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.phone.hero img{border-color:var(--cyan);box-shadow:var(--glow-hi)}
+.phone:hover img{transform:scale(1.035);border-color:var(--cyan);box-shadow:var(--glow-hi)}
+
+.c-desk,.p-sc{display:block;cursor:pointer;border-radius:8px;
+  border:1px solid var(--stroke);box-shadow:var(--glow);overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.c-desk:hover,.p-sc:hover{transform:scale(1.022);z-index:6;
+  border-color:var(--cyan);box-shadow:var(--glow-hi)}
+/* telefonul are colturi de dispozitiv, deci glow-ul urmareste silueta, nu un dreptunghi */
+.c-phone{display:block;cursor:pointer;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),filter .3s ease}
+.c-phone:hover{transform:scale(1.04);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 34px rgba(0,209,255,.5)) drop-shadow(0 38px 76px rgba(0,0,0,.75))}
+/* imaginile sursa au deja colt rotunjit + chenar propriu; le supradimensionam
+   cu --bleed ca sa iasa din cadru si sa ramana vizibil doar stroke-ul nostru */
+:root{--bleed:9px}
+.shot img{display:block;width:calc(100% + var(--bleed)*2);max-width:none;margin:calc(var(--bleed)*-1)}
+.shot.win{position:relative}
+.shot.win img{position:absolute;top:calc(var(--bleed)*-1);left:calc(var(--bleed)*-1);margin:0}
+.shot.fade::after{content:'';position:absolute;inset:auto 0 0 0;height:130px;
+  background:linear-gradient(to bottom,transparent,rgba(4,6,13,.92))}
+.strip{display:flex;gap:26px;align-items:flex-start}
+.cap{font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dimmer);margin-top:14px;font-weight:600}
+/* slide 2 · hover pe Casino/Prizes/Sports -> highlight pe ecran */
+.p-item[data-z]{cursor:default;border-radius:10px;padding:10px 12px;margin:-10px -12px;
+  transition:background .2s ease}
+.p-item[data-z]:hover{background:rgba(0,209,255,.07)}
+.p-hl{position:absolute;display:none;border:2px solid var(--cyan);border-radius:8px;
+  box-shadow:0 0 18px rgba(0,209,255,.6),inset 0 0 16px rgba(0,209,255,.15);
+  pointer-events:none;z-index:5}
+/* fiecare sectiune se aprinde in culoarea ei din produs */
+.p-hl.z-prz{border-color:#DCA11F;
+  box-shadow:0 0 18px rgba(220,161,31,.6),inset 0 0 16px rgba(220,161,31,.15)}
+.p-hl.z-spo{border-color:#29AB6F;
+  box-shadow:0 0 18px rgba(41,171,111,.6),inset 0 0 16px rgba(41,171,111,.15)}
+.slide[data-z="cas"] .z-cas,.slide[data-z="prz"] .z-prz,.slide[data-z="spo"] .z-spo{display:block}
+.slide[data-z="cas"] .p-sc.b,.slide[data-z="prz"] .p-sc.a,.slide[data-z="spo"] .p-sc.a{opacity:.45}
+.slide[data-z] .p-sc{transition:opacity .22s ease}
+.slide[data-z] .p-item:not(.hl2){opacity:.5}
+.p-item{transition:opacity .2s ease}
+.p-item.hl2{opacity:1!important}
+
+/* ---------- SLIDE 03 · where I started ---------- */
+.w-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:480px}
+.w-txt h2{font-size:38px!important;max-width:none!important}
+.w-list{list-style:none;margin-top:44px;display:flex;flex-direction:column;gap:22px}
+.w-list li{position:relative;padding-left:32px;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:500;
+  font-size:26px;line-height:1.3;color:var(--ink)}
+.w-list li::before{content:'';position:absolute;left:4px;top:.55em;width:9px;height:9px;
+  border-radius:50%;background:var(--cyan);box-shadow:0 0 12px rgba(0,209,255,.7)}
+.w-before{position:absolute;left:610px;top:106px;z-index:5;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cyan);padding:8px 16px;border-radius:100px;
+  border:1px solid rgba(0,209,255,.45);background:rgba(0,209,255,.09);
+  box-shadow:0 0 22px rgba(0,209,255,.18)}
+/* 790 x 951 -> centrat pe verticala: (1080-951)/2 = 64 */
+.w-desk{position:absolute;left:1020px;top:64px;width:790px;overflow:hidden;
+  border-radius:8px;border:1px solid var(--stroke);box-shadow:var(--glow);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.w-desk img{width:calc(100% + var(--bleed)*2);max-width:none;margin:calc(var(--bleed)*-1);display:block}
+.w-desk:hover{transform:scale(1.015);border-color:var(--cyan);box-shadow:var(--glow-hi)}
+/* 360 x 738 -> centrat: (1080-738)/2 = 171 */
+.w-phone{position:absolute;left:610px;top:171px;width:360px;z-index:2;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.6)) drop-shadow(0 0 26px rgba(0,209,255,.28)) drop-shadow(0 38px 76px rgba(0,0,0,.75));
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),filter .3s ease}
+.w-phone img{width:100%;display:block}
+.w-phone:hover{transform:scale(1.03);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 34px rgba(0,209,255,.5)) drop-shadow(0 38px 76px rgba(0,0,0,.75))}
+.w-cap{position:absolute;left:110px;bottom:56px;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dimmer);font-weight:600}
+
+/* ---------- SLIDE 04 · the audit ---------- */
+.a-txt{position:absolute;left:96px;top:248px;width:720px}
+/* lista celor 3 constatari: centrata intre titlu (~jos la 300) si fraza de jos (~880) */
+.a-finds{position:absolute;left:96px;top:530px;transform:translateY(-50%);width:720px;
+  display:flex;flex-direction:column;gap:34px}
+.a-goal{position:absolute;left:96px;bottom:86px;width:720px;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:26px;line-height:1.35;
+  letter-spacing:-.005em;color:var(--cyan)}
+.a-goal b{color:var(--ink);font-weight:700}
+/* 408 x 838 -> centrat pe verticala: (1080-838)/2 = 121 */
+.a-phone{position:absolute;top:121px;width:408px;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.6)) drop-shadow(0 0 26px rgba(0,209,255,.28)) drop-shadow(0 38px 76px rgba(0,0,0,.75));
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),filter .3s ease}
+.a-phone img{width:100%;display:block}
+.a-phone.a{left:940px}
+.a-phone.b{left:1412px}
+.a-phone:hover{transform:scale(1.03);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 34px rgba(0,209,255,.5)) drop-shadow(0 38px 76px rgba(0,0,0,.75))}
+
+/* ---------- SLIDE 07 · casino discovery ---------- */
+.d-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:430px}
+/* 612 wide -> old 838 high, new 781 high; ambele centrate pe verticala */
+.d-old,.d-new{position:absolute;overflow:hidden;border-radius:8px;
+  border:1px solid var(--stroke);box-shadow:var(--glow);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+/* decupajele sunt curate, deci fara bleed — altfel se mananca din continut.
+   Fiecare imagine se vede integral, la inaltimea ei naturala, centrata pe verticala:
+   old 612x838 -> top 121 ; new 612x781 -> top 150 */
+/* imaginile au exact raportul cadrului (677x927 = 612x838) -> umplu perfect, fara taiere si fara benzi */
+.d-old img,.d-new img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.d-old:hover,.d-new:hover{transform:scale(1.02);z-index:6;
+  border-color:var(--cyan);box-shadow:var(--glow-hi)}
+/* ambele cadre identice 612x838, centrate: (1080-838)/2 = 121 */
+.d-old{left:582px;top:121px;width:612px;height:838px}
+.d-new{left:1220px;top:121px;width:612px;height:838px;border-color:rgba(0,209,255,.8)}
+.d-tag{position:absolute;left:16px;bottom:16px;z-index:4;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);padding:7px 13px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.22);background:rgba(6,10,18,.78);backdrop-filter:blur(6px)}
+.d-tag.on{color:var(--cyan);border-color:rgba(0,209,255,.5);background:rgba(0,32,48,.8)}
+
+/* ---------- SLIDE 08 · returning players ---------- */
+.r-head{position:absolute;left:96px;top:92px;width:1100px}
+.r-head h2{white-space:nowrap}
+.r-phone{position:absolute;top:262px;width:280px;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.6)) drop-shadow(0 0 24px rgba(0,209,255,.26)) drop-shadow(0 32px 64px rgba(0,0,0,.75));
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),filter .3s ease}
+.r-phone img{width:100%;display:block}
+.r-phone.a{left:96px}
+.r-phone.b{left:400px}
+.r-phone:hover{transform:scale(1.035);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 32px rgba(0,209,255,.5)) drop-shadow(0 32px 64px rgba(0,0,0,.75))}
+.r-list{position:absolute;left:800px;top:280px;width:320px;
+  display:flex;flex-direction:column;gap:30px}
+.r-list div{border-left:2px solid var(--cyan);padding-left:18px}
+.r-list b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:7px}
+.r-list span{font-size:18px;line-height:1.4;color:var(--dim)}
+.r-foot{position:absolute;left:96px;top:886px;width:600px}
+.r-desk{position:absolute;left:1160px;top:118px;width:750px;overflow:hidden;border-radius:8px;
+  border:1px solid var(--stroke);box-shadow:var(--glow);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.r-desk img{width:100%;display:block}
+.r-desk:hover{transform:scale(1.015);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+
+/* ---------- SLIDE 09 · rewards & progression ---------- */
+.rw-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:430px}
+.rw-ph{position:absolute;top:270px;width:250px;height:540px;overflow:hidden;border-radius:8px;
+  border:1px solid var(--stroke);box-shadow:var(--glow);background:#0b0f1a;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.rw-ph img{width:100%;display:block}
+.rw-ph.a{left:566px}
+.rw-ph.b{left:840px}
+.rw-ph:hover{transform:scale(1.035);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+/* 640 x 920 -> centrat: (1080-920)/2 = 80 */
+.rw-desk{position:absolute;left:1170px;top:118px;width:640px;height:928px;overflow:hidden;
+  border-radius:8px;border:1px solid var(--stroke);box-shadow:var(--glow);background:#0b0f1a;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.rw-desk img{width:100%;display:block}
+.rw-desk:hover{transform:scale(1.015);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+
+/* slide 9 · hover pe Current/Progress/Next/Available -> highlight pe ecran + lupa zoom */
+.rw-quad div{cursor:default;transition:border-color .2s ease,background .2s ease}
+.rw-quad div:hover{border-color:rgba(0,209,255,.6);background:rgba(0,209,255,.08)}
+.rw-hl{position:absolute;display:none;border:2px solid var(--cyan);border-radius:6px;
+  box-shadow:0 0 18px rgba(0,209,255,.65),inset 0 0 14px rgba(0,209,255,.18);
+  pointer-events:none;z-index:5}
+/* pozitii in % din fereastra telefonului (masurate pe imaginile reale) */
+.k-cur {left:3%; top:37.9%;width:24%;height:5.4%}
+.k-prog{left:33%;top:37.9%;width:32%;height:5.4%}
+.k-next{left:68%;top:37.9%;width:29%;height:5.4%}
+.k-av.a1{left:2.5%;top:19.6%;width:46%;height:6.6%}
+.k-av.a2{left:51.5%;top:19.6%;width:46%;height:6.6%}
+.slide[data-z="cur"] .k-cur,.slide[data-z="prog"] .k-prog,
+.slide[data-z="next"] .k-next,.slide[data-z="av"] .k-av{display:block}
+.slide[data-z] .rw-ph,.slide[data-z] .rw-desk{opacity:.4;transition:opacity .22s ease}
+.slide[data-z="cur"] .rw-ph.a,.slide[data-z="prog"] .rw-ph.a,
+.slide[data-z="next"] .rw-ph.a,.slide[data-z="av"] .rw-ph.b{opacity:1}
+/* lupa: aceeasi imagine, marita, centrata pe zona */
+.rw-lens{position:absolute;left:566px;top:96px;width:524px;height:150px;display:none;
+  border-radius:10px;border:1.5px solid var(--cyan);overflow:hidden;background:#0d1017;
+  align-items:center;justify-content:center;
+  box-shadow:0 0 0 1px rgba(0,209,255,.3),0 0 44px rgba(0,209,255,.4),0 26px 60px rgba(0,0,0,.7);z-index:8}
+.slide[data-z] .rw-lens{display:flex}
+.rw-lens img{display:none;max-width:94%;max-height:86%;width:auto;height:auto;object-fit:contain}
+.slide[data-z="cur"]  .rw-lens img.l-cur,
+.slide[data-z="prog"] .rw-lens img.l-prog,
+.slide[data-z="next"] .rw-lens img.l-next,
+.slide[data-z="av"]   .rw-lens img.l-av{display:block}
+
+/* ---------- SLIDE 11 · introducing sports ---------- */
+.i-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:404px}
+/* 320 x 663 -> centrat: (1080-663)/2 = 208 */
+.i-phone{position:absolute;left:520px;top:208px;width:320px;z-index:2;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.6)) drop-shadow(0 0 26px rgba(0,209,255,.28)) drop-shadow(0 34px 68px rgba(0,0,0,.75));
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),filter .3s ease}
+.i-phone img{width:100%;display:block}
+.i-phone:hover{transform:scale(1.035);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 34px rgba(0,209,255,.5)) drop-shadow(0 34px 68px rgba(0,0,0,.75))}
+/* 940 x 847 -> centrat: (1080-847)/2 = 116 */
+.i-desk{position:absolute;left:870px;top:116px;width:940px;overflow:hidden;border-radius:8px;
+  border:1px solid var(--stroke);box-shadow:var(--glow);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.i-desk img{width:calc(100% + var(--bleed)*2);max-width:none;margin:calc(var(--bleed)*-1);display:block}
+.i-desk:hover{transform:scale(1.015);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+
+/* ---------- SLIDE 12 · the sports challenge ---------- */
+.sc-txt{position:absolute;left:96px;top:96px;width:760px}
+.sc-step{margin-top:40px}
+.sc-step b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:16px;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+.sc-step span{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:500;font-size:28px;line-height:1.3;color:var(--ink)}
+.sc-goal{position:absolute;left:96px;bottom:80px;width:790px;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:26px;line-height:1.4;color:var(--ink)}
+.sc-goal i{font-style:normal;color:var(--cyan);font-weight:700}
+/* 300 x 555 -> centrat: (1080-555)/2 = 262 */
+.sc-ph{position:absolute;top:232px;width:314px;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.55)) drop-shadow(0 0 24px rgba(0,209,255,.26)) drop-shadow(0 30px 60px rgba(0,0,0,.75));
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),filter .3s ease}
+.sc-ph img{width:100%;display:block}
+.sc-ph:hover{transform:scale(1.04);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 32px rgba(0,209,255,.5)) drop-shadow(0 30px 60px rgba(0,0,0,.75))}
+.sc-ph.p1{left:818px}
+.sc-ph.p2{left:1156px}
+.sc-ph.p3{left:1494px}
+
+/* ---------- SLIDE 13 · sports discovery ---------- */
+.sd-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:520px}
+.sd-int{margin-top:40px;border-left:2px solid var(--cyan);padding-left:20px}
+.sd-int b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:20px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:9px}
+.sd-int span{font-size:19px;line-height:1.5;color:#cfdae8}
+/* ecranul mare iese prin marginea dreapta si prin baza, ca in compozitie */
+.sd-desk{position:absolute;left:700px;top:118px;right:110px;bottom:-46px;overflow:hidden;
+  border-radius:10px 10px 0 0;border:1px solid var(--stroke);border-bottom:none;
+  box-shadow:0 0 0 1px rgba(0,209,255,.16),0 0 30px rgba(0,209,255,.20);
+  transition:box-shadow .3s ease,border-color .3s ease}
+.sd-desk img{width:100%;display:block}
+.sd-desk:hover{border-color:var(--cyan);
+  box-shadow:0 0 0 1px rgba(0,209,255,.42),0 0 54px rgba(0,209,255,.42)}
+
+/* ---------- SLIDE 14 · event & market architecture ---------- */
+.em-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:452px}
+.em-phone{position:absolute;left:600px;top:204px;width:330px;height:672px;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.55)) drop-shadow(0 0 26px rgba(0,209,255,.28)) drop-shadow(0 34px 70px rgba(0,0,0,.6));
+  transition:filter .3s ease}
+.em-phone img{width:100%;height:100%;object-fit:fill;display:block}
+.em-phone:hover{filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 44px rgba(0,209,255,.5)) drop-shadow(0 44px 90px rgba(0,0,0,.75))}
+.em-desk{position:absolute;left:980px;top:141px;width:830px;height:798px;overflow:hidden;
+  border-radius:8px;border:1px solid var(--stroke);box-shadow:var(--glow);
+  transition:box-shadow .3s ease,border-color .3s ease}
+.em-desk img{width:100%;height:100%;object-fit:fill;display:block}
+.em-desk:hover{border-color:var(--cyan);box-shadow:var(--glow-hi)}
+
+/* ---------- SLIDE 15 · betslip journey ---------- */
+.bj-head{position:absolute;left:96px;top:74px;right:110px}
+.bj-row{position:absolute;left:96px;right:110px;top:232px;display:flex;justify-content:space-between}
+.bj-col{width:350px}
+.bj-h{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:21px;letter-spacing:.13em;
+  text-transform:uppercase;color:#fff;display:flex;align-items:baseline;gap:9px}
+.bj-h i{font-style:normal;color:var(--cyan)}
+.bj-col p{margin:8px 0 20px;font-size:17px;color:#cfdae8;line-height:1.4}
+.bj{width:350px;height:712px;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.55)) drop-shadow(0 0 22px rgba(0,209,255,.24)) drop-shadow(0 30px 60px rgba(0,0,0,.6));
+  transition:filter .3s ease}
+.bj img{width:100%;height:100%;object-fit:fill;display:block}
+.bj:hover{filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 40px rgba(0,209,255,.48)) drop-shadow(0 40px 80px rgba(0,0,0,.75))}
+
+/* ---------- SLIDE 10 · responsive ---------- */
+.rs-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:340px}
+.rs-block{margin-top:38px;border-left:2px solid var(--cyan);padding-left:20px}
+.rs-block b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+.rs-block span{display:block;font-size:18px;line-height:1.5;color:var(--dim)}
+/* 300 x 572 -> centrat: (1080-572)/2 = 254 */
+.rs-phone{position:absolute;left:472px;top:254px;width:300px;z-index:2;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.6)) drop-shadow(0 0 26px rgba(0,209,255,.28)) drop-shadow(0 34px 68px rgba(0,0,0,.75));
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),filter .3s ease}
+.rs-phone img{width:100%;display:block}
+.rs-phone:hover{transform:scale(1.035);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 34px rgba(0,209,255,.5)) drop-shadow(0 34px 68px rgba(0,0,0,.75))}
+/* 1020 x 849 -> centrat: (1080-849)/2 = 115 */
+.rs-desk{position:absolute;left:812px;top:115px;width:1020px;overflow:hidden;border-radius:8px;
+  border:1px solid var(--stroke);box-shadow:var(--glow);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.rs-desk img{width:calc(100% + var(--bleed)*2);max-width:none;margin:calc(var(--bleed)*-1);display:block}
+.rs-desk:hover{transform:scale(1.015);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+
+/* ---------- SLIDE 18 · final ---------- */
+.fin-bg{position:absolute;left:50%;transform:translateX(-50%);bottom:56px;
+  width:1610px;height:auto;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.5)) drop-shadow(0 0 34px rgba(0,209,255,.24)) drop-shadow(0 34px 70px rgba(0,0,0,.7))}
+.fin-txt{position:absolute;left:96px;top:84px;z-index:2;text-align:left}
+.fin-sig{position:absolute;right:96px;bottom:66px;z-index:3;text-align:left;text-decoration:none;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;line-height:1.35;transition:color .25s ease}
+.fin-sig b{display:block;font-weight:600;font-size:26px;color:#fff}
+.fin-sig span{display:block;font-weight:500;font-size:26px;color:#fff}
+.fin-sig:hover b,.fin-sig:hover span{color:var(--cyan);text-shadow:0 0 18px rgba(0,209,255,.55)}
+.fin-q{margin-top:10px;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:26px;color:var(--cyan);
+  text-shadow:0 0 16px rgba(0,209,255,.5)}
+
+/* ---------- SLIDE 17 · outcome & reflection ---------- */
+.oc-txt{position:absolute;left:96px;top:50%;transform:translateY(-50%);width:560px}
+.oc-block{margin-top:40px}
+.oc-block>b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:20px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
+.oc-item{position:relative;padding-left:24px;margin-bottom:16px}
+.oc-item::before{content:'';position:absolute;left:2px;top:.5em;width:8px;height:8px;border-radius:50%;
+  background:var(--cyan);box-shadow:0 0 10px rgba(0,209,255,.7)}
+.oc-item i{display:block;font-style:normal;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:19px;
+  color:var(--cyan);margin-bottom:3px}
+.oc-item span{font-size:15px;line-height:1.45;color:#cfdae8}
+/* trei ferestre cu chenarul nostru, taiate de baza slide-ului */
+.oc-ph{position:absolute;top:118px;bottom:-20px;width:310px;overflow:hidden;border-radius:12px;
+  border:1px solid var(--stroke);box-shadow:var(--glow);background:#0b0f1a;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.oc-ph img{width:100%;display:block}
+.oc-ph:hover{transform:scale(1.02);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+.oc-lab{position:absolute;top:58px;width:310px;text-align:center;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:17px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink)}
+.oc-ph.p1{left:772px}
+.oc-ph.p2{left:1140px}
+.oc-ph.p3{left:1508px}
+
+/* slide 5 · bc.game — singurul loc unde stroke-ul e verde, culoarea lor de brand */
+/* dimensiuni calculate din raportul fiecarei imagini, ca sa nu ramana benzi goale */
+.gr{--bcg:#20EE89;display:flex;gap:22px;height:840px;justify-content:center;align-items:flex-start}
+.gr .gcol{display:flex;flex-direction:column;gap:22px;width:481px;flex:none}
+.gr .cell.tall{width:486px;height:840px;flex:none}
+.gr .gcol .cell:first-child{height:461px}
+.gr .gcol .cell:last-child{height:357px}
+.gr .cell{display:flex;flex:none;overflow:hidden;cursor:pointer;
+  background:#0b0f1a;border-radius:8px;border:1px solid rgba(32,238,137,.6);
+  box-shadow:0 0 0 1px rgba(32,238,137,.14),0 0 30px rgba(32,238,137,.20),0 40px 90px rgba(0,0,0,.62);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease,border-color .3s ease}
+.gr .cell img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.gr .cell:hover{transform:scale(1.025);z-index:6;border-color:var(--bcg);
+  box-shadow:0 0 0 1px rgba(32,238,137,.45),0 0 54px rgba(32,238,137,.45),0 50px 110px rgba(0,0,0,.78)}
+
+/* compozitia bc.game are propriile chenaruri, deci aici doar glow, fara stroke peste */
+.shotplain img{display:block;max-width:100%;max-height:880px;width:auto;border-radius:8px;
+  box-shadow:0 0 34px rgba(0,209,255,.20),0 40px 90px rgba(0,0,0,.62);
+  transition:transform .3s cubic-bezier(.2,.7,.3,1),box-shadow .3s ease}
+.shotplain img:hover{transform:scale(1.02);
+  box-shadow:0 0 56px rgba(0,209,255,.42),0 50px 110px rgba(0,0,0,.78)}
+/* cutia img se strange pe imaginea reala (width:auto), altfel umbra/glow-ul
+   cade pe un dreptunghi mai lat decat telefonul vizibil */
+.phone{flex:1 1 0;height:0;min-height:0;display:flex;align-items:flex-start;justify-content:center}
+.phone img{height:100%;width:auto;max-width:100%;object-fit:contain;object-position:top center;display:block}
+
+/* ---------- hover link: finding <-> screen ---------- */
+.sync .find,.sync .pinwrap{transition:opacity .22s ease,transform .28s cubic-bezier(.2,.7,.3,1)}
+.slide.linking .sync .find,.slide.linking .sync .pinwrap{opacity:.34}
+.slide.linking .sync .find.hl,.slide.linking .sync .pinwrap.hl{opacity:1}
+.sync .pinwrap.hl{transform:scale(1.045);z-index:4}
+.sync .pinwrap.hl .shot{border-color:rgba(0,209,255,.65);
+  box-shadow:0 0 0 1px rgba(0,209,255,.3),0 46px 100px rgba(0,0,0,.72)}
+.sync .pinwrap.hl .cap{color:var(--cyan)}
+.sync .pinwrap .pin{transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease}
+.sync .pinwrap.hl .pin{transform:scale(1.16);box-shadow:0 0 0 11px rgba(0,209,255,.24)}
+/* regula generica: orice element cu data-k intr-un container .sync */
+.slide.linking .sync [data-k]{opacity:.34;transition:opacity .22s ease,transform .3s cubic-bezier(.2,.7,.3,1)}
+.slide.linking .sync [data-k].hl{opacity:1}
+.rs-block{transition:opacity .22s ease,border-color .22s ease}
+.rs-block.hl{border-left-color:#fff}
+.rs-phone.hl{transform:scale(1.035);z-index:6;
+  filter:drop-shadow(0 0 3px rgba(0,209,255,.85)) drop-shadow(0 0 34px rgba(0,209,255,.5)) drop-shadow(0 34px 68px rgba(0,0,0,.75))}
+.rs-desk.hl{transform:scale(1.015);z-index:6;border-color:var(--cyan);box-shadow:var(--glow-hi)}
+.sync .find{border-left:2px solid transparent;padding-left:16px;margin-left:-18px}
+.sync .find.hl{border-left-color:var(--cyan)}
+.sync .find.hl b{color:var(--cyan)}
+.sync .find.hl span{color:var(--ink)}
+
+/* cifra mare de decizie, sus-stanga, in marginea paginii */
+.dnum{position:absolute;right:96px;top:22px;z-index:3;text-align:right;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:800;font-size:64px;line-height:1;letter-spacing:-.03em;
+  color:transparent;-webkit-text-stroke:2px rgba(0,209,255,.42);
+  pointer-events:none;user-select:none}
+.dnum b{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--dimmer);-webkit-text-stroke:0;font-weight:700;margin-top:4px}
+
+/* pins */
+.pinwrap{position:relative}
+.pin{position:absolute;width:44px;height:44px;border-radius:50%;
+  background:var(--cyan);color:#02121a;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:20px;
+  display:grid;place-items:center;box-shadow:0 0 0 7px rgba(0,209,255,.18);z-index:3}
+
+/* ---------- lists ---------- */
+.finds{display:flex;flex-direction:column;gap:30px;margin-top:38px}
+.find{display:flex;gap:20px;align-items:flex-start}
+/* pastile rotunde cu contur si glow — acelasi limbaj ca iconurile de pe slide 2
+   si cifrele-contur de pe cardurile din slide 6 */
+.find .n{flex:none;width:46px;height:46px;margin-top:2px;border-radius:50%;
+  display:grid;place-items:center;
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:16px;color:var(--cyan);
+  border:1.5px solid rgba(0,209,255,.55);
+  background:radial-gradient(circle at 50% 35%,rgba(0,209,255,.10),rgba(0,209,255,.02) 70%);
+  box-shadow:0 0 16px rgba(0,209,255,.28),inset 0 0 12px rgba(0,209,255,.10);
+  text-shadow:0 0 10px rgba(0,209,255,.8)}
+.find b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:23px;margin-bottom:6px}
+.find span{font-size:18px;color:var(--dim);line-height:1.45}
+
+/* slide 6 · design direction — carduri premium */
+.dd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px}
+.dd-card{position:relative;padding:120px 28px 34px;border-radius:12px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(0,209,255,.07),rgba(255,255,255,.02) 45%,rgba(4,6,13,.35));
+  border:1px solid rgba(0,209,255,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 24px 60px rgba(0,0,0,.45);
+  transition:transform .32s cubic-bezier(.2,.7,.3,1),border-color .28s ease,box-shadow .28s ease}
+.dd-card::before{content:'';position:absolute;left:28px;top:96px;width:44px;height:2px;
+  background:var(--cyan);box-shadow:0 0 12px rgba(0,209,255,.7);
+  transition:width .32s cubic-bezier(.2,.7,.3,1)}
+.dd-ic{position:absolute;left:24px;top:20px;width:78px;height:78px;display:block}
+.dd-ic img{width:100%;height:100%;object-fit:contain;display:block}
+.dd-card b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:22px;line-height:1.25;
+  margin-bottom:12px;min-height:55px}
+.dd-card span{font-size:16px;line-height:1.55;color:var(--dim)}
+.dd-card:hover{transform:translateY(-8px);border-color:rgba(0,209,255,.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 40px rgba(0,209,255,.22),0 34px 80px rgba(0,0,0,.6)}
+.dd-card:hover::before{width:76px}
+.dd-note{margin-top:56px;text-align:center;font-size:19px;line-height:1.6;color:var(--dimmer);white-space:nowrap}
+.dd-note em{font-style:normal;color:var(--dim)}
+
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:34px 46px;margin-top:46px;max-width:1180px}
+.pillar{border-left:2px solid var(--cyan);padding-left:22px}
+.pillar b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:25px;margin-bottom:8px}
+.pillar span{font-size:18px;color:var(--dim);line-height:1.45}
+
+.quad{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 34px;margin-top:38px;max-width:600px}
+.quad div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+.quad b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:14px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+.quad span{font-size:18px;color:var(--dim);line-height:1.4}
+
+/* ---------- trade-off ---------- */
+.tradeoff{margin-top:34px;max-width:660px}
+.to-label{font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dimmer);font-weight:700;margin-bottom:16px}
+.to-bar{display:flex;align-items:center;gap:18px}
+.to-end{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:16px;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--dim);white-space:nowrap;line-height:1.25}
+.to-track{position:relative;flex:1;height:3px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(0,209,255,.35),rgba(255,255,255,.1))}
+.to-dot{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;
+  background:var(--cyan);transform:translate(-50%,-50%);
+  box-shadow:0 0 0 8px rgba(0,209,255,.16),0 0 26px rgba(0,209,255,.5)}
+.to-note{margin-top:16px;font-size:18px;color:var(--dim);line-height:1.45}
+/* fraza-cheie de la baza slide-ului, cu bara de citat */
+.pull{margin-top:34px;padding-left:20px;border-left:3px solid var(--cyan);
+  font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:22px;line-height:1.4;color:var(--ink);max-width:44ch}
+
+/* ---------- intents / flows / steps ---------- */
+.intents{display:flex;flex-direction:column;gap:18px;margin-top:36px}
+.intent{display:flex;align-items:center;gap:18px;background:var(--card);
+  border:1px solid var(--line);border-radius:10px;padding:18px 24px}
+.intent q{font-size:20px;color:var(--ink);font-style:italic;flex:1}
+.intent .arw{color:var(--cyan);font-size:18px}
+.intent .dst{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:18px;color:var(--cyan);white-space:nowrap}
+
+.flows{display:flex;gap:80px;margin-top:44px;justify-content:center}
+.flow{min-width:300px}
+.flow h4{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-size:16px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:22px;font-weight:700}
+.flow ol{list-style:none;display:flex;flex-direction:column;gap:12px}
+.flow li{font-size:21px;padding:15px 22px;border-radius:8px;
+  background:var(--card);border:1px solid var(--line)}
+
+/* pasii — acelasi limbaj ca dd-cards si pastilele rotunde */
+.steps{display:flex;gap:18px;align-items:stretch;margin-top:38px}
+.step{flex:1;display:flex;align-items:center;gap:15px;padding:16px 20px;border-radius:10px;
+  background:linear-gradient(160deg,rgba(0,209,255,.07),rgba(255,255,255,.02) 50%,rgba(4,6,13,.3));
+  border:1px solid rgba(0,209,255,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 14px 34px rgba(0,0,0,.35);
+  transition:transform .28s cubic-bezier(.2,.7,.3,1),border-color .24s ease,box-shadow .24s ease}
+.step:hover{transform:translateY(-4px);border-color:rgba(0,209,255,.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 0 30px rgba(0,209,255,.2),0 20px 44px rgba(0,0,0,.5)}
+.step i{font-style:normal;flex:none;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:13px;color:var(--cyan);
+  border:1.5px solid rgba(0,209,255,.55);
+  background:radial-gradient(circle at 50% 35%,rgba(0,209,255,.10),rgba(0,209,255,.02) 70%);
+  box-shadow:0 0 14px rgba(0,209,255,.25),inset 0 0 10px rgba(0,209,255,.1);
+  text-shadow:0 0 8px rgba(0,209,255,.8)}
+.step b{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:18px;line-height:1.25}
+.steps-sub{margin-top:18px;font-size:17px;letter-spacing:.06em;color:var(--dimmer);font-weight:500}
+/* ---------- research proof ---------- */
+.sheet{background:#fff;border-radius:8px;overflow:hidden;
+  border:1px solid var(--stroke);box-shadow:var(--glow)}
+.sheet img{display:block;width:100%}
+.sheet.sm{width:132px;flex:none;max-height:96px;
+  box-shadow:0 0 0 1px rgba(0,209,255,.16),0 0 18px rgba(0,209,255,.18),0 10px 26px rgba(0,0,0,.55)}
+.proof{display:flex;gap:18px;align-items:center;margin-top:auto;padding-top:34px;
+  border-top:1px solid rgba(255,255,255,.09);max-width:600px}
+.proof p{font-size:15px;line-height:1.5;color:var(--dimmer)}
+.proof p b{color:var(--dim);font-weight:600}
+
+/* ---------- outcome ---------- */
+.three{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:56px;margin-top:36px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.tag{font-size:16px;padding:9px 15px;border-radius:100px;
+  border:1px solid var(--line);background:var(--card);color:var(--dim)}
+.learn{display:flex;flex-direction:column;gap:24px;margin-top:18px}
+.learn div b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:20px;margin-bottom:5px}
+.learn div span{font-size:16px;color:var(--dim);line-height:1.45}
+.thesis{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:52px;line-height:1.18;
+  letter-spacing:-.015em;max-width:24ch}
+.sig{margin-top:26px;font-size:20px;color:var(--dimmer)}
+.sig a{color:var(--dim);text-decoration:none;border-bottom:1px solid rgba(0,209,255,.45);
+  transition:color .2s ease,border-color .2s ease}
+.sig a:hover{color:var(--cyan);border-color:var(--cyan)}
+
+/* ---------- SLIDE 01 · cover (rebuilt 1:1) ---------- */
+.c-logo{position:absolute;left:47px;top:55px;width:464px}
+.c-logo img{width:100%;display:block}
+.c-title{position:absolute;left:55px;top:190px;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:500;
+  font-size:44px;line-height:1.32;letter-spacing:-.01em}
+.c-foot{position:absolute;left:55px;bottom:56px;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;
+  font-size:22px;line-height:1.5}
+.c-foot span{display:block;font-weight:400;color:#e8eef7}
+.c-foot a{color:#e8eef7;text-decoration:none;border-bottom:1px solid rgba(0,209,255,.45);
+  transition:color .2s ease,border-color .2s ease}
+.c-foot a:hover{color:var(--cyan);border-color:var(--cyan)}
+.c-phone{position:absolute}
+/* 988 x 959 -> centrat pe verticala: (1080-959)/2 = 60 ; captura e curata, fara rama proprie */
+.c-desk{position:absolute;left:818px;top:60px;width:988px}
+.c-desk img{width:100%;max-width:none;margin:0;display:block}
+.c-phone{position:absolute;left:442px;top:380px;width:316px;z-index:2;
+  filter:drop-shadow(0 0 2px rgba(0,209,255,.6)) drop-shadow(0 0 26px rgba(0,209,255,.28)) drop-shadow(0 38px 76px rgba(0,0,0,.75))}
+.c-phone img{width:100%;display:block}
+
+/* ---------- SLIDE 02 · platform (rebuilt 1:1) ---------- */
+.p-title{position:absolute;left:55px;top:58px;width:470px;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;
+  font-size:35px;line-height:1.26;letter-spacing:-.015em}
+.p-list{position:absolute;left:55px;top:300px;width:470px;
+  display:flex;flex-direction:column;gap:44px}
+.p-item{display:flex;gap:24px;align-items:flex-start}
+.p-ic{width:74px;height:74px;flex:none;display:grid;place-items:center;margin-top:-4px}
+.p-ic img{width:100%;height:100%;object-fit:contain;display:block}
+.p-item b{display:block;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:27px;
+  line-height:1.15;margin-bottom:9px}
+.p-item b.up{text-transform:uppercase;font-size:24px;letter-spacing:.01em}
+.p-item span{font-size:19px;line-height:1.4;color:#cfdae8}
+.p-role{position:absolute;left:55px;bottom:56px;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;
+  font-size:22px;line-height:1.5}
+.p-role span{display:block;font-weight:400;color:#e8eef7}
+.p-role em{display:block;font-style:normal;font-weight:400;font-size:16px;line-height:1.5;
+  color:var(--dimmer);max-width:470px;margin-top:14px}
+.p-sc{position:absolute;top:44px;bottom:-2px;overflow:hidden;border-radius:10px 10px 0 0}
+.p-sc img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.p-sc.a img{object-position:top left}
+.p-sc.a{left:556px;width:660px}
+.p-sc.b{left:1240px;width:660px}
+
+/* ---------- chrome ---------- */
+#bar{position:fixed;left:0;bottom:0;height:3px;background:var(--cyan);
+  width:0;transition:width .35s ease;z-index:40;box-shadow:0 0 14px rgba(0,209,255,.6)}
+#num{position:fixed;right:26px;bottom:20px;z-index:40;font-size:13px;
+  letter-spacing:.18em;color:rgba(255,255,255,.35);font-weight:600}
+#hint{position:fixed;left:26px;bottom:18px;z-index:40;font-size:12px;
+  letter-spacing:.1em;color:rgba(255,255,255,.24)}
+.zone{position:fixed;top:0;bottom:0;width:11vw;z-index:35;cursor:pointer}
+.zone.l{left:0} .zone.r{right:0}
+
+#ov{position:fixed;inset:0;background:rgba(3,5,11,.97);z-index:60;display:none;overflow-y:auto;padding:52px}
+#ov.on{display:block}
+#ov h5{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:600;font-size:15px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dimmer);margin-bottom:30px}
+#ovg{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.ovc{border:1px solid var(--line);border-radius:10px;padding:17px;cursor:pointer;
+  background:rgba(255,255,255,.03);transition:border-color .16s,background .16s}
+.ovc:hover{border-color:var(--cyan);background:rgba(0,209,255,.07)}
+.ovc i{font-style:normal;font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:700;font-size:12px;
+  letter-spacing:.14em;color:var(--cyan);display:block;margin-bottom:8px}
+.ovc b{font-family:Poppins,'Segoe UI',system-ui,Arial,sans-serif,'Segoe UI',system-ui,Arial,sans-serif;font-weight:500;font-size:15px;line-height:1.3;display:block}
+</style>
+</head>
+<body>
+
+<div id="stage">
+
+<!-- 01 — COVER -->
+<section class="slide abs" data-t="Cover">
+  <div class="c-logo"><img src="img/metawin-logo.png" alt="MetaWin"></div>
+  <div class="c-title">Redesigning MetaWin <span class="cy">Casino</span><br>&amp; Introducing <span class="cy">Sports Betting</span></div>
+  <a class="c-desk" href="https://metawin.com/" target="_blank" rel="noopener"><img src="img/cv-desk.jpg" alt="MetaWin — prizes and promotions"></a>
+  <a class="c-phone" href="https://metawin.com/" target="_blank" rel="noopener"><img src="img/cv-phone.png" alt="MetaWin Sports — mobile"></a>
+  <div class="c-foot">Case Study<span><a href="https://www.linkedin.com/in/cynthiamihaila/" target="_blank" rel="noopener">Cynthia Mihaila</a></span><span>Product Designer</span></div>
+</section>
+
+<!-- 02 — CONTEXT & MY ROLE -->
+<section class="slide abs" data-t="Context & my role">
+  <div class="p-title">One platform.<br><span class="cy">Multiple</span> gaming experiences.</div>
+  <div class="p-list">
+    <div class="p-item" data-z="cas">
+      <div class="p-ic"><img src="img/ic-casino.png" alt=""></div>
+      <div><b>Casino</b><span>Game discovery, live casino &amp; original games</span></div>
+    </div>
+    <div class="p-item" data-z="prz">
+      <div class="p-ic"><img src="img/ic-prizes.png" alt=""></div>
+      <div><b class="up">Prizes &amp; Rewards</b><span>Competitions, rewards &amp; player progression</span></div>
+    </div>
+    <div class="p-item" data-z="spo">
+      <div class="p-ic"><img src="img/ic-sports.png" alt=""></div>
+      <div><b class="up">Sports</b><span>Sports discovery, betting &amp; bet management</span></div>
+    </div>
+  </div>
+  <div class="p-role">My Role<span>Product Designer</span><span>End-to-end UX/UI across web &amp; mobile</span></div>
+  <a class="p-sc a" href="https://metawin.com/" target="_blank" rel="noopener"><img src="img/pf-a.jpg" alt="MetaWin Casino homepage">
+    <i class="p-hl z-cas" style="left:22.1%;top:19.7%;width:74.5%;height:63.3%"></i></a>
+  <a class="p-sc b" href="https://metawin.com/" target="_blank" rel="noopener"><img src="img/pf-b.jpg" alt="MetaWin Prizes and Sports">
+    <i class="p-hl z-prz" style="left:.4%;top:4%;width:99.2%;height:38.9%"></i>
+    <i class="p-hl z-spo" style="left:.4%;top:44.2%;width:99.2%;height:55.8%"></i></a>
+</section>
+
+<!-- 03 — WHERE I STARTED -->
+<section class="slide abs" data-t="Where I started">
+  <div class="w-txt">
+    <div class="kicker">Where I started</div>
+    <h2 style="font-size:46px;max-width:14ch">A feature-rich <span class="cy">Casino</span> experience with increasing complexity</h2>
+    <ul class="w-list">
+      <li>Growing game library</li>
+      <li>Multiple content types</li>
+      <li>Limited discovery tools</li>
+    </ul>
+  </div>
+  <div class="w-before">Before</div>
+  <div class="w-desk"><img src="img/old3-desk.jpg" alt="Old MetaWin — logged-in experience"></div>
+  <div class="w-phone"><img src="img/old3-phone.png" alt="Old MetaWin — mobile"></div>
+  <div class="w-cap">Old MetaWin · desktop &amp; mobile</div>
+</section>
+
+<!-- 04 — THE AUDIT -->
+<section class="slide abs" data-t="The audit">
+  <div class="a-txt">
+    <div class="kicker">The audit</div>
+    <h2 style="font-size:44px;max-width:none">Three <span class="cy">opportunities</span> emerged</h2>
+  </div>
+  <div class="finds a-finds">
+    <div class="find"><span class="n">01</span><div><b>Discovery</b><span>Finding games relied heavily on browsing.</span></div></div>
+    <div class="find"><span class="n">02</span><div><b>Hierarchy</b><span>Many content types competed for attention.</span></div></div>
+    <div class="find"><span class="n">03</span><div><b>Scalability</b><span>The structure needed to accommodate a growing library and additional features.</span></div></div>
+  </div>
+  <div class="a-goal"><b>The goal wasn't to remove complexity</b><br>it was to organise it better.</div>
+  <div class="a-phone a"><img src="img/aud-phone-a.png" alt="Old MetaWin — live gameshows and filtering"></div>
+  <div class="a-phone b"><img src="img/aud-phone-b.png" alt="Old MetaWin — prizes and instant win"></div>
+</section>
+
+<!-- 05 — COMPETITIVE RESEARCH -->
+<section class="slide" data-t="Competitive research">
+  <div class="row">
+    <div class="col txt">
+      <div class="kicker">Competitive research</div>
+      <h2>Understanding established <span class="cy">gaming patterns</span></h2>
+      <p class="lead" style="max-width:42ch">I compared how other platforms approached:</p>
+      <div class="finds" style="margin-top:32px;gap:26px">
+        <div class="find"><span class="n">01</span><div><b>Search</b><span>Direct access to known games</span></div></div>
+        <div class="find"><span class="n">02</span><div><b>Categories</b><span>Exploration by game type</span></div></div>
+        <div class="find"><span class="n">03</span><div><b>Filtering</b><span>Managing large libraries</span></div></div>
+        <div class="find"><span class="n">04</span><div><b>Content structure</b><span>Casino &amp; Live Casino organisation</span></div></div>
+      </div>
+    </div>
+    <div class="col grow" style="justify-content:center">
+      <div class="gr">
+        <a class="cell tall" href="https://bc.game/" target="_blank" rel="noopener">
+          <img src="img/bcg-home.jpg" alt="bc.game homepage"></a>
+        <div class="gcol">
+          <a class="cell" href="https://bc.game/" target="_blank" rel="noopener">
+            <img src="img/bcg-lobby.jpg" alt="bc.game casino lobby"></a>
+          <a class="cell" href="https://bc.game/" target="_blank" rel="noopener">
+            <img src="img/bcg-live.jpg" alt="bc.game live casino"></a>
+        </div>
+      </div>
+      <div class="cap">bc.game · homepage, casino lobby, live casino</div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 — DESIGN DIRECTION -->
+<section class="slide" data-t="Design direction">
+  <div class="col" style="height:100%;justify-content:center">
+    <div style="text-align:center">
+      <div class="kicker">Design direction</div>
+      <h1 style="font-size:64px">Four <span class="cy">priorities</span> guided the redesign</h1>
+    </div>
+    <div class="dd-grid">
+      <div class="dd-card"><span class="dd-ic"><img src="img/ic-discovery.png" alt=""></span><b>Improve discovery</b><span>Make games easier to find and explore.</span></div>
+      <div class="dd-card"><span class="dd-ic"><img src="img/ic-hierarchy.png" alt=""></span><b>Create clearer hierarchy</b><span>Give content a clear purpose and priority.</span></div>
+      <div class="dd-card"><span class="dd-ic"><img src="img/ic-returning.png" alt=""></span><b>Support returning players</b><span>Make familiar content easier to access.</span></div>
+      <div class="dd-card"><span class="dd-ic"><img src="img/ic-growth.png" alt=""></span><b>Build for growth</b><span>Reusable patterns for more content and features.</span></div>
+    </div>
+    <p class="dd-note">A framework for evaluating decisions throughout the redesign — rather than
+      judging solutions purely on <em>visual improvement</em>.</p>
+  </div>
+</section>
+
+<!-- 07 — CASINO DISCOVERY -->
+<section class="slide abs" data-t="Decision 01 · Casino discovery">
+  <div class="dnum" style="right:88px">01<b>Decision</b></div>
+  <div class="d-txt">
+    <div class="kicker">Decision 01 · Discovery</div>
+    <h2 style="font-size:38px;max-width:none">Support both <span class="cy">direct intent</span> and <span class="cy">exploration</span></h2>
+    <div class="intents" style="margin-top:32px;gap:14px">
+      <div class="intent" style="padding:15px 20px"><q style="font-size:18px">I know what I want.</q><span class="arw">→</span><span class="dst" style="font-size:16px">Search → Game</span></div>
+      <div class="intent" style="padding:15px 20px"><q style="font-size:18px">I want to explore.</q><span class="arw">→</span><span class="dst" style="font-size:16px">Category → Browse → Game</span></div>
+    </div>
+    <div class="tradeoff" style="margin-top:80px">
+      <div class="to-label">The trade-off</div>
+      <div class="to-bar">
+        <span class="to-end" style="font-size:14px">Direct access</span>
+        <div class="to-track"><div class="to-dot" style="left:50%"></div></div>
+        <span class="to-end" style="font-size:14px">Exploration</span>
+      </div>
+    </div>
+  </div>
+  <div class="d-old"><span class="d-tag">Before</span><img src="img/disc-old.jpg" alt="Old MetaWin — browsing all games"></div>
+  <div class="d-new"><span class="d-tag on">After</span><img src="img/disc-new.jpg" alt="New MetaWin — categories, filters and search"></div>
+</section>
+
+<!-- 08 — RETURNING PLAYERS -->
+<section class="slide abs" data-t="Decision 02 · Returning players">
+  <div class="dnum" style="right:10px">02<b>Decision</b></div>
+  <div class="r-head">
+    <div class="kicker">Decision 02 · Relevance</div>
+    <h2 style="font-size:40px;max-width:none">A returning player shouldn't always start from <span class="cy">zero</span></h2>
+  </div>
+  <div class="r-phone a"><img src="img/rp-phone-a.png" alt="New MetaWin — mobile home"></div>
+  <div class="r-phone b"><img src="img/rp-phone-b.png" alt="New MetaWin — Continue Playing, Originals, Prizes, Sports"></div>
+  <div class="r-list">
+    <div><b>Return</b><span>Continue Playing</span></div>
+    <div><b>Discover</b><span>MetaWin Originals · Trending Games</span></div>
+    <div><b>Activity</b><span>Big Wins · Top Live</span></div>
+    <div><b>Rewards</b><span>Prizes · Competitions</span></div>
+  </div>
+  <div class="r-foot">
+    <div class="tradeoff" style="margin-top:0;max-width:none">
+      <div class="to-label">The trade-off</div>
+      <div class="to-bar">
+        <span class="to-end" style="font-size:14px">Simplicity</span>
+        <div class="to-track"><div class="to-dot" style="left:64%"></div></div>
+        <span class="to-end" style="font-size:14px">Content richness</span>
+      </div>
+    </div>
+  </div>
+  <div class="r-desk"><img src="img/rp-desk.jpg" alt="New MetaWin — logged-in homepage"></div>
+</section>
+
+<!-- 09 — REWARDS & PROGRESSION -->
+<section class="slide abs" data-t="Decision 03 · Rewards & progression">
+  <div class="dnum" style="right:110px">03<b>Decision</b></div>
+  <div class="rw-txt">
+    <div class="kicker">Decision 03 · Progression</div>
+    <h2 style="font-size:38px;max-width:none">Make progress<br>understandable<br><span class="cy">at a glance</span></h2>
+    <div class="quad rw-quad" style="max-width:none;margin-top:34px;gap:18px 20px">
+      <div data-z="cur"><b>Current</b><span>Gold 5</span></div>
+      <div data-z="prog"><b>Progress</b><span>$876 / $1000</span></div>
+      <div data-z="next"><b>Next</b><span>Platinum 1</span></div>
+      <div data-z="av"><b>Available</b><span>$5 · $42</span></div>
+    </div>
+    <p class="pull" style="margin-top:30px;font-size:19px">Where am I? → What's next?<br>→ What can I use now?</p>
+  </div>
+  <div class="rw-ph a"><img src="img/rw9-top.jpg" alt="MetaWin mobile — METAMAX progress">
+    <i class="rw-hl k-cur"></i><i class="rw-hl k-prog"></i><i class="rw-hl k-next"></i>
+  </div>
+  <div class="rw-ph b"><img src="img/rw9-cards.jpg" alt="MetaWin mobile — reward cards">
+    <i class="rw-hl k-av a1"></i><i class="rw-hl k-av a2"></i>
+  </div>
+  <div class="rw-lens">
+    <img class="l-cur"  src="img/z-cur.jpg"  alt="">
+    <img class="l-prog" src="img/z-prog.jpg" alt="">
+    <img class="l-next" src="img/z-next.jpg" alt="">
+    <img class="l-av"   src="img/z-av.jpg"   alt="">
+  </div>
+  <div class="rw-desk"><img src="img/rw9-desk.jpg" alt="MetaWin desktop — rewards and history"></div>
+</section>
+
+<!-- 10 — RESPONSIVE -->
+<section class="slide abs" data-t="Responsive design">
+  <div class="rs-txt sync">
+    <div class="kicker">Responsive design</div>
+    <h2 style="font-size:38px;max-width:none">Same hierarchy. <span class="cy">Adapted interaction.</span></h2>
+    <div class="rs-block" data-k="d">
+      <b>Desktop</b>
+      <span>More information visible simultaneously</span>
+    </div>
+    <div class="rs-block" data-k="m">
+      <b>Mobile</b>
+      <span>Prioritised content</span>
+      <span>Condensed navigation</span>
+      <span>Touch-friendly discovery</span>
+    </div>
+  </div>
+  <div class="sync">
+    <div class="rs-phone" data-k="m"><img src="img/rs-phone.png" alt="MetaWin — mobile"></div>
+    <div class="rs-desk" data-k="d"><img src="img/rs-desk.jpg" alt="MetaWin — desktop"></div>
+  </div>
+</section>
+
+<!-- 11 — INTRODUCING SPORTS -->
+<section class="slide abs" data-t="Introducing Sports">
+  <div class="i-txt">
+    <div class="kicker">Expanding the MetaWin experience</div>
+    <h2 style="font-size:40px;max-width:none">Introducing <span class="cy">Sports Betting</span></h2>
+    <p class="lead" style="font-size:20px;max-width:none">A new betting section within the existing
+      MetaWin platform.</p>
+    <p class="pull" style="margin-top:30px;font-size:20px">Same platform<br>Different user journey</p>
+  </div>
+  <div class="i-phone"><img src="img/sp11-phone.png" alt="MetaWin Sports — mobile"></div>
+  <div class="i-desk"><img src="img/sp11-desk.jpg" alt="MetaWin Sports — desktop homepage"></div>
+</section>
+
+<!-- 12 — THE SPORTS CHALLENGE -->
+<section class="slide abs" data-t="The Sports challenge">
+  <div class="sc-txt">
+    <div class="kicker">The Sports challenge</div>
+    <h2 style="font-size:40px;max-width:none">One platform. <span class="cy">Different betting experiences.</span></h2>
+    <div class="sc-step"><b>Deeper navigation</b><span>Sports → Competitions → Events</span></div>
+    <div class="sc-step"><b>More complex decisions</b><span>Markets → Odds → Selections</span></div>
+    <div class="sc-step"><b>Transactional flow</b><span>Betslip → Stake → Place Bet</span></div>
+    <div class="tradeoff" style="margin-top:40px;max-width:560px">
+      <div class="to-label">The trade-off</div>
+      <div class="to-bar">
+        <span class="to-end" style="font-size:14px">Consistency</span>
+        <div class="to-track"><div class="to-dot" style="left:52%"></div></div>
+        <span class="to-end" style="font-size:14px">Specialised function</span>
+      </div>
+    </div>
+  </div>
+  <div class="sc-goal"><i>The challenge:</i> introduce a more complex betting journey while keeping
+    the experience consistent with <i>MetaWin.</i></div>
+  <div class="sc-ph p1"><img src="img/sp12-p1.png" alt="Sports — event and hot picks"></div>
+  <div class="sc-ph p2"><img src="img/sp12-p2.png" alt="Betslip — empty stake"></div>
+  <div class="sc-ph p3"><img src="img/sp12-p3.png" alt="Betslip — odds changed, accept new price"></div>
+</section>
+
+<!-- 13 — SPORTS DISCOVERY -->
+<section class="slide abs" data-t="Decision 04 · Sports discovery">
+  <div class="dnum" style="right:110px">04<b>Decision</b></div>
+  <div class="sd-txt">
+    <div class="kicker">Decision 04 · Sports navigation</div>
+    <h2 style="font-size:38px;max-width:none">Multiple ways to find the <span class="cy">right event</span></h2>
+    <div class="sd-int"><b>Live intent</b><span>Quick access to events happening now, through In Play.</span></div>
+    <div class="sd-int"><b>Browse intent</b><span>Explore events through Sports &amp; Competitions.</span></div>
+    <div class="sd-int"><b>Direct intent</b><span>Find a specific team, competition or event through Search.</span></div>
+  </div>
+  <div class="sd-desk"><img src="img/sd13-desk.jpg" alt="MetaWin Sports — homepage with In Play, Top Sports and Search"></div>
+</section>
+
+<!-- 14 — EVENT & MARKET ARCHITECTURE -->
+<section class="slide abs" data-t="Decision 05 · Event & market architecture">
+  <div class="dnum" style="right:110px">05<b>Decision</b></div>
+  <div class="em-txt">
+    <div class="kicker">Decision 05 · Information architecture</div>
+    <h2 style="font-size:34px;max-width:none">Make complex betting markets <span class="cy">easier to scan</span></h2>
+    <div class="finds" style="gap:22px;margin-top:32px">
+      <div class="find"><span class="n">▸</span><div><b style="font-size:20px">Primary</b><span style="font-size:16px">Common and relevant markets.</span></div></div>
+      <div class="find"><span class="n">▾</span><div><b style="font-size:20px">Deeper options</b><span style="font-size:15px">Bet Builder · Goals · Corners · Cards · Players · More</span></div></div>
+    </div>
+    <div class="tradeoff" style="margin-top:32px;max-width:452px">
+      <div class="to-label">The trade-off</div>
+      <div class="to-bar">
+        <span class="to-end" style="font-size:13px">Many markets</span>
+        <div class="to-track"><div class="to-dot" style="left:58%"></div></div>
+        <span class="to-end" style="font-size:13px">Scannability</span>
+      </div>
+    </div>
+  </div>
+  <div class="em-phone"><img src="img/em-phone.png" alt="Single Match — mobile"></div>
+  <div class="em-desk"><img src="img/em-desk.jpg" alt="Single Match — market groups, desktop"></div>
+</section>
+
+<!-- 15 — BETSLIP JOURNEY -->
+<section class="slide abs" data-t="Decision 06 · Betslip journey">
+  <div class="dnum" style="right:110px">06<b>Decision</b></div>
+  <div class="bj-head">
+    <div class="kicker">Decision 06 · Transaction</div>
+    <h2 style="font-size:38px;max-width:none">Keep every step of the bet <span class="cy">predictable</span></h2>
+  </div>
+  <div class="bj-row">
+    <div class="bj-col"><div class="bj-h"><i>1.</i>Select</div><p>Choose an outcome</p>
+      <div class="bj"><img src="img/bj-p1.png" alt="Select an outcome"></div></div>
+    <div class="bj-col"><div class="bj-h"><i>2.</i>Review</div><p>Confirm selection &amp; odds</p>
+      <div class="bj"><img src="img/bj-p2.png" alt="Review selection and odds"></div></div>
+    <div class="bj-col"><div class="bj-h"><i>3.</i>Stake</div><p>Enter bet amount</p>
+      <div class="bj"><img src="img/bj-p3.png" alt="Enter bet amount"></div></div>
+    <div class="bj-col"><div class="bj-h"><i>4.</i>Confirm</div><p>Review payout &amp; place bet</p>
+      <div class="bj"><img src="img/bj-p4.png" alt="Review payout and place bet"></div></div>
+  </div>
+</section>
+
+<!-- 16 — BEYOND THE HAPPY PATH -->
+<section class="slide" data-t="Edge case · Odds change">
+  <div class="row">
+    <div class="col txt">
+      <div class="kicker">Edge case · Dynamic information</div>
+      <h2>What happens when the <span class="cy">odds change?</span></h2>
+      <p class="note" style="margin-top:24px"><b style="color:var(--ink);font-weight:600">The challenge.</b>
+        Sports information can change while the user is making a decision.</p>
+      <p class="note" style="margin-top:18px"><b style="color:var(--ink);font-weight:600">Design response.</b>
+        Make the change visible and require acknowledgement before continuing.</p>
+      <div class="tradeoff">
+        <div class="to-label">The trade-off</div>
+        <div class="to-bar">
+          <span class="to-end">Speed of transaction</span>
+          <div class="to-track"><div class="to-dot" style="left:80%"></div></div>
+          <span class="to-end" style="color:var(--cyan)">Informed consent</span>
+        </div>
+      </div>
+    </div>
+    <div class="col grow">
+      <div class="strip" style="align-items:center;height:840px">
+        <div style="flex:1.1;display:flex;flex-direction:column;height:100%">
+          <div class="phone hero"><img src="img/sp-betslip-odds.jpg" alt="Betslip with updated odds"></div>
+          <div class="cap" style="color:var(--cyan)">Betslip · odds updated</div>
+        </div>
+        <div style="flex:1.5;display:flex;flex-direction:column;gap:26px">
+          <div>
+            <div class="shot"><img src="img/sp-odds-before.jpg" alt="Original odds"></div>
+            <div class="cap">01 · Original odds — 1.80</div>
+          </div>
+          <div>
+            <div class="shot" style="border-color:rgba(0,209,255,.6)"><img src="img/sp-odds-detail.jpg" alt="Odds updated, accept the new quote"></div>
+            <div class="cap" style="color:var(--cyan)">02 · Odds updated 1.86 (+0.06) → accept the new quote</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17 — OUTCOME & REFLECTION -->
+<section class="slide abs" data-t="Outcome & reflection">
+  <div class="oc-txt">
+    <h2 style="font-size:46px;max-width:none;margin-bottom:8px">Outcome &amp; <span class="cy">Reflection</span></h2>
+    <div class="oc-block">
+      <b>What I delivered</b>
+      <div class="oc-item"><i>Casino redesign</i><span>Discovery · Navigation · Content hierarchy · Rewards</span></div>
+      <div class="oc-item"><i>Responsive experience</i><span>Desktop · Mobile</span></div>
+      <div class="oc-item"><i>Sports betting</i><span>Discovery · Events · Markets · Betslip · Edge cases</span></div>
+    </div>
+    <div class="oc-block">
+      <b>What I learned</b>
+      <div class="oc-item"><i>Structure matters</i><span>Complexity becomes manageable with the right hierarchy.</span></div>
+      <div class="oc-item"><i>Design around intent</i><span>Different behaviours need different paths.</span></div>
+      <div class="oc-item"><i>Consistency &#8800; identical</i><span>One design language can support different experiences.</span></div>
+    </div>
+  </div>
+  <div class="oc-lab" style="left:772px">Before</div>
+  <div class="oc-lab" style="left:1140px">Redesign</div>
+  <div class="oc-lab" style="left:1508px">Sports</div>
+  <div class="oc-ph p1"><img src="img/oc-p1.jpg" alt="Old MetaWin — mobile"></div>
+  <div class="oc-ph p2"><img src="img/oc-p2.jpg" alt="New MetaWin Casino — mobile"></div>
+  <div class="oc-ph p3"><img src="img/oc-p3.jpg" alt="MetaWin Sports — mobile"></div>
+</section>
+
+<!-- 18 — Q&A -->
+<section class="slide abs" data-t="Thank you · Q&amp;A">
+  <img class="fin-bg" src="img/fin-phones.png" alt="MetaWin — Casino, Rewards & Sports">
+  <div class="fin-txt">
+    <h1 style="font-size:56px">Thank <span class="cy">you</span></h1>
+    <p class="fin-q">Questions?</p>
+  </div>
+  <a class="fin-sig" href="https://www.linkedin.com/in/cynthiamihaila/" target="_blank" rel="noopener">
+    <b>Cynthia Mihaila</b><span>Product Designer</span></a>
+</section>
+
+</div><!-- /stage -->
+
+<div class="zone l" id="zl"></div>
+<div class="zone r" id="zr"></div>
+<div id="bar"></div>
+<div id="num"></div>
+<div id="hint">← → NAVIGATE · O OVERVIEW</div>
+<div id="ov"><h5>All slides — click to jump</h5><div id="ovg"></div></div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')),
+      n=slides.length, i=0,
+      stage=document.getElementById('stage'),
+      bar=document.getElementById('bar'), num=document.getElementById('num'),
+      ov=document.getElementById('ov'), ovg=document.getElementById('ovg');
+
+  function fit(){
+    var s=Math.min(innerWidth/1920, innerHeight/1080);
+    stage.style.transform='translate(-50%,-50%) scale('+s+')';
+  }
+  addEventListener('resize',fit); fit();
+
+  function go(k){
+    i=Math.max(0,Math.min(n-1,k));
+    slides.forEach(function(s,j){ s.classList.toggle('on', j===i) });
+    bar.style.width=((i+1)/n*100)+'%';
+    num.textContent=String(i+1).padStart(2,'0')+' / '+n;
+    document.body.classList.toggle('cover', i===0);
+    if(parseInt(location.hash.slice(1),10)!==i+1) location.hash=i+1;
+  }
+  function next(){ go(i+1) } function prev(){ go(i-1) }
+
+  slides.forEach(function(s,j){
+    var c=document.createElement('div');
+    c.className='ovc';
+    c.innerHTML='<i>'+String(j+1).padStart(2,'0')+'</i><b>'+(s.dataset.t||'')+'</b>';
+    c.onclick=function(){ ov.classList.remove('on'); go(j) };
+    ovg.appendChild(c);
+  });
+
+  addEventListener('keydown',function(e){
+    var k=e.key;
+    if(k==='Escape'){ ov.classList.remove('on'); return }
+    if(k==='o'||k==='O'){ ov.classList.toggle('on'); return }
+    if(ov.classList.contains('on')) return;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '){ e.preventDefault(); next() }
+    else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); prev() }
+    else if(k==='Home'){ go(0) } else if(k==='End'){ go(n-1) }
+  });
+  document.getElementById('zr').onclick=next;
+  document.getElementById('zl').onclick=prev;
+
+  // hover link between findings and screens, both directions
+  slides.forEach(function(sl){
+    var items=[].slice.call(sl.querySelectorAll('.sync [data-k]'));
+    if(!items.length) return;
+    function set(k){
+      sl.classList.toggle('linking', k!==null);
+      items.forEach(function(el){ el.classList.toggle('hl', k!==null && el.dataset.k===k) });
+    }
+    items.forEach(function(el){
+      el.addEventListener('mouseenter',function(){ set(el.dataset.k) });
+      el.addEventListener('mouseleave',function(){ set(null) });
+    });
+  });
+
+  // slide 9: hover pe valorile-cheie -> highlight + lupa
+  slides.forEach(function(sl){
+    var items=[].slice.call(sl.querySelectorAll('.rw-quad [data-z], .p-list [data-z]'));
+    items.forEach(function(el){
+      el.addEventListener('mouseenter',function(){ sl.setAttribute('data-z', el.dataset.z); el.classList.add('hl2') });
+      el.addEventListener('mouseleave',function(){ sl.removeAttribute('data-z'); el.classList.remove('hl2') });
+    });
+  });
+
+  var x0=null;
+  addEventListener('touchstart',function(e){ x0=e.touches[0].clientX },{passive:true});
+  addEventListener('touchend',function(e){
+    if(x0===null) return;
+    var d=e.changedTouches[0].clientX-x0;
+    if(Math.abs(d)>52){ d<0?next():prev() }
+    x0=null;
+  },{passive:true});
+
+  function fromHash(){ var h=parseInt(location.hash.slice(1),10); return isNaN(h)?0:h-1 }
+  addEventListener('hashchange',function(){ var k=fromHash(); if(k!==i) go(k) });
+  go(fromHash());
+})();
+</script>
+</body>
+</html>
