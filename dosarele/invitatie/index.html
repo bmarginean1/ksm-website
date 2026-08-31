@@ -62,16 +62,17 @@ p.txt{font-size:clamp(12.5px,1.75vw,14.5px);line-height:1.95;margin-bottom:10px}
 input.nm{font-family:'HandA','Special Elite',cursive;font-size:clamp(21px,3.2vw,27px);color:#2A3F63;background:transparent;border:none;
  border-bottom:1.5px solid rgba(36,31,25,.5);outline:none;width:100%;padding:4px 4px 6px}
 input.nm::placeholder{color:rgba(36,31,25,.28);font-family:'Special Elite',monospace;font-size:14px}
-.opt{position:relative;display:block;width:max-content;max-width:100%;margin:0 0 14px;cursor:pointer;padding:3px 7px;font-size:clamp(14.5px,2.1vw,18px);line-height:1.3}
-.opt em{display:block;font-style:normal;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--clay);margin-top:3px}
-.opt svg{position:absolute;inset:-9px -14px;width:calc(100% + 28px);height:calc(100% + 18px);pointer-events:none;overflow:visible}
-.opt svg path{fill:none;stroke:var(--red);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;opacity:.85}
-.opt.yes svg path{animation:pen .6s ease-out forwards}
+.opt{position:relative;display:block;margin:0 0 16px;cursor:pointer;padding:2px 0;font-size:clamp(15px,2.1vw,18px);line-height:1.3}
+.opt .t{position:relative;display:inline-block;padding:1px 2px}
+.opt em{display:block;font-style:normal;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--clay);margin-top:4px}
+.opt .t svg{position:absolute;left:-13px;top:-8px;width:calc(100% + 26px);height:calc(100% + 16px);pointer-events:none;overflow:visible}
+.opt .t svg path{fill:none;stroke:var(--red);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:640;stroke-dashoffset:640;opacity:.85}
+.opt.yes .t svg path{animation:pen .6s ease-out forwards}
 @keyframes pen{to{stroke-dashoffset:0}}
 .opt.no{opacity:.45}
-.opt.no::after{content:"";position:absolute;left:-2%;right:-2%;top:48%;height:2.2px;background:var(--red);border-radius:2px;
- transform:rotate(-2deg);transform-origin:left;opacity:.8;animation:taie .35s ease-out backwards}
-@keyframes taie{from{transform:rotate(-2deg) scaleX(0)}to{transform:rotate(-2deg) scaleX(1)}}
+.opt.no .t::after{content:"";position:absolute;left:-3px;right:-3px;top:52%;height:2.2px;background:var(--red);border-radius:2px;
+ transform:rotate(-1.6deg);transform-origin:left;opacity:.85;animation:taie .35s ease-out backwards}
+@keyframes taie{from{transform:rotate(-1.6deg) scaleX(0)}to{transform:rotate(-1.6deg) scaleX(1)}}
 #plus{display:none}#plus.on{display:block;animation:fade .5s var(--ease)}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .sign{font-family:'Special Elite',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);
@@ -105,7 +106,7 @@ input.nm::placeholder{color:rgba(36,31,25,.28);font-family:'Special Elite',monos
  .tr{grid-template-columns:1fr;gap:3px}
  .tr .v{font-size:16px}
  h1{font-size:clamp(30px,10vw,44px)}
- .opt{font-size:16px;width:100%}
+ .opt{font-size:16px}
  .sign{width:100%;transform:none;padding:15px 12px}
  .verdict{transform:rotate(-7deg) scale(2.2);font-size:15px;border-width:3px}
  .verdict.on{animation:slamm .55s cubic-bezier(.2,1.4,.3,1) forwards}
@@ -150,17 +151,17 @@ input.nm{font-size:max(21px,4.4vw)}
  <div class="sec">
   <span class="lbl">Declar următoarele</span>
   <div id="rr">
-   <span class="opt" data-v="confirm">Mă prezint<em>voi fi acolo pe 8 septembrie</em><svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span>
-   <span class="opt" data-v="poate">Încă nu pot confirma<em>revin cu un răspuns</em><svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span>
-   <span class="opt" data-v="nu">Nu mă pot prezenta<em>din motive personale</em><svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span>
+   <span class="opt" data-v="confirm"><span class="t">Mă prezint<svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span><em>voi fi acolo pe 8 septembrie</em></span>
+   <span class="opt" data-v="poate"><span class="t">Încă nu pot confirma<svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span><em>revin cu un răspuns</em></span>
+   <span class="opt" data-v="nu"><span class="t">Nu mă pot prezenta<svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span><em>din motive personale</em></span>
   </div>
  </div>
 
  <div class="sec" id="plus">
   <span class="lbl">Vin însoţit</span>
   <div id="pp">
-   <span class="opt" data-p="Nu">Singur<em>un loc</em><svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span>
-   <span class="opt" data-p="Da">Cu încă o persoană<em>două locuri</em><svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span>
+   <span class="opt" data-p="Nu"><span class="t">Singur<svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span><em>un loc</em></span>
+   <span class="opt" data-p="Da"><span class="t">Cu încă o persoană<svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M28 12 C 8 22, 8 52, 44 60 C 110 72, 250 66, 282 46 C 300 34, 286 14, 236 8 C 176 1, 66 2, 34 16"/></svg></span><em>două locuri</em></span>
   </div>
  </div>
 
