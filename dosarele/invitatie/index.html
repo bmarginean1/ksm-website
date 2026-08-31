@@ -119,11 +119,6 @@ input.nm::placeholder{color:rgba(36,31,25,.28);font-family:'Special Elite',monos
   <div class="tr"><span class="k">Obiect</span><span class="v">Premiera de gală „Dosarele Oraşului Alb”<small>în cinematografe din toată ţara, din 11 septembrie</small></span></div>
  </div>
 
- <div class="proba">
-  <span class="lbl">Proba video — trailerul oficial</span>
-  <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/MBnVWW-GrnU?rel=0" title="Dosarele Orasului Alb - trailer" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe></div>
- </div>
-
  <div class="sec">
   <span class="lbl">Numele şi prenumele</span>
   <input class="nm" id="nume" type="text" autocomplete="name" placeholder="scrie aici">
@@ -150,6 +145,17 @@ input.nm::placeholder{color:rgba(36,31,25,.28);font-family:'Special Elite',monos
  <div class="msg" id="msg"></div>
 
  <div class="verdict" id="vd"></div>
+
+ <div class="proba">
+  <span class="lbl">Proba video — trailerul oficial</span>
+  <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/MBnVWW-GrnU?rel=0" title="Dosarele Orasului Alb - trailer" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe></div>
+ </div>
+
+ <iframe name="sink" id="sink" style="display:none" title=""></iframe>
+ <form id="gform" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdAvHxPNk5v34uVgS4VRfmRAEAJLGHjbfZFv7W0vSPI2lDf2A/formResponse" method="POST" target="sink" style="display:none">
+  <input type="text" name="entry.1855918704" id="g_nume">
+  <input type="text" name="entry.1420073865" id="g_ins">
+ </form>
 
  <div class="ftr">
   Dosarele Oraşului Alb · KSM Production<br>
@@ -199,15 +205,15 @@ $('#go').addEventListener('click',function(){
   return;
  }
  DONE=true; $('#go').disabled=true; $('#msg').textContent='Se consemnează…';
- var fd=new FormData(); fd.append(E_NUME,nume); fd.append(E_INS,P);
- var fin=function(){
+ $('#g_nume').value=nume; $('#g_ins').value=P;
+ try{ $('#gform').submit(); }catch(e){}
+ setTimeout(function(){
   $('#msg').textContent='';
   var v=$('#vd');
   v.innerHTML='Înregistrat<small>08.09.2026 · ora 19:00</small>';
   v.classList.add('on');
-  setTimeout(function(){ $('#fisa').scrollTop=$('#fisa').scrollHeight; },120);
- };
- fetch(POST,{method:'POST',mode:'no-cors',body:fd}).then(fin).catch(fin);
+  setTimeout(function(){ $('#fisa').scrollTop=$('#fisa').scrollHeight; },140);
+ },700);
 });
 </script>
 </body></html>
