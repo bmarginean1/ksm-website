@@ -6,16 +6,17 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Citaţie — Premiera de gală · Dosarele Oraşului Alb">
 <meta property="og:description" content="Dosar nr. 011/2026 — convocare pentru vizionarea probelor. 8 septembrie 2026, ora 19:00, Cinema City Iulius Mall.">
-<meta property="og:image" content="https://bmarginean1.github.io/ksm-website/dosarele/share.jpg">
-<meta property="og:image:secure_url" content="https://bmarginean1.github.io/ksm-website/dosarele/share.jpg">
+<meta property="og:image" content="https://ksmproduction.ro/og-invitatie.jpg">
+<meta property="og:image:secure_url" content="https://ksmproduction.ro/og-invitatie.jpg">
 <meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Citaţie — premiera de gală Dosarele Oraşului Alb, 8 septembrie 2026">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:url" content="https://bmarginean1.github.io/ksm-website/dosarele/invitatie/">
+<meta property="og:url" content="https://ksmproduction.ro/invitatie.html">
 <meta property="og:site_name" content="Dosarele Oraşului Alb"><meta property="og:locale" content="ro_RO">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Citaţie — Premiera de gală · Dosarele Oraşului Alb">
 <meta name="twitter:description" content="8 septembrie 2026, ora 19:00 — Cinema City Iulius Mall, Cluj-Napoca.">
-<meta name="twitter:image" content="https://bmarginean1.github.io/ksm-website/dosarele/share.jpg">
+<meta name="twitter:image" content="https://ksmproduction.ro/og-invitatie.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -91,7 +92,28 @@ input.nm::placeholder{color:rgba(36,31,25,.28);font-family:'Special Elite',monos
  75%{transform:rotate(-8.4deg) scale(1.04)}100%{opacity:.92;transform:rotate(-9deg) scale(1)}}
 .tw-caret{display:inline-block;width:.5em;height:1.05em;background:var(--red-br);vertical-align:-.18em;margin-left:.06em;animation:cb .9s steps(1,end) infinite}
 @keyframes cb{0%,49%{opacity:1}50%,100%{opacity:0}}
-@media(max-width:520px){.tr{grid-template-columns:1fr;gap:3px}.fisa{transform:none;animation:none}}
+/* ——— MOBIL / ecran mic / ecran jos: pagina curge normal, fisa nu mai e prinsa in viewport ——— */
+@media (max-width:820px),(max-height:700px){
+ html,body{height:auto;min-height:100%;overflow:visible;overflow-x:hidden}
+ .masa,.light{position:fixed}
+ .wrap{position:relative;inset:auto;display:block;padding:16px 12px 40px;min-height:100svh}
+ .fisa{max-height:none;overflow:visible;width:100%;max-width:600px;margin:0 auto;transform:none;animation:none;
+  padding:22px 18px 26px}
+}
+@media (max-width:520px){
+ .tr{grid-template-columns:1fr;gap:3px}
+ .tr .v{font-size:16px}
+ h1{font-size:clamp(30px,10vw,44px)}
+ .opt{font-size:16px;width:100%}
+ .sign{width:100%;transform:none;padding:15px 12px}
+ .verdict{transform:rotate(-7deg) scale(2.2);font-size:15px;border-width:3px}
+ .verdict.on{animation:slamm .55s cubic-bezier(.2,1.4,.3,1) forwards}
+ @keyframes slamm{0%{opacity:0;transform:rotate(-7deg) scale(2.2)}60%{opacity:1;transform:rotate(-7deg) scale(.94)}
+  100%{opacity:.92;transform:rotate(-7deg) scale(1)}}
+}
+/* iOS: fara zoom automat pe focus (input >=16px) */
+input.nm{font-size:max(21px,4.4vw)}
+@media (min-width:560px){input.nm{font-size:26px}}
 @media(prefers-reduced-motion:reduce){.light{animation:none}.fisa{animation:none}}
 </style></head><body>
 
