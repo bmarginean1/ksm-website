@@ -1,260 +1,243 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Citație — Dosarele Orașului Alb</title>
-<meta name="description" content="Sunteți convocat la vizionarea probelor. 8 septembrie 2026, ora 19:00, Cinema City Iulius Mall Cluj-Napoca.">
+<!DOCTYPE html><html lang="ro"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Invitaţie — Premiera de gală · Dosarele Oraşului Alb</title>
+<meta name="theme-color" content="#12100E">
+<meta name="description" content="8 septembrie 2026, ora 19:00 — Cinema City Iulius Mall, Cluj-Napoca. Confirmă-ţi prezenţa.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="CITAŢIE — Dosarele Orașului Alb">
-<meta property="og:description" content="Sunteți convocat în data de 8 septembrie 2026, ora 19:00. Confirmați prezența.">
-<meta property="og:image" content="https://ksmproduction.ro/dosarele/invitatie/og.jpg">
-<meta property="og:url" content="https://ksmproduction.ro/dosarele/invitatie/">
+<meta property="og:title" content="Invitaţie — Premiera de gală · Dosarele Oraşului Alb">
+<meta property="og:description" content="8 septembrie 2026, ora 19:00 — Cinema City Iulius Mall, Cluj-Napoca. Confirmă-ţi prezenţa.">
+<meta property="og:image" content="https://bmarginean1.github.io/ksm-website/dosarele/share.jpg">
+<meta property="og:image:secure_url" content="https://bmarginean1.github.io/ksm-website/dosarele/share.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://bmarginean1.github.io/ksm-website/dosarele/invitatie/">
+<meta property="og:site_name" content="Dosarele Oraşului Alb">
+<meta property="og:locale" content="ro_RO">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+<meta name="twitter:title" content="Invitaţie — Premiera de gală · Dosarele Oraşului Alb">
+<meta name="twitter:description" content="8 septembrie 2026, ora 19:00 — Cinema City Iulius Mall, Cluj-Napoca.">
+<meta name="twitter:image" content="https://bmarginean1.github.io/ksm-website/dosarele/share.jpg">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://bmarginean1.github.io/ksm-website/dosarele/f/theonory.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://bmarginean1.github.io/ksm-website/dosarele/f/giveny.woff2">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'Theonory';src:url('https://ksmproduction.ro/dosarele/f/theonory.woff2') format('woff2');font-display:swap}
-@font-face{font-family:'HandA';src:url('https://ksmproduction.ro/dosarele/f/handa.woff2') format('woff2');font-display:swap}
-
+@font-face{font-family:'Theonory';src:url('https://bmarginean1.github.io/ksm-website/dosarele/f/theonory.woff2') format('woff2');font-display:swap}
+@font-face{font-family:'Giveny';src:url('https://bmarginean1.github.io/ksm-website/dosarele/f/giveny.woff2') format('woff2');font-style:normal;font-display:swap}
+@font-face{font-family:'HandA';src:url('https://bmarginean1.github.io/ksm-website/dosarele/f/handa.woff2') format('woff2');font-display:swap}
 :root{
-  --paper:#E4D9BF; --ink:#12100E; --red:#7C2B28;
-  --clay:#5C4638; --mut:#8B8271; --line:rgba(18,16,14,.22);
+ --ink:#12100E;--panel:#1A1815;--paper:#E4D9BF;--paper2:#D3C4A6;
+ --olive:#4A4A3C;--clay:#5C4638;--red:#7C2B28;--red-br:#A8433A;
+ --fg:#D9CFBB;--mut:#8B8271;--line:rgba(217,207,187,.16);
+ --ease:cubic-bezier(.16,1,.3,1);--r:26px;
 }
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0}
-body{
-  background:#0A0A0B;
-  font-family:'Special Elite',ui-monospace,monospace;
-  color:var(--ink);
-  min-height:100vh;
-  display:flex;align-items:flex-start;justify-content:center;
-  padding:24px 14px 60px;
-}
-.sheet{
-  position:relative;width:100%;max-width:680px;
-  background:var(--paper);
-  padding:44px 34px 40px;
-  box-shadow:0 30px 80px rgba(0,0,0,.65);
-  overflow:hidden;
-}
-.sheet:before{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(ellipse at 18% 12%, rgba(150,120,80,.10), transparent 55%),
-    radial-gradient(ellipse at 82% 78%, rgba(150,120,80,.09), transparent 50%),
-    radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(90,76,56,.18) 100%);
-}
-.sheet:after{
-  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.30;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");
-}
-.in{position:relative;z-index:1}
-
-.corner{position:absolute;width:34px;height:34px;z-index:2;opacity:.5}
-.corner b{position:absolute;background:var(--clay)}
-.c1{top:14px;left:14px}.c2{top:14px;right:14px}.c3{bottom:14px;left:14px}.c4{bottom:14px;right:14px}
-.corner b:first-child{width:34px;height:2px;top:0;left:0}
-.corner b:last-child{width:2px;height:34px;top:0;left:0}
-.c2 b:last-child{left:auto;right:0}.c3 b:first-child{top:auto;bottom:0}
-.c4 b:first-child{top:auto;bottom:0}.c4 b:last-child{left:auto;right:0}
-
-.meta{display:flex;justify-content:space-between;font-size:11.5px;letter-spacing:.14em;color:var(--clay);opacity:.85;margin-bottom:26px}
-h1{font-family:'Theonory',Georgia,serif;font-size:clamp(30px,7.6vw,46px);line-height:1.02;margin:0 0 4px;text-align:center;font-weight:400}
-.sub{text-align:center;font-size:12px;letter-spacing:.30em;color:var(--clay);margin:0 0 26px}
-.rule{height:2px;background:var(--red);opacity:.75;margin:0 auto 26px;max-width:190px}
-
-.body p{font-size:14.5px;line-height:1.85;margin:0 0 15px;color:#2A241C}
-.body strong{font-weight:400;border-bottom:1.5px solid var(--red);padding-bottom:1px}
-
-.det{border:1.5px solid var(--line);padding:16px 16px 12px;margin:22px 0 26px;background:rgba(255,255,255,.16)}
-.det .r{display:flex;gap:12px;font-size:13px;line-height:1.7;padding:3px 0}
-.det .k{color:var(--clay);letter-spacing:.10em;min-width:88px;flex-shrink:0}
-.det .v{color:#241F19}
-
-.q{font-size:11.5px;letter-spacing:.19em;color:var(--clay);margin:0 0 11px}
-.field{margin-bottom:24px}
-input[type=text]{
-  width:100%;background:transparent;border:0;border-bottom:2px solid var(--line);
-  font-family:inherit;font-size:17px;color:var(--ink);padding:9px 2px;outline:none;transition:border-color .18s;
-}
-input[type=text]:focus{border-bottom-color:var(--red)}
-input[type=text]::placeholder{color:rgba(18,16,14,.26)}
-
-.opts{display:flex;flex-direction:column;gap:9px}
-.opt{display:flex;align-items:center;gap:12px;cursor:pointer;border:1.5px solid var(--line);padding:13px 15px;background:rgba(255,255,255,.12);transition:border-color .16s,background .16s}
-.opt:hover{border-color:rgba(124,43,40,.5)}
-.opt .box{width:15px;height:15px;border:2px solid var(--clay);flex-shrink:0;position:relative;transition:border-color .16s}
-.opt .box:after{content:'';position:absolute;inset:2px;background:var(--red);opacity:0;transition:opacity .14s}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
+body{background:var(--ink);color:var(--fg);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+::selection{background:var(--red);color:var(--paper)}
+a{color:inherit}
+img,svg,iframe{max-width:100%}
+.grain{position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.mono{font-family:'DM Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--mut)}
+.pan{position:relative;border-radius:var(--r);overflow:hidden;padding:clamp(30px,5vw,74px) clamp(22px,4.6vw,66px);box-shadow:0 -26px 70px rgba(0,0,0,.6)}
+.pan-inner{width:100%;max-width:1080px;margin:0 auto}
+.p-ink{background:var(--ink)}.p-panel{background:var(--panel)}
+.heroPan{min-height:100svh;display:flex;align-items:center}
+.heroBg{position:absolute;inset:0;background-image:url('https://bmarginean1.github.io/ksm-website/dosarele/img/hero.jpg');background-size:cover;background-position:26% center;z-index:0}
+.heroVeil{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(18,16,14,.93) 0%,rgba(18,16,14,.74) 38%,rgba(18,16,14,.5) 62%,rgba(18,16,14,.7) 100%)}
+@media(max-width:820px){.heroBg{background-position:46% center}
+.heroVeil{background:linear-gradient(180deg,rgba(18,16,14,.8) 0%,rgba(18,16,14,.92) 55%,rgba(18,16,14,.97) 100%)}}
+.heroPan .pan-inner{position:relative;z-index:2}
+.tag{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:clamp(26px,3.6vw,46px)}
+h1.hero{font-family:'Theonory','Giveny',Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:.005em;font-size:clamp(40px,8.6vw,116px)}
+h1.hero em{font-style:italic;color:var(--red-br)}
+h2{font-family:'Theonory','Giveny',Georgia,serif;font-weight:400;font-size:clamp(26px,4.6vw,58px);line-height:1.12}
+h2 em{font-style:italic;color:var(--red-br)}
+.lead{max-width:48ch;font-size:clamp(14px,1.45vw,17.5px);line-height:1.62;margin-top:clamp(14px,2.2vw,26px);opacity:.86}
+.lab{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.stampx{display:inline-block;border:4px solid currentColor;color:var(--red-br);font-family:'Special Elite',monospace;font-size:clamp(16px,2.4vw,30px);letter-spacing:.04em;padding:11px 24px;transform:rotate(-6deg);text-transform:uppercase;opacity:.92;margin-top:clamp(26px,4vw,44px)}
+.vbox{border:1px solid var(--line);border-radius:16px;padding:clamp(16px,2.2vw,26px);background:rgba(0,0,0,.22);position:relative;overflow:hidden;
+ transition:transform .5s cubic-bezier(.16,.84,.24,1),border-color .4s ease,background .4s ease,box-shadow .5s ease}
+.vbox::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--red-br);transform:scaleX(0);transform-origin:0 50%;transition:transform .6s cubic-bezier(.16,.84,.24,1)}
+.vbox::before{content:'';position:absolute;top:14px;right:14px;width:16px;height:16px;border-top:1px solid var(--red-br);border-right:1px solid var(--red-br);opacity:0;transform:translate(-5px,5px);transition:opacity .4s ease,transform .5s cubic-bezier(.16,.84,.24,1)}
+@media(hover:hover){.vbox:hover{transform:translateY(-5px);border-color:rgba(168,67,58,.5);background:rgba(0,0,0,.34);box-shadow:0 18px 40px -22px rgba(0,0,0,.85)}
+.vbox:hover::after{transform:scaleX(1)}.vbox:hover::before{opacity:.75;transform:translate(0,0)}}
+.trow{border-top:1px solid var(--line);padding:15px 0;display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:baseline}
+.trow:last-child{border-bottom:1px solid var(--line)}
+.trow b{font-family:'Special Elite',monospace;font-weight:400;font-size:clamp(16px,2vw,23px);line-height:1.2}
+.trow small{display:block;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.05em;opacity:.6;margin-top:5px;text-transform:none}
+@media(max-width:760px){.trow{grid-template-columns:1fr;gap:5px}}
+.vid{margin-top:26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000;position:relative;aspect-ratio:16/9}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.fx{margin-top:22px}
+.fl{display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-bottom:9px}
+.inp{width:100%;background:rgba(0,0,0,.3);border:1px solid var(--line);border-bottom:2px solid rgba(168,67,58,.55);border-radius:10px 10px 4px 4px;
+ padding:15px 16px;color:var(--paper);font-family:'Special Elite',monospace;font-size:19px;letter-spacing:.01em;outline:none;
+ transition:border-color .35s var(--ease),background .35s var(--ease)}
+.inp::placeholder{color:rgba(217,207,187,.26)}
+.inp:focus{border-color:var(--red-br);background:rgba(0,0,0,.44)}
+.opts{display:grid;gap:10px;margin-top:10px}
+.opt{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:14px;padding:15px 17px;cursor:pointer;background:rgba(0,0,0,.2);position:relative;
+ transition:border-color .35s var(--ease),background .35s var(--ease),transform .4s var(--ease)}
+.opt:hover{border-color:rgba(168,67,58,.45);background:rgba(0,0,0,.32)}
 .opt input{position:absolute;opacity:0;pointer-events:none}
-.opt.on{border-color:var(--red);background:rgba(124,43,40,.075)}
-.opt.on .box{border-color:var(--red)}
-.opt.on .box:after{opacity:1}
-.opt .lab{font-size:14.5px;line-height:1.35}
-.opt .hint{display:block;font-size:11px;color:var(--mut);letter-spacing:.05em;margin-top:2px}
+.bx{width:19px;height:19px;flex:0 0 19px;border:1px solid rgba(217,207,187,.42);border-radius:3px;position:relative;transition:border-color .3s}
+.bx::after{content:'✕';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Special Elite',monospace;font-size:16px;color:var(--red-br);opacity:0;transform:scale(.5);transition:opacity .25s,transform .3s var(--ease)}
+.opt input:checked~.bx{border-color:var(--red-br)}
+.opt input:checked~.bx::after{opacity:1;transform:scale(1)}
+.opt .tt{font-family:'Special Elite',monospace;font-size:16.5px;line-height:1.25}
+.opt .ss{display:block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--mut);margin-top:4px}
+.opt.sel{border-color:rgba(168,67,58,.6);background:rgba(124,43,40,.16)}
+.sub{display:none;margin-top:14px;padding-left:16px;border-left:2px solid var(--red-br)}
+.sub.on{display:block;animation:fadeIn .5s var(--ease)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.btn{margin-top:26px;width:100%;background:var(--red);color:var(--paper);border:0;border-radius:14px;padding:19px 24px;
+ font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;
+ transition:background .35s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+.btn:hover{background:var(--red-br);transform:translateY(-2px);box-shadow:0 16px 34px -18px rgba(168,67,58,.9)}
+.btn:disabled{opacity:.5;cursor:default;transform:none;box-shadow:none}
+.msg{margin-top:16px;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.06em;line-height:1.7;color:var(--red-br);min-height:1.2em}
+#done{display:none;text-align:center;padding:clamp(30px,6vw,60px) 0}
+#done.on{display:block;animation:fadeIn .6s var(--ease)}
+#done .st{display:inline-block;border:4px solid var(--red-br);color:var(--red-br);font-family:'Special Elite',monospace;
+ font-size:clamp(22px,4.4vw,44px);letter-spacing:.06em;padding:14px 30px;transform:rotate(-6deg);text-transform:uppercase;opacity:.94}
+#done h2{margin-top:clamp(28px,4vw,44px)}
+.hnd{font-family:'HandA','Special Elite',cursive;font-size:clamp(20px,3vw,30px);color:var(--paper);opacity:.9;margin-top:18px}
+footer{padding:46px clamp(22px,3vw,42px) calc(34px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.rv{opacity:0;transform:translateY(22px)}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1!important;transform:none!important}.grain{display:none}}
+</style></head><body>
+<div class="grain"></div>
 
-#plus{max-height:0;opacity:0;overflow:hidden;transition:max-height .34s ease,opacity .28s ease}
-#plus.show{max-height:220px;opacity:1;margin-bottom:24px}
+<section class="pan heroPan">
+ <div class="heroBg"></div><div class="heroVeil"></div>
+ <div class="pan-inner">
+  <div class="tag"><span class="mono">Dosarele Oraşului Alb</span><span class="mono">Premieră de gală · Cluj-Napoca</span></div>
+  <h1 class="hero rv">Sunteţi <em>invitat</em></h1>
+  <p class="lead rv">La premiera de gală a filmului <b>Dosarele Oraşului Alb</b>. O seară, o sală, un dosar care se deschide pentru prima oară în faţa publicului.</p>
+  <div class="stampx rv">8 septembrie · ora 19:00</div>
+ </div>
+</section>
 
-.sign{margin-top:30px;padding-top:22px;border-top:1.5px dashed var(--line)}
-button{width:100%;font-family:inherit;font-size:14px;letter-spacing:.20em;background:var(--ink);color:var(--paper);border:0;padding:17px;cursor:pointer;transition:background .18s,transform .1s}
-button:hover{background:var(--red)}
-button:active{transform:translateY(1px)}
-button:disabled{opacity:.42;cursor:default;transform:none}
-.err{color:var(--red);font-size:12.5px;margin-top:11px;min-height:17px}
-
-#done{display:none;text-align:center;padding:14px 0 6px}
-#done.show{display:block;animation:fade .5s ease}
-@keyframes fade{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
-.stamp{display:inline-block;border:4px solid var(--red);color:var(--red);padding:15px 26px 13px;transform:rotate(-6deg);margin:8px 0 26px;font-size:16px;letter-spacing:.16em;opacity:.9}
-#done h2{font-family:'Theonory',serif;font-size:27px;margin:0 0 8px;font-weight:400}
-#done .nr{font-size:44px;letter-spacing:.08em;color:var(--red);margin:14px 0 6px;font-family:'Theonory',serif}
-#done p{font-size:13.5px;line-height:1.8;color:#2A241C;margin:6px 0}
-#done .small{font-size:11.5px;color:var(--clay);letter-spacing:.09em;margin-top:22px}
-.hand{font-family:'HandA',cursive;font-size:23px;color:#223458;transform:rotate(-2deg);display:inline-block;margin-top:6px}
-
-@media(max-width:520px){
-  .sheet{padding:38px 22px 34px}
-  .det .r{flex-direction:column;gap:1px;padding:5px 0}
-  .det .k{min-width:0}
-  .meta{font-size:10px}
-}
-</style>
-</head>
-<body>
-<div class="sheet">
-  <span class="corner c1"><b></b><b></b></span>
-  <span class="corner c2"><b></b><b></b></span>
-  <span class="corner c3"><b></b><b></b></span>
-  <span class="corner c4"><b></b><b></b></span>
-
-  <div class="in">
-    <div class="meta"><span>DOSAR NR. 011 / 2026</span><span>CLUJ-NAPOCA</span></div>
-
-    <div id="form">
-      <h1>Citaţie</h1>
-      <p class="sub">CONVOCARE PENTRU VIZIONAREA PROBELOR</p>
-      <div class="rule"></div>
-
-      <div class="body">
-        <p>Prin prezenta sunteţi convocat pentru vizionarea integrală a materialului probator strâns în dosarul <strong>Oraşului Alb</strong>.</p>
-        <p>Prezenţa dumneavoastră se consemnează în registrul de martori. Vă rugăm să completaţi declaraţia de mai jos.</p>
-      </div>
-
-      <div class="det">
-        <div class="r"><span class="k">DATA</span><span class="v">Marţi, 8 septembrie 2026</span></div>
-        <div class="r"><span class="k">ORA</span><span class="v">19:00</span></div>
-        <div class="r"><span class="k">LOCUL</span><span class="v">Cinema City — Iulius Mall, Cluj-Napoca</span></div>
-        <div class="r"><span class="k">OBIECT</span><span class="v">Premiera de gală „Dosarele Oraşului Alb”</span></div>
-      </div>
-
-      <div class="field">
-        <p class="q">NUMELE ŞI PRENUMELE</p>
-        <input type="text" id="nume" placeholder="scrieţi aici" autocomplete="name" maxlength="90">
-      </div>
-
-      <div class="field">
-        <p class="q">DECLAR URMĂTOARELE</p>
-        <div class="opts" id="rasp">
-          <label class="opt" data-v="confirm"><span class="box"></span><span class="lab">Mă prezint<span class="hint">voi fi acolo pe 8 septembrie</span></span><input type="radio" name="r"></label>
-          <label class="opt" data-v="poate"><span class="box"></span><span class="lab">Încă nu pot confirma<span class="hint">revin cu un răspuns</span></span><input type="radio" name="r"></label>
-          <label class="opt" data-v="nu"><span class="box"></span><span class="lab">Nu mă pot prezenta<span class="hint">din motive personale</span></span><input type="radio" name="r"></label>
-        </div>
-      </div>
-
-      <div id="plus">
-        <p class="q">VIN ÎNSOŢIT</p>
-        <div class="opts" id="ins">
-          <label class="opt" data-v="nu"><span class="box"></span><span class="lab">Singur<span class="hint">un loc</span></span><input type="radio" name="i"></label>
-          <label class="opt" data-v="da"><span class="box"></span><span class="lab">Cu încă o persoană<span class="hint">două locuri</span></span><input type="radio" name="i"></label>
-        </div>
-      </div>
-
-      <div class="sign">
-        <button id="go">SEMNEZ DECLARAŢIA</button>
-        <div class="err" id="err"></div>
-      </div>
-    </div>
-
-    <div id="done">
-      <div class="stamp" id="stamp">ÎNREGISTRAT</div>
-      <h2 id="dt">Declaraţie consemnată</h2>
-      <div class="nr" id="nr"></div>
-      <p id="dp"></p>
-      <p class="small">Dosarele Oraşului Alb · 8 septembrie 2026 · ora 19:00<br>Cinema City, Iulius Mall Cluj-Napoca</p>
-      <div class="hand">ne vedem în sală</div>
-    </div>
+<section class="pan p-panel">
+ <div class="pan-inner">
+  <span class="lab rv">Anexa 1 — Datele întrevederii</span>
+  <h2 class="rv" style="margin-top:12px">Unde şi <em>când</em></h2>
+  <div style="margin-top:clamp(22px,3vw,34px)">
+   <div class="trow rv"><span class="lab">Data</span><span><b>Marţi, 8 septembrie 2026</b></span></div>
+   <div class="trow rv"><span class="lab">Ora</span><span><b>19:00</b><small>Accesul în sală începe la 18:30</small></span></div>
+   <div class="trow rv"><span class="lab">Locul</span><span><b>Cinema City Iulius Mall</b><small>Str. Alexandru Vaida Voevod 53B, Cluj-Napoca</small></span></div>
+   <div class="trow rv"><span class="lab">Obiectul</span><span><b>Proiecţie de gală + discuţie cu echipa</b><small>În cinematografe din toată ţara, din 11 septembrie</small></span></div>
   </div>
-</div>
+
+  <div style="margin-top:clamp(34px,5vw,56px)">
+   <span class="lab rv">Anexa 2 — Materialul probatoriu</span>
+   <h2 class="rv" style="margin-top:12px">Trailerul <em>oficial</em></h2>
+   <div class="vid rv">
+    <iframe src="https://www.youtube-nocookie.com/embed/MBnVWW-GrnU?rel=0" title="Dosarele Orasului Alb - trailer oficial" loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="pan p-ink">
+ <div class="pan-inner">
+  <div id="form">
+   <span class="lab rv">Anexa 3 — Declaraţie de prezenţă</span>
+   <h2 class="rv" style="margin-top:12px">Confirmaţi-vă <em>prezenţa</em></h2>
+   <p class="lead rv">Locurile sunt nominale şi limitate. Vă rugăm să completaţi până pe 5 septembrie.</p>
+
+   <div class="vbox rv" style="margin-top:clamp(24px,3.4vw,38px)">
+    <div class="fx" style="margin-top:0">
+     <label class="fl" for="nume">Numele dumneavoastră</label>
+     <input class="inp" id="nume" type="text" autocomplete="name" placeholder="Nume şi prenume">
+    </div>
+
+    <div class="fx">
+     <span class="fl">Răspunsul dumneavoastră</span>
+     <div class="opts">
+      <label class="opt"><input type="radio" name="r" value="confirm"><span class="bx"></span>
+       <span><span class="tt">Confirm — voi fi prezent</span><span class="ss">Locul se rezervă pe numele dumneavoastră</span></span></label>
+      <label class="opt"><input type="radio" name="r" value="poate"><span class="bx"></span>
+       <span><span class="tt">Probabil — încă nu ştiu sigur</span><span class="ss">Reveniţi când sunteţi sigur</span></span></label>
+      <label class="opt"><input type="radio" name="r" value="nu"><span class="bx"></span>
+       <span><span class="tt">Nu pot ajunge</span><span class="ss">Ne vedem în sălile de cinema</span></span></label>
+     </div>
+    </div>
+
+    <div class="sub" id="plus">
+     <span class="fl">Veniţi însoţit?</span>
+     <div class="opts">
+      <label class="opt"><input type="radio" name="p" value="Da"><span class="bx"></span>
+       <span><span class="tt">Da, cu +1</span><span class="ss">Se rezervă 2 locuri</span></span></label>
+      <label class="opt sel"><input type="radio" name="p" value="Nu" checked><span class="bx"></span>
+       <span><span class="tt">Nu, vin singur</span><span class="ss">Se rezervă 1 loc</span></span></label>
+     </div>
+    </div>
+
+    <button class="btn" id="go">Semnez declaraţia</button>
+    <div class="msg" id="msg"></div>
+   </div>
+  </div>
+
+  <div id="done">
+   <div class="st">Înregistrat</div>
+   <h2>Locul dumneavoastră este <em>rezervat</em></h2>
+   <p class="lead" style="margin-left:auto;margin-right:auto">Ne vedem marţi, 8 septembrie, ora 19:00, la Cinema City Iulius Mall. Vă rugăm să ajungeţi cu 30 de minute înainte.</p>
+   <div class="hnd" id="martor"></div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <span class="mono">Dosarele Oraşului Alb · 2026</span>
+ <span class="mono">KSM Production</span>
+</footer>
 
 <script>
-(function(){
-  var POST="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdAvHxPNk5v34uVgS4VRfmRAEAJLGHjbfZFv7W0vSPI2lDf2A/formResponse";
-  var E_NUME="entry.1855918704", E_INS="entry.1420073865";
-  var raspuns=null, insotitor=null, trimis=false;
+var POST="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdAvHxPNk5v34uVgS4VRfmRAEAJLGHjbfZFv7W0vSPI2lDf2A/formResponse";
+var E_NUME="entry.1855918704", E_INS="entry.1420073865";
+var $=function(s){return document.querySelector(s)};
+var msg=$('#msg'), plus=$('#plus'), btn=$('#go');
 
-  function pick(box,cb){
-    box.querySelectorAll('.opt').forEach(function(o){
-      o.addEventListener('click',function(){
-        box.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')});
-        o.classList.add('on'); cb(o.dataset.v);
-      });
-    });
-  }
-  var plus=document.getElementById('plus');
-  pick(document.getElementById('rasp'),function(v){
-    raspuns=v;
-    if(v==='confirm'){plus.classList.add('show');}
-    else{plus.classList.remove('show'); insotitor=null;
-      document.querySelectorAll('#ins .opt').forEach(function(x){x.classList.remove('on')});}
-    document.getElementById('err').textContent='';
-  });
-  pick(document.getElementById('ins'),function(v){insotitor=v;document.getElementById('err').textContent='';});
+function mark(name){
+ document.querySelectorAll('input[name='+name+']').forEach(function(el){
+  el.closest('.opt').classList.toggle('sel', el.checked);
+ });
+}
+document.querySelectorAll('input[name=r]').forEach(function(el){
+ el.addEventListener('change',function(){ mark('r'); plus.classList.toggle('on', el.value==='confirm'); msg.textContent=''; });
+});
+document.querySelectorAll('input[name=p]').forEach(function(el){
+ el.addEventListener('change',function(){ mark('p'); });
+});
 
-  function fin(){
-    if(trimis) return; trimis=true;
-    document.getElementById('form').style.display='none';
-    var d=document.getElementById('done'); d.classList.add('show');
-    var st=document.getElementById('stamp'), t=document.getElementById('dt'),
-        nr=document.getElementById('nr'), p=document.getElementById('dp');
-    if(raspuns==='confirm'){
-      var n=1000+Math.floor(Math.random()*8999);
-      st.textContent='ÎNREGISTRAT'; t.textContent='Declaraţie consemnată';
-      nr.textContent='MARTOR '+n;
-      p.innerHTML='Numele dumneavoastră a fost trecut în registru'+(insotitor==='da'?', împreună cu însoţitorul':'')+'.<br>Locul este rezervat.';
-    }else if(raspuns==='poate'){
-      st.textContent='ÎN AŞTEPTARE'; t.textContent='Răspuns preliminar';
-      nr.textContent=''; p.innerHTML='Am notat că urmează să reveniţi.<br>Vă aşteptăm confirmarea.';
-    }else{
-      st.textContent='CONSEMNAT'; t.textContent='Ne pare rău';
-      nr.textContent=''; p.innerHTML='Am notat că nu vă puteţi prezenta.<br>Vă aşteptăm în sălile de cinema din 11 septembrie.';
-    }
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
+btn.addEventListener('click',function(){
+ var nume=$('#nume').value.trim();
+ var r=document.querySelector('input[name=r]:checked');
+ if(!nume){ msg.textContent='Completaţi numele.'; $('#nume').focus(); return; }
+ if(!r){ msg.textContent='Alegeţi un răspuns.'; return; }
+ if(r.value!=='confirm'){
+  msg.textContent = r.value==='poate'
+   ? 'Am notat. Reveniţi aici când ştiţi sigur — locul se rezervă doar la confirmare.'
+   : 'Am notat. Vă aşteptăm în cinematografe, din 11 septembrie.';
+  return;
+ }
+ btn.disabled=true; msg.textContent='Se înregistrează…';
+ var ins=(document.querySelector('input[name=p]:checked')||{value:'Nu'}).value;
+ var fd=new FormData(); fd.append(E_NUME,nume); fd.append(E_INS,ins);
+ var fin=function(){
+  $('#martor').textContent='MARTOR '+String(Math.floor(1000+Math.random()*8999));
+  $('#form').style.display='none'; $('#done').classList.add('on');
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+ };
+ fetch(POST,{method:'POST',mode:'no-cors',body:fd}).then(fin).catch(fin);
+});
 
-  document.getElementById('go').addEventListener('click',function(){
-    var nume=document.getElementById('nume').value.trim();
-    var err=document.getElementById('err');
-    if(nume.length<3){err.textContent='Vă rugăm scrieţi numele.';document.getElementById('nume').focus();return;}
-    if(!raspuns){err.textContent='Vă rugăm alegeţi o variantă.';return;}
-    if(raspuns==='confirm'&&!insotitor){err.textContent='Veniţi singur sau însoţit?';return;}
-    err.textContent='';
-    this.disabled=true; this.textContent='SE CONSEMNEAZĂ…';
-
-    if(raspuns!=='confirm'){ fin(); return; }
-
-    var fd=new FormData();
-    fd.append(E_NUME,nume);
-    fd.append(E_INS, insotitor==='da'?'Da':'Nu');
-    fetch(POST,{method:'POST',mode:'no-cors',body:fd}).then(fin).catch(fin);
-    setTimeout(fin,4000);
-  });
-
-  document.getElementById('nume').addEventListener('keydown',function(e){
-    if(e.key==='Enter'){e.preventDefault();document.getElementById('go').click();}
-  });
-})();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){
+ if(e.isIntersecting){e.target.animate([{opacity:0,transform:'translateY(22px)'},{opacity:1,transform:'none'}],
+  {duration:850,easing:'cubic-bezier(.16,1,.3,1)',fill:'forwards'}); io.unobserve(e.target);}
+})},{threshold:.14});
+document.querySelectorAll('.rv').forEach(function(el,i){setTimeout(function(){io.observe(el)},i*20)});
 </script>
-</body>
-</html>
+</body></html>
