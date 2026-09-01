@@ -2,6 +2,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Citaţie — Premiera de gală · Dosarele Oraşului Alb</title>
 <meta name="theme-color" content="#0A0A0B">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
 <meta name="description" content="Dosar nr. 011/2026 — convocare pentru vizionarea probelor. 8 septembrie 2026, ora 19:00, Cinema City Iulius Mall, Cluj-Napoca.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Citaţie — Premiera de gală · Dosarele Oraşului Alb">
@@ -20,6 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
+ color-scheme: only light;
  --ink:#12100E;--panel:#1A1815;--paper:#E4D9BF;--paper2:#D3C4A6;
  --fg:#D9CFBB;--mut:#8B8271;--red:#7C2B28;--red-br:#A8433A;
  --clay:#5C4638;--olive:#4A4A3C;--line:rgba(217,207,187,.16);
@@ -38,6 +41,7 @@ body{background:#0A0A0B;color:var(--fg);font-family:'Special Elite','Courier Pri
 @keyframes bulb{0%,100%{opacity:1}92%{opacity:1}94%{opacity:.86}96%{opacity:1}}
 .wrap{position:fixed;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:18px}
 .fisa{
+ forced-color-adjust:none;
  width:min(600px,92vw);max-height:88vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;
  background:url('https://ksmproduction.ro/assets-hero/paper-b.png') center/cover, var(--paper);
  color:var(--ink);border-radius:4px;padding:clamp(22px,3.6vw,38px) clamp(20px,3.2vw,34px);
@@ -117,6 +121,16 @@ input.nm::placeholder{color:rgba(36,31,25,.28);font-family:'Special Elite',monos
 input.nm{font-size:max(21px,4.4vw)}
 @media (min-width:560px){input.nm{font-size:26px}}
 @media(prefers-reduced-motion:reduce){.light{animation:none}.fisa{animation:none}}
+/* Android: unele browsere forteaza dark mode — pastrez culorile paginii */
+@media (prefers-color-scheme: dark){
+ body{background:#0A0A0B;color:var(--fg)}
+ .fisa{background:url('https://ksmproduction.ro/assets-hero/paper-b.png') center/cover, var(--paper);color:var(--ink)}
+ .tr .v,.opt .tt,h1,p.txt{color:var(--ink)}
+ .tr .k,.opt em,.tr .v small{color:var(--olive)}
+ .lbl,.sup,.hd .nr,.msg{color:var(--red)}
+ input.nm{color:#2A3F63;background:transparent}
+ .sign{color:var(--red);background:none}
+}
 </style></head><body>
 
 <div class="masa">
