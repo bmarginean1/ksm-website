@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /500-dosar.html
+Disallow: /500-dosar-og.jpg
+Disallow: /500-dosar-icon.png
