@@ -1,0 +1,473 @@
+.dk-grow{--ink:#050506;--panel:#0B0B0E;--line:#1E1E24;--sig:#5B4FCF;--el:#5B4FCF;--off:#F2F1EC;--mut:rgba(242,241,236,.66);--dim:rgba(242,241,236,.38)}
+.dk-grow *{box-sizing:border-box;margin:0;padding:0}
+.dk-grow,.dk-grow{background:var(--ink)}
+.dk-grow{font-family:"DM Sans",sans-serif;color:var(--off);-webkit-font-smoothing:antialiased}
+.dk-grow a{color:inherit;text-decoration:none}
+.dk-grow .slide{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:var(--ink);page-break-after:always;break-after:page}
+.dk-grow .slide:last-child{page-break-after:auto;break-after:auto}
+.dk-grow .slide.panel{background:var(--panel)}
+.dk-grow .slide::after{content:"";position:absolute;inset:0;background:url(a/grain.png);pointer-events:none;z-index:50}
+.dk-grow .d{display:inline-block;color:var(--off)}
+.dk-grow .d svg,.dk-grow .wm svg{display:block;width:100%;height:auto}
+.dk-grow .wm{color:var(--off)}
+.dk-grow .mono{font-family:"DM Mono",monospace;letter-spacing:.02em}
+.dk-grow .disp{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.02}
+.dk-grow .cur{display:inline-block;width:.42em;height:.085em;background:var(--sig);margin-left:.08em;vertical-align:baseline}
+.dk-grow .sig{color:var(--sig)}
+.dk-grow .el{color:var(--el)}
+.dk-grow .gap{height:.7em}
+.dk-grow .body p{margin:0}
+.dk-grow .body b{color:var(--off);font-weight:600}
+.dk-grow .body ul{list-style:none}
+.dk-grow .body li{position:relative;padding-left:1.05em;margin:.18em 0}
+.dk-grow .body li::before{content:"";position:absolute;left:0;top:.62em;width:.38em;height:.38em;background:var(--sig)}
+.dk-grow .rule{height:1px;background:var(--line)}
+.dk-grow .lnk{display:inline-flex;align-items:center;gap:.5em;border-bottom:2px solid var(--sig);padding-bottom:.18em}
+.dk-grow .lnk::after{content:"→";color:var(--sig)}
+.dk-grow .tile{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-grow .tile img{max-width:72%;max-height:62%;object-fit:contain;mix-blend-mode:multiply}
+.dk-grow .slide{--W:1920px;--H:1080px}
+.dk-grow .grid12{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(242,241,236,.04) 0 1px,transparent 1px 160px)}
+.dk-grow .lime .grid12,.dk-grow .grid12.ink{background:repeating-linear-gradient(90deg,rgba(5,5,6,.07) 0 1px,transparent 1px 160px)}
+.dk-grow .meta{position:absolute;left:64px;right:64px;top:44px;display:flex;justify-content:space-between;align-items:center;z-index:8;
+  font-family:"DM Mono",monospace;font-size:18px;letter-spacing:.08em;color:var(--dim);font-variant-numeric:tabular-nums}
+.dk-grow .meta .d{width:24px}
+.dk-grow .meta .ix{color:var(--sig)}
+.dk-grow .mega{font-family:"Zalando SE",sans-serif;font-weight:900;letter-spacing:-.045em;line-height:.9;text-wrap:balance}
+.dk-grow .big{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1;text-wrap:balance}
+.dk-grow .mid{font-family:"Zalando SE",sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.dk-grow .out{color:transparent;-webkit-text-stroke:2px rgba(242,241,236,.2)}
+.dk-grow .lime .out,.dk-grow .out.ink{-webkit-text-stroke:2px rgba(5,5,6,.5)}
+.dk-grow .lime{background:var(--sig);color:var(--ink)}
+.dk-grow .bx{font-size:29px;line-height:1.44;color:var(--mut);text-wrap:pretty}
+.dk-grow .bx b{color:var(--off);font-weight:600}
+.dk-grow .lime .bx,.dk-grow .lime .bx b{color:var(--ink)}
+.dk-grow .bx ul{list-style:none}
+.dk-grow .bx li{position:relative;padding-left:1.1em;margin:.32em 0}
+.dk-grow .bx li::before{content:"";position:absolute;left:0;top:.6em;width:.36em;height:.36em;background:var(--sig)}
+.dk-grow .lime .bx li::before{background:var(--ink)}
+.dk-grow .bx p+p{margin-top:.12em}
+.dk-grow .tag{font-family:"DM Mono",monospace;font-size:19px;letter-spacing:.07em;text-transform:uppercase;color:var(--sig)}
+.dk-grow .lime .tag{color:var(--ink)}
+.dk-grow .sq{display:inline-block;width:.16em;height:.16em;background:var(--sig);margin-left:.06em}
+.dk-grow .lime .sq{background:var(--ink)}
+.dk-grow .cur2{display:inline-block;width:.5em;height:.1em;background:var(--sig);margin-left:.1em}
+.dk-grow .lime .cur2{background:var(--ink)}
+.dk-grow .rowx{display:grid;grid-template-columns:96px 1fr;border-top:1px solid var(--line);padding:26px 0}
+.dk-grow .lime .rowx{border-color:rgba(5,5,6,.2)}
+.dk-grow .cell{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-grow .cell img{max-width:64%;max-height:46%;object-fit:contain;mix-blend-mode:multiply}
+.dk-grow a{color:inherit}
+.dk-grow{--ink:#050506;--panel:#0B0B0E;--off:#F2F1EC;--sig:#5B4FCF;--el:#B3A3FF;--muted:#7c7c86;--line:rgba(242,241,236,.13);--mut:#cbcbd2;--dim:#7c7c86}
+.dk-grow .slide{background:#050506}
+.dk-grow .slide::after{opacity:.55}
+.dk-grow .grid12{background:repeating-linear-gradient(90deg,rgba(242,241,236,.035) 0 1px,transparent 1px 160px)!important}
+.dk-grow .mega,.dk-grow .big{font-family:"Komet","Zalando SE",sans-serif!important;text-transform:uppercase;letter-spacing:-.005em!important}
+.dk-grow .mega{font-weight:900!important;line-height:.86!important}
+.dk-grow .big{font-weight:800!important;line-height:.92!important}
+.dk-grow .mid{font-family:"Komet","Zalando SE",sans-serif!important;font-weight:700!important;letter-spacing:0!important}
+.dk-grow .acc{color:var(--sig)}
+.dk-grow .tag{color:var(--muted)!important;letter-spacing:.12em!important}
+.dk-grow .tag.n{color:#A898FF!important}
+.dk-grow .mid[style*="color:var(--sig)"]{color:#A898FF!important}
+.dk-grow .meta{color:var(--muted)}
+.dk-grow .bx{color:#cbcbd2}
+.dk-grow .bx li::before{background:var(--el)!important}
+.dk-grow .sq{background:var(--sig)!important}
+.dk-grow .lime{--ink:#F2F1EC;background:var(--panel)!important;color:var(--off)!important;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.dk-grow .slide.lime{background:#050506!important;border:0;border-radius:0}
+.dk-grow .lime .grid12{display:none}
+.dk-grow .lime .tag{color:var(--muted)!important}
+.dk-grow .out,.dk-grow .lime .out,.dk-grow .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.7)!important}
+.dk-grow .lime img[style*="brightness(0)"]{filter:none!important}
+.dk-grow .lime .bx,.dk-grow .lime .bx b{color:#cbcbd2}
+.dk-grow .cell{border-radius:0}
+.dk-grow .wallbox{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.dk-grow .r14{border-radius:14px;overflow:hidden}
+.dk-grow .slide::after{display:none!important;background:none!important}
+.dk-grow .grid12{display:none!important}
+.dk-grow{--sig:#5B4FCF;--el:#8F86E8}
+.dk-grow .tag.n{color:#9D94F0!important}
+.dk-grow .mid[style*="color:var(--sig)"]{color:#9D94F0!important}
+.dk-grow .out,.dk-grow .lime .out,.dk-grow .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.85)!important}
+.dk-ai{--ink:#050506;--panel:#0B0B0E;--line:#1E1E24;--sig:#5B4FCF;--el:#5B4FCF;--off:#F2F1EC;--mut:rgba(242,241,236,.66);--dim:rgba(242,241,236,.38)}
+.dk-ai *{box-sizing:border-box;margin:0;padding:0}
+.dk-ai,.dk-ai{background:var(--ink)}
+.dk-ai{font-family:"DM Sans",sans-serif;color:var(--off);-webkit-font-smoothing:antialiased}
+.dk-ai a{color:inherit;text-decoration:none}
+.dk-ai .slide{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:var(--ink);page-break-after:always;break-after:page}
+.dk-ai .slide:last-child{page-break-after:auto;break-after:auto}
+.dk-ai .slide.panel{background:var(--panel)}
+.dk-ai .slide::after{content:"";position:absolute;inset:0;background:url(a/grain.png);pointer-events:none;z-index:50}
+.dk-ai .d{display:inline-block;color:var(--off)}
+.dk-ai .d svg,.dk-ai .wm svg{display:block;width:100%;height:auto}
+.dk-ai .wm{color:var(--off)}
+.dk-ai .mono{font-family:"DM Mono",monospace;letter-spacing:.02em}
+.dk-ai .disp{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.02}
+.dk-ai .cur{display:inline-block;width:.42em;height:.085em;background:var(--sig);margin-left:.08em;vertical-align:baseline}
+.dk-ai .sig{color:var(--sig)}
+.dk-ai .el{color:var(--el)}
+.dk-ai .gap{height:.7em}
+.dk-ai .body p{margin:0}
+.dk-ai .body b{color:var(--off);font-weight:600}
+.dk-ai .body ul{list-style:none}
+.dk-ai .body li{position:relative;padding-left:1.05em;margin:.18em 0}
+.dk-ai .body li::before{content:"";position:absolute;left:0;top:.62em;width:.38em;height:.38em;background:var(--sig)}
+.dk-ai .rule{height:1px;background:var(--line)}
+.dk-ai .lnk{display:inline-flex;align-items:center;gap:.5em;border-bottom:2px solid var(--sig);padding-bottom:.18em}
+.dk-ai .lnk::after{content:"→";color:var(--sig)}
+.dk-ai .tile{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-ai .tile img{max-width:72%;max-height:62%;object-fit:contain;mix-blend-mode:multiply}
+.dk-ai .slide{--W:1920px;--H:1080px}
+.dk-ai .grid12{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(242,241,236,.04) 0 1px,transparent 1px 160px)}
+.dk-ai .lime .grid12,.dk-ai .grid12.ink{background:repeating-linear-gradient(90deg,rgba(5,5,6,.07) 0 1px,transparent 1px 160px)}
+.dk-ai .meta{position:absolute;left:64px;right:64px;top:44px;display:flex;justify-content:space-between;align-items:center;z-index:8;
+  font-family:"DM Mono",monospace;font-size:18px;letter-spacing:.08em;color:var(--dim);font-variant-numeric:tabular-nums}
+.dk-ai .meta .d{width:24px}
+.dk-ai .meta .ix{color:var(--sig)}
+.dk-ai .mega{font-family:"Zalando SE",sans-serif;font-weight:900;letter-spacing:-.045em;line-height:.9;text-wrap:balance}
+.dk-ai .big{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1;text-wrap:balance}
+.dk-ai .mid{font-family:"Zalando SE",sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.dk-ai .out{color:transparent;-webkit-text-stroke:2px rgba(242,241,236,.2)}
+.dk-ai .lime .out,.dk-ai .out.ink{-webkit-text-stroke:2px rgba(5,5,6,.5)}
+.dk-ai .lime{background:var(--sig);color:var(--ink)}
+.dk-ai .bx{font-size:29px;line-height:1.44;color:var(--mut);text-wrap:pretty}
+.dk-ai .bx b{color:var(--off);font-weight:600}
+.dk-ai .lime .bx,.dk-ai .lime .bx b{color:var(--ink)}
+.dk-ai .bx ul{list-style:none}
+.dk-ai .bx li{position:relative;padding-left:1.1em;margin:.32em 0}
+.dk-ai .bx li::before{content:"";position:absolute;left:0;top:.6em;width:.36em;height:.36em;background:var(--sig)}
+.dk-ai .lime .bx li::before{background:var(--ink)}
+.dk-ai .bx p+p{margin-top:.12em}
+.dk-ai .tag{font-family:"DM Mono",monospace;font-size:19px;letter-spacing:.07em;text-transform:uppercase;color:var(--sig)}
+.dk-ai .lime .tag{color:var(--ink)}
+.dk-ai .sq{display:inline-block;width:.16em;height:.16em;background:var(--sig);margin-left:.06em}
+.dk-ai .lime .sq{background:var(--ink)}
+.dk-ai .cur2{display:inline-block;width:.5em;height:.1em;background:var(--sig);margin-left:.1em}
+.dk-ai .lime .cur2{background:var(--ink)}
+.dk-ai .rowx{display:grid;grid-template-columns:96px 1fr;border-top:1px solid var(--line);padding:26px 0}
+.dk-ai .lime .rowx{border-color:rgba(5,5,6,.2)}
+.dk-ai .cell{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-ai .cell img{max-width:64%;max-height:46%;object-fit:contain;mix-blend-mode:multiply}
+.dk-ai a{color:inherit}
+.dk-ai{--ink:#050506;--panel:#0B0B0E;--off:#F2F1EC;--sig:#5B4FCF;--el:#B3A3FF;--muted:#7c7c86;--line:rgba(242,241,236,.13);--mut:#cbcbd2;--dim:#7c7c86}
+.dk-ai .slide{background:#050506}
+.dk-ai .slide::after{opacity:.55}
+.dk-ai .grid12{background:repeating-linear-gradient(90deg,rgba(242,241,236,.035) 0 1px,transparent 1px 160px)!important}
+.dk-ai .mega,.dk-ai .big{font-family:"Komet","Zalando SE",sans-serif!important;text-transform:uppercase;letter-spacing:-.005em!important}
+.dk-ai .mega{font-weight:900!important;line-height:.86!important}
+.dk-ai .big{font-weight:800!important;line-height:.92!important}
+.dk-ai .mid{font-family:"Komet","Zalando SE",sans-serif!important;font-weight:700!important;letter-spacing:0!important}
+.dk-ai .acc{color:var(--sig)}
+.dk-ai .tag{color:var(--muted)!important;letter-spacing:.12em!important}
+.dk-ai .tag.n{color:#A898FF!important}
+.dk-ai .mid[style*="color:var(--sig)"]{color:#A898FF!important}
+.dk-ai .meta{color:var(--muted)}
+.dk-ai .bx{color:#cbcbd2}
+.dk-ai .bx li::before{background:var(--el)!important}
+.dk-ai .sq{background:var(--sig)!important}
+.dk-ai .lime{--ink:#F2F1EC;background:var(--panel)!important;color:var(--off)!important;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.dk-ai .slide.lime{background:#050506!important;border:0;border-radius:0}
+.dk-ai .lime .grid12{display:none}
+.dk-ai .lime .tag{color:var(--muted)!important}
+.dk-ai .out,.dk-ai .lime .out,.dk-ai .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.7)!important}
+.dk-ai .lime img[style*="brightness(0)"]{filter:none!important}
+.dk-ai .lime .bx,.dk-ai .lime .bx b{color:#cbcbd2}
+.dk-ai .cell{border-radius:0}
+.dk-ai .wallbox{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.dk-ai .r14{border-radius:14px;overflow:hidden}
+.dk-ai .slide::after{display:none!important;background:none!important}
+.dk-ai .grid12{display:none!important}
+.dk-ai{--sig:#5B4FCF;--el:#8F86E8}
+.dk-ai .tag.n{color:#9D94F0!important}
+.dk-ai .mid[style*="color:var(--sig)"]{color:#9D94F0!important}
+.dk-ai .out,.dk-ai .lime .out,.dk-ai .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.85)!important}
+.dk-short{--ink:#050506;--panel:#0B0B0E;--line:#1E1E24;--sig:#5B4FCF;--el:#5B4FCF;--off:#F2F1EC;--mut:rgba(242,241,236,.66);--dim:rgba(242,241,236,.38)}
+.dk-short *{box-sizing:border-box;margin:0;padding:0}
+.dk-short,.dk-short{background:var(--ink)}
+.dk-short{font-family:"DM Sans",sans-serif;color:var(--off);-webkit-font-smoothing:antialiased}
+.dk-short a{color:inherit;text-decoration:none}
+.dk-short .slide{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:var(--ink);page-break-after:always;break-after:page}
+.dk-short .slide:last-child{page-break-after:auto;break-after:auto}
+.dk-short .slide.panel{background:var(--panel)}
+.dk-short .slide::after{content:"";position:absolute;inset:0;background:url(a/grain.png);pointer-events:none;z-index:50}
+.dk-short .d{display:inline-block;color:var(--off)}
+.dk-short .d svg,.dk-short .wm svg{display:block;width:100%;height:auto}
+.dk-short .wm{color:var(--off)}
+.dk-short .mono{font-family:"DM Mono",monospace;letter-spacing:.02em}
+.dk-short .disp{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.02}
+.dk-short .cur{display:inline-block;width:.42em;height:.085em;background:var(--sig);margin-left:.08em;vertical-align:baseline}
+.dk-short .sig{color:var(--sig)}
+.dk-short .el{color:var(--el)}
+.dk-short .gap{height:.7em}
+.dk-short .body p{margin:0}
+.dk-short .body b{color:var(--off);font-weight:600}
+.dk-short .body ul{list-style:none}
+.dk-short .body li{position:relative;padding-left:1.05em;margin:.18em 0}
+.dk-short .body li::before{content:"";position:absolute;left:0;top:.62em;width:.38em;height:.38em;background:var(--sig)}
+.dk-short .rule{height:1px;background:var(--line)}
+.dk-short .lnk{display:inline-flex;align-items:center;gap:.5em;border-bottom:2px solid var(--sig);padding-bottom:.18em}
+.dk-short .lnk::after{content:"→";color:var(--sig)}
+.dk-short .tile{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-short .tile img{max-width:72%;max-height:62%;object-fit:contain;mix-blend-mode:multiply}
+.dk-short .slide{--W:1920px;--H:1080px}
+.dk-short .grid12{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(242,241,236,.04) 0 1px,transparent 1px 160px)}
+.dk-short .lime .grid12,.dk-short .grid12.ink{background:repeating-linear-gradient(90deg,rgba(5,5,6,.07) 0 1px,transparent 1px 160px)}
+.dk-short .meta{position:absolute;left:64px;right:64px;top:44px;display:flex;justify-content:space-between;align-items:center;z-index:8;
+  font-family:"DM Mono",monospace;font-size:18px;letter-spacing:.08em;color:var(--dim);font-variant-numeric:tabular-nums}
+.dk-short .meta .d{width:24px}
+.dk-short .meta .ix{color:var(--sig)}
+.dk-short .mega{font-family:"Zalando SE",sans-serif;font-weight:900;letter-spacing:-.045em;line-height:.9;text-wrap:balance}
+.dk-short .big{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1;text-wrap:balance}
+.dk-short .mid{font-family:"Zalando SE",sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.dk-short .out{color:transparent;-webkit-text-stroke:2px rgba(242,241,236,.2)}
+.dk-short .lime .out,.dk-short .out.ink{-webkit-text-stroke:2px rgba(5,5,6,.5)}
+.dk-short .lime{background:var(--sig);color:var(--ink)}
+.dk-short .bx{font-size:29px;line-height:1.44;color:var(--mut);text-wrap:pretty}
+.dk-short .bx b{color:var(--off);font-weight:600}
+.dk-short .lime .bx,.dk-short .lime .bx b{color:var(--ink)}
+.dk-short .bx ul{list-style:none}
+.dk-short .bx li{position:relative;padding-left:1.1em;margin:.32em 0}
+.dk-short .bx li::before{content:"";position:absolute;left:0;top:.6em;width:.36em;height:.36em;background:var(--sig)}
+.dk-short .lime .bx li::before{background:var(--ink)}
+.dk-short .bx p+p{margin-top:.12em}
+.dk-short .tag{font-family:"DM Mono",monospace;font-size:19px;letter-spacing:.07em;text-transform:uppercase;color:var(--sig)}
+.dk-short .lime .tag{color:var(--ink)}
+.dk-short .sq{display:inline-block;width:.16em;height:.16em;background:var(--sig);margin-left:.06em}
+.dk-short .lime .sq{background:var(--ink)}
+.dk-short .cur2{display:inline-block;width:.5em;height:.1em;background:var(--sig);margin-left:.1em}
+.dk-short .lime .cur2{background:var(--ink)}
+.dk-short .rowx{display:grid;grid-template-columns:96px 1fr;border-top:1px solid var(--line);padding:26px 0}
+.dk-short .lime .rowx{border-color:rgba(5,5,6,.2)}
+.dk-short .cell{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-short .cell img{max-width:64%;max-height:46%;object-fit:contain;mix-blend-mode:multiply}
+.dk-short a{color:inherit}
+.dk-short{--ink:#050506;--panel:#0B0B0E;--off:#F2F1EC;--sig:#5B4FCF;--el:#B3A3FF;--muted:#7c7c86;--line:rgba(242,241,236,.13);--mut:#cbcbd2;--dim:#7c7c86}
+.dk-short .slide{background:#050506}
+.dk-short .slide::after{opacity:.55}
+.dk-short .grid12{background:repeating-linear-gradient(90deg,rgba(242,241,236,.035) 0 1px,transparent 1px 160px)!important}
+.dk-short .mega,.dk-short .big{font-family:"Komet","Zalando SE",sans-serif!important;text-transform:uppercase;letter-spacing:-.005em!important}
+.dk-short .mega{font-weight:900!important;line-height:.86!important}
+.dk-short .big{font-weight:800!important;line-height:.92!important}
+.dk-short .mid{font-family:"Komet","Zalando SE",sans-serif!important;font-weight:700!important;letter-spacing:0!important}
+.dk-short .acc{color:var(--sig)}
+.dk-short .tag{color:var(--muted)!important;letter-spacing:.12em!important}
+.dk-short .tag.n{color:#A898FF!important}
+.dk-short .mid[style*="color:var(--sig)"]{color:#A898FF!important}
+.dk-short .meta{color:var(--muted)}
+.dk-short .bx{color:#cbcbd2}
+.dk-short .bx li::before{background:var(--el)!important}
+.dk-short .sq{background:var(--sig)!important}
+.dk-short .lime{--ink:#F2F1EC;background:var(--panel)!important;color:var(--off)!important;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.dk-short .slide.lime{background:#050506!important;border:0;border-radius:0}
+.dk-short .lime .grid12{display:none}
+.dk-short .lime .tag{color:var(--muted)!important}
+.dk-short .out,.dk-short .lime .out,.dk-short .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.7)!important}
+.dk-short .lime img[style*="brightness(0)"]{filter:none!important}
+.dk-short .lime .bx,.dk-short .lime .bx b{color:#cbcbd2}
+.dk-short .cell{border-radius:0}
+.dk-short .wallbox{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.dk-short .r14{border-radius:14px;overflow:hidden}
+.dk-short .slide::after{display:none!important;background:none!important}
+.dk-short .grid12{display:none!important}
+.dk-short{--sig:#5B4FCF;--el:#8F86E8}
+.dk-short .tag.n{color:#9D94F0!important}
+.dk-short .mid[style*="color:var(--sig)"]{color:#9D94F0!important}
+.dk-short .out,.dk-short .lime .out,.dk-short .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.85)!important}
+.dk-ad{--ink:#050506;--panel:#0B0B0E;--line:#1E1E24;--sig:#5B4FCF;--el:#5B4FCF;--off:#F2F1EC;--mut:rgba(242,241,236,.66);--dim:rgba(242,241,236,.38)}
+.dk-ad *{box-sizing:border-box;margin:0;padding:0}
+.dk-ad,.dk-ad{background:var(--ink)}
+.dk-ad{font-family:"DM Sans",sans-serif;color:var(--off);-webkit-font-smoothing:antialiased}
+.dk-ad a{color:inherit;text-decoration:none}
+.dk-ad .slide{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:var(--ink);page-break-after:always;break-after:page}
+.dk-ad .slide:last-child{page-break-after:auto;break-after:auto}
+.dk-ad .slide.panel{background:var(--panel)}
+.dk-ad .slide::after{content:"";position:absolute;inset:0;background:url(a/grain.png);pointer-events:none;z-index:50}
+.dk-ad .d{display:inline-block;color:var(--off)}
+.dk-ad .d svg,.dk-ad .wm svg{display:block;width:100%;height:auto}
+.dk-ad .wm{color:var(--off)}
+.dk-ad .mono{font-family:"DM Mono",monospace;letter-spacing:.02em}
+.dk-ad .disp{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.02}
+.dk-ad .cur{display:inline-block;width:.42em;height:.085em;background:var(--sig);margin-left:.08em;vertical-align:baseline}
+.dk-ad .sig{color:var(--sig)}
+.dk-ad .el{color:var(--el)}
+.dk-ad .gap{height:.7em}
+.dk-ad .body p{margin:0}
+.dk-ad .body b{color:var(--off);font-weight:600}
+.dk-ad .body ul{list-style:none}
+.dk-ad .body li{position:relative;padding-left:1.05em;margin:.18em 0}
+.dk-ad .body li::before{content:"";position:absolute;left:0;top:.62em;width:.38em;height:.38em;background:var(--sig)}
+.dk-ad .rule{height:1px;background:var(--line)}
+.dk-ad .lnk{display:inline-flex;align-items:center;gap:.5em;border-bottom:2px solid var(--sig);padding-bottom:.18em}
+.dk-ad .lnk::after{content:"→";color:var(--sig)}
+.dk-ad .tile{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-ad .tile img{max-width:72%;max-height:62%;object-fit:contain;mix-blend-mode:multiply}
+.dk-ad .slide{--W:1920px;--H:1080px}
+.dk-ad .grid12{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(242,241,236,.04) 0 1px,transparent 1px 160px)}
+.dk-ad .lime .grid12,.dk-ad .grid12.ink{background:repeating-linear-gradient(90deg,rgba(5,5,6,.07) 0 1px,transparent 1px 160px)}
+.dk-ad .meta{position:absolute;left:64px;right:64px;top:44px;display:flex;justify-content:space-between;align-items:center;z-index:8;
+  font-family:"DM Mono",monospace;font-size:18px;letter-spacing:.08em;color:var(--dim);font-variant-numeric:tabular-nums}
+.dk-ad .meta .d{width:24px}
+.dk-ad .meta .ix{color:var(--sig)}
+.dk-ad .mega{font-family:"Zalando SE",sans-serif;font-weight:900;letter-spacing:-.045em;line-height:.9;text-wrap:balance}
+.dk-ad .big{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1;text-wrap:balance}
+.dk-ad .mid{font-family:"Zalando SE",sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.dk-ad .out{color:transparent;-webkit-text-stroke:2px rgba(242,241,236,.2)}
+.dk-ad .lime .out,.dk-ad .out.ink{-webkit-text-stroke:2px rgba(5,5,6,.5)}
+.dk-ad .lime{background:var(--sig);color:var(--ink)}
+.dk-ad .bx{font-size:29px;line-height:1.44;color:var(--mut);text-wrap:pretty}
+.dk-ad .bx b{color:var(--off);font-weight:600}
+.dk-ad .lime .bx,.dk-ad .lime .bx b{color:var(--ink)}
+.dk-ad .bx ul{list-style:none}
+.dk-ad .bx li{position:relative;padding-left:1.1em;margin:.32em 0}
+.dk-ad .bx li::before{content:"";position:absolute;left:0;top:.6em;width:.36em;height:.36em;background:var(--sig)}
+.dk-ad .lime .bx li::before{background:var(--ink)}
+.dk-ad .bx p+p{margin-top:.12em}
+.dk-ad .tag{font-family:"DM Mono",monospace;font-size:19px;letter-spacing:.07em;text-transform:uppercase;color:var(--sig)}
+.dk-ad .lime .tag{color:var(--ink)}
+.dk-ad .sq{display:inline-block;width:.16em;height:.16em;background:var(--sig);margin-left:.06em}
+.dk-ad .lime .sq{background:var(--ink)}
+.dk-ad .cur2{display:inline-block;width:.5em;height:.1em;background:var(--sig);margin-left:.1em}
+.dk-ad .lime .cur2{background:var(--ink)}
+.dk-ad .rowx{display:grid;grid-template-columns:96px 1fr;border-top:1px solid var(--line);padding:26px 0}
+.dk-ad .lime .rowx{border-color:rgba(5,5,6,.2)}
+.dk-ad .cell{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-ad .cell img{max-width:64%;max-height:46%;object-fit:contain;mix-blend-mode:multiply}
+.dk-ad a{color:inherit}
+.dk-ad .slide{--W:1200px;--H:628px}
+.dk-ad .grid12{background:repeating-linear-gradient(90deg,rgba(242,241,236,.04) 0 1px,transparent 1px 100px)}
+.dk-ad{--ink:#050506;--panel:#0B0B0E;--off:#F2F1EC;--sig:#5B4FCF;--el:#B3A3FF;--muted:#7c7c86;--line:rgba(242,241,236,.13);--mut:#cbcbd2;--dim:#7c7c86}
+.dk-ad .slide{background:#050506}
+.dk-ad .slide::after{opacity:.55}
+.dk-ad .grid12{background:repeating-linear-gradient(90deg,rgba(242,241,236,.035) 0 1px,transparent 1px 160px)!important}
+.dk-ad .mega,.dk-ad .big{font-family:"Komet","Zalando SE",sans-serif!important;text-transform:uppercase;letter-spacing:-.005em!important}
+.dk-ad .mega{font-weight:900!important;line-height:.86!important}
+.dk-ad .big{font-weight:800!important;line-height:.92!important}
+.dk-ad .mid{font-family:"Komet","Zalando SE",sans-serif!important;font-weight:700!important;letter-spacing:0!important}
+.dk-ad .acc{color:var(--sig)}
+.dk-ad .tag{color:var(--muted)!important;letter-spacing:.12em!important}
+.dk-ad .tag.n{color:#A898FF!important}
+.dk-ad .mid[style*="color:var(--sig)"]{color:#A898FF!important}
+.dk-ad .meta{color:var(--muted)}
+.dk-ad .bx{color:#cbcbd2}
+.dk-ad .bx li::before{background:var(--el)!important}
+.dk-ad .sq{background:var(--sig)!important}
+.dk-ad .lime{--ink:#F2F1EC;background:var(--panel)!important;color:var(--off)!important;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.dk-ad .slide.lime{background:#050506!important;border:0;border-radius:0}
+.dk-ad .lime .grid12{display:none}
+.dk-ad .lime .tag{color:var(--muted)!important}
+.dk-ad .out,.dk-ad .lime .out,.dk-ad .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.7)!important}
+.dk-ad .lime img[style*="brightness(0)"]{filter:none!important}
+.dk-ad .lime .bx,.dk-ad .lime .bx b{color:#cbcbd2}
+.dk-ad .cell{border-radius:0}
+.dk-ad .wallbox{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.dk-ad .r14{border-radius:14px;overflow:hidden}
+.dk-ad .slide::after{display:none!important;background:none!important}
+.dk-ad .grid12{display:none!important}
+.dk-ad{--sig:#5B4FCF;--el:#8F86E8}
+.dk-ad .tag.n{color:#9D94F0!important}
+.dk-ad .mid[style*="color:var(--sig)"]{color:#9D94F0!important}
+.dk-ad .out,.dk-ad .lime .out,.dk-ad .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.85)!important}
+.dk-cyber{--ink:#050506;--panel:#0B0B0E;--line:#1E1E24;--sig:#5B4FCF;--el:#5B4FCF;--off:#F2F1EC;--mut:rgba(242,241,236,.66);--dim:rgba(242,241,236,.38)}
+.dk-cyber *{box-sizing:border-box;margin:0;padding:0}
+.dk-cyber,.dk-cyber{background:var(--ink)}
+.dk-cyber{font-family:"DM Sans",sans-serif;color:var(--off);-webkit-font-smoothing:antialiased}
+.dk-cyber a{color:inherit;text-decoration:none}
+.dk-cyber .slide{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:var(--ink);page-break-after:always;break-after:page}
+.dk-cyber .slide:last-child{page-break-after:auto;break-after:auto}
+.dk-cyber .slide.panel{background:var(--panel)}
+.dk-cyber .slide::after{content:"";position:absolute;inset:0;background:url(a/grain.png);pointer-events:none;z-index:50}
+.dk-cyber .d{display:inline-block;color:var(--off)}
+.dk-cyber .d svg,.dk-cyber .wm svg{display:block;width:100%;height:auto}
+.dk-cyber .wm{color:var(--off)}
+.dk-cyber .mono{font-family:"DM Mono",monospace;letter-spacing:.02em}
+.dk-cyber .disp{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.025em;line-height:1.02}
+.dk-cyber .cur{display:inline-block;width:.42em;height:.085em;background:var(--sig);margin-left:.08em;vertical-align:baseline}
+.dk-cyber .sig{color:var(--sig)}
+.dk-cyber .el{color:var(--el)}
+.dk-cyber .gap{height:.7em}
+.dk-cyber .body p{margin:0}
+.dk-cyber .body b{color:var(--off);font-weight:600}
+.dk-cyber .body ul{list-style:none}
+.dk-cyber .body li{position:relative;padding-left:1.05em;margin:.18em 0}
+.dk-cyber .body li::before{content:"";position:absolute;left:0;top:.62em;width:.38em;height:.38em;background:var(--sig)}
+.dk-cyber .rule{height:1px;background:var(--line)}
+.dk-cyber .lnk{display:inline-flex;align-items:center;gap:.5em;border-bottom:2px solid var(--sig);padding-bottom:.18em}
+.dk-cyber .lnk::after{content:"→";color:var(--sig)}
+.dk-cyber .tile{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-cyber .tile img{max-width:72%;max-height:62%;object-fit:contain;mix-blend-mode:multiply}
+.dk-cyber .slide{--W:1920px;--H:1080px}
+.dk-cyber .grid12{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(242,241,236,.04) 0 1px,transparent 1px 160px)}
+.dk-cyber .lime .grid12,.dk-cyber .grid12.ink{background:repeating-linear-gradient(90deg,rgba(5,5,6,.07) 0 1px,transparent 1px 160px)}
+.dk-cyber .meta{position:absolute;left:64px;right:64px;top:44px;display:flex;justify-content:space-between;align-items:center;z-index:8;
+  font-family:"DM Mono",monospace;font-size:18px;letter-spacing:.08em;color:var(--dim);font-variant-numeric:tabular-nums}
+.dk-cyber .meta .d{width:24px}
+.dk-cyber .meta .ix{color:var(--sig)}
+.dk-cyber .mega{font-family:"Zalando SE",sans-serif;font-weight:900;letter-spacing:-.045em;line-height:.9;text-wrap:balance}
+.dk-cyber .big{font-family:"Zalando SE",sans-serif;font-weight:800;letter-spacing:-.03em;line-height:1;text-wrap:balance}
+.dk-cyber .mid{font-family:"Zalando SE",sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.12;text-wrap:balance}
+.dk-cyber .out{color:transparent;-webkit-text-stroke:2px rgba(242,241,236,.2)}
+.dk-cyber .lime .out,.dk-cyber .out.ink{-webkit-text-stroke:2px rgba(5,5,6,.5)}
+.dk-cyber .lime{background:var(--sig);color:var(--ink)}
+.dk-cyber .bx{font-size:29px;line-height:1.44;color:var(--mut);text-wrap:pretty}
+.dk-cyber .bx b{color:var(--off);font-weight:600}
+.dk-cyber .lime .bx,.dk-cyber .lime .bx b{color:var(--ink)}
+.dk-cyber .bx ul{list-style:none}
+.dk-cyber .bx li{position:relative;padding-left:1.1em;margin:.32em 0}
+.dk-cyber .bx li::before{content:"";position:absolute;left:0;top:.6em;width:.36em;height:.36em;background:var(--sig)}
+.dk-cyber .lime .bx li::before{background:var(--ink)}
+.dk-cyber .bx p+p{margin-top:.12em}
+.dk-cyber .tag{font-family:"DM Mono",monospace;font-size:19px;letter-spacing:.07em;text-transform:uppercase;color:var(--sig)}
+.dk-cyber .lime .tag{color:var(--ink)}
+.dk-cyber .sq{display:inline-block;width:.16em;height:.16em;background:var(--sig);margin-left:.06em}
+.dk-cyber .lime .sq{background:var(--ink)}
+.dk-cyber .cur2{display:inline-block;width:.5em;height:.1em;background:var(--sig);margin-left:.1em}
+.dk-cyber .lime .cur2{background:var(--ink)}
+.dk-cyber .rowx{display:grid;grid-template-columns:96px 1fr;border-top:1px solid var(--line);padding:26px 0}
+.dk-cyber .lime .rowx{border-color:rgba(5,5,6,.2)}
+.dk-cyber .cell{background:var(--off);display:flex;align-items:center;justify-content:center}
+.dk-cyber .cell img{max-width:64%;max-height:46%;object-fit:contain;mix-blend-mode:multiply}
+.dk-cyber a{color:inherit}
+.dk-cyber .slide{--W:794px;--H:1123px}
+.dk-cyber .grid12{background:repeating-linear-gradient(90deg,rgba(242,241,236,.035) 0 1px,transparent 1px 66px)}
+.dk-cyber .lime .grid12{background:repeating-linear-gradient(90deg,rgba(5,5,6,.07) 0 1px,transparent 1px 66px)}
+.dk-cyber .bx{font-size:11.2px;line-height:1.52}
+.dk-cyber .tag{font-size:9.5px}
+.dk-cyber .bx li{margin:.28em 0}
+.dk-cyber{--ink:#050506;--panel:#0B0B0E;--off:#F2F1EC;--sig:#5B4FCF;--el:#B3A3FF;--muted:#7c7c86;--line:rgba(242,241,236,.13);--mut:#cbcbd2;--dim:#7c7c86}
+.dk-cyber .slide{background:#050506}
+.dk-cyber .slide::after{opacity:.55}
+.dk-cyber .grid12{background:repeating-linear-gradient(90deg,rgba(242,241,236,.035) 0 1px,transparent 1px 160px)!important}
+.dk-cyber .mega,.dk-cyber .big{font-family:"Komet","Zalando SE",sans-serif!important;text-transform:uppercase;letter-spacing:-.005em!important}
+.dk-cyber .mega{font-weight:900!important;line-height:.86!important}
+.dk-cyber .big{font-weight:800!important;line-height:.92!important}
+.dk-cyber .mid{font-family:"Komet","Zalando SE",sans-serif!important;font-weight:700!important;letter-spacing:0!important}
+.dk-cyber .acc{color:var(--sig)}
+.dk-cyber .tag{color:var(--muted)!important;letter-spacing:.12em!important}
+.dk-cyber .tag.n{color:#A898FF!important}
+.dk-cyber .mid[style*="color:var(--sig)"]{color:#A898FF!important}
+.dk-cyber .meta{color:var(--muted)}
+.dk-cyber .bx{color:#cbcbd2}
+.dk-cyber .bx li::before{background:var(--el)!important}
+.dk-cyber .sq{background:var(--sig)!important}
+.dk-cyber .lime{--ink:#F2F1EC;background:var(--panel)!important;color:var(--off)!important;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.dk-cyber .slide.lime{background:#050506!important;border:0;border-radius:0}
+.dk-cyber .lime .grid12{display:none}
+.dk-cyber .lime .tag{color:var(--muted)!important}
+.dk-cyber .out,.dk-cyber .lime .out,.dk-cyber .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.7)!important}
+.dk-cyber .lime img[style*="brightness(0)"]{filter:none!important}
+.dk-cyber .lime .bx,.dk-cyber .lime .bx b{color:#cbcbd2}
+.dk-cyber .cell{border-radius:0}
+.dk-cyber .wallbox{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.dk-cyber .r14{border-radius:14px;overflow:hidden}
+.dk-cyber .slide::after{display:none!important;background:none!important}
+.dk-cyber .grid12{display:none!important}
+.dk-cyber{--sig:#5B4FCF;--el:#8F86E8}
+.dk-cyber .tag.n{color:#9D94F0!important}
+.dk-cyber .mid[style*="color:var(--sig)"]{color:#9D94F0!important}
+.dk-cyber .out,.dk-cyber .lime .out,.dk-cyber .out.ink{-webkit-text-stroke:2px rgba(91,79,207,.85)!important}
