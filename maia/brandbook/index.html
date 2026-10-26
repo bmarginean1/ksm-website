@@ -1,0 +1,608 @@
+<title>Maia Brandbook</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KSM Media House">
+<meta property="og:locale" content="ro_RO">
+<meta property="og:title" content="Maia — ghidul de brand">
+<meta property="og:description" content="Logo, culori, litere, cretă, foto, mișcare, montaj, postare și voce pentru Maia, brutărie artizanală în Cluj. KSM Media House.">
+<meta property="og:url" content="https://bmarginean1.github.io/ksm-website/maia/brandbook/">
+<meta property="og:image" content="https://bmarginean1.github.io/ksm-website/maia/og-brandbook.jpg">
+<meta property="og:image:secure_url" content="https://bmarginean1.github.io/ksm-website/maia/og-brandbook.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MAIÁ auriu pe tablă, ghidul de brand">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Maia — ghidul de brand">
+<meta name="twitter:description" content="Logo, culori, litere, cretă, foto, mișcare, montaj, postare și voce pentru Maia, brutărie artizanală în Cluj. KSM Media House.">
+<meta name="twitter:image" content="https://bmarginean1.github.io/ksm-website/maia/og-brandbook.jpg">
+<link rel="apple-touch-icon" href="https://bmarginean1.github.io/ksm-website/maia/icon.png">
+<link rel="icon" type="image/png" href="https://bmarginean1.github.io/ksm-website/maia/icon.png">
+<meta name="description" content="Ghidul de brand Maia, brutărie artizanală by Tartine Factory, Cluj-Napoca: logo, culori, litere, cretă, foto, mișcare, montaj, postare și voce.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+@font-face{font-family:'Creta Maia';src:url(https://bmarginean1.github.io/ksm-website/maia/f/creta-maia.woff2) format('woff2');font-display:swap}
+/* Layout: the shop wall. Every section is a stretch of chalkboard; rules sit on paper sheets pinned to it, photos hang on it, chalk notes and arrows are written on it, and the gold foil band runs between stretches as under the real boards. */
+:root{
+ --tabla:#1F1E1B;--tabla-2:#28261F;--creta:#F2ECE0;--creta-2:#E9E1D1;--miez:#E6D3A8;--auriu:#D3A573;--portocaliu:#CB7040;--auriu-ink:#8A6234;--coaja:#8E5F3A;--rosu:#B4473C;--chalk:#EFE9DB;--mute:#A9A08F;--mute-ink:#6B6355;
+ --f-display:'Cormorant Garamond',Garamond,Georgia,serif;--f-text:'EB Garamond',Garamond,Georgia,serif;--f-chalk:'Creta Maia','Bradley Hand','Segoe Print',cursive;
+ --spring:cubic-bezier(.34,1.4,.64,1);--out:cubic-bezier(.22,1,.36,1);--write:cubic-bezier(.45,.05,.3,1);
+ --pad:max(28px,calc((100vw - 1240px) / 2));
+ color-scheme:dark;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scrollbar-color:var(--auriu) var(--tabla)}
+body{background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover fixed;color:var(--creta);font-family:var(--f-text);font-size:19px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:130;background:var(--tabla)}
+@media(max-width:900px){body{background-attachment:scroll;background-size:auto 100vh;background-repeat:repeat-y}}
+::selection{background:var(--auriu);color:var(--tabla)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.22em}
+:focus-visible{outline:2px solid var(--auriu);outline-offset:4px;border-radius:2px}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.02em;text-wrap:balance}
+main{overflow-x:clip}
+
+.chalk{font-family:var(--f-chalk);font-weight:400;color:var(--chalk);filter:url(#chalk);line-height:1.08}
+.chalk-s{font-family:var(--f-chalk);font-weight:400;color:var(--chalk);filter:url(#chalk-s);line-height:1.1}
+.wr{position:relative;display:inline-block}
+.wr::before{content:attr(data-t);position:absolute;left:0;top:0;right:0;opacity:.18;white-space:inherit}
+.wr>i{font-style:normal;display:block;clip-path:inset(-25% 0 -25% 0)}
+.js .wr:not(.go)>i{clip-path:inset(-25% 100% -25% 0)}
+.wr.go>i{transition:clip-path 1.8s var(--write)}
+.arr{overflow:visible;display:block;pointer-events:none}
+.arr g{fill:none;stroke:var(--chalk);stroke-linecap:round;stroke-linejoin:round;filter:url(#chalk-s)}
+.arr .ghost{opacity:.18}
+.arr .ink path{stroke-dasharray:1;stroke-dashoffset:0}
+.js .arr:not(.go) .ink path{stroke-dashoffset:1}
+.arr.go .ink path{transition:stroke-dashoffset 1.2s var(--write) .4s}
+.arr.go .ink path+path{transition-delay:1.5s;transition-duration:.35s}
+
+/* top bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:calc(18px + env(safe-area-inset-top,0px));padding-bottom:14px;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px));transition:background .4s ease}
+.bar.solid{background:rgba(31,30,27,.94)}
+.bar .mark img{width:78px;height:auto}
+.bar nav{display:flex;align-items:center;gap:26px;font-size:16px}
+.bar nav a{text-decoration:none;display:inline-block;transition:transform .55s var(--spring),color .3s ease}
+.pill{display:inline-flex;align-items:center;border:0;border-radius:999px;background:var(--auriu);color:var(--tabla);font:500 16px var(--f-text);padding:11px 24px 12px;text-decoration:none;cursor:pointer;transition:transform .55s var(--spring),background .3s ease}
+.pill:active{transform:scale(.97)}
+@media(hover:hover){.bar nav a:not(.pill):hover{transform:scale(1.1) rotate(1deg);color:var(--auriu)}.pill:hover{transform:scale(1.1) rotate(1deg);background:#DDB585}}
+@media(max-width:820px){.bar nav a:not(.pill){display:none}}
+
+/* contents sheet */
+.toc{position:fixed;inset:0;z-index:120;background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover;display:none;flex-direction:column;justify-content:center;padding:90px max(28px,env(safe-area-inset-right,0px)) 40px max(28px,env(safe-area-inset-left,0px));overflow-y:auto}
+.toc:target,.toc.open{display:flex;animation:fadein .5s var(--out)}
+@keyframes fadein{from{opacity:0;transform:translateY(12px)}}
+.toc ol{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 48px;max-width:900px;margin:0 auto;width:100%}
+.toc ol a{font-family:var(--f-chalk);filter:url(#chalk-s);color:var(--chalk);font-size:clamp(34px,4.6vw,58px);line-height:1.25;text-decoration:none;display:inline-block;transition:transform .55s var(--spring)}
+@media(hover:hover){.toc ol a:hover{transform:scale(1.06) rotate(-1deg)}}
+.toc .x{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));right:max(28px,env(safe-area-inset-right,0px));font-size:16px}
+@media(max-width:600px){.toc ol{grid-template-columns:minmax(0,1fr)}}
+
+/* gold band */
+.band{height:30px;background:var(--auriu) url(https://bmarginean1.github.io/ksm-website/maia/img/c-auriu.jpg) center 85%/cover;position:relative;z-index:2}
+
+/* hero */
+.hero{position:relative;min-height:100svh;padding:120px var(--pad) 0;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:auto 1fr;gap:24px 40px;overflow:hidden}
+.hero .say{grid-column:1;display:flex;flex-direction:column;gap:6px;padding-top:2vh}
+.hero .say .chalk{font-size:clamp(64px,8.6vw,138px);transform:rotate(-2deg);transform-origin:left}
+.hero .say .chalk+.chalk{margin-left:clamp(30px,5vw,90px)}
+.hero .meta{display:flex;flex-direction:column;gap:4px;margin-top:28px}
+.hero h1{font-size:clamp(30px,2.6vw,38px);line-height:1.1}
+.hero .meta p{font-size:17px;color:var(--mute)}
+.hero .hang{grid-column:2;grid-row:1/3;justify-self:end;position:relative;width:min(380px,100%);margin-top:10px}
+.hero .word{position:relative;grid-column:1/3;align-self:end;width:min(118vw,1700px);margin:0 0 -6vw 22%;will-change:transform;z-index:1}
+.hero .arr.toword{position:absolute;left:clamp(260px,32vw,520px);top:clamp(330px,40vw,560px);width:110px;height:120px;z-index:2}
+@media(max-width:900px){.hero{display:flex;flex-direction:column;min-height:auto;padding-top:110px;gap:36px}.hero .hang{align-self:flex-end;width:min(280px,72%);margin:0 0 40px}.hero .word{margin:10px 0 -8vw -4%;width:128vw;max-width:none}.hero .arr.toword{display:none}}
+
+/* hung photo + paper */
+.card{background:var(--creta);padding:10px;transform:rotate(var(--t,-2deg));transition:transform .7s var(--spring);position:relative}
+.card .im{overflow:hidden;position:relative}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--out)}
+@media(hover:hover){.card:hover{transform:rotate(0) translateY(-10px) scale(1.03);z-index:5}.card:hover img{transform:scale(1.06)}}
+.tag{position:absolute;background:var(--tabla-2);padding:12px 20px 14px;transform:rotate(var(--r,-4deg));transform-origin:50% -24px;z-index:3;transition:transform .8s var(--out)}
+.tag .chalk-s{display:block;font-size:28px;white-space:nowrap}
+.tag small{display:block;margin-top:3px;font-size:16px;color:var(--mute);white-space:nowrap}
+@media(hover:hover){.tag:hover,.card:hover .tag{animation:swing 1.4s var(--out)}}
+@keyframes swing{0%{transform:rotate(var(--r,-4deg))}25%{transform:rotate(5deg)}55%{transform:rotate(-4deg)}80%{transform:rotate(1deg)}100%{transform:rotate(var(--r,-4deg))}}
+.paper{background:var(--creta);color:var(--tabla);padding:clamp(26px,3vw,40px);transform:rotate(var(--t,1deg));transition:transform .7s var(--spring)}
+@media(hover:hover){.paper:hover{transform:rotate(0) translateY(-6px)}}
+.paper h3{font-size:clamp(28px,2.4vw,34px);line-height:1.08;margin-bottom:14px}
+.paper ul{list-style:none;display:grid;gap:12px}
+.paper li{font-size:18px;line-height:1.5;padding-left:22px;position:relative}
+.paper li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--coaja)}
+.paper p{font-size:18px;line-height:1.55}
+.paper .small{font-size:16px;color:var(--mute-ink);margin-top:14px}
+.paper+.paper{margin-top:0}
+
+/* sections */
+.wall{position:relative;padding:clamp(80px,9vw,140px) var(--pad)}
+.wall>.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 56px;margin-bottom:clamp(48px,6vw,84px)}
+.wall>.head h2{flex:1 1 560px;min-width:0}
+.wall>.head h2 .chalk{font-size:clamp(58px,7vw,112px);transform:rotate(-1.5deg);transform-origin:left;display:inline-block}
+.wall>.head p{flex:0 1 440px;font-size:clamp(19px,1.5vw,21px);line-height:1.5;color:#D9D1C1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,4vw,64px)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,3vw,48px)}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:minmax(0,1fr)}}
+.note{font-size:clamp(28px,2.6vw,40px)}
+.lbl{display:flex;align-items:flex-end;gap:8px}
+
+/* logo */
+.fan{position:relative;height:clamp(420px,44vw,620px);margin-bottom:clamp(48px,6vw,80px)}
+.fan .pl{position:absolute;display:flex;align-items:center;justify-content:center;transform:rotate(var(--t));transition:transform .7s var(--spring),z-index 0s .2s}
+.fan .pl img{width:72%;height:auto}
+@media(hover:hover){.fan .pl:hover{transform:rotate(0) translateY(-14px) scale(1.04);z-index:6;transition-delay:0s}}
+.fan .p1{left:2%;top:4%;width:38%;aspect-ratio:7/5;background:#FBF8F1;--t:-7deg;z-index:1}
+.fan .p2{right:2%;top:8%;width:38%;aspect-ratio:7/5;background:var(--coaja);--t:6deg;z-index:1}
+.fan .p3{left:27%;top:30%;width:46%;aspect-ratio:7/5;background:var(--tabla-2);--t:-1deg;z-index:2;outline:1px solid rgba(242,236,224,.12)}
+.fan .l{position:absolute;z-index:4}
+.fan .l1{left:0;bottom:2%}.fan .l2{left:18%;top:-6%}.fan .l3{right:6%;top:-6%}
+.fan .l .chalk-s{font-size:clamp(26px,2.4vw,36px)}
+@media(max-width:700px){.fan{height:auto;display:grid;gap:18px}.fan .pl{position:relative;inset:auto;width:100%}.fan .l{position:relative;inset:auto}.fan .arr{display:none}}
+.marks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:clamp(32px,4vw,56px)}
+.marks .m{background:var(--tabla-2);padding:34px 24px;display:flex;flex-direction:column;align-items:center;gap:16px;transform:rotate(var(--t));transition:transform .7s var(--spring)}
+.marks .m span{font-size:16px;color:var(--mute)}
+@media(hover:hover){.marks .m:hover{transform:rotate(0) translateY(-8px)}}
+@media(max-width:700px){.marks{grid-template-columns:minmax(0,1fr)}}
+
+/* colour */
+.cols{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(14px,2vw,28px)}
+@media(max-width:1100px){.cols{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.col{display:flex;flex-direction:column;min-width:0}
+.col .card{--t:var(--r)}
+.col .card .im{aspect-ratio:1/1}
+.col .src{margin:18px 0 14px;font-size:clamp(22px,1.8vw,27px);white-space:nowrap}
+.sw{border:0;font:inherit;text-align:left;cursor:pointer;height:clamp(240px,24vw,340px);padding:18px 18px 16px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .6s var(--spring)}
+.sw .n{font-family:var(--f-display);font-weight:500;font-size:clamp(64px,6vw,96px);line-height:.9;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.sw b{display:block;font-family:var(--f-display);font-weight:500;font-size:clamp(24px,2vw,30px);line-height:1.05}
+.sw span{display:block;font-size:16px;margin-top:4px;opacity:.8;font-variant-numeric:tabular-nums}
+.sw em{font-style:normal;font-size:16px;opacity:0;transition:opacity .3s}
+@media(hover:hover){.sw:hover{transform:translateY(-10px) rotate(-1deg)}.sw:hover em{opacity:.85}}
+.sw.ok em{opacity:1}
+.ratio{display:flex;height:12px;margin-top:40px;outline:1px solid rgba(242,236,224,.2)}
+.ratio i{display:block}
+.ratiotxt{margin-top:12px;font-size:16px;color:var(--mute)}
+
+/* type */
+.typ{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,4vw,64px);align-items:start}
+@media(max-width:900px){.typ{grid-template-columns:minmax(0,1fr)}}
+.typ .paper{--t:-1deg}
+.typ .big{font-family:var(--f-display);font-weight:500;font-size:clamp(110px,15vw,240px);line-height:.92;letter-spacing:-.03em}
+.typ .lead{font-family:var(--f-display);font-weight:500;font-size:clamp(28px,2.6vw,38px);margin:16px 0 12px}
+.typ .body{font-size:clamp(20px,1.7vw,24px);line-height:1.5;max-width:40ch}
+.typ .glyphs{font-family:var(--f-display);font-weight:500;font-size:clamp(54px,6vw,96px);line-height:1;margin-top:24px;letter-spacing:-.01em}
+.typ .board{display:flex;flex-direction:column;gap:18px}
+.typ .board .chalk{font-size:clamp(110px,13vw,210px);letter-spacing:.04em}
+.typ .board .card{--t:-3deg;margin-top:12px}
+.typ .board .card .im{aspect-ratio:16/10}
+
+/* chalk menu */
+.menu{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:start}
+@media(max-width:900px){.menu{grid-template-columns:minmax(0,1fr)}}
+.menu .rows{display:flex;flex-direction:column;gap:clamp(10px,1.4vw,18px)}
+.menu .row{display:flex;justify-content:space-between;align-items:baseline;gap:20px}
+.menu .row .chalk-s{font-size:clamp(32px,3.4vw,52px)}
+.menu .rule{margin:28px 0 18px;height:24px}
+.menu .redo{background:none;border:0;color:var(--creta);font:400 16px var(--f-text);text-decoration:underline;text-underline-offset:.25em;cursor:pointer;margin-top:22px;align-self:flex-start;transition:transform .55s var(--spring)}
+@media(hover:hover){.menu .redo:hover{transform:scale(1.1) rotate(1deg)}}
+.menu .side{display:flex;flex-direction:column;gap:32px}
+.menu .tags{position:relative;height:150px}
+
+/* photo wall */
+.photos{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+.photos .win{grid-column:1/5;display:flex;flex-direction:column;gap:18px}
+.photos .win svg{width:220px;height:170px}
+.photos .f1{grid-column:6/13;--t:2.5deg}
+.photos .f1 .im{aspect-ratio:13/9}
+.photos .f2{grid-column:1/5;--t:-4deg;margin-top:40px}
+.photos .f3{grid-column:5/9;--t:2deg;margin-top:70px}
+.photos .f4{grid-column:9/13;--t:-2deg;margin-top:30px}
+.photos .f2 .im,.photos .f3 .im,.photos .f4 .im{aspect-ratio:4/3}
+.photos .cap{position:absolute;left:12px;top:-50px;font-size:clamp(26px,2.3vw,34px);z-index:4;white-space:nowrap}
+@media(max-width:900px){.photos{grid-template-columns:minmax(0,1fr)}.photos>*{grid-column:1!important;margin-top:40px!important}.photos .win{margin-top:0!important}}
+
+/* motion demos */
+.demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+@media(max-width:900px){.demos{grid-template-columns:minmax(0,1fr)}}
+.demo .st{height:220px;display:grid;place-items:center;background:rgba(40,38,31,.85);overflow:hidden;margin-bottom:18px}
+.demo h3{font-size:28px;margin-bottom:6px}
+.demo p{font-size:17px;color:#D9D1C1}
+.demo .zimg{width:70%;height:74%;overflow:hidden}
+.demo .zimg img{width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--out)}
+.demo:hover .zimg img,.demo.on .zimg img{transform:scale(1.08)}
+.demo .lnk{font-family:var(--f-display);font-size:32px;position:relative;padding-bottom:4px}
+.demo .lnk::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--auriu);transform:scaleX(0);transform-origin:right;transition:transform .8s var(--out)}
+.demo:hover .lnk::after,.demo.on .lnk::after{transform:scaleX(1);transform-origin:left}
+.demo .tg{background:var(--tabla);padding:12px 20px 14px;transform:rotate(-3deg)}
+.demo:hover .tg{animation:swing 1.4s var(--out)}
+.demo .tg .chalk-s{font-size:30px}
+.mtable{margin-top:clamp(48px,6vw,80px);--t:-.6deg}
+.mtable .tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px;font-size:17px;color:inherit}
+th,td{text-align:left;padding:12px 18px 12px 0;vertical-align:top;border-bottom:1px solid rgba(31,30,27,.14)}
+th{font-weight:500;font-size:16px;color:var(--mute-ink)}
+td:first-child{font-family:var(--f-display);font-size:22px;white-space:nowrap}
+td{font-variant-numeric:tabular-nums}
+
+/* reels */
+.reels{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:12px}
+.reels .ph{position:relative;width:100%;max-width:300px;aspect-ratio:9/16;border-radius:24px;overflow:hidden;background:var(--tabla-2);outline:8px solid var(--creta);transform:rotate(var(--t));transition:transform .7s var(--spring);justify-self:center}
+@media(hover:hover){.reels .ph:hover{transform:rotate(0) translateY(-10px) scale(1.03)}}
+.reels .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reels .z{position:absolute;left:8.33%;width:75%;top:14.58%;height:50.52%;outline:2px dashed rgba(242,236,224,.9);outline-offset:-2px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px}
+.reels .z b{font-family:var(--f-display);font-weight:500;font-size:clamp(24px,2.4vw,34px);line-height:1;color:var(--creta)}
+.reels .z .chalk-s{font-size:clamp(18px,1.8vw,24px)}
+.reels .o{position:absolute;left:0;right:0;background:rgba(180,71,60,.5);font-size:13px;display:flex;align-items:center;justify-content:center;color:var(--creta)}
+.reels .o.t{top:0;height:14.58%}.reels .o.b{bottom:0;height:24.48%}
+.reels .end{display:flex;align-items:center;justify-content:center}
+.reels .ph.end img{position:static;inset:auto;width:74%;height:auto;object-fit:contain}
+.reels .arr{width:90px;height:60px}
+.reels .cap{text-align:center;margin-top:22px;font-size:clamp(24px,2vw,30px)}
+.reels .cell{display:flex;flex-direction:column;align-items:center}
+@media(max-width:900px){.reels{grid-template-columns:minmax(0,1fr)}.reels .arr{transform:rotate(90deg);margin:0 auto}.reels .ph{max-width:260px}}
+.rules3{margin-top:clamp(56px,7vw,100px)}
+
+/* week */
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px;margin-bottom:clamp(48px,6vw,80px)}
+.week .d{background:var(--tabla-2);padding:16px 12px 18px;text-align:center;transform:rotate(var(--r));transform-origin:50% -20px;transition:transform .8s var(--out)}
+.week .d .chalk-s{display:block;font-size:clamp(24px,2.2vw,32px)}
+.week .d small{display:block;font-size:16px;color:var(--mute);margin-top:4px}
+.week .d.r{background:var(--auriu);color:var(--tabla)}
+.week .d.r small{color:#3D2F20}
+.week .d.r .chalk-s{filter:none;color:var(--tabla);font-family:var(--f-display);font-weight:500}
+@media(hover:hover){.week .d:hover{animation:swing 1.4s var(--out)}}
+@media(max-width:700px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* voice */
+.voice{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(32px,5vw,80px);align-items:start}
+@media(max-width:900px){.voice{grid-template-columns:minmax(0,1fr)}}
+.voice .k{font-size:clamp(30px,2.6vw,40px)}
+.voice .yes{font-size:clamp(60px,7vw,108px);margin:6px 0 14px}
+.voice .yes2{font-family:var(--f-display);font-weight:500;font-size:clamp(28px,2.6vw,38px);line-height:1.2}
+.voice .no{position:relative;margin:8px 0 40px}
+.voice .no p{font-family:var(--f-display);font-weight:500;font-size:clamp(28px,2.8vw,42px);line-height:1.22;color:var(--mute)}
+.voice .no .arr{position:absolute;left:-2%;top:6%;width:104%;height:88%}
+.voice .words{font-size:clamp(26px,2.4vw,36px);margin-top:16px}
+.voice .card{--t:3deg}
+.voice .card .im{aspect-ratio:2/3}
+.voice .vnote{font-size:clamp(26px,2.2vw,32px);margin-top:26px}
+.voice .grid2{margin-top:clamp(48px,6vw,80px)}
+
+/* locked */
+.locked{--t:-.8deg;max-width:880px;margin:0 auto}
+.locked ol{list-style:none;display:grid;gap:18px;counter-reset:n}
+.locked li::before{display:none}
+.locked li{padding-left:0;font-size:20px;line-height:1.5;display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px}
+.locked b{font-family:var(--f-display);font-weight:500;font-size:26px;line-height:1.1}
+@media(max-width:600px){.locked li{grid-template-columns:minmax(0,1fr);gap:2px}}
+
+/* close */
+.close{position:relative;padding:clamp(80px,10vw,140px) var(--pad) calc(48px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.close .chalk{font-size:clamp(48px,6vw,92px);transform:rotate(-2deg);display:inline-block}
+.close img{width:min(1240px,100%);margin-top:40px}
+.close p{margin-top:28px;font-size:16px;color:var(--mute)}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.js .wr:not(.go)>i{clip-path:inset(-25% 0 -25% 0)}.js .arr:not(.go) .ink path{stroke-dashoffset:0}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<filter id="chalk" x="-8%" y="-25%" width="116%" height="160%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency=".035 .9" numOctaves="2" seed="21" result="streak"/>
+  <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="4" result="grain"/>
+  <feBlend in="streak" in2="grain" mode="multiply" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 2.1 -.28" result="mask"/>
+  <feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="2" seed="7" result="warp"/>
+  <feDisplacementMap in="SourceAlpha" in2="warp" scale="2.2" xChannelSelector="R" yChannelSelector="G" result="shape"/>
+  <feComposite in="mask" in2="shape" operator="in" result="ca"/>
+  <feFlood flood-color="#EFE9DB"/><feComposite in2="ca" operator="in" result="white"/>
+  <feOffset in="shape" dx="-3.5" dy="3" result="sh"/>
+  <feComposite in="sh" in2="shape" operator="out" result="shOut"/>
+  <feFlood flood-color="#B4473C"/><feComposite in2="shOut" operator="in" result="red0"/>
+  <feComposite in="red0" in2="mask" operator="in" result="red"/>
+  <feGaussianBlur in="shape" stdDeviation="2.4" result="hb"/>
+  <feTurbulence type="fractalNoise" baseFrequency="2.4" numOctaves="1" seed="9" result="dn"/>
+  <feComposite in="dn" in2="hb" operator="in" result="d0"/>
+  <feColorMatrix in="d0" type="matrix" values="0 0 0 0 .96  0 0 0 0 .95  0 0 0 0 .92  0 0 0 .2 0" result="dust"/>
+  <feMerge><feMergeNode in="dust"/><feMergeNode in="red"/><feMergeNode in="white"/></feMerge>
+ </filter>
+<filter id="chalk-s" x="-8%" y="-25%" width="116%" height="160%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency=".035 .9" numOctaves="2" seed="21" result="streak"/>
+  <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="4" result="grain"/>
+  <feBlend in="streak" in2="grain" mode="multiply" result="n"/>
+  <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 2.1 -.28" result="mask"/>
+  <feTurbulence type="fractalNoise" baseFrequency=".08" numOctaves="2" seed="7" result="warp"/>
+  <feDisplacementMap in="SourceAlpha" in2="warp" scale="1.2" xChannelSelector="R" yChannelSelector="G" result="shape"/>
+  <feComposite in="mask" in2="shape" operator="in" result="ca"/>
+  <feFlood flood-color="#EFE9DB"/><feComposite in2="ca" operator="in" result="white"/>
+  <feOffset in="shape" dx="-1.6" dy="1.5" result="sh"/>
+  <feComposite in="sh" in2="shape" operator="out" result="shOut"/>
+  <feFlood flood-color="#B4473C"/><feComposite in2="shOut" operator="in" result="red0"/>
+  <feComposite in="red0" in2="mask" operator="in" result="red"/>
+  <feGaussianBlur in="shape" stdDeviation="1.4" result="hb"/>
+  <feTurbulence type="fractalNoise" baseFrequency="2.4" numOctaves="1" seed="9" result="dn"/>
+  <feComposite in="dn" in2="hb" operator="in" result="d0"/>
+  <feColorMatrix in="d0" type="matrix" values="0 0 0 0 .96  0 0 0 0 .95  0 0 0 0 .92  0 0 0 .2 0" result="dust"/>
+  <feMerge><feMergeNode in="dust"/><feMergeNode in="red"/><feMergeNode in="white"/></feMerge>
+ </filter>
+</svg>
+
+<header class="bar" id="bar">
+ <a class="mark" href="#top" aria-label="Maia, la început"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-creta.svg" alt="" width="815" height="297"></a>
+ <nav aria-label="Principal"><a href="#culoare">Culoare</a><a href="#litere">Litere</a><a href="#voce">Voce</a><a class="pill" href="#cuprins" id="tocBtn" aria-controls="cuprins" aria-expanded="false">Cuprins</a></nav>
+</header>
+
+<nav class="toc" id="cuprins" aria-label="Cuprins">
+ <a class="x" href="#top" id="tocX">Închide</a>
+ <ol>
+  <li><a href="#logo">logo</a></li><li><a href="#culoare">culoare</a></li><li><a href="#litere">litere</a></li><li><a href="#creta">creta</a></li><li><a href="#foto">fotografie</a></li><li><a href="#miscare">mișcare</a></li><li><a href="#montaj">montaj</a></li><li><a href="#postare">postare</a></li><li><a href="#voce">voce</a></li><li><a href="#reguli">reguli fixe</a></li>
+ </ol>
+</nav>
+
+<main id="top">
+<section class="hero" aria-labelledby="t">
+ <div class="say">
+  <div class="chalk wr" data-t="pâinea bună"><i>pâinea bună</i></div>
+  <div class="chalk wr" data-t="se crește"><i>se crește</i></div>
+  <div class="meta"><h1 id="t">Ghidul de brand Maia</h1><p>brutărie artizanală by Tartine Factory · Vasile Lupu 77, Cluj-Napoca</p><p>Luni–vineri 8:30–17:30 · sâmbătă 8:30–13:00</p></div>
+ </div>
+ <div class="hang">
+  <div class="card" style="--t:4deg"><div class="im" style="aspect-ratio:6/5"><img src="https://bmarginean1.github.io/ksm-website/maia/img/lazi.jpg" alt="Pâine Tartine în lada de lemn, pe ștergarul în carouri" width="700" height="490"></div></div>
+  <div class="tag" style="left:8%;bottom:-48px;--r:-5deg"><span class="chalk-s">Pâine Tartine</span><small>26 lei / 650 g</small></div>
+ </div>
+ <svg class="arr toword" viewBox="0 0 110 120" width="110" height="120" aria-hidden="true" stroke-width="3.2"><g class="ghost"><path d="M20 8 Q90 40 70 112" pathLength="1"></path><path d="M66 96 L70 112 L81 101" pathLength="1"></path></g><g class="ink"><path d="M20 8 Q90 40 70 112" pathLength="1"></path><path d="M66 96 L70 112 L81 101" pathLength="1"></path></g></svg>
+ <img class="word" id="word" src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="Maiá" width="815" height="297">
+</section>
+<div class="band"></div>
+
+<section class="wall" id="logo" aria-labelledby="h-logo">
+ <div class="head"><h2 id="h-logo"><span class="sr">Logo</span><span class="chalk wr" data-t="doar cuvântul"><i>doar cuvântul</i></span></h2><p>MAIÁ, din fișierul original al logo-ului, curățat de textură. Pe ecran și în reels apare singur; logo-ul complet e pentru ambalaj, firmă și tipar.</p></div>
+ <div class="fan">
+  <div class="pl p1"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="MAIÁ negru pe hârtie" width="815" height="297" loading="lazy"></div>
+  <div class="pl p2"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-creta.svg" alt="MAIÁ cretă pe coajă" width="815" height="297" loading="lazy"></div>
+  <div class="pl p3"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="MAIÁ auriu pe tablă" width="815" height="297" loading="lazy"></div>
+  <div class="l l1 lbl"><span class="chalk-s wr" data-t="principal: auriu pe tablă"><i>principal: auriu pe tablă</i></span><svg class="arr " viewBox="0 0 120 60" width="120" height="60" aria-hidden="true" stroke-width="3.2"><g class="ghost"><path d="M6 40 Q60 58 112 22" pathLength="1"></path><path d="M105 36 L112 22 L96 24" pathLength="1"></path></g><g class="ink"><path d="M6 40 Q60 58 112 22" pathLength="1"></path><path d="M105 36 L112 22 L96 24" pathLength="1"></path></g></svg></div>
+  <div class="l l2 lbl"><span class="chalk-s wr" data-t="tipar"><i>tipar</i></span><svg class="arr " viewBox="0 0 70 60" width="70" height="60" aria-hidden="true" stroke-width="3.2"><g class="ghost"><path d="M6 14 Q40 20 58 52" pathLength="1"></path><path d="M44 44 L58 52 L58 36" pathLength="1"></path></g><g class="ink"><path d="M6 14 Q40 20 58 52" pathLength="1"></path><path d="M44 44 L58 52 L58 36" pathLength="1"></path></g></svg></div>
+  <div class="l l3 lbl"><svg class="arr " viewBox="0 0 70 60" width="70" height="60" aria-hidden="true" stroke-width="3.2"><g class="ghost"><path d="M64 14 Q30 20 12 52" pathLength="1"></path><path d="M12 36 L12 52 L26 44" pathLength="1"></path></g><g class="ink"><path d="M64 14 Q30 20 12 52" pathLength="1"></path><path d="M12 36 L12 52 L26 44" pathLength="1"></path></g></svg><span class="chalk-s wr" data-t="peste video"><i>peste video</i></span></div>
+ </div>
+ <div class="grid2">
+  <div class="paper" style="--t:-1.2deg"><h3>Cum îl folosim</h3><ul><li>Spațiu liber în jur cât înălțimea lui „M”.</li><li>Cel puțin 120 px pe ecran, 30 mm pe hârtie.</li><li>Peste imagine, doar pe o zonă calmă.</li><li>La finalul fiecărui reel: auriu pe tablă, o secundă și jumătate.</li></ul></div>
+  <div class="paper" style="--t:1deg"><h3>Ce nu facem</h3><ul><li>Nu-l întindem, nu-l rotim, nu-i punem umbră.</li><li>Nu-l recolorăm și nu-l punem peste o poză încărcată.</li><li>Nu mai folosim logo-ul vechi, cu tot textul înghesuit.</li><li>Nu lipim Tartine sub MAIÁ în fiecare material.</li></ul><p class="small">În texte scriem „Maia”. Fișierele vectoriale: brand/logo/original-curat.</p></div>
+ </div>
+ <div class="grid2" style="margin-top:clamp(40px,5vw,72px)">
+  <div class="paper" style="--t:.8deg;display:flex;flex-direction:column;align-items:center;gap:18px"><img src="https://bmarginean1.github.io/ksm-website/maia/img/logo-complet.svg" alt="Logo-ul complet Maia, în culorile originale" loading="lazy" style="width:min(86%,520px);height:auto"><p class="small" style="margin:0">Logo-ul complet, în culorile originale: ambalaj, firmă, tipar.</p></div>
+  <div class="m" style="--t:-.6deg;background:var(--tabla-2);padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;align-items:center;gap:18px;transform:rotate(var(--t));transition:transform .7s var(--spring)"><img src="https://bmarginean1.github.io/ksm-website/maia/img/logo-complet-tabla.svg" alt="Logo-ul complet Maia, auriu și cretă pe tablă" loading="lazy" style="width:min(86%,520px);height:auto"><span style="font-size:16px;color:var(--mute)">Pe tablă: auriu și cretă.</span></div>
+ </div>
+ <div class="marks">
+  <div class="m" style="--t:.6deg"><img src="https://bmarginean1.github.io/ksm-website/maia/img/brutarie-creta.svg" alt="brutărie artizanală" width="363" height="68" loading="lazy" style="width:min(80%,420px);height:auto"><span>Semnătura, când e loc.</span></div>
+  <div class="m" style="--t:-.8deg"><img src="https://bmarginean1.github.io/ksm-website/maia/img/tartine-creta.svg" alt="by Tartine Factory" width="215" height="66" loading="lazy" style="width:min(48%,240px);height:auto"><span>Girul, doar mic: ambalaj, bio, final de aftermovie.</span></div>
+ </div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="culoare" aria-labelledby="h-cul">
+ <div class="head"><h2 id="h-cul"><span class="sr">Culoare</span><span class="chalk wr" data-t="de unde vine culoarea"><i>de unde vine culoarea</i></span></h2><p>Fiecare culoare e luată de pe pereți sau de pe blat. Cifra mare: câte părți din o sută ia, pe orice material. Atinge culoarea ca să-i copiezi codul.</p></div>
+ <div class="cols">
+  <div class="col"><div class="card" style="--r:-1.5deg"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/c-tabla.jpg" alt="Tablă: din tablă" loading="lazy"></div></div><div class="chalk-s src wr" data-t="din tablă"><i>din tablă</i></div><button class="sw" data-hex="#1F1E1B" style="background:#1F1E1B;color:#F2ECE0;outline:1px solid rgba(242,236,224,.25);outline-offset:-1px"><span class="n">56</span><span><b>Tablă</b><span>#1F1E1B</span><em>copiază</em></span></button></div>
+  <div class="col"><div class="card" style="--r:1deg"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/c-creta.jpg" alt="Cretă: din cretă" loading="lazy"></div></div><div class="chalk-s src wr" data-t="din cretă"><i>din cretă</i></div><button class="sw" data-hex="#F2ECE0" style="background:#F2ECE0;color:#1F1E1B"><span class="n">25</span><span><b>Cretă</b><span>#F2ECE0</span><em>copiază</em></span></button></div>
+  <div class="col"><div class="card" style="--r:-0.8deg"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/c-auriu.jpg" alt="Auriu: din banda aurie" loading="lazy"></div></div><div class="chalk-s src wr" data-t="din banda aurie"><i>din banda aurie</i></div><button class="sw" data-hex="#D3A573" style="background:#D3A573;color:#1F1E1B"><span class="n">8</span><span><b>Auriu</b><span>#D3A573</span><em>copiază</em></span></button></div>
+  <div class="col"><div class="card" style="--r:1.4deg"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/c-miez.jpg" alt="Miez: din foietaj" loading="lazy"></div></div><div class="chalk-s src wr" data-t="din foietaj"><i>din foietaj</i></div><button class="sw" data-hex="#E6D3A8" style="background:#E6D3A8;color:#1F1E1B"><span class="n">5</span><span><b>Miez</b><span>#E6D3A8</span><em>copiază</em></span></button></div>
+  <div class="col"><div class="card" style="--r:-1.2deg"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/c-coaja.jpg" alt="Coajă: din crustă" loading="lazy"></div></div><div class="chalk-s src wr" data-t="din crustă"><i>din crustă</i></div><button class="sw" data-hex="#8E5F3A" style="background:#8E5F3A;color:#F2ECE0"><span class="n">3</span><span><b>Coajă</b><span>#8E5F3A</span><em>copiază</em></span></button></div>
+  <div class="col"><div class="card" style="--r:0.7deg"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/c-rosu.jpg" alt="Roșu de tablă: din umbra literelor" loading="lazy"></div></div><div class="chalk-s src wr" data-t="din umbra literelor"><i>din umbra literelor</i></div><button class="sw" data-hex="#B4473C" style="background:#B4473C;color:#F2ECE0"><span class="n">2</span><span><b>Roșu de tablă</b><span>#B4473C</span><em>copiază</em></span></button></div>
+  <div class="col"><div class="card" style="--r:-1deg"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/c-portocaliu.jpg" alt="Portocaliu: din logo" loading="lazy"></div></div><div class="chalk-s src wr" data-t="din logo"><i>din logo</i></div><button class="sw" data-hex="#CB7040" style="background:#CB7040;color:#1F1E1B"><span class="n">1</span><span><b>Portocaliu</b><span>#CB7040</span><em>copiază</em></span></button></div>
+ </div>
+ <div class="ratio" role="img" aria-label="Proporții: 56 tablă, 25 cretă, 8 auriu, 5 miez, 3 coajă, 2 roșu, 1 portocaliu"><i style="flex:56;background:#1F1E1B"></i><i style="flex:25;background:#F2ECE0"></i><i style="flex:8;background:#D3A573"></i><i style="flex:5;background:#E6D3A8"></i><i style="flex:3;background:#8E5F3A"></i><i style="flex:2;background:#B4473C"></i><i style="flex:1;background:#CB7040"></i></div>
+ <p class="ratiotxt">Auriul și portocaliul sunt cele din logo-ul original. Pe auriu folosim doar ce se poate apăsa; portocaliul rămâne în logo; roșul numai în umbra cretei, la un preț sau la „nou”.</p>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="litere" aria-labelledby="h-lit">
+ <div class="head"><h2 id="h-lit"><span class="sr">Litere</span><span class="chalk wr" data-t="două garamonduri și creta"><i>două garamonduri și creta</i></span></h2><p>Unul pentru titluri, unul pentru text și creta pentru un singur rând. Nimic altceva.</p></div>
+ <div class="typ">
+  <div class="paper">
+   <div class="big">Pâine</div>
+   <div class="lead">Cormorant Garamond, pentru titluri.</div>
+   <p class="body">EB Garamond, pentru tot restul: crește în maia peste noapte și intră în cuptor dimineața devreme. Pe la prânz, de obicei, nu mai e.</p>
+   <div class="glyphs">Aa Ăă Șș Țț</div>
+   <p class="small">Titluri drepte, cel mult două rânduri. Nimic sub 16 px. Diacritice mereu: ș și ț cu virgulă.</p>
+  </div>
+  <div class="board">
+   <div class="chalk wr" data-t="ă ș ț"><i>ă ș ț</i></div>
+   <div class="lbl"><span class="chalk-s note wr" data-t="desenate de noi, că fontul nu le avea"><i>desenate de noi, că fontul nu le avea</i></span></div>
+   <div class="card"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/creta.jpg" alt="Peretele de cafea scris cu cretă de @ArtMiKio" loading="lazy"></div></div>
+   <p style="font-size:16px;color:var(--mute)">Creta Maia: un rând, alb pe tablă, cu umbra roșie. Licență comercială (originfonts.com) înainte de prima postare.</p>
+  </div>
+ </div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="creta" aria-labelledby="h-cre">
+ <div class="head"><h2 id="h-cre"><span class="sr">Creta</span><span class="chalk wr" data-t="azi, din cuptor"><i>azi, din cuptor</i></span></h2><p>Creta e un accent, nu un font. Pe tablă, ca în brutărie, poate fi și meniu; în reels, postări și tipar e un singur rând.</p></div>
+ <div class="menu">
+  <div class="rows" id="board">
+   <div class="row"><span class="chalk-s wr" data-t="Pâine Tartine"><i>Pâine Tartine</i></span><span class="chalk-s wr" data-t="26 lei"><i>26 lei</i></span></div>
+   <div class="row"><span class="chalk-s wr" data-t="cu semințe"><i>cu semințe</i></span><span class="chalk-s wr" data-t="30 lei"><i>30 lei</i></span></div>
+   <div class="row"><span class="chalk-s wr" data-t="albă"><i>albă</i></span><span class="chalk-s wr" data-t="17 lei"><i>17 lei</i></span></div>
+   <div class="row"><span class="chalk-s wr" data-t="Pain au Chocolat"><i>Pain au Chocolat</i></span><span class="chalk-s wr" data-t="16 lei"><i>16 lei</i></span></div>
+   <div class="row"><span class="chalk-s wr" data-t="Basque Cheesecake"><i>Basque Cheesecake</i></span><span class="chalk-s wr" data-t="28 lei"><i>28 lei</i></span></div>
+   <svg class="arr rule" viewBox="0 0 700 24" preserveAspectRatio="none" aria-hidden="true" stroke-width="4"><g class="ghost"><path d="M4 12 C 200 2, 420 20, 696 8" pathLength="1"></path></g><g class="ink"><path d="M4 12 C 200 2, 420 20, 696 8" pathLength="1"></path></g></svg>
+   <span class="chalk-s note wr" data-t="ne vedem dimineață"><i>ne vedem dimineață</i></span>
+   <button class="redo" id="redo" type="button">Scrie din nou</button>
+  </div>
+  <div class="side">
+   <div class="paper" style="--t:1.2deg"><h3>Unde apare</h3><ul><li>Un rând pe ecran: „azi, din cuptor”, „ultima tavă”.</li><li>Prețuri, ca pe etichete.</li><li>Semnătura de final.</li></ul></div>
+   <div class="paper" style="--t:-1deg"><h3>Unde nu</h3><ul><li>Paragrafe sau mai mult de șase cuvinte.</li><li>Adresă, program, ingrediente.</li><li>Pe fundal deschis sau colorat.</li></ul></div>
+   <div class="tags"><div class="tag" style="left:4%;top:10px;--r:-4deg"><span class="chalk-s">ultima tavă</span><small>azi</small></div><div class="tag" style="left:48%;top:24px;--r:3deg"><span class="chalk-s">nou</span><small>Cinnamon Rolls</small></div></div>
+  </div>
+ </div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="foto" aria-labelledby="h-foto">
+ <div class="head"><h2 id="h-foto"><span class="sr">Fotografie</span><span class="chalk wr" data-t="lumină de geam"><i>lumină de geam</i></span></h2><p>Brutăria cum e dimineața: caldă, mată, de aproape. Fără studio, fără blitz, fără filtre. Cald, nu portocaliu.</p></div>
+ <div class="photos">
+  <div class="win">
+   <svg class="arr " viewBox="0 0 220 170" preserveAspectRatio="none" aria-hidden="true" stroke-width="4"><g class="ghost"><path d="M20 20 L130 20 L130 160 L20 160 Z" pathLength="1"></path><path d="M75 20 L75 160 M20 90 L130 90" pathLength="1"></path><path d="M150 50 L210 70 M150 95 L216 105 M150 140 L210 150" pathLength="1"></path></g><g class="ink"><path d="M20 20 L130 20 L130 160 L20 160 Z" pathLength="1"></path><path d="M75 20 L75 160 M20 90 L130 90" pathLength="1"></path><path d="M150 50 L210 70 M150 95 L216 105 M150 140 L210 150" pathLength="1"></path></g></svg>
+   <div class="paper" style="--t:-1.5deg"><h3>Cum fotografiem</h3><ul><li>Lumină naturală din lateral.</li><li>Fundalurile care sunt deja acolo.</li><li>Mâini în cadru: rup, taie, împachetează.</li><li>Grade cald și mat, negrul ușor ridicat.</li><li>Oameni în prim-plan doar cu acord.</li></ul></div>
+  </div>
+  <div class="card f1"><div class="cap"><span class="chalk-s wr" data-t="de sus, pe blat"><i>de sus, pe blat</i></span></div><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/foto.jpg" alt="Pain au Chocolat și Basque Cheesecake pe blat, cu eticheta de preț" loading="lazy"></div></div>
+  <div class="card f2"><div class="cap"><span class="chalk-s wr" data-t="la 45°"><i>la 45°</i></span></div><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/tarta.jpg" alt="Tarta cu fistic, cu etichetele de cretă" loading="lazy"></div></div>
+  <div class="card f3"><div class="cap"><span class="chalk-s wr" data-t="aproape de crustă"><i>aproape de crustă</i></span></div><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/basque.jpg" alt="Basque Cheesecake de aproape" loading="lazy"></div></div>
+  <div class="card f4"><div class="cap"><span class="chalk-s wr" data-t="lăzi și ștergar"><i>lăzi și ștergar</i></span></div><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/hero.jpg" alt="Pâini în lăzi, sub tabla cu nume" loading="lazy" style="object-position:60% center"></div></div>
+ </div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="miscare" aria-labelledby="h-mis">
+ <div class="head"><h2 id="h-mis"><span class="sr">Mișcare</span><span class="chalk wr" data-t="încet, ca aluatul"><i>încet, ca aluatul</i></span></h2><p>Pe web și în reels, mișcarea e rară și moale. Nimic nu sare, nimic nu clipește. Treci cu mouse-ul peste exemple.</p></div>
+ <div class="demos">
+  <div class="demo"><div class="st"><div class="zimg"><img src="https://bmarginean1.github.io/ksm-website/maia/img/blat.jpg" alt="" loading="lazy"></div></div><h3>Poza</h3><p>Se apropie încet, în aproape două secunde.</p></div>
+  <div class="demo"><div class="st"><span class="lnk">Vezi meniul de azi</span></div><h3>Legătura</h3><p>O linie aurie se trage sub cuvânt.</p></div>
+  <div class="demo"><div class="st"><div class="tg"><span class="chalk-s wr" data-t="ultima tavă"><i>ultima tavă</i></span></div></div><h3>Eticheta</h3><p>Se leagănă o dată, ca atârnată de un cui.</p></div>
+ </div>
+ <div class="paper mtable"><h3>Cât și cum</h3><div class="tw"><table><thead><tr><th>Ce</th><th>Cât</th><th>Cum</th></tr></thead><tbody>
+  <tr><td>Butoane</td><td>0,55 s</td><td>Cresc la 110% și se rotesc 1°, cu un mic arc la final.</td></tr>
+  <tr><td>Plăci și poze</td><td>0,7 s</td><td>Stau înclinate; la hover se îndreaptă și urcă.</td></tr>
+  <tr><td>Etichete</td><td>1,4 s</td><td>Se leagănă o dată.</td></tr>
+  <tr><td>Apariții</td><td>1 s</td><td>Titlul, textul, imaginea, la 70 ms una de alta, urcând 24 px.</td></tr>
+  <tr><td>Creta și săgețile</td><td>1,2–1,8 s</td><td>Se scriu de la stânga la dreapta, o dată, peste o urmă slabă.</td></tr>
+  <tr><td>Mișcare redusă</td><td>—</td><td>Dacă telefonul o cere, totul rămâne static.</td></tr>
+ </tbody></table></div></div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="montaj" aria-labelledby="h-mon">
+ <div class="head"><h2 id="h-mon"><span class="sr">Montaj</span><span class="chalk wr" data-t="crusta se aude"><i>crusta se aude</i></span></h2><p>Reels de 12–25 de secunde. Sunetul real în față, muzica cu vreo 18 dB mai jos. Text doar în zona sigură: x 90–900, y 280–1250.</p></div>
+ <div class="reels">
+  <div class="cell"><div class="ph" data-ui style="--t:-4deg" role="img" aria-label="Zona sigură pe 1080 pe 1920"><img src="https://bmarginean1.github.io/ksm-website/maia/img/reel.jpg" alt="" loading="lazy"><div class="o t">nimic sus de y 280</div><div class="z"><b>Ultima tavă</b><span class="chalk-s">azi, din cuptor</span></div><div class="o b">nimic sub y 1250</div></div><div class="cap"><span class="chalk-s wr" data-t="0–2 s: cel mai bun cadru"><i>0–2 s: cel mai bun cadru</i></span></div></div>
+  <svg class="arr " viewBox="0 0 90 60" width="90" height="60" aria-hidden="true" stroke-width="3.2"><g class="ghost"><path d="M6 40 Q46 6 84 36" pathLength="1"></path><path d="M68 33 L84 36 L78 21" pathLength="1"></path></g><g class="ink"><path d="M6 40 Q46 6 84 36" pathLength="1"></path><path d="M68 33 L84 36 L78 21" pathLength="1"></path></g></svg>
+  <div class="cell"><div class="ph" style="--t:1.5deg"><img src="https://bmarginean1.github.io/ksm-website/maia/img/blat.jpg" alt="Pain au Chocolat pe blat, de aproape" loading="lazy" style="object-position:30% center"></div><div class="cap"><span class="chalk-s wr" data-t="tăiat pe gest"><i>tăiat pe gest</i></span></div></div>
+  <svg class="arr " viewBox="0 0 90 60" width="90" height="60" aria-hidden="true" stroke-width="3.2"><g class="ghost"><path d="M6 40 Q46 6 84 36" pathLength="1"></path><path d="M68 33 L84 36 L78 21" pathLength="1"></path></g><g class="ink"><path d="M6 40 Q46 6 84 36" pathLength="1"></path><path d="M68 33 L84 36 L78 21" pathLength="1"></path></g></svg>
+  <div class="cell"><div class="ph end" style="--t:4deg"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="MAIÁ auriu pe tablă" loading="lazy"></div><div class="cap"><span class="chalk-s wr" data-t="final: 1,5 s"><i>final: 1,5 s</i></span></div></div>
+ </div>
+ <div class="grid3 rules3">
+  <div class="paper" style="--t:-1deg"><h3>Ritm</h3><ul><li>Primele două secunde: cadrul cel mai bun și sunet real.</li><li>Tăiem pe gest: rupt, tăiat, pus în pungă.</li><li>Aftermovie de 60–90 s.</li></ul></div>
+  <div class="paper" style="--t:.8deg"><h3>Text pe ecran</h3><ul><li>Cel mult șase cuvinte.</li><li>Un titlu Cormorant sau un rând de cretă.</li><li>Subtitrări în EB Garamond.</li></ul></div>
+  <div class="paper" style="--t:-.6deg"><h3>Efecte</h3><ul><li>Zoom-through, pull-back, subtitrări.</li><li>Rar: paper cut, frame break.</li><li>Tranziții: tăietură simplă.</li></ul></div>
+ </div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="postare" aria-labelledby="h-pos">
+ <div class="head"><h2 id="h-pos"><span class="sr">Postare</span><span class="chalk wr" data-t="trei reels pe săptămână"><i>trei reels pe săptămână</i></span></h2><p>Un ritm de pornire, pe care îl ajustăm după statistici. Zilnic, story cu ce a ieșit din cuptor.</p></div>
+ <div class="week">
+  <div class="d r" style="--r:-3deg"><span class="chalk-s">Luni</span><small>reel</small></div>
+  <div class="d" style="--r:2deg"><span class="chalk-s">Marți</span><small>foto</small></div>
+  <div class="d r" style="--r:-1.5deg"><span class="chalk-s">Miercuri</span><small>reel</small></div>
+  <div class="d" style="--r:2.5deg"><span class="chalk-s">Joi</span><small>foto</small></div>
+  <div class="d r" style="--r:-2deg"><span class="chalk-s">Vineri</span><small>reel</small></div>
+  <div class="d" style="--r:1.5deg"><span class="chalk-s">Sâmbătă</span><small>foto</small></div>
+  <div class="d" style="--r:-1deg"><span class="chalk-s">Duminică</span><small>liber</small></div>
+ </div>
+ <div class="grid3">
+  <div class="paper" style="--t:1deg"><h3>Când</h3><ul><li>Între 7:30 și 8:30, apoi la prânz.</li><li>Story zilnic, din cuptor.</li></ul></div>
+  <div class="paper" style="--t:-1.2deg"><h3>Grila</h3><ul><li>3:4: textul copertei între y 480 și 1440.</li><li>Un produs, cel mult trei cuvinte.</li><li>Alternăm închis și deschis.</li></ul></div>
+  <div class="paper" style="--t:.6deg"><h3>Înainte</h3><ul><li>Text în zona sigură.</li><li>Produse scrise corect, diacritice.</li><li>Preț și program la zi; acord de la cine apare.</li></ul></div>
+ </div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="voce" aria-labelledby="h-voce">
+ <h2 id="h-voce" class="sr">Voce</h2>
+ <div class="voice">
+  <div>
+   <div class="chalk-s k wr" data-t="așa:"><i>așa:</i></div>
+   <div class="chalk yes wr" data-t="Îl iei cald sau nu-l mai prinzi."><i>Îl iei cald sau nu-l mai prinzi.</i></div>
+   <p class="yes2">Pain au Chocolat cu unt adevărat. 16 lei.</p>
+   <div style="height:48px"></div>
+   <div class="chalk-s k wr" data-t="nu așa:"><i>nu așa:</i></div>
+   <div class="no"><p>Descoperă experiența unică a croissantului nostru artizanal, pregătit cu pasiune!</p><svg class="arr " viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" stroke-width="4"><g class="ghost"><path d="M2 30 C 30 42, 62 20, 98 34" pathLength="1"></path><path d="M4 74 C 36 60, 64 86, 96 70" pathLength="1"></path></g><g class="ink"><path d="M2 30 C 30 42, 62 20, 98 34" pathLength="1"></path><path d="M4 74 C 36 60, 64 86, 96 70" pathLength="1"></path></g></svg></div>
+   <p style="font-size:20px;line-height:1.5;color:#D9D1C1;max-width:52ch">Ca omul de la tejghea: ce e, cât costă, când iese. Română cu diacritice, produsele în engleză, fără semne de exclamare; cel mult un emoji, de obicei niciunul.</p>
+   <div class="chalk-s words wr" data-t="cald · azi · din cuptor · maia · crustă · ultima tavă"><i>cald · azi · din cuptor · maia · crustă · ultima tavă</i></div>
+  </div>
+  <div>
+   <div class="card"><div class="im"><img src="https://bmarginean1.github.io/ksm-website/maia/img/voce.jpg" alt="Tabla cu numele maialei: Maia, Sourdough, Levain, Licoli" loading="lazy"></div></div>
+   <div class="chalk-s vnote wr" data-t="același lucru, în cinci limbi"><i>același lucru, în cinci limbi</i></div>
+  </div>
+ </div>
+ <div class="grid2">
+  <div class="paper" style="--t:-1deg"><h3>Cuvintele noastre</h3><p>cald, azi, din cuptor, maia, crustă, miez, ultima tavă, de luat acasă.</p></div>
+  <div class="paper" style="--t:1deg"><h3>Cuvinte de reclamă</h3><p style="text-decoration:line-through;text-decoration-thickness:1px;color:var(--mute-ink)">descoperă, experiență unică, răsfață-te, pasiune, autentic, delicios, nu rata.</p></div>
+ </div>
+</section>
+<div class="band"></div>
+
+<section class="wall" id="reguli" aria-labelledby="h-reg">
+ <div class="head"><h2 id="h-reg"><span class="sr">Reguli fixe</span><span class="chalk wr" data-t="ce nu se schimbă"><i>ce nu se schimbă</i></span></h2><p>Orice abatere se discută întâi.</p></div>
+ <div class="paper locked"><ol>
+  <li><b>Logo</b><span>MAIÁ auriu pe tablă, negru pe hârtie, cretă pe coajă. Niciodată peste o poză încărcată.</span></li>
+  <li><b>Culori</b><span>Cele șase de pe pereți, în proporțiile date. Roșul doar ca detaliu.</span></li>
+  <li><b>Litere</b><span>Cormorant pentru titluri, EB Garamond pentru text, creta pentru un singur rând.</span></li>
+  <li><b>Limbă</b><span>Română cu diacritice; produsele în engleză.</span></li>
+  <li><b>Video</b><span>Cel mult șase cuvinte pe ecran, în zona sigură; sunetul real în față.</span></li>
+  <li><b>Oameni</b><span>În prim-plan doar cu acord semnat.</span></li>
+ </ol></div>
+</section>
+<div class="band"></div>
+
+<footer class="close">
+ <div class="chalk wr" data-t="ne vedem dimineață"><i>ne vedem dimineață</i></div>
+ <img src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="Maiá" width="815" height="297" loading="lazy">
+ <p>Maia, brutărie artizanală by Tartine Factory · Vasile Lupu 77, Cluj-Napoca · ghid realizat de KSM Media House, 2026</p>
+</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,touch=matchMedia('(hover: none)').matches;
+var bar=document.getElementById('bar');
+function onScroll(){bar.classList.toggle('solid',scrollY>80);}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+/* chalk + arrows write once when seen */
+var ws=[].slice.call(document.querySelectorAll('.wr,.arr'));
+if('IntersectionObserver' in window&&!reduce){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;setTimeout(function(){el.classList.add('go');},(el.dataset.d|0));io.unobserve(el);}});},{threshold:.4,rootMargin:'0px 0px -6% 0px'});
+ ws.forEach(function(el,i){io.observe(el);});
+ /* stagger siblings inside a row */
+ document.querySelectorAll('.say .wr').forEach(function(el,i){el.dataset.d=i*700;});
+ document.querySelectorAll('#board .wr').forEach(function(el,i){el.dataset.d=i*180;});
+}else ws.forEach(function(el){el.classList.add('go');});
+document.getElementById('redo').addEventListener('click',function(){
+ if(reduce)return;var b=[].slice.call(document.querySelectorAll('#board .wr,#board .arr'));
+ b.forEach(function(el){el.classList.remove('go');});void document.body.offsetWidth;
+ b.forEach(function(el,i){setTimeout(function(){el.classList.add('go');},60+i*180);});
+});
+/* touch: demos play when seen */
+if(touch&&'IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io2.unobserve(e.target);}});},{threshold:.6});document.querySelectorAll('.demo').forEach(function(d){io2.observe(d);});}
+/* contents */
+var toc=document.getElementById('cuprins'),tb=document.getElementById('tocBtn');
+function tocSet(o){toc.classList.toggle('open',o);tb.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';if(o)toc.querySelector('ol a').focus();}
+tb.addEventListener('click',function(e){e.preventDefault();tocSet(true);});
+document.getElementById('tocX').addEventListener('click',function(e){e.preventDefault();tocSet(false);tb.focus();});
+toc.querySelectorAll('ol a').forEach(function(a){a.addEventListener('click',function(){tocSet(false);});});
+addEventListener('keydown',function(e){if(e.key==='Escape'&&toc.classList.contains('open')){tocSet(false);tb.focus();}});
+/* copy colours */
+document.querySelectorAll('.sw').forEach(function(b){b.addEventListener('click',function(){var h=b.getAttribute('data-hex'),em=b.querySelector('em');
+ function ok(){b.classList.add('ok');em.textContent='copiat';setTimeout(function(){b.classList.remove('ok');em.textContent='copiază';},1300);}
+ try{navigator.clipboard.writeText(h).then(ok,function(){});}catch(e){}});});
+if(!window.gsap||reduce)return;
+try{
+ gsap.registerPlugin(ScrollTrigger);
+ gsap.from('.hero .meta>*',{y:24,opacity:0,duration:1,ease:'expo.out',stagger:.07,delay:.9});
+ gsap.from('.hero .hang',{y:-60,rotation:-8,opacity:0,duration:1.6,ease:'elastic.out(1,.6)',delay:.3,clearProps:'transform,opacity'});
+ gsap.from('#word',{yPercent:30,opacity:0,duration:1.4,ease:'expo.out',delay:.15});
+ gsap.to('#word',{xPercent:-10,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.6}});
+ gsap.to('.hero .say',{y:-80,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.6}});
+ document.querySelectorAll('.wall').forEach(function(w){
+  var parts=[].slice.call(w.querySelectorAll('.head p, .paper, .fan .pl, .marks .m, .col, .typ .big, .typ .glyphs, .menu .tags, .photos .card, .demo, .reels .cell, .week .d, .voice .card'));
+  if(!parts.length)return;
+  gsap.from(parts,{y:24,opacity:0,duration:1,ease:'expo.out',stagger:.07,clearProps:'transform,opacity',scrollTrigger:{trigger:w,start:'top 75%',once:true}});
+ });
+ gsap.utils.toArray('.photos .card img,.voice .card img').forEach(function(img){gsap.fromTo(img,{yPercent:-4,scale:1.08},{yPercent:4,scale:1.08,ease:'none',scrollTrigger:{trigger:img,start:'top bottom',end:'bottom top',scrub:.6}});});
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){ScrollTrigger.refresh();});
+}catch(e){console.error(e);}
+})();
+</script>
