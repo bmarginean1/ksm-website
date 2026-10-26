@@ -251,6 +251,58 @@ td{font-variant-numeric:tabular-nums}
 @media(max-width:860px){.voice{grid-template-columns:minmax(0,1fr)}}
 .lbl{font-size:14px;color:var(--mute);margin-bottom:10px}
 
+
+/* applications */
+.nb{white-space:nowrap}
+.apps-grid{display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:clamp(36px,6vw,96px);align-items:start}
+@media(max-width:900px){.apps-grid{grid-template-columns:minmax(0,1fr)}}
+.ig{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;background:var(--creta)}
+.ig .t{position:relative;aspect-ratio:3/4;overflow:hidden;display:grid;place-items:center;text-align:center;padding:10%}
+.ig .t img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ig .t .lb{position:relative;font-family:var(--f-display);color:#F2ECE0;font-size:clamp(15px,1.6vw,21px);line-height:1.05;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.ig .t.dk{background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover}
+.ig .t.lt{background:#E9E1D1;color:var(--tabla)}
+.ig .t.lt b{display:block;font:400 clamp(16px,1.7vw,22px)/1.05 var(--f-display)}
+.ig .t.lt small{display:block;margin-top:6px;font-size:12px;color:var(--mute-ink)}
+.ig .t .chalk{font-size:clamp(20px,2.2vw,30px)}
+.ig .t.dk img.logo{position:static;width:78%;height:auto;object-fit:contain}
+.ig .rc{position:absolute;top:8px;right:8px;width:14px;height:14px;border:1.5px solid #F2ECE0;border-radius:3px;z-index:2}
+.ig .rc::after{content:"";position:absolute;left:4px;top:2.5px;border-left:5px solid #F2ECE0;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,4vw,64px);justify-items:center}
+.phones figure{width:100%;max-width:280px}
+.phones .ph{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--tabla);outline:1px solid var(--rule-ink,rgba(31,30,27,.16))}
+.phones .ph img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phones .story img.bg{height:62%}
+.phones .story .pn{position:absolute;left:0;right:0;bottom:0;height:38%;background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:0 8%;text-align:center;color:#F2ECE0}
+.phones .story .chalk{font-size:clamp(22px,2.2vw,30px)}
+.phones .story small{font-size:13px;color:#BDB4A3}
+.phones .story img.mk{width:30%;height:auto;margin-top:6px}
+.phones .cover .ov{position:absolute;left:8.33%;width:75%;top:25%;height:50%;display:grid;place-items:center;text-align:center}
+.phones .cover .ov b{font:400 clamp(26px,2.6vw,36px)/1.02 var(--f-display);color:#F2ECE0;text-shadow:0 2px 24px rgba(0,0,0,.55)}
+.phones .end{background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#BDB4A3;font-size:13px}
+.phones .end img{width:66%;height:auto}
+.phones figcaption{margin-top:14px;font-size:15px}
+.phones figcaption span{display:block;color:var(--mute);font-size:13px}
+@media(max-width:760px){.phones{grid-template-columns:minmax(0,1fr)}}
+.pack{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+@media(max-width:900px){.pack{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pack .it{aspect-ratio:4/5;display:grid;place-items:center;position:relative;overflow:hidden}
+.pack .bag{background:#DCCFB6}
+.pack .bag .b{width:62%;height:78%;background:#EDE5D6;position:relative;display:grid;place-items:center;box-shadow:inset 0 14px 0 #E2D8C5}
+.pack .bag .b::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:repeating-linear-gradient(90deg,#E2D8C5 0 6px,#D8CCB6 6px 7px)}
+.pack .bag .b img{width:78%;height:auto}
+.pack .lab{background:#2B2823}
+.pack .lab .l{background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover;width:74%;aspect-ratio:4/3;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;outline:1px solid rgba(242,236,224,.12)}
+.pack .lab .chalk{font-size:clamp(18px,1.8vw,24px)}
+.pack .stk{background:#EDE5D6}
+.pack .stk .s{width:60%;aspect-ratio:1;border-radius:50%;background:var(--tabla);display:grid;place-items:center;box-shadow:inset 0 0 0 5px var(--tabla),inset 0 0 0 6px rgba(211,165,115,.6)}
+.pack .stk .s img{width:66%;height:auto}
+.pack .wrp{background:#EDE5D6}
+.pack .wrp .pt{position:absolute;inset:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 22%;align-content:space-evenly;padding:0 14%;opacity:.14}
+.pack .wrp .pt img{width:100%;height:auto}
+.pack .wrp .pt img:nth-child(4n+3),.pack .wrp .pt img:nth-child(4n+4){transform:translateX(-30%)}
+.pack figcaption{margin-top:12px;font-size:15px}
+.pack figcaption span{display:block;color:var(--mute);font-size:13px}
 /* close */
 .close{background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover;padding-block:clamp(90px,11vw,160px) calc(40px + env(safe-area-inset-bottom,0px))}
 .close .chalk{font-size:clamp(44px,5.4vw,80px)}
@@ -303,13 +355,13 @@ td{font-variant-numeric:tabular-nums}
 
 <header class="bar"><div class="wrap">
  <a class="mark" href="#top" aria-label="Maia, la început"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="" width="815" height="297"></a>
- <nav aria-label="Principal"><a class="lnk" href="#logo">Logo</a><a class="lnk" href="#culoare">Culoare</a><a class="lnk" href="#litere">Litere</a><a class="lnk" href="#foto">Fotografie</a><a class="lnk" href="#voce">Voce</a><a class="btn" href="#cuprins" id="tocBtn" aria-controls="cuprins" aria-expanded="false">Cuprins</a></nav>
+ <nav aria-label="Principal"><a class="lnk" href="#logo">Logo</a><a class="lnk" href="#culoare">Culoare</a><a class="lnk" href="#litere">Litere</a><a class="lnk" href="#foto">Fotografie</a><a class="lnk" href="#aplicatii">Aplicații</a><a class="lnk" href="#voce">Voce</a><a class="btn" href="#cuprins" id="tocBtn" aria-controls="cuprins" aria-expanded="false">Cuprins</a></nav>
 </div></header>
 
 <nav class="toc" id="cuprins" aria-label="Cuprins"><div class="wrap">
  <a class="x btn" href="#top" id="tocX">Închide</a>
  <ol>
-  <li><a href="#logo">Logo</a></li><li><a href="#culoare">Culoare</a></li><li><a href="#litere">Litere</a></li><li><a href="#creta">Creta</a></li><li><a href="#foto">Fotografie</a></li><li><a href="#miscare">Mișcare</a></li><li><a href="#montaj">Montaj</a></li><li><a href="#postare">Postare</a></li><li><a href="#voce">Voce</a></li><li><a href="#reguli">Reguli fixe</a></li>
+  <li><a href="#logo">Logo</a></li><li><a href="#culoare">Culoare</a></li><li><a href="#litere">Litere</a></li><li><a href="#creta">Creta</a></li><li><a href="#foto">Fotografie</a></li><li><a href="#miscare">Mișcare</a></li><li><a href="#montaj">Montaj</a></li><li><a href="#postare">Postare</a></li><li><a href="#aplicatii">Aplicații</a></li><li><a href="#voce">Voce</a></li><li><a href="#reguli">Reguli fixe</a></li>
  </ol>
 </div></nav>
 
@@ -384,7 +436,7 @@ td{font-variant-numeric:tabular-nums}
   <div class="scale">
    <div><small>Titlu · Young Serif</small><span class="t1">Pâine Tartine</span></div>
    <div><small>Subtitlu · Young Serif</small><span class="t2">Cu semințe, din maia</span></div>
-   <div><small>Text · Instrument Sans</small><span class="t3">Scoatem prima tavă la 8:30. Îl iei cald sau nu-l mai prinzi.</span></div>
+   <div><small>Text · Instrument Sans</small><span class="t3">Scoatem prima tavă la 8:30. Îl iei cald sau <span class="nb">nu-l</span> mai prinzi.</span></div>
    <div><small>Notă · Instrument Sans</small><span class="t4">26 lei / 650 g. Nimic sub 13 px pe ecran.</span></div>
   </div>
  </div>
@@ -482,16 +534,59 @@ td{font-variant-numeric:tabular-nums}
  </div>
 </div></section>
 
-<section class="chap paper" id="voce" aria-labelledby="h-voce"><div class="wrap">
+<section class="chap paper" id="aplicatii" aria-labelledby="h-apl"><div class="wrap">
  <header class="ch-head">
   <p class="num">9</p>
+  <div class="ttl"><h2 id="h-apl" class="ext">Aplicații</h2><div class="chalk note wr" data-t="așa arată, pus în practică"><i>așa arată, pus în practică</i></div></div>
+  <p class="lead">Regulile de mai sus, puse pe telefon și pe tejghea. Toate pozele sunt de la prima filmare.</p>
+ </header>
+ <div class="apps-grid">
+  <div class="ig" role="img" aria-label="Grila de Instagram: nouă postări, alternând poze, tablă și hârtie">
+   <div class="t zoom"><img src="https://bmarginean1.github.io/ksm-website/maia/img/f-028.jpg" alt="" loading="lazy" style="object-position:40% center"><span class="rc"></span><span class="lb">Country Bread</span></div>
+   <div class="t lt"><div><b>Pâine Tartine</b><small>26 lei / 650 g</small></div></div>
+   <div class="t zoom"><img src="https://bmarginean1.github.io/ksm-website/maia/img/f-094.jpg" alt="" loading="lazy"></div>
+   <div class="t dk"><span class="chalk wr" data-t="ultima tavă"><i>ultima tavă</i></span></div>
+   <div class="t zoom"><img src="https://bmarginean1.github.io/ksm-website/maia/img/f-003.jpg" alt="" loading="lazy" style="object-position:55% center"><span class="rc"></span><span class="lb">Din cuptor</span></div>
+   <div class="t zoom"><img src="https://bmarginean1.github.io/ksm-website/maia/img/f-061.jpg" alt="" loading="lazy"></div>
+   <div class="t lt"><div><b>Îl iei cald sau <span class="nb">nu-l</span> mai prinzi.</b></div></div>
+   <div class="t zoom"><img src="https://bmarginean1.github.io/ksm-website/maia/img/f-092.jpg" alt="" loading="lazy"><span class="rc"></span><span class="lb">Croissant</span></div>
+   <div class="t dk"><img class="logo" src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="" loading="lazy"></div>
+  </div>
+  <div>
+   <h3 class="sub">Grila de Instagram</h3>
+   <dl class="rows "><div><dt>Ritm</dt><dd>Reel, foto, reel. Alternăm închis și deschis, ca să nu stea două întunecate una lângă alta.</dd></div><div><dt>Copertă</dt><dd>Un produs, cel mult trei cuvinte, în Young Serif, între y 480 și 1440.</dd></div><div><dt>Tablă</dt><dd>Un pătrat de tablă cu un rând de cretă la fiecare trei postări.</dd></div><div><dt>Hârtie</dt><dd>Un preț sau o frază scurtă, pe crem, fără poză.</dd></div><div><dt>Logo</dt><dd>MAIÁ apare singur cel mult o dată la nouă postări.</dd></div></dl>
+   <p class="cap">Semnul din colț marchează un reel.</p>
+  </div>
+ </div>
+ <div class="block">
+  <h3 class="sub">Story, copertă de reel, final</h3>
+  <div class="phones">
+   <figure><div class="ph story"><img class="bg" src="https://bmarginean1.github.io/ksm-website/maia/img/f-092.jpg" alt="Croissante pe blat" loading="lazy"><div class="pn"><span class="chalk wr" data-t="azi, din cuptor"><i>azi, din cuptor</i></span><small>Croissant · 17 lei</small><img class="mk" src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="" loading="lazy"></div></div><figcaption>Story zilnic<span>Poza sus, tabla jos: ce a ieșit și cât costă.</span></figcaption></figure>
+   <figure><div class="ph cover zoom"><img class="bg" src="https://bmarginean1.github.io/ksm-website/maia/img/f-078.jpg" alt="Aluatul răsturnat pe blat" loading="lazy"><div class="ov"><b>Ultima tavă</b></div></div><figcaption>Copertă de reel<span>Cel mai bun cadru, un titlu, în zona sigură.</span></figcaption></figure>
+   <figure><div class="ph end"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="MAIÁ auriu pe tablă" loading="lazy"><span>Vasile Lupu 77, Cluj</span></div><figcaption>Cadrul de final<span>O secundă și jumătate, la fiecare reel.</span></figcaption></figure>
+  </div>
+ </div>
+ <div class="block">
+  <h3 class="sub">Ambalaj și tejghea</h3>
+  <div class="pack">
+   <figure><div class="it bag"><div class="b"><img src="https://bmarginean1.github.io/ksm-website/maia/img/logo-complet.svg" alt="Logo-ul complet pe punga de hârtie" loading="lazy"></div></div><figcaption>Punga<span>Logo-ul complet, în culorile originale.</span></figcaption></figure>
+   <figure><div class="it lab"><div class="l"><span class="chalk wr" data-t="Pâine Tartine"><i>Pâine Tartine</i></span><span class="chalk wr" data-t="26 lei / 650 g"><i>26 lei / 650 g</i></span></div></div><figcaption>Eticheta de preț<span>Tablă mică, scrisă de mână, ca pe lăzi.</span></figcaption></figure>
+   <figure><div class="it stk"><div class="s"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="Sticker rotund MAIÁ" loading="lazy"></div></div><figcaption>Sticker<span>Rotund, 5 cm, închide punga.</span></figcaption></figure>
+   <figure><div class="it wrp"><div class="pt"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"><img src="https://bmarginean1.github.io/ksm-website/maia/img/maia-negru.svg" alt="" loading="lazy"></div></div><figcaption>Hârtia de împachetat<span>MAIÁ negru, repetat rar, aproape șters.</span></figcaption></figure>
+  </div>
+ </div>
+</div></section>
+
+<section class="chap" id="voce" aria-labelledby="h-voce"><div class="wrap">
+ <header class="ch-head">
+  <p class="num">10</p>
   <div class="ttl"><h2 id="h-voce" class="ext">Voce</h2><div class="chalk note wr" data-t="ca omul de la tejghea"><i>ca omul de la tejghea</i></div></div>
   <p class="lead">Ce e, cât costă, când iese. Română cu diacritice, produsele în engleză, fără semne de exclamare.</p>
  </header>
  <div class="voice">
   <div>
    <p class="lbl">Așa</p>
-   <p class="say-yes ext">Îl iei cald sau nu-l mai prinzi.</p>
+   <p class="say-yes ext">Îl iei cald sau <span class="nb">nu-l</span> mai prinzi.</p>
    <p class="say-yes2">Pain au Chocolat cu unt adevărat. 16 lei.</p>
    <p class="lbl" style="margin-top:56px">Nu așa</p>
    <p class="say-no">Descoperă experiența unică a croissantului nostru artizanal, pregătit cu pasiune!</p>
@@ -503,9 +598,9 @@ td{font-variant-numeric:tabular-nums}
  </div>
 </div></section>
 
-<section class="chap" id="reguli" aria-labelledby="h-reg"><div class="wrap">
+<section class="chap paper" id="reguli" aria-labelledby="h-reg"><div class="wrap">
  <header class="ch-head">
-  <p class="num">10</p>
+  <p class="num">11</p>
   <div class="ttl"><h2 id="h-reg" class="ext">Reguli fixe</h2><div class="chalk note wr" data-t="ce nu se schimbă"><i>ce nu se schimbă</i></div></div>
   <p class="lead">Orice abatere de la ele se discută întâi.</p>
  </header>
