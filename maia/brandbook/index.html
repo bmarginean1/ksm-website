@@ -204,9 +204,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:-.01em;text
 .demo .zi{width:72%;height:72%;overflow:hidden}
 .demo .zi img{width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--out)}
 .demo:hover .zi img,.demo.on .zi img{transform:scale(1.08)}
-.demo .lk{font-family:var(--f-display);font-size:26px;position:relative;padding-bottom:4px}
-.demo .lk::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--auriu);transform:scaleX(0);transform-origin:right;transition:transform .8s var(--out)}
-.demo:hover .lk::after,.demo.on .lk::after{transform:scaleX(1);transform-origin:left}
+.demo .dt{font-family:var(--f-display);font-size:clamp(30px,3vw,42px);line-height:1;color:var(--creta);--ext:#6E5A42}
 .demo .w .chalk{font-size:44px}
 .tw{overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:560px;font-size:15px;color:inherit}
@@ -440,8 +438,8 @@ td{font-variant-numeric:tabular-nums}
  </header>
  <div class="demos">
   <div class="demo"><div class="st"><div class="zi"><img src="https://bmarginean1.github.io/ksm-website/maia/img/f-010.jpg" alt="" loading="lazy"></div></div><h3>Poza</h3><p>Se apropie încet, în aproape două secunde.</p></div>
-  <div class="demo"><div class="st"><span class="lk">Vezi meniul de azi</span></div><h3>Legătura</h3><p>O linie aurie se trage sub cuvânt.</p></div>
-  <div class="demo"><div class="st"><div class="w"><span class="chalk wr" data-t="ultima tavă"><i>ultima tavă</i></span></div></div><h3>Creta</h3><p>Se scrie literă cu literă, o singură dată.</p></div>
+  <div class="demo"><div class="st"><span class="dt ext">Pâine Tartine</span></div><h3>Titlul</h3><p>Capătă relief și se apleacă departe de cursor.</p></div>
+  <div class="demo"><div class="st"><div class="w"><span class="chalk wr" data-t="ultima tavă"><i>ultima tavă</i></span></div></div><h3>Creta</h3><p>Se scrie literă cu literă. Treci peste ea ca s-o rescrii.</p></div>
  </div>
  <div class="block tw"><table><thead><tr><th>Ce</th><th>Cât</th><th>Cum</th></tr></thead><tbody>
   <tr><td>Butoane</td><td>0,25 s</td><td>Se umplu cu auriu.</td></tr>
@@ -529,6 +527,7 @@ function split(w){var ii=w.querySelector('i');if(!ii)return;var t=w.getAttribute
  var wd=null;cs.forEach(function(ch){if(ch===' '){ii.appendChild(document.createTextNode(' '));wd=null;return;}if(!wd){wd=document.createElement('span');wd.className='wd';ii.appendChild(wd);}var sp=document.createElement('span');sp.className='ch';sp.textContent=ch;sp.style.setProperty('--dl',(n*per).toFixed(3)+'s');sp.style.setProperty('--cd',(per*2.2).toFixed(3)+'s');wd.appendChild(sp);n++;});
  w._dur=(n*per+per*2.2)*1000;}
 [].forEach.call(document.querySelectorAll('.wr'),split);
+document.querySelectorAll('.demo .w').forEach(function(w){var d=w.closest('.demo'),el=w.querySelector('.wr'),t=0;function re(){if(reduce)return;clearTimeout(t);el.classList.remove('go');void el.offsetWidth;t=setTimeout(function(){el.classList.add('go');},60);}d.addEventListener('mouseenter',re);d.addEventListener('click',re);});
 function seq(list,base){var t=base||0;list.forEach(function(el){el.dataset.d=Math.round(t);t+=(el._dur||800)*.85;});}
 seq([].slice.call(document.querySelectorAll('#board .wr')));
 var ws=[].slice.call(document.querySelectorAll('.wr'));
