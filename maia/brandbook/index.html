@@ -20,13 +20,13 @@
 <meta name="description" content="Ghidul de brand Maia, brutărie artizanală by Tartine Factory, Cluj-Napoca: logo, culori, litere, cretă, foto, mișcare, montaj, postare și voce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=La+Belle+Aurore&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=La+Belle+Aurore&display=swap">
 <style>
-/* Layout: a printed book about the shop. Dark board chapters alternate with paper chapters; each opens with its number, a large Cormorant title and one line of chalk. Rules sit on ruled rows, photos run straight and large. MAIÁ in gold is the one loud thing. */
+/* Layout: a printed book about the shop. Dark board chapters alternate with paper chapters; each opens with its number, a large Young Serif title and one line of chalk. Rules sit on ruled rows, photos run straight and large. MAIÁ in gold is the one loud thing. */
 :root{
  --tabla:#1F1E1B;--tabla-2:#262420;--creta:#F2ECE0;--hartie:#EAE3D5;--auriu:#D3A573;--auriu-ink:#8A6234;--coaja:#8E5F3A;--rosu:#B4473C;--chalk:#EFE9DB;
  --fg:var(--creta);--mute:#A39A89;--rule:rgba(242,236,224,.16);
- --f-display:'Cormorant Garamond',Garamond,Georgia,serif;--f-text:'EB Garamond',Garamond,Georgia,serif;--f-chalk:'La Belle Aurore','Bradley Hand','Segoe Print',cursive;
+ --f-display:'Young Serif',Georgia,serif;--f-text:'EB Garamond',Garamond,Georgia,serif;--f-chalk:'La Belle Aurore','Bradley Hand','Segoe Print',cursive;
  --out:cubic-bezier(.22,1,.36,1);
  --gut:max(20px,env(safe-area-inset-left,0px));--gutr:max(20px,env(safe-area-inset-right,0px));
  --w:1180px;
@@ -40,7 +40,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.22em}
 :focus-visible{outline:2px solid var(--auriu);outline-offset:4px}
-h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;text-wrap:balance}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:-.01em;text-wrap:balance}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{max-width:calc(var(--w) + 80px);margin:0 auto;padding-left:max(var(--gut),40px);padding-right:max(var(--gutr),40px)}
 @media(max-width:700px){.wrap{padding-left:var(--gut);padding-right:var(--gutr)}}
@@ -72,7 +72,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 @keyframes fade{from{opacity:0}}
 .toc ol{list-style:none;counter-reset:c;border-top:1px solid var(--rule)}
 .toc li{counter-increment:c;border-bottom:1px solid var(--rule)}
-.toc li a{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:baseline;gap:16px;padding:14px 0;text-decoration:none;font-family:var(--f-display);font-size:clamp(30px,4vw,48px);line-height:1.1;transition:color .2s}
+.toc li a{display:grid;grid-template-columns:64px minmax(0,1fr);align-items:baseline;gap:16px;padding:14px 0;text-decoration:none;font-family:var(--f-display);font-size:clamp(26px,3.2vw,38px);line-height:1.1;transition:color .2s}
 .toc li a::before{content:counter(c);font-size:18px;color:var(--auriu);font-family:var(--f-text)}
 .toc li a:hover{color:var(--auriu)}
 .toc .x{position:absolute;top:calc(22px + env(safe-area-inset-top,0px));right:var(--gutr)}
@@ -81,7 +81,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 .hero{background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover;padding-block:clamp(56px,8vw,110px) 0;overflow:hidden}
 .hero .word{width:min(100%,1080px);height:auto;margin:0 auto 0 -1.2%}
 .hero .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-top:clamp(36px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)}
-.hero h1{font-size:clamp(34px,3.6vw,52px);line-height:1.04}
+.hero h1{font-size:clamp(30px,3vw,44px);line-height:1.08}
 .hero .meta{margin-top:14px;color:var(--mute);font-size:17px;line-height:1.55}
 .hero .say{justify-self:end;text-align:right}
 .hero .say .chalk{font-size:clamp(40px,4.6vw,68px)}
@@ -93,15 +93,15 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 .chap{padding-block:clamp(84px,10vw,150px)}
 .chap.paper{background:var(--creta);color:var(--tabla);--fg:var(--tabla);--mute:#6E6556;--rule:rgba(31,30,27,.16)}
 .ch-head{display:grid;grid-template-columns:72px minmax(0,1fr) minmax(0,400px);gap:24px clamp(28px,4vw,64px);align-items:start;margin-bottom:clamp(56px,7vw,96px)}
-.ch-head .num{font-family:var(--f-display);font-size:28px;line-height:1;color:var(--auriu);padding-top:.6em}
+.ch-head .num{font-family:var(--f-display);font-size:24px;line-height:1;color:var(--auriu);padding-top:.6em}
 .paper .ch-head .num{color:var(--auriu-ink)}
-.ch-head h2{font-size:clamp(56px,7.4vw,112px);line-height:.95}
+.ch-head h2{font-size:clamp(46px,5.8vw,88px);line-height:1}
 .ch-head .note{display:block;margin-top:14px;font-size:clamp(28px,2.6vw,38px)}
 .paper .ch-head .note{display:none}
 .ch-head .lead{font-size:clamp(19px,1.5vw,21px);line-height:1.6;color:var(--mute);padding-top:1.1em}
 @media(max-width:900px){.ch-head{grid-template-columns:minmax(0,1fr)}.ch-head .num{padding-top:0}.ch-head .lead{padding-top:0;max-width:56ch}}
 
-.sub{font-size:clamp(28px,2.4vw,34px);line-height:1.1;margin-bottom:22px}
+.sub{font-size:clamp(24px,2vw,28px);line-height:1.1;margin-bottom:22px}
 .block{margin-top:clamp(64px,8vw,110px)}
 .ch-head+.block{margin-top:0}
 .cap{font-size:16px;color:var(--mute);margin-top:12px;line-height:1.45}
@@ -109,11 +109,11 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 /* ruled rows */
 .rows{border-top:1px solid var(--rule)}
 .rows>div{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:8px 40px;padding:18px 0 19px;border-bottom:1px solid var(--rule)}
-.rows dt{font-family:var(--f-display);font-size:24px;line-height:1.2}
+.rows dt{font-family:var(--f-display);font-size:21px;line-height:1.2}
 .rows dd{max-width:62ch}
 @media(max-width:700px){.rows>div{grid-template-columns:minmax(0,1fr)}}
 .dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,80px)}
-.dd h3{font-size:26px;padding-bottom:12px;border-bottom:1px solid var(--fg);margin-bottom:4px}
+.dd h3{font-size:22px;padding-bottom:12px;border-bottom:1px solid var(--fg);margin-bottom:4px}
 .dd ul{list-style:none}
 .dd li{padding:13px 0;border-bottom:1px solid var(--rule)}
 .dd .no li{color:var(--mute)}
@@ -140,29 +140,29 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 /* colour */
 .prop{display:flex;height:clamp(180px,22vw,300px);outline:1px solid var(--rule)}
 .prop button{border:0;cursor:pointer;min-width:0;position:relative;font:inherit;text-align:left;padding:14px 12px;display:flex;flex-direction:column;justify-content:flex-end;transition:flex-grow .5s var(--out)}
-.prop button span{font-family:var(--f-display);font-size:clamp(28px,3vw,48px);line-height:1;font-variant-numeric:tabular-nums}
+.prop button span{font-family:var(--f-display);font-size:clamp(24px,2.5vw,40px);line-height:1;font-variant-numeric:tabular-nums}
 .prop button.thin span{display:none}
 .swl{margin-top:clamp(36px,4vw,56px);border-top:1px solid var(--rule)}
 .swl>div{display:grid;grid-template-columns:64px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.6fr) 56px;gap:20px;align-items:center;padding:12px 0;border-bottom:1px solid var(--rule)}
 .swl .chip{display:block;width:64px;height:64px;outline:1px solid var(--rule);outline-offset:-1px}
-.swl b{font-family:var(--f-display);font-weight:500;font-size:26px;line-height:1.1}
+.swl b{font-family:var(--f-display);font-weight:400;font-size:22px;line-height:1.15}
 .swl code{font:16px var(--f-text);font-variant-numeric:tabular-nums}
 .swl .src{color:var(--mute);font-size:17px}
-.swl .pc{font-family:var(--f-display);font-size:30px;text-align:right;font-variant-numeric:tabular-nums}
+.swl .pc{font-family:var(--f-display);font-size:26px;text-align:right;font-variant-numeric:tabular-nums}
 .swl button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em}
 @media(max-width:760px){.swl>div{grid-template-columns:48px minmax(0,1fr) auto}.swl .chip{width:48px;height:48px}.swl .src,.swl .pc{display:none}}
 
 /* type */
 .spec{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:end}
-.spec .big{font-family:var(--f-display);font-weight:500;font-size:clamp(120px,19vw,280px);line-height:.85;letter-spacing:-.035em}
-.spec .glyphs{font-family:var(--f-display);font-size:clamp(40px,4.4vw,64px);line-height:1.1;margin-top:28px}
+.spec .big{font-family:var(--f-display);font-weight:400;font-size:clamp(96px,15vw,220px);line-height:.9;letter-spacing:-.025em}
+.spec .glyphs{font-family:var(--f-display);font-size:clamp(32px,3.6vw,52px);line-height:1.1;margin-top:28px}
 .spec .body{font-size:clamp(20px,1.7vw,23px);line-height:1.55;max-width:38ch}
 @media(max-width:860px){.spec{grid-template-columns:minmax(0,1fr)}}
 .scale{border-top:1px solid var(--rule)}
 .scale>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--rule)}
 .scale small{font-size:16px;color:var(--mute);font-variant-numeric:tabular-nums}
-.scale .t1{font-family:var(--f-display);font-size:clamp(44px,5vw,72px);line-height:1}
-.scale .t2{font-family:var(--f-display);font-size:clamp(30px,2.6vw,38px);line-height:1.1}
+.scale .t1{font-family:var(--f-display);font-size:clamp(36px,4vw,58px);line-height:1.05}
+.scale .t2{font-family:var(--f-display);font-size:clamp(24px,2.1vw,30px);line-height:1.15}
 .scale .t3{font-size:21px}
 .scale .t4{font-size:16px}
 @media(max-width:600px){.scale>div{grid-template-columns:minmax(0,1fr);gap:4px}}
@@ -199,12 +199,12 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 .demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
 @media(max-width:860px){.demos{grid-template-columns:minmax(0,1fr)}}
 .demo .st{aspect-ratio:4/3;display:grid;place-items:center;background:var(--tabla-2);overflow:hidden;outline:1px solid var(--rule);outline-offset:-1px}
-.demo h3{font-size:26px;margin-top:16px}
+.demo h3{font-size:22px;margin-top:16px}
 .demo p{font-size:17px;color:var(--mute)}
 .demo .zi{width:72%;height:72%;overflow:hidden}
 .demo .zi img{width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--out)}
 .demo:hover .zi img,.demo.on .zi img{transform:scale(1.08)}
-.demo .lk{font-family:var(--f-display);font-size:32px;position:relative;padding-bottom:4px}
+.demo .lk{font-family:var(--f-display);font-size:26px;position:relative;padding-bottom:4px}
 .demo .lk::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--auriu);transform:scaleX(0);transform-origin:right;transition:transform .8s var(--out)}
 .demo:hover .lk::after,.demo.on .lk::after{transform:scaleX(1);transform-origin:left}
 .demo .w .chalk{font-size:44px}
@@ -212,7 +212,7 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 table{width:100%;border-collapse:collapse;min-width:560px;font-size:18px;color:inherit}
 th,td{text-align:left;padding:15px 24px 15px 0;vertical-align:top;border-bottom:1px solid var(--rule)}
 thead th{font-weight:400;font-size:16px;color:var(--mute);border-bottom-color:var(--fg)}
-td:first-child{font-family:var(--f-display);font-size:23px;white-space:nowrap}
+td:first-child{font-family:var(--f-display);font-size:20px;white-space:nowrap}
 td{font-variant-numeric:tabular-nums}
 
 /* reels */
@@ -221,7 +221,7 @@ td{font-variant-numeric:tabular-nums}
 .reels .ph{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:var(--tabla-2);outline:1px solid var(--rule)}
 .reels .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .reels .z{position:absolute;left:8.33%;width:75%;top:14.58%;height:50.52%;outline:1px dashed rgba(242,236,224,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px}
-.reels .z b{font-family:var(--f-display);font-weight:500;font-size:clamp(24px,2.4vw,32px);line-height:1;color:var(--creta)}
+.reels .z b{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,2.4vw,32px);line-height:1;color:var(--creta)}
 .reels .o{position:absolute;left:0;right:0;background:rgba(31,30,27,.62);font-size:13px;display:flex;align-items:center;justify-content:center;color:var(--creta)}
 .reels .o.t{top:0;height:14.58%}.reels .o.b{bottom:0;height:24.48%}
 .reels .ph.end{display:grid;place-items:center}
@@ -230,7 +230,7 @@ td{font-variant-numeric:tabular-nums}
 .reels figcaption span{display:block;color:var(--mute);font-size:16px}
 @media(max-width:760px){.reels{grid-template-columns:minmax(0,1fr)}}
 .cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,4vw,56px)}
-.cols3 h3{font-size:26px;padding-bottom:12px;border-bottom:1px solid var(--fg)}
+.cols3 h3{font-size:22px;padding-bottom:12px;border-bottom:1px solid var(--fg)}
 .cols3 ul{list-style:none}
 .cols3 li{padding:12px 0;border-bottom:1px solid var(--rule)}
 @media(max-width:860px){.cols3{grid-template-columns:minmax(0,1fr)}}
@@ -239,13 +239,13 @@ td{font-variant-numeric:tabular-nums}
 .week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--fg);border-bottom:1px solid var(--rule)}
 .week>div{padding:18px 12px 22px 0;border-right:1px solid var(--rule);padding-left:12px}
 .week>div:first-child{padding-left:0}.week>div:last-child{border-right:0}
-.week b{display:block;font-family:var(--f-display);font-weight:500;font-size:clamp(20px,1.9vw,26px)}
+.week b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(17px,1.6vw,22px)}
 .week span{font-size:16px;color:var(--mute)}
 .week .r span{color:var(--auriu-ink)}
 @media(max-width:760px){.week{grid-template-columns:repeat(2,minmax(0,1fr))}.week>div{border-right:0;border-bottom:1px solid var(--rule);padding-left:0}}
 
 /* voice */
-.say-yes{font-family:var(--f-display);font-weight:500;font-size:clamp(46px,6vw,88px);line-height:1.02;letter-spacing:-.02em;max-width:16ch}
+.say-yes{font-family:var(--f-display);font-weight:400;font-size:clamp(38px,4.8vw,70px);line-height:1.08;letter-spacing:-.015em;max-width:17ch}
 .say-yes2{font-size:clamp(21px,1.8vw,25px);margin-top:20px}
 .say-no{font-family:var(--f-display);font-size:clamp(28px,2.8vw,40px);line-height:1.2;color:var(--mute);text-decoration:line-through;text-decoration-color:var(--rosu);text-decoration-thickness:2px;max-width:30ch}
 .voice{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(40px,6vw,96px);align-items:start}
@@ -375,8 +375,8 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap paper" id="litere" aria-labelledby="h-lit"><div class="wrap">
  <header class="ch-head">
   <p class="num">3</p>
-  <div class="ttl"><h2 id="h-lit" class="ext">Litere</h2><div class="chalk note wr" data-t="două garamonduri și creta"><i>două garamonduri și creta</i></div></div>
-  <p class="lead">Cormorant Garamond pentru titluri, EB Garamond pentru text și creta pentru un singur rând. Nimic altceva.</p>
+  <div class="ttl"><h2 id="h-lit" class="ext">Litere</h2><div class="chalk note wr" data-t="un serif, un garamond și creta"><i>un serif, un garamond și creta</i></div></div>
+  <p class="lead">Young Serif pentru titluri, EB Garamond pentru text și creta pentru un singur rând. Nimic altceva.</p>
  </header>
  <div class="spec block">
   <div><div class="big ext" aria-hidden="true">Pâine</div><div class="glyphs" aria-hidden="true">Aa Ăă Ââ Îî Șș Țț</div></div>
@@ -384,8 +384,8 @@ td{font-variant-numeric:tabular-nums}
  </div>
  <div class="block">
   <div class="scale">
-   <div><small>Titlu · Cormorant 500</small><span class="t1">Pâine Tartine</span></div>
-   <div><small>Subtitlu · Cormorant 500</small><span class="t2">Cu semințe, din maia</span></div>
+   <div><small>Titlu · Young Serif</small><span class="t1">Pâine Tartine</span></div>
+   <div><small>Subtitlu · Young Serif</small><span class="t2">Cu semințe, din maia</span></div>
    <div><small>Text · EB Garamond 400</small><span class="t3">Scoatem prima tavă la 8:30. Îl iei cald sau nu-l mai prinzi.</span></div>
    <div><small>Notă · EB Garamond 400</small><span class="t4">26 lei / 650 g. Nimic sub 16 px pe ecran.</span></div>
   </div>
@@ -465,7 +465,7 @@ td{font-variant-numeric:tabular-nums}
  </div>
  <div class="block cols3">
   <div><h3>Ritm</h3><ul><li>Primele două secunde: cel mai bun cadru.</li><li>Tăiem pe gest.</li><li>Aftermovie de 60–90 s.</li></ul></div>
-  <div><h3>Text pe ecran</h3><ul><li>Cel mult șase cuvinte.</li><li>Un titlu Cormorant sau un rând de cretă.</li><li>Subtitrări în EB Garamond.</li></ul></div>
+  <div><h3>Text pe ecran</h3><ul><li>Cel mult șase cuvinte.</li><li>Un titlu Young Serif sau un rând de cretă.</li><li>Subtitrări în EB Garamond.</li></ul></div>
   <div><h3>Efecte</h3><ul><li>Zoom-through, pull-back.</li><li>Rar: paper cut, frame break.</li><li>Tranziții: tăietură simplă.</li></ul></div>
  </div>
 </div></section>
@@ -511,7 +511,7 @@ td{font-variant-numeric:tabular-nums}
   <div class="ttl"><h2 id="h-reg" class="ext">Reguli fixe</h2><div class="chalk note wr" data-t="ce nu se schimbă"><i>ce nu se schimbă</i></div></div>
   <p class="lead">Orice abatere de la ele se discută întâi.</p>
  </header>
- <dl class="rows "><div><dt>Logo</dt><dd>MAIÁ auriu pe tablă, negru pe hârtie, cretă pe coajă. Niciodată peste o poză încărcată.</dd></div><div><dt>Culori</dt><dd>Cele șapte din brutărie, în proporțiile date.</dd></div><div><dt>Litere</dt><dd>Cormorant pentru titluri, EB Garamond pentru text, creta pentru un singur rând.</dd></div><div><dt>Limbă</dt><dd>Română cu diacritice; produsele în engleză.</dd></div><div><dt>Video</dt><dd>Cel mult șase cuvinte pe ecran, în zona sigură; sunetul real în față.</dd></div><div><dt>Oameni</dt><dd>În prim-plan doar cu acord semnat.</dd></div></dl>
+ <dl class="rows "><div><dt>Logo</dt><dd>MAIÁ auriu pe tablă, negru pe hârtie, cretă pe coajă. Niciodată peste o poză încărcată.</dd></div><div><dt>Culori</dt><dd>Cele șapte din brutărie, în proporțiile date.</dd></div><div><dt>Litere</dt><dd>Young Serif pentru titluri, EB Garamond pentru text, creta pentru un singur rând.</dd></div><div><dt>Limbă</dt><dd>Română cu diacritice; produsele în engleză.</dd></div><div><dt>Video</dt><dd>Cel mult șase cuvinte pe ecran, în zona sigură; sunetul real în față.</dd></div><div><dt>Oameni</dt><dd>În prim-plan doar cu acord semnat.</dd></div></dl>
 </div></section>
 
 <footer class="close"><div class="wrap">

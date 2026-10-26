@@ -20,11 +20,11 @@
 <meta name="description" content="Prezentarea brandului Maia, brutărie artizanală by Tartine Factory, Cluj-Napoca. KSM Media House, 2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=La+Belle+Aurore&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=La+Belle+Aurore&display=swap">
 <link rel="preload" as="image" href="https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg">
 <style>/* Layout: a 1280x720 stage of chalkboard slides, scaled to the screen. Each slide is a stretch of the shop wall: chalk writes itself, photos hang tilted, rules sit on pinned paper, the gold band runs along the bottom. */
 :root{--tabla:#1F1E1B;--tabla-2:#28261F;--creta:#F2ECE0;--miez:#E6D3A8;--auriu:#D3A573;--coaja:#8E5F3A;--rosu:#B4473C;--portocaliu:#CB7040;--chalk:#EFE9DB;--mute:#A9A08F;--mute-ink:#6B6355;
- --f-display:'Cormorant Garamond',Garamond,Georgia,serif;--f-text:'EB Garamond',Garamond,Georgia,serif;--f-chalk:'La Belle Aurore','Bradley Hand',cursive;
+ --f-display:'Young Serif',Georgia,serif;--f-text:'EB Garamond',Garamond,Georgia,serif;--f-chalk:'La Belle Aurore','Bradley Hand',cursive;
  --spring:cubic-bezier(.34,1.4,.64,1);--out:cubic-bezier(.22,1,.36,1);--write:cubic-bezier(.45,.05,.3,1);color-scheme:dark}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;background:var(--tabla);overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
@@ -46,7 +46,7 @@ button{font:inherit;color:inherit}
 .band{position:absolute;left:0;right:0;bottom:0;height:22px;background:var(--auriu) url(https://bmarginean1.github.io/ksm-website/maia/img/c-auriu.jpg) center 85%/cover;z-index:9}
 .mut{color:var(--mute)}
 .lead{font-size:19px;line-height:1.5;color:#D9D1C1}
-.h1s{font-family:var(--f-display);font-weight:500;font-size:36px;letter-spacing:-.02em;line-height:1.1}
+.h1s{font-family:var(--f-display);font-weight:400;font-size:30px;letter-spacing:-.015em;line-height:1.1}
 .word{z-index:1;will-change:transform}
 .chalk{font-family:var(--f-chalk);font-weight:400;color:var(--chalk);filter:url(#chalk);line-height:1.06}
 .chalk-s{font-family:var(--f-chalk);font-weight:400;color:var(--chalk);filter:url(#chalk-s);line-height:1.1}
@@ -79,7 +79,7 @@ button{font:inherit;color:inherit}
 @keyframes swing{0%{transform:rotate(var(--r,-4deg))}25%{transform:rotate(5deg)}55%{transform:rotate(-4deg)}80%{transform:rotate(1deg)}100%{transform:rotate(var(--r,-4deg))}}
 .paper{background:var(--creta);color:var(--tabla);padding:28px 32px;transform:rotate(var(--t,1deg));transition:transform .7s var(--spring)}
 .paper:hover{transform:rotate(0) translateY(-6px)}
-.paper h3{font-family:var(--f-display);font-weight:500;font-size:30px;line-height:1.1;margin-bottom:12px;letter-spacing:-.01em}
+.paper h3{font-family:var(--f-display);font-weight:400;font-size:25px;line-height:1.1;margin-bottom:12px;letter-spacing:-.01em}
 .paper ul{list-style:none;display:grid;gap:10px}
 .paper li{font-size:17px;line-height:1.45;padding-left:20px;position:relative}
 .paper li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--coaja)}
@@ -90,25 +90,25 @@ button{font:inherit;color:inherit}
 .col{display:flex;flex-direction:column;min-width:0}
 .col .src{font-size:19px;margin:14px 0 10px;white-space:nowrap}
 .sw{border:0;cursor:pointer;height:236px;padding:14px 14px 12px;display:flex;flex-direction:column;justify-content:space-between;text-align:left;transition:transform .6s var(--spring)}
-.sw .n{font-family:var(--f-display);font-weight:500;font-size:68px;line-height:.9;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.sw b{display:block;font-family:var(--f-display);font-weight:500;font-size:22px;line-height:1.05}
+.sw .n{font-family:var(--f-display);font-weight:400;font-size:56px;line-height:.9;letter-spacing:-.015em;font-variant-numeric:tabular-nums}
+.sw b{display:block;font-family:var(--f-display);font-weight:400;font-size:18px;line-height:1.05}
 .sw small{display:block;font-size:14px;opacity:.8;margin-top:3px}
 .sw em{display:block;font-style:normal;font-size:14px;opacity:0;transition:opacity .3s}
 .sw:hover{transform:translateY(-10px) rotate(-1deg)}.sw:hover em,.sw.ok em{opacity:.9}
-.big{font-family:var(--f-display);font-weight:500;font-size:180px;line-height:.9;letter-spacing:-.03em}
-.tl{font-family:var(--f-display);font-weight:500;font-size:30px;margin:14px 0 8px}
+.big{font-family:var(--f-display);font-weight:400;font-size:148px;line-height:.9;letter-spacing:-.015em}
+.tl{font-family:var(--f-display);font-weight:400;font-size:25px;margin:14px 0 8px}
 .tb{font-size:20px;line-height:1.5}
-.gl{font-family:var(--f-display);font-weight:500;font-size:74px;line-height:1;margin-top:20px}
+.gl{font-family:var(--f-display);font-weight:400;font-size:61px;line-height:1;margin-top:20px}
 .menu .row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-bottom:10px}
 .menu .row .chalk-s{font-size:40px}
 .demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
 .demo .st{height:250px;display:grid;place-items:center;background:rgba(40,38,31,.85);overflow:hidden;margin-bottom:16px}
-.demo h3{font-family:var(--f-display);font-weight:500;font-size:28px;margin-bottom:4px}
+.demo h3{font-family:var(--f-display);font-weight:400;font-size:23px;margin-bottom:4px}
 .demo p{font-size:16px;color:#D9D1C1}
 .demo .zimg{width:72%;height:76%;overflow:hidden}
 .demo .zimg img{width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--out)}
 .demo:hover .zimg img{transform:scale(1.1)}
-.demo .lnk{font-family:var(--f-display);font-size:30px;position:relative;padding-bottom:4px}
+.demo .lnk{font-family:var(--f-display);font-size:25px;position:relative;padding-bottom:4px}
 .demo .lnk::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--auriu);transform:scaleX(0);transform-origin:right;transition:transform .8s var(--out)}
 .demo:hover .lnk::after{transform:scaleX(1);transform-origin:left}
 .demo .tg{background:var(--tabla);padding:12px 20px 14px;transform:rotate(-3deg)}
@@ -121,7 +121,7 @@ button{font:inherit;color:inherit}
 .ph.end{display:flex;align-items:center;justify-content:center}
 .ph.end img{position:static;width:74%;height:auto;object-fit:contain}
 .ph .z{position:absolute;left:8.33%;width:75%;top:14.58%;height:50.52%;outline:2px dashed rgba(242,236,224,.9);outline-offset:-2px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px}
-.ph .z b{font-family:var(--f-display);font-weight:500;font-size:28px;line-height:1;color:var(--creta)}
+.ph .z b{font-family:var(--f-display);font-weight:400;font-size:23px;line-height:1;color:var(--creta)}
 .ph .z .chalk-s{font-size:20px}
 .ph .o{position:absolute;left:0;right:0;background:rgba(180,71,60,.5);font-size:13px;display:flex;align-items:center;justify-content:center}
 .ph .o.t{top:0;height:14.58%}.ph .o.b{bottom:0;height:24.48%}
@@ -129,21 +129,21 @@ button{font:inherit;color:inherit}
 .week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
 .week .d{background:var(--tabla-2);padding:14px 10px 16px;text-align:center;transform:rotate(var(--r));transform-origin:50% -20px}
 .week .d .chalk-s,.week .d b{display:block;font-size:26px}
-.week .d b{font-family:var(--f-display);font-weight:500}
+.week .d b{font-family:var(--f-display);font-weight:400}
 .week .d small{display:block;font-size:15px;color:var(--mute);margin-top:3px}
 .week .d.r{background:var(--auriu);color:var(--tabla)}.week .d.r small{color:#3D2F20}
 .week .d:hover{animation:swing 1.4s var(--out)}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px}
 .stt{display:flex;flex-direction:column;gap:6px}
-.stt .v{font-family:var(--f-display);font-weight:500;font-size:120px;line-height:.9;letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--auriu)}
+.stt .v{font-family:var(--f-display);font-weight:400;font-size:98px;line-height:.9;letter-spacing:-.015em;font-variant-numeric:tabular-nums;color:var(--auriu)}
 .stt span{font-size:18px;color:#D9D1C1}
-.yes2{font-family:var(--f-display);font-weight:500;font-size:34px;line-height:1.2}
+.yes2{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1.2}
 .no{position:absolute}
-.no p{font-family:var(--f-display);font-weight:500;font-size:38px;line-height:1.22;color:var(--mute)}
+.no p{font-family:var(--f-display);font-weight:400;font-size:31px;line-height:1.22;color:var(--mute)}
 .locked ol{list-style:none;display:grid;gap:22px}
 .locked li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:baseline;font-size:22px;line-height:1.45;padding:0}
 .locked li::before{display:none}
-.locked b{font-family:var(--f-display);font-weight:500;font-size:32px;line-height:1.1}
+.locked b{font-family:var(--f-display);font-weight:400;font-size:26px;line-height:1.1}
 #progress{position:fixed;left:0;top:0;height:3px;background:var(--auriu);z-index:60;transition:width .6s var(--out);padding-top:env(safe-area-inset-top,0px)}
 #hud{transition:opacity .5s ease;position:fixed;left:50%;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:6px;background:rgba(31,30,27,.88);padding:6px;border-radius:999px;outline:1px solid rgba(242,236,224,.14)}
 .hb{border:0;background:transparent;color:var(--creta);min-width:44px;height:44px;border-radius:999px;display:grid;place-items:center;cursor:pointer;transition:transform .55s var(--spring),background .3s,color .3s}
@@ -154,7 +154,7 @@ button{font:inherit;color:inherit}
 .hint.off{opacity:0}
 #notes{position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(20,19,17,.97);color:var(--creta);padding:22px max(28px,env(safe-area-inset-left,0px)) calc(96px + env(safe-area-inset-bottom,0px));font-size:18px;line-height:1.5;transform:translateY(100%);transition:transform .5s var(--out)}
 #notes.show{transform:translateY(0)}
-#notes b{display:block;font-family:var(--f-display);font-weight:500;font-size:24px;color:var(--auriu);margin-bottom:6px}
+#notes b{display:block;font-family:var(--f-display);font-weight:400;font-size:20px;color:var(--auriu);margin-bottom:6px}
 @media (max-width:700px){.hint{display:none}#hud{bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .wr:not(.go) .ch{-webkit-mask-position:0 0;mask-position:0 0}.js .arr:not(.go) .ink path{stroke-dashoffset:0}}
 @media print{#hud,#progress,.hint,#notes{display:none!important}}
@@ -190,6 +190,7 @@ button{font:inherit;color:inherit}
 .col .src{margin:16px 0 0}
 .chalk{font-size-adjust:.30}
 .chalk-s{font-size-adjust:.38}
+
 </style>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <filter id="chalk" x="-8%" y="-25%" width="116%" height="160%" color-interpolation-filters="sRGB">
@@ -280,7 +281,7 @@ button{font:inherit;color:inherit}
 <section class="slide s-type">
 <div class="pos paper rv" style="left:56px;top:56px;width:610px;height:560px;--t:-1deg;padding:36px 40px">
 <div class="big ext" data-ext="#B9AA8A">Pâine</div>
-<div class="tl" data-i18n="t.l">Cormorant Garamond, pentru titluri.</div>
+<div class="tl" data-i18n="t.l">Young Serif, pentru titluri.</div>
 <p class="tb" data-i18n="t.b">EB Garamond, pentru tot restul: crește în maia peste noapte și intră în cuptor dimineața devreme.</p>
 <div class="gl ext" data-ext="#B9AA8A">Aa Ăă Șș Țț</div>
 </div>
@@ -349,7 +350,7 @@ button{font:inherit;color:inherit}
 <div class="band"></div></section>
 <section class="slide s-rules">
 <div class="pos" style="left:60px;top:40px"><div class="chalk wr" data-i18n-wr="ru.h" data-t="ce nu se schimbă" style="font-size:80px;transform:rotate(-1.5deg)"><i>ce nu se schimbă</i></div></div>
-<div class="pos paper locked" style="left:170px;top:160px;width:940px;--t:-.8deg;padding:40px 48px"><ol><li class="rv"><b data-i18n="rr.0">Logo</b><span data-i18n="rd.0">MAIÁ auriu pe tablă, negru pe hârtie, cretă pe coajă.</span></li><li class="rv"><b data-i18n="rr.1">Culori</b><span data-i18n="rd.1">Cele de pe pereți și din logo, în proporțiile date.</span></li><li class="rv"><b data-i18n="rr.2">Litere</b><span data-i18n="rd.2">Cormorant, EB Garamond și un singur rând de cretă.</span></li><li class="rv"><b data-i18n="rr.3">Limbă</b><span data-i18n="rd.3">Română cu diacritice; produsele în engleză.</span></li><li class="rv"><b data-i18n="rr.4">Video</b><span data-i18n="rd.4">Cel mult șase cuvinte, în zona sigură; sunetul real în față.</span></li><li class="rv"><b data-i18n="rr.5">Oameni</b><span data-i18n="rd.5">În prim-plan doar cu acord semnat.</span></li></ol></div>
+<div class="pos paper locked" style="left:170px;top:160px;width:940px;--t:-.8deg;padding:40px 48px"><ol><li class="rv"><b data-i18n="rr.0">Logo</b><span data-i18n="rd.0">MAIÁ auriu pe tablă, negru pe hârtie, cretă pe coajă.</span></li><li class="rv"><b data-i18n="rr.1">Culori</b><span data-i18n="rd.1">Cele de pe pereți și din logo, în proporțiile date.</span></li><li class="rv"><b data-i18n="rr.2">Litere</b><span data-i18n="rd.2">Young Serif, EB Garamond și un singur rând de cretă.</span></li><li class="rv"><b data-i18n="rr.3">Limbă</b><span data-i18n="rd.3">Română cu diacritice; produsele în engleză.</span></li><li class="rv"><b data-i18n="rr.4">Video</b><span data-i18n="rd.4">Cel mult șase cuvinte, în zona sigură; sunetul real în față.</span></li><li class="rv"><b data-i18n="rr.5">Oameni</b><span data-i18n="rd.5">În prim-plan doar cu acord semnat.</span></li></ol></div>
 <div class="band"></div></section>
 <section class="slide s-close">
 <div class="pos" style="left:60px;top:70px"><div class="chalk wr" data-i18n-wr="e.h" data-t="ne vedem dimineață" style="font-size:110px;transform:rotate(-2deg)"><i>ne vedem dimineață</i></div></div>
@@ -368,8 +369,8 @@ button{font:inherit;color:inherit}
 <div class="hint" id="hint" data-i18n-html="hint">← / → navighezi · <b>N</b> note · <b>F</b> ecran complet</div>
 <div id="notes" class="noadv"></div>
 <script>
-var NOTES=["Deschidem cu ce e deja în brutărie: tabla, lăzile, prețul scris de mână. Ghidul nu inventează un look, îl scrie ca reguli.", "Arată că nu e o estetică inventată: culorile, scrisul și materialele sunt cele de pe pereți. Creta albă, scrisă de mână, e semnătura.", "Pe ecran folosim doar MAIÁ. Varianta principală e auriu pe tablă. Logo-ul complet vine pe slide-ul următor.", "Logo-ul complet e cel din fișierul original al clientului, curățat de textură. Pe ecran nu-l folosim, e prea încărcat la dimensiuni mici.", "Fiecare culoare are o sursă reală în brutărie. Auriul și portocaliul sunt cele din logo-ul original. Proporțiile spun cât din fiecare intră pe un material.", "Două Garamonduri și creta. Creta e La Belle Aurore, cu diacriticele complete și liberă pentru uz comercial; o scriem albă, fără umbră.", "Creta se scrie singură, ca pe tablă. Pe ecran o folosim rar: un rând, ca să conteze.", "Pozele arată brutăria dimineața: lumină din lateral, fundalurile care sunt deja acolo, mâini în cadru. Treci cu mouse-ul peste ele.", "Mișcarea vine de pe site-ul Pasticcino: arc moale pe butoane, plăci care se îndreaptă, etichete care se leagănă. Încet, nimic agresiv.", "Fiecare reel: primul cadru bun în două secunde, tăieturi pe gest, final cu MAIÁ auriu pe tablă. Textul stă în zona sigură, ca să nu-l acopere butoanele Instagram.", "Ritmul de pornire, din contract: 12 reels și în jur de 16 poze pe lună, plus un aftermovie. Story zilnic cu ce iese din cuptor; ajustăm după statistici.", "Vocea e cea de la tejghea: scurt, concret, cu cifre. Fără „descoperă”, „experiență unică” sau semne de exclamare.", "Șase reguli fixe. Orice abatere se discută întâi cu noi.", "Închidem cu semnătura de cretă. Ghidul complet, cu toate regulile, e în pagina web a brandului și în design system."];
-var I18N_EN={"c.l1": "good bread", "c.l2": "takes time to rise", "c.t": "The Maia brand guide", "c.s": "artisan bakery by Tartine Factory · Cluj-Napoca", "a.lazi": "Tartine bread in a wooden crate", "c.tg": "Tartine bread", "c.tgs": "26 lei / 650 g", "c.k": "KSM Media House · 2026", "w.h": "the brand is already on the walls", "w.p": "The boards painted by @ArtMiKio, the gold band beneath them, the wooden crates and checked tea towels. Everything that follows starts here.", "a.wall": "The coffee menu wall, written in chalk", "w.a1": "white chalk", "w.a2": "hand lettering", "w.a3": "the gold band", "l.h": "just the word", "l.p": "MAIÁ, from the original logo file, cleaned up. On screen and in reels it stands alone, on three grounds.", "l.a1": "print", "l.a2": "over video", "l.a3": "main: gold on board", "f.h": "the full logo", "f.p": "In its original colours: gold and orange. For packaging, signage and print. \"by Tartine Factory\" stays small.", "f.a": "packaging · signage · print", "cn.tabla": "Board", "cp.tabla": "copy", "cs.tabla": "from the board", "cn.creta": "Chalk", "cp.creta": "copy", "cs.creta": "from the chalk", "cn.auriu": "Gold", "cp.auriu": "copy", "cs.auriu": "from the gold band", "cn.miez": "Crumb", "cp.miez": "copy", "cs.miez": "from the pastry", "cn.coaja": "Crust", "cp.coaja": "copy", "cs.coaja": "from the crust", "cn.rosu": "Red", "cp.rosu": "copy", "cs.rosu": "from the price tags", "cn.portocaliu": "Orange", "cp.portocaliu": "copy", "cs.portocaliu": "from the logo", "k.h": "where the colour comes from", "k.p": "The big number: how many parts in a hundred each colour takes, on any material. Click a colour to copy its code.", "t.l": "Cormorant Garamond, for headings.", "t.b": "EB Garamond, for everything else: it rises in the starter overnight and goes in the oven early in the morning.", "t.c": "ă ș ț", "t.n": "La Belle Aurore, with a chalk filter", "a.wall2": "The letters on the coffee board", "m.r0": "Tartine bread", "m.p0": "26 lei", "m.r1": "with seeds", "m.p1": "30 lei", "m.r2": "white", "m.p2": "17 lei", "m.r3": "Pain au Chocolat", "m.p3": "16 lei", "m.r4": "Basque Cheesecake", "m.p4": "28 lei", "m.h": "fresh from the oven", "m.s": "see you in the morning", "m.ph": "Chalk is an accent, not a typeface.", "m.u1": "On a board it can be a menu.", "m.u2": "In reels and posts: one line, six words at most.", "m.u3": "White, no shadow, only on dark.", "m.t": "last tray", "m.ts": "today", "m.t2": "new", "m.t2s": "Cinnamon Rolls", "p.h": "window light", "p.p": "Warm, matte, up close. No flash, no filters. Warm, not orange.", "a.foto": "Pain au Chocolat and Basque Cheesecake on the counter", "a.tarta": "Pistachio tart", "a.basq": "Basque Cheesecake up close", "p.a1": "from above", "p.a2": "at 45°", "p.a3": "close to the crust", "mo.h": "slow, like dough", "mo.p": "Nothing jumps, nothing flashes. Hover over the examples.", "mo.d1": "The photo", "mo.d1p": "Moves in slowly, over almost two seconds.", "mo.l": "See today's menu", "mo.d2": "The link", "mo.d2p": "A gold line draws itself under the word.", "mo.d3": "The tag", "mo.d3p": "Swings once, as if hung on a nail.", "r.h": "you can hear the crust", "r.p": "Reels of 12–25 s. Real sound up front, music ~18 dB below. Text only in the safe zone: x 90–900, y 280–1250.", "r.c1": "0–2 s: the best shot", "r.c2": "cut on the gesture", "r.c3": "ending: 1.5 s", "d.0": "Monday", "dk.0": "reel", "d.1": "Tuesday", "dk.1": "photo", "d.2": "Wednesday", "dk.2": "reel", "d.3": "Thursday", "dk.3": "photo", "d.4": "Friday", "dk.4": "reel", "d.5": "Saturday", "dk.5": "photo", "d.6": "Sunday", "dk.6": "off", "po.h": "three reels a week", "st.1": "reels a month", "st.2": "photos a month", "st.3": "first post of the day", "st.4": "words on screen, at most", "v.k1": "like this:", "v.y": "Take it warm or you will miss it.", "v.y2": "Pain au Chocolat with real butter. 16 lei.", "v.k2": "not like this:", "v.n": "Discover the unique experience of our artisan croissant, made with passion!", "v.p": "Like the person at the counter: what it is, what it costs, when it comes out. Romanian with diacritics, product names in English.", "a.voce": "The board with the names of the starter", "v.c": "the same thing, in five languages", "rr.0": "Logo", "rd.0": "MAIÁ gold on board, black on paper, chalk on crust.", "rr.1": "Colours", "rd.1": "The ones from the walls and the logo, in the given proportions.", "rr.2": "Type", "rd.2": "Cormorant, EB Garamond and one line of chalk.", "rr.3": "Language", "rd.3": "Romanian with diacritics; product names in English.", "rr.4": "Video", "rd.4": "Six words at most, in the safe zone; real sound up front.", "rr.5": "People", "rd.5": "In close-up only with signed consent.", "ru.h": "what never changes", "e.h": "see you in the morning", "e.p": "Maia, artisan bakery by Tartine Factory · Vasile Lupu 77, Cluj-Napoca · KSM Media House, 2026", "a.hero": "Loaves in crates, under the name board", "hint": "← / → navigate · <b>N</b> notes · <b>F</b> fullscreen", "ld.w": "maia", "ld.s": "artisan bakery", "ld.k": "skip", "hud.n": "Notes"};
+var NOTES=["Deschidem cu ce e deja în brutărie: tabla, lăzile, prețul scris de mână. Ghidul nu inventează un look, îl scrie ca reguli.", "Arată că nu e o estetică inventată: culorile, scrisul și materialele sunt cele de pe pereți. Creta albă, scrisă de mână, e semnătura.", "Pe ecran folosim doar MAIÁ. Varianta principală e auriu pe tablă. Logo-ul complet vine pe slide-ul următor.", "Logo-ul complet e cel din fișierul original al clientului, curățat de textură. Pe ecran nu-l folosim, e prea încărcat la dimensiuni mici.", "Fiecare culoare are o sursă reală în brutărie. Auriul și portocaliul sunt cele din logo-ul original. Proporțiile spun cât din fiecare intră pe un material.", "Young Serif, EB Garamond și creta. Creta e La Belle Aurore, cu diacriticele complete și liberă pentru uz comercial; o scriem albă, fără umbră.", "Creta se scrie singură, ca pe tablă. Pe ecran o folosim rar: un rând, ca să conteze.", "Pozele arată brutăria dimineața: lumină din lateral, fundalurile care sunt deja acolo, mâini în cadru. Treci cu mouse-ul peste ele.", "Mișcarea vine de pe site-ul Pasticcino: arc moale pe butoane, plăci care se îndreaptă, etichete care se leagănă. Încet, nimic agresiv.", "Fiecare reel: primul cadru bun în două secunde, tăieturi pe gest, final cu MAIÁ auriu pe tablă. Textul stă în zona sigură, ca să nu-l acopere butoanele Instagram.", "Ritmul de pornire, din contract: 12 reels și în jur de 16 poze pe lună, plus un aftermovie. Story zilnic cu ce iese din cuptor; ajustăm după statistici.", "Vocea e cea de la tejghea: scurt, concret, cu cifre. Fără „descoperă”, „experiență unică” sau semne de exclamare.", "Șase reguli fixe. Orice abatere se discută întâi cu noi.", "Închidem cu semnătura de cretă. Ghidul complet, cu toate regulile, e în pagina web a brandului și în design system."];
+var I18N_EN={"c.l1": "good bread", "c.l2": "takes time to rise", "c.t": "The Maia brand guide", "c.s": "artisan bakery by Tartine Factory · Cluj-Napoca", "a.lazi": "Tartine bread in a wooden crate", "c.tg": "Tartine bread", "c.tgs": "26 lei / 650 g", "c.k": "KSM Media House · 2026", "w.h": "the brand is already on the walls", "w.p": "The boards painted by @ArtMiKio, the gold band beneath them, the wooden crates and checked tea towels. Everything that follows starts here.", "a.wall": "The coffee menu wall, written in chalk", "w.a1": "white chalk", "w.a2": "hand lettering", "w.a3": "the gold band", "l.h": "just the word", "l.p": "MAIÁ, from the original logo file, cleaned up. On screen and in reels it stands alone, on three grounds.", "l.a1": "print", "l.a2": "over video", "l.a3": "main: gold on board", "f.h": "the full logo", "f.p": "In its original colours: gold and orange. For packaging, signage and print. \"by Tartine Factory\" stays small.", "f.a": "packaging · signage · print", "cn.tabla": "Board", "cp.tabla": "copy", "cs.tabla": "from the board", "cn.creta": "Chalk", "cp.creta": "copy", "cs.creta": "from the chalk", "cn.auriu": "Gold", "cp.auriu": "copy", "cs.auriu": "from the gold band", "cn.miez": "Crumb", "cp.miez": "copy", "cs.miez": "from the pastry", "cn.coaja": "Crust", "cp.coaja": "copy", "cs.coaja": "from the crust", "cn.rosu": "Red", "cp.rosu": "copy", "cs.rosu": "from the price tags", "cn.portocaliu": "Orange", "cp.portocaliu": "copy", "cs.portocaliu": "from the logo", "k.h": "where the colour comes from", "k.p": "The big number: how many parts in a hundred each colour takes, on any material. Click a colour to copy its code.", "t.l": "Young Serif, for headings.", "t.b": "EB Garamond, for everything else: it rises in the starter overnight and goes in the oven early in the morning.", "t.c": "ă ș ț", "t.n": "La Belle Aurore, with a chalk filter", "a.wall2": "The letters on the coffee board", "m.r0": "Tartine bread", "m.p0": "26 lei", "m.r1": "with seeds", "m.p1": "30 lei", "m.r2": "white", "m.p2": "17 lei", "m.r3": "Pain au Chocolat", "m.p3": "16 lei", "m.r4": "Basque Cheesecake", "m.p4": "28 lei", "m.h": "fresh from the oven", "m.s": "see you in the morning", "m.ph": "Chalk is an accent, not a typeface.", "m.u1": "On a board it can be a menu.", "m.u2": "In reels and posts: one line, six words at most.", "m.u3": "White, no shadow, only on dark.", "m.t": "last tray", "m.ts": "today", "m.t2": "new", "m.t2s": "Cinnamon Rolls", "p.h": "window light", "p.p": "Warm, matte, up close. No flash, no filters. Warm, not orange.", "a.foto": "Pain au Chocolat and Basque Cheesecake on the counter", "a.tarta": "Pistachio tart", "a.basq": "Basque Cheesecake up close", "p.a1": "from above", "p.a2": "at 45°", "p.a3": "close to the crust", "mo.h": "slow, like dough", "mo.p": "Nothing jumps, nothing flashes. Hover over the examples.", "mo.d1": "The photo", "mo.d1p": "Moves in slowly, over almost two seconds.", "mo.l": "See today's menu", "mo.d2": "The link", "mo.d2p": "A gold line draws itself under the word.", "mo.d3": "The tag", "mo.d3p": "Swings once, as if hung on a nail.", "r.h": "you can hear the crust", "r.p": "Reels of 12–25 s. Real sound up front, music ~18 dB below. Text only in the safe zone: x 90–900, y 280–1250.", "r.c1": "0–2 s: the best shot", "r.c2": "cut on the gesture", "r.c3": "ending: 1.5 s", "d.0": "Monday", "dk.0": "reel", "d.1": "Tuesday", "dk.1": "photo", "d.2": "Wednesday", "dk.2": "reel", "d.3": "Thursday", "dk.3": "photo", "d.4": "Friday", "dk.4": "reel", "d.5": "Saturday", "dk.5": "photo", "d.6": "Sunday", "dk.6": "off", "po.h": "three reels a week", "st.1": "reels a month", "st.2": "photos a month", "st.3": "first post of the day", "st.4": "words on screen, at most", "v.k1": "like this:", "v.y": "Take it warm or you will miss it.", "v.y2": "Pain au Chocolat with real butter. 16 lei.", "v.k2": "not like this:", "v.n": "Discover the unique experience of our artisan croissant, made with passion!", "v.p": "Like the person at the counter: what it is, what it costs, when it comes out. Romanian with diacritics, product names in English.", "a.voce": "The board with the names of the starter", "v.c": "the same thing, in five languages", "rr.0": "Logo", "rd.0": "MAIÁ gold on board, black on paper, chalk on crust.", "rr.1": "Colours", "rd.1": "The ones from the walls and the logo, in the given proportions.", "rr.2": "Type", "rd.2": "Young Serif, EB Garamond and one line of chalk.", "rr.3": "Language", "rd.3": "Romanian with diacritics; product names in English.", "rr.4": "Video", "rd.4": "Six words at most, in the safe zone; real sound up front.", "rr.5": "People", "rd.5": "In close-up only with signed consent.", "ru.h": "what never changes", "e.h": "see you in the morning", "e.p": "Maia, artisan bakery by Tartine Factory · Vasile Lupu 77, Cluj-Napoca · KSM Media House, 2026", "a.hero": "Loaves in crates, under the name board", "hint": "← / → navigate · <b>N</b> notes · <b>F</b> fullscreen", "ld.w": "maia", "ld.s": "artisan bakery", "ld.k": "skip", "hud.n": "Notes"};
 document.documentElement.classList.add('js');
 (function(){
 var slides=[].slice.call(document.querySelectorAll('.slide')),tot=slides.length;
