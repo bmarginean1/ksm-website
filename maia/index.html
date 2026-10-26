@@ -36,9 +36,8 @@ button{font:inherit;color:inherit}
 #viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--tabla);overflow:hidden}
 #stage{position:relative;width:1280px;height:720px;flex:none;transform-origin:center center;overflow:hidden;background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover}
 /* one board that never moves: the band stays, the chalk of the last slide is wiped off and the next one is written */
-#stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:var(--auriu) url(https://bmarginean1.github.io/ksm-website/maia/img/c-auriu.jpg) center 85%/cover;z-index:9;pointer-events:none}
 .slide{position:absolute;inset:0;overflow:hidden;visibility:hidden}
-.slide>.band{display:none}
+.band{display:none!important}
 .slide.active{visibility:visible;z-index:2}
 .slide.leaving{visibility:visible;z-index:1;pointer-events:none;animation:wipeOut .55s cubic-bezier(.4,0,.6,1) forwards}
 .slide.entering{animation:boardIn .5s ease .32s both}
