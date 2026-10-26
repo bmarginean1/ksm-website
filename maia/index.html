@@ -34,13 +34,16 @@ img{display:block;max-width:100%}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--auriu);outline-offset:3px}
 #viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--tabla);overflow:hidden}
-#stage{position:relative;width:1280px;height:720px;flex:none;transform-origin:center center}
-.slide{position:absolute;inset:0;overflow:hidden;background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover;visibility:hidden;will-change:transform}
+#stage{position:relative;width:1280px;height:720px;flex:none;transform-origin:center center;overflow:hidden;background:var(--tabla) url(https://bmarginean1.github.io/ksm-website/maia/img/tabla-bg.jpg) center/cover}
+/* one board that never moves: the band stays, the chalk of the last slide is wiped off and the next one is written */
+#stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:var(--auriu) url(https://bmarginean1.github.io/ksm-website/maia/img/c-auriu.jpg) center 85%/cover;z-index:9;pointer-events:none}
+.slide{position:absolute;inset:0;overflow:hidden;visibility:hidden}
+.slide>.band{display:none}
 .slide.active{visibility:visible;z-index:2}
-.slide.leaving{visibility:visible;z-index:1}
-/* moving along the wall: the next stretch of board slides in, the last one drifts back and dims */
-.slide.go-in{transition:transform 1s cubic-bezier(.77,0,.18,1);box-shadow:0 0 90px 10px rgba(0,0,0,.55)}
-.slide.go-out{transition:transform 1s cubic-bezier(.77,0,.18,1),filter 1s ease}
+.slide.leaving{visibility:visible;z-index:1;pointer-events:none;animation:wipeOut .55s cubic-bezier(.4,0,.6,1) forwards}
+.slide.entering{animation:boardIn .5s ease .32s both}
+@keyframes wipeOut{0%{opacity:1;filter:blur(0)}100%{opacity:0;filter:blur(7px);transform:translateX(-14px)}}
+@keyframes boardIn{from{opacity:0}to{opacity:1}}
 .pos{position:absolute}
 .band{position:absolute;left:0;right:0;bottom:0;height:22px;background:var(--auriu) url(https://bmarginean1.github.io/ksm-website/maia/img/c-auriu.jpg) center 85%/cover;z-index:9}
 .mut{color:var(--mute)}
@@ -50,10 +53,11 @@ button{font:inherit;color:inherit}
 .chalk{font-family:var(--f-chalk);font-weight:400;color:var(--chalk);filter:url(#chalk);line-height:1.06}
 .chalk-s{font-family:var(--f-chalk);font-weight:400;color:var(--chalk);filter:url(#chalk-s);line-height:1.1}
 .wr{position:relative;display:inline-block}
-.wr::before{content:attr(data-t);position:absolute;left:0;top:0;right:0;opacity:.17;white-space:inherit}
-.wr>i{font-style:normal;display:block;-webkit-mask-image:linear-gradient(90deg,#000 0 46%,transparent 54% 100%);mask-image:linear-gradient(90deg,#000 0 46%,transparent 54% 100%);-webkit-mask-size:230% 100%;mask-size:230% 100%;-webkit-mask-position:0 0;mask-position:0 0;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
-.js .wr:not(.go)>i{-webkit-mask-position:100% 0;mask-position:100% 0}
-.wr.go>i{transition:-webkit-mask-position 1.6s var(--write),mask-position 1.6s var(--write)}
+.wr>i{font-style:normal;display:block}
+/* chalk is written letter by letter at hand speed: each glyph is wiped in left to right, one after the other */
+.wr .ch{display:inline-block;padding:.22em .14em;margin:-.22em -.14em;-webkit-mask-image:linear-gradient(90deg,#000 0 42%,transparent 58% 100%);mask-image:linear-gradient(90deg,#000 0 42%,transparent 58% 100%);-webkit-mask-size:240% 100%;mask-size:240% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:0 0;mask-position:0 0}
+.js .wr:not(.go) .ch{-webkit-mask-position:100% 0;mask-position:100% 0}
+.wr.go .ch{transition:-webkit-mask-position var(--cd,.24s) cubic-bezier(.55,.1,.45,.95) var(--dl,0s),mask-position var(--cd,.24s) cubic-bezier(.55,.1,.45,.95) var(--dl,0s)}
 .arr{overflow:visible;display:block;pointer-events:none}
 .arr g{fill:none;stroke:var(--chalk);stroke-linecap:round;stroke-linejoin:round;filter:url(#chalk-s)}
 .arr .ghost{opacity:.17}
@@ -153,7 +157,7 @@ button{font:inherit;color:inherit}
 #notes.show{transform:translateY(0)}
 #notes b{display:block;font-family:var(--f-display);font-weight:500;font-size:24px;color:var(--auriu);margin-bottom:6px}
 @media (max-width:700px){.hint{display:none}#hud{bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .wr:not(.go)>i{clip-path:inset(-25% 0 -25% 0)}.js .arr:not(.go) .ink path{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .wr:not(.go) .ch{-webkit-mask-position:0 0;mask-position:0 0}.js .arr:not(.go) .ink path{stroke-dashoffset:0}}
 @media print{#hud,#progress,.hint,#notes{display:none!important}}
 
 #hud.idle{opacity:.18}#hud.idle:hover,#hud:focus-within{opacity:1}
@@ -362,13 +366,18 @@ var notesEl=document.getElementById('notes'),lang='ro',timers=[];
 document.getElementById('tot').textContent=tot;
 var TITLES=['Copertă','Pereții','Logo','Logo complet','Culoare','Litere','Creta','Fotografie','Mișcare','Reels','Postare','Voce','Reguli fixe','Final'];
 function clearT(){timers.forEach(clearTimeout);timers=[];}
+function split(w){var ii=w.querySelector('i');if(!ii)return;var t=w.getAttribute('data-t')||ii.textContent;ii.textContent='';var n=0,cs=[].slice.call(t);
+ var per=Math.max(.055,Math.min(.1,1.6/Math.max(1,cs.length)));
+ cs.forEach(function(ch){if(ch===' '){ii.appendChild(document.createTextNode(' '));return;}var sp=document.createElement('span');sp.className='ch';sp.textContent=ch;sp.style.setProperty('--dl',(n*per).toFixed(3)+'s');sp.style.setProperty('--cd',(per*2.2).toFixed(3)+'s');ii.appendChild(sp);n++;});
+ w._dur=(n*per+per*2.2)*1000;}
+[].forEach.call(document.querySelectorAll('.wr'),split);
 function reveal(s){
  clearT();
  var ws=[].slice.call(s.querySelectorAll('.wr,.arr'));
  ws.forEach(function(el){el.classList.remove('go');});
  if(RM){ws.forEach(function(el){el.classList.add('go');});return;}
  void s.offsetWidth;
- ws.forEach(function(el,k){timers.push(setTimeout(function(){el.classList.add('go');},150+k*170));});
+ var tt=420;ws.forEach(function(el){timers.push(setTimeout(function(){el.classList.add('go');},tt));tt+=el.classList.contains('wr')?Math.max(350,(el._dur||800)*.8):260;});
  var rv=[].slice.call(s.querySelectorAll('.rv,.card,.pl,.tag,.paper'));
  rv.forEach(function(el,k){el.style.animation='none';void el.offsetWidth;var pop=el.matches('.card,.pl,.tag,.paper,.col,.stt,.d');el.style.animation=(pop?'revPop .8s var(--spring)':'revUp .7s var(--out)')+' both';el.style.animationDelay=(.08+k*.07)+'s';
   el.addEventListener('animationend',function f(){el.style.animation='';el.removeEventListener('animationend',f);});});
@@ -378,21 +387,20 @@ function reveal(s){
 }
 var prev=-1,tmo=0;
 function render(){
- var dir=prev<0?0:(i>prev?1:-1),ns=slides[i],os=prev>=0?slides[prev]:null;
- slides.forEach(function(s,j){if(j!==i&&j!==prev){s.classList.remove('active','leaving','go-in','go-out');s.style.transform='';s.style.filter='';}s.setAttribute('aria-hidden',j===i?'false':'true');});
+ var first=prev<0,ns=slides[i],os=prev>=0?slides[prev]:null;
+ slides.forEach(function(s,j2){if(j2!==i&&j2!==prev){s.classList.remove('active','leaving','entering');}s.setAttribute('aria-hidden',j2===i?'false':'true');});
  clearTimeout(tmo);
  if(os&&os!==ns&&!RM){
-  ns.classList.remove('go-in','go-out','leaving');ns.style.transform='translateX('+(dir*100)+'%)';ns.classList.add('active');void ns.offsetWidth;
-  ns.classList.add('go-in');ns.style.transform='translateX(0)';
-  os.classList.remove('active','go-in');os.classList.add('leaving','go-out');os.style.transform='translateX('+(-dir*28)+'%)';os.style.filter='brightness(.45)';
-  tmo=setTimeout(function(){os.classList.remove('leaving','go-out');os.style.transform='';os.style.filter='';ns.classList.remove('go-in');ns.style.transform='';},1050);
- }else{ns.classList.add('active');if(os&&os!==ns){os.classList.remove('active');}}
+  ns.classList.remove('leaving','entering');void ns.offsetWidth;ns.classList.add('active','entering');
+  os.classList.remove('active','entering');os.classList.add('leaving');
+  tmo=setTimeout(function(){os.classList.remove('leaving');ns.classList.remove('entering');},900);
+ }else{ns.classList.add('active');if(os&&os!==ns){os.classList.remove('active','leaving','entering');}}
  prev=i;
  document.getElementById('cur').textContent=i+1;
  document.getElementById('progress').style.width=((i+1)/tot*100)+'%';
  notesEl.innerHTML='<b>'+(i+1)+'. '+TITLES[i]+'</b>'+(NOTES[i]||'');
  try{history.replaceState(null,'','#'+(i+1));}catch(e){}
- var rs=slides[i];setTimeout(function(){if(rs===slides[i])reveal(rs);},dir===0?0:380);
+ var rs=slides[i];setTimeout(function(){if(rs===slides[i])reveal(rs);},first?0:300);
 }
 function go(d){var n=Math.max(0,Math.min(tot-1,i+d));if(n!==i){i=n;render();}}
 document.getElementById('next').onclick=function(){go(1);};
@@ -421,7 +429,7 @@ var nodes=[].slice.call(document.querySelectorAll('[data-i18n],[data-i18n-html],
 nodes.forEach(function(n){if(n.hasAttribute('data-i18n-wr'))n._ro=n.getAttribute('data-t');else if(n.hasAttribute('data-i18n-alt'))n._ro=n.getAttribute('alt');else n._ro=n.hasAttribute('data-i18n-html')?n.innerHTML:n.textContent;});
 function apply(l){lang=l;document.documentElement.lang=l;
  nodes.forEach(function(n){var k=n.getAttribute('data-i18n')||n.getAttribute('data-i18n-html')||n.getAttribute('data-i18n-wr')||n.getAttribute('data-i18n-alt');var v=(l==='en'&&I18N_EN[k]!=null)?I18N_EN[k]:n._ro;
-  if(n.hasAttribute('data-i18n-wr')){n.setAttribute('data-t',v);n.firstChild.textContent=v;}
+  if(n.hasAttribute('data-i18n-wr')){n.setAttribute('data-t',v);split(n);}
   else if(n.hasAttribute('data-i18n-alt'))n.setAttribute('alt',v);
   else if(n.hasAttribute('data-i18n-html'))n.innerHTML=v;else n.textContent=v;});
  document.getElementById('langBtn').textContent=l==='en'?'RO':'EN';
@@ -434,9 +442,9 @@ fit();
 var L=document.getElementById('loader');
 function startDeck(){render();}
 if(L&&!RM){
- var lw=L.querySelectorAll('.wr');var t1=setTimeout(function(){lw.forEach(function(w,k){setTimeout(function(){w.classList.add('go');},k*900);});},250);
+ var lw=L.querySelectorAll('.wr');var t1=setTimeout(function(){var lt=0;lw.forEach(function(w){setTimeout(function(){w.classList.add('go');},lt);lt+=(w._dur||800)*.85;});},250);
  function done(){clearTimeout(t1);clearTimeout(t2);clearTimeout(t3);L.classList.add('mark');setTimeout(function(){L.classList.add('out');startDeck();setTimeout(function(){L.remove();},1100);},700);}
- var t2=setTimeout(function(){L.classList.add('mark');},2500),t3=setTimeout(function(){L.classList.add('out');startDeck();setTimeout(function(){L&&L.parentNode&&L.remove();},1100);},3300);
+ var t2=setTimeout(function(){L.classList.add('mark');},2900),t3=setTimeout(function(){L.classList.add('out');startDeck();setTimeout(function(){L&&L.parentNode&&L.remove();},1100);},3700);
  L.querySelector('.skip').addEventListener('click',function(e){e.stopPropagation();done();});
 }else{if(L)L.remove();startDeck();}
 
