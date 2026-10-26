@@ -189,6 +189,11 @@ h1,h2,h3{font-family:var(--f-display);font-weight:500;letter-spacing:-.015em;tex
 .zoom{overflow:hidden}
 .zoom img{transition:transform 1.4s var(--out)}
 @media(hover:hover){.zoom:hover img{transform:scale(1.035)}}
+.tilt{will-change:transform;transition:transform .6s var(--out)}
+.tilt-on{transition:none!important}
+.tilt-on img{transition:none!important}
+.ext{--ext:#3E352B;display:inline-block;transition:transform .5s var(--out)}
+.paper .ext{--ext:#C4B396}
 
 /* motion */
 .demos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
@@ -315,7 +320,7 @@ td{font-variant-numeric:tabular-nums}
  <div class="wrap">
   <img class="word" src="https://bmarginean1.github.io/ksm-website/maia/img/maia.svg" alt="Maiá" width="815" height="297">
   <div class="row">
-   <div><h1 id="t">Ghidul de brand</h1><p class="meta">Maia, brutărie artizanală by Tartine Factory<br>Vasile Lupu 77, Cluj-Napoca</p></div>
+   <div><h1 id="t" class="ext">Ghidul de brand</h1><p class="meta">Maia, brutărie artizanală by Tartine Factory<br>Vasile Lupu 77, Cluj-Napoca</p></div>
    <div class="say"><div class="chalk wr" data-t="pâinea bună se crește"><i>pâinea bună se crește</i></div></div>
   </div>
  </div>
@@ -325,7 +330,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap paper" id="logo" aria-labelledby="h-logo"><div class="wrap">
  <header class="ch-head">
   <p class="num">1</p>
-  <div class="ttl"><h2 id="h-logo">Logo</h2><div class="chalk note wr" data-t="doar cuvântul"><i>doar cuvântul</i></div></div>
+  <div class="ttl"><h2 id="h-logo" class="ext">Logo</h2><div class="chalk note wr" data-t="doar cuvântul"><i>doar cuvântul</i></div></div>
   <p class="lead">MAIÁ, din fișierul original, curățat de textură. Pe ecran și în reels apare singur. Logo-ul complet rămâne pentru ambalaj, firmă și tipar.</p>
  </header>
  <div class="block">
@@ -358,7 +363,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap" id="culoare" aria-labelledby="h-cul"><div class="wrap">
  <header class="ch-head">
   <p class="num">2</p>
-  <div class="ttl"><h2 id="h-cul">Culoare</h2><div class="chalk note wr" data-t="de unde vine culoarea"><i>de unde vine culoarea</i></div></div>
+  <div class="ttl"><h2 id="h-cul" class="ext">Culoare</h2><div class="chalk note wr" data-t="de unde vine culoarea"><i>de unde vine culoarea</i></div></div>
   <p class="lead">Fiecare culoare e luată din brutărie. Lățimea benzii e partea pe care o primește din o sută, pe orice material. Atinge o culoare ca să-i copiezi codul.</p>
  </header>
  <div class="prop" id="prop"><button type="button" class="" data-hex="#1F1E1B" style="flex-grow:56;background:#1F1E1B;color:#F2ECE0" aria-label="Tablă, 56 din 100, #1F1E1B. Copiază codul"><span>56</span></button><button type="button" class="" data-hex="#F2ECE0" style="flex-grow:25;background:#F2ECE0;color:#1F1E1B" aria-label="Cretă, 25 din 100, #F2ECE0. Copiază codul"><span>25</span></button><button type="button" class="" data-hex="#D3A573" style="flex-grow:8;background:#D3A573;color:#1F1E1B" aria-label="Auriu, 8 din 100, #D3A573. Copiază codul"><span>8</span></button><button type="button" class="" data-hex="#E6D3A8" style="flex-grow:5;background:#E6D3A8;color:#1F1E1B" aria-label="Miez, 5 din 100, #E6D3A8. Copiază codul"><span>5</span></button><button type="button" class="thin" data-hex="#8E5F3A" style="flex-grow:3;background:#8E5F3A;color:#F2ECE0" aria-label="Coajă, 3 din 100, #8E5F3A. Copiază codul"><span>3</span></button><button type="button" class="thin" data-hex="#B4473C" style="flex-grow:2;background:#B4473C;color:#F2ECE0" aria-label="Roșu, 2 din 100, #B4473C. Copiază codul"><span>2</span></button><button type="button" class="thin" data-hex="#CB7040" style="flex-grow:1;background:#CB7040;color:#1F1E1B" aria-label="Portocaliu, 1 din 100, #CB7040. Copiază codul"><span>1</span></button></div>
@@ -370,11 +375,11 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap paper" id="litere" aria-labelledby="h-lit"><div class="wrap">
  <header class="ch-head">
   <p class="num">3</p>
-  <div class="ttl"><h2 id="h-lit">Litere</h2><div class="chalk note wr" data-t="două garamonduri și creta"><i>două garamonduri și creta</i></div></div>
+  <div class="ttl"><h2 id="h-lit" class="ext">Litere</h2><div class="chalk note wr" data-t="două garamonduri și creta"><i>două garamonduri și creta</i></div></div>
   <p class="lead">Cormorant Garamond pentru titluri, EB Garamond pentru text și creta pentru un singur rând. Nimic altceva.</p>
  </header>
  <div class="spec block">
-  <div><div class="big" aria-hidden="true">Pâine</div><div class="glyphs" aria-hidden="true">Aa Ăă Ââ Îî Șș Țț</div></div>
+  <div><div class="big ext" aria-hidden="true">Pâine</div><div class="glyphs" aria-hidden="true">Aa Ăă Ââ Îî Șș Țț</div></div>
   <p class="body">Crește în maia peste noapte și intră în cuptor dimineața devreme. Pe la prânz, de obicei, nu mai e.</p>
  </div>
  <div class="block">
@@ -393,7 +398,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap" id="creta" aria-labelledby="h-cre"><div class="wrap">
  <header class="ch-head">
   <p class="num">4</p>
-  <div class="ttl"><h2 id="h-cre">Creta</h2><div class="chalk note wr" data-t="azi, din cuptor"><i>azi, din cuptor</i></div></div>
+  <div class="ttl"><h2 id="h-cre" class="ext">Creta</h2><div class="chalk note wr" data-t="azi, din cuptor"><i>azi, din cuptor</i></div></div>
   <p class="lead">Creta e un accent. Pe tabla din brutărie poate fi meniu. În reels, postări și tipar e un singur rând.</p>
  </header>
  <div class="menu">
@@ -413,7 +418,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap paper" id="foto" aria-labelledby="h-foto"><div class="wrap">
  <header class="ch-head">
   <p class="num">5</p>
-  <div class="ttl"><h2 id="h-foto">Fotografie</h2><div class="chalk note wr" data-t="lumină de geam"><i>lumină de geam</i></div></div>
+  <div class="ttl"><h2 id="h-foto" class="ext">Fotografie</h2><div class="chalk note wr" data-t="lumină de geam"><i>lumină de geam</i></div></div>
   <p class="lead">Brutăria cum e dimineața: caldă, mată, de aproape. Fără studio, fără blitz, fără filtre. Cald, nu portocaliu.</p>
  </header>
  <figure class="ph-big zoom"><img src="https://bmarginean1.github.io/ksm-website/maia/img/pain.jpg" alt="Pain au Chocolat pe tava de lemn, cu eticheta de preț" loading="lazy"></figure>
@@ -430,7 +435,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap" id="miscare" aria-labelledby="h-mis"><div class="wrap">
  <header class="ch-head">
   <p class="num">6</p>
-  <div class="ttl"><h2 id="h-mis">Mișcare</h2><div class="chalk note wr" data-t="încet, ca aluatul"><i>încet, ca aluatul</i></div></div>
+  <div class="ttl"><h2 id="h-mis" class="ext">Mișcare</h2><div class="chalk note wr" data-t="încet, ca aluatul"><i>încet, ca aluatul</i></div></div>
   <p class="lead">Pe web și în reels, mișcarea e rară și moale. Nimic nu sare, nimic nu clipește. Treci cu mouse-ul peste exemple.</p>
  </header>
  <div class="demos">
@@ -450,7 +455,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap paper" id="montaj" aria-labelledby="h-mon"><div class="wrap">
  <header class="ch-head">
   <p class="num">7</p>
-  <div class="ttl"><h2 id="h-mon">Montaj</h2><div class="chalk note wr" data-t="crusta se aude"><i>crusta se aude</i></div></div>
+  <div class="ttl"><h2 id="h-mon" class="ext">Montaj</h2><div class="chalk note wr" data-t="crusta se aude"><i>crusta se aude</i></div></div>
   <p class="lead">Reels de 12–25 de secunde. Sunetul real în față, muzica cu vreo 18 dB mai jos. Textul stă doar în zona sigură.</p>
  </header>
  <div class="reels">
@@ -468,7 +473,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap" id="postare" aria-labelledby="h-pos"><div class="wrap">
  <header class="ch-head">
   <p class="num">8</p>
-  <div class="ttl"><h2 id="h-pos">Postare</h2><div class="chalk note wr" data-t="trei reels pe săptămână"><i>trei reels pe săptămână</i></div></div>
+  <div class="ttl"><h2 id="h-pos" class="ext">Postare</h2><div class="chalk note wr" data-t="trei reels pe săptămână"><i>trei reels pe săptămână</i></div></div>
   <p class="lead">Un ritm de pornire, pe care îl ajustăm după statistici. Zilnic, story cu ce a ieșit din cuptor.</p>
  </header>
  <div class="week">
@@ -482,13 +487,13 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap paper" id="voce" aria-labelledby="h-voce"><div class="wrap">
  <header class="ch-head">
   <p class="num">9</p>
-  <div class="ttl"><h2 id="h-voce">Voce</h2><div class="chalk note wr" data-t="ca omul de la tejghea"><i>ca omul de la tejghea</i></div></div>
+  <div class="ttl"><h2 id="h-voce" class="ext">Voce</h2><div class="chalk note wr" data-t="ca omul de la tejghea"><i>ca omul de la tejghea</i></div></div>
   <p class="lead">Ce e, cât costă, când iese. Română cu diacritice, produsele în engleză, fără semne de exclamare.</p>
  </header>
  <div class="voice">
   <div>
    <p class="lbl">Așa</p>
-   <p class="say-yes">Îl iei cald sau nu-l mai prinzi.</p>
+   <p class="say-yes ext">Îl iei cald sau nu-l mai prinzi.</p>
    <p class="say-yes2">Pain au Chocolat cu unt adevărat. 16 lei.</p>
    <p class="lbl" style="margin-top:56px">Nu așa</p>
    <p class="say-no">Descoperă experiența unică a croissantului nostru artizanal, pregătit cu pasiune!</p>
@@ -503,7 +508,7 @@ td{font-variant-numeric:tabular-nums}
 <section class="chap" id="reguli" aria-labelledby="h-reg"><div class="wrap">
  <header class="ch-head">
   <p class="num">10</p>
-  <div class="ttl"><h2 id="h-reg">Reguli fixe</h2><div class="chalk note wr" data-t="ce nu se schimbă"><i>ce nu se schimbă</i></div></div>
+  <div class="ttl"><h2 id="h-reg" class="ext">Reguli fixe</h2><div class="chalk note wr" data-t="ce nu se schimbă"><i>ce nu se schimbă</i></div></div>
   <p class="lead">Orice abatere de la ele se discută întâi.</p>
  </header>
  <dl class="rows "><div><dt>Logo</dt><dd>MAIÁ auriu pe tablă, negru pe hârtie, cretă pe coajă. Niciodată peste o poză încărcată.</dd></div><div><dt>Culori</dt><dd>Cele șapte din brutărie, în proporțiile date.</dd></div><div><dt>Litere</dt><dd>Cormorant pentru titluri, EB Garamond pentru text, creta pentru un singur rând.</dd></div><div><dt>Limbă</dt><dd>Română cu diacritice; produsele în engleză.</dd></div><div><dt>Video</dt><dd>Cel mult șase cuvinte pe ecran, în zona sigură; sunetul real în față.</dd></div><div><dt>Oameni</dt><dd>În prim-plan doar cu acord semnat.</dd></div></dl>
@@ -552,5 +557,33 @@ var out=document.getElementById('copied');
 document.querySelectorAll('#prop button').forEach(function(b){b.addEventListener('click',function(){var h=b.getAttribute('data-hex');
  function ok(){out.textContent='Copiat: '+h;}
  try{navigator.clipboard.writeText(h).then(ok,function(){out.textContent=h;});}catch(e){out.textContent=h;}});});
+/* photos and plates tilt toward the cursor, the picture drifting the other way; display type extrudes away from the cursor */
+if(matchMedia('(hover: hover) and (pointer: fine)').matches&&!reduce){
+ document.querySelectorAll('.zoom,.plate,.reels .ph,.voice figure,.demo .st').forEach(function(el){
+  el.classList.add('tilt');var tx=0,ty=0,cx=0,cy=0,raf=0,on=false;var img=el.classList.contains('plate')?null:el.querySelector('img');
+  function loop(){cx+=(tx-cx)*.12;cy+=(ty-cy)*.12;
+   el.style.transform='perspective(1000px) rotateX('+(-cy*7).toFixed(2)+'deg) rotateY('+(cx*9).toFixed(2)+'deg) translateY(-8px) scale(1.03)';
+   if(img)img.style.transform='translate('+(-cx*12).toFixed(1)+'px,'+(-cy*12).toFixed(1)+'px) scale(1.1)';
+   if(on||Math.abs(cx)>.002||Math.abs(cy)>.002)raf=requestAnimationFrame(loop);else raf=0;}
+  el.addEventListener('mouseenter',function(){on=true;el.classList.add('tilt-on');if(!raf)raf=requestAnimationFrame(loop);});
+  el.addEventListener('mousemove',function(e){var r=el.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2;});
+  el.addEventListener('mouseleave',function(){on=false;tx=0;ty=0;cancelAnimationFrame(raf);raf=0;el.classList.remove('tilt-on');el.style.transform='';if(img)img.style.transform='';});
+ });
+ var exts=[].slice.call(document.querySelectorAll('.ext')),vis=new Set();
+ var io4=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)vis.add(e.target);else vis.delete(e.target);});});
+ var mx=innerWidth/2,my=innerHeight/2;
+ addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;},{passive:true});
+ exts.forEach(function(el){el._d=3;el._td=3;el._sx=0;el._sy=0;el._col=getComputedStyle(el).getPropertyValue('--ext').trim()||'#3E352B';io4.observe(el);
+  el.addEventListener('mouseenter',function(){el._td=12;});el.addEventListener('mouseleave',function(){el._td=3;});});
+ (function tick(){
+  vis.forEach(function(el){var r=el.getBoundingClientRect();
+   var dx=(r.left+r.width/2)-mx,dy=(r.top+r.height/2)-my,l=Math.hypot(dx,dy)||1;
+   el._sx+=(dx/l-el._sx)*.08;el._sy+=(dy/l-el._sy)*.08;el._d+=(el._td-el._d)*.12;
+   var s=[],n=Math.round(el._d);
+   for(var k=1;k<=n;k++)s.push((el._sx*k).toFixed(1)+'px '+(Math.max(.4,el._sy*k+.6*k)).toFixed(1)+'px 0 '+el._col);
+   el.style.textShadow=s.join(',');
+   el.style.transform='translate('+(-el._sx*el._d*.35).toFixed(1)+'px,'+(-el._d*.35).toFixed(1)+'px)';});
+  requestAnimationFrame(tick);})();
+}
 })();
 </script>
