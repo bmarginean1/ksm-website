@@ -523,6 +523,10 @@ html.print .hs>button{display:none}
 html.print .card{position:static;opacity:1;visibility:visible;transform:none;width:auto;display:block;background:rgba(14,14,14,.78)}
 html.print .card .actor img{filter:none}
 html.print .t.one,html.print .lead.one{white-space:nowrap}
+html.print img,html.print .logo svg,html.print .bg img,html.print .night .bg img,html.print .pc .ph img,html.print .team .m .ph img{filter:none!important}
+html.print .bg img{transform:none!important;will-change:auto}
+html.print .bg,html.print .tilt,html.print .scene .tilt.tilt.tilt{transform:none!important;will-change:auto}
+html.print .night .bg::after{background:linear-gradient(rgba(11,11,11,.62),rgba(11,11,11,.42) 42%,rgba(11,11,11,.8))}
 
 .pdfs{margin:18px 0 0;display:flex;align-items:center;justify-content:center;gap:4px 18px;flex-wrap:wrap;font:400 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(244,241,234,.55)}
 html .pdfs .pill{margin:0;padding:8px 2px;gap:10px;font-size:12px}html .pdfs .pill::before{width:18px}html .pdfs .pill:hover::before{width:34px}html .pdfs .pill::after{content:"↓";font-size:13px}html .pdfs .pill:hover::after{transform:translateY(3px)}
