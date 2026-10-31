@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>One of Us Knows</title>
+<meta name="description" content="One of Us Knows — a psychological thriller starring Mădălina Ghenea.">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:title" content="One of Us Knows">
+<meta property="og:description" content="For three years, someone kept quiet.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://bmarginean1.github.io/ksm-website/una-dintre-noi-stie/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://bmarginean1.github.io/ksm-website/una-dintre-noi-stie/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://bmarginean1.github.io/ksm-website/una-dintre-noi-stie/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/frames/01-coperta.jpg">
+<style>
+:root{
+  --bg:#0B0B0B; --paper:#F4F1EA; --ink:#111111; --red:#B3121B; --red-l:#e04a52; --amber:#E8A33D;
+  --line:rgba(244,241,234,.16); --screen:#1B1D22;
+  --serif:'Spectral',Georgia,serif; --sans:'Plus Jakarta Sans',system-ui,sans-serif; --type:'Courier Prime','Courier New',monospace;
+  --ease:cubic-bezier(.22,.8,.12,1); --ease2:cubic-bezier(.65,0,.35,1);
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--paper);font:300 16px/1.65 var(--sans);letter-spacing:-.01em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.locked{overflow:hidden}
+::selection{background:var(--red);color:var(--paper)}
+[data-l]{display:none}
+html[data-lang="en"] [data-l="en"],html[data-lang="ro"] [data-l="ro"],html[data-lang="it"] [data-l="it"]{display:revert}
+[data-v="investor"]{display:none!important}
+html.inv [data-v="investor"]{display:revert!important}
+html.inv .scene[data-v="investor"]{display:flex!important}
+em{font-style:italic}
+button{font:inherit;color:inherit}
+
+/* film grain */
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:60;opacity:.08;mix-blend-mode:overlay;animation:grain 1s steps(6) infinite;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+.wm{font:400 11px/1.3 var(--serif);letter-spacing:.62em;text-transform:uppercase;padding-left:.62em;white-space:nowrap}
+
+/* ---------- gate ---------- */
+.gate{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 1.2s var(--ease2),visibility 1.2s}
+.gate.gone{opacity:0;visibility:hidden}
+.gate .wm{position:absolute;top:34px;left:0;right:0;text-align:center;color:rgba(244,241,234,.72);line-height:1.5}
+.strip{position:relative;width:min(620px,84vw);display:grid;grid-template-columns:repeat(6,1fr);height:clamp(64px,8.4vw,104px);transition:transform 1.4s var(--ease2),opacity 1.2s}
+.gate.gone .strip{transform:scale(1.25);opacity:0}
+.strip span{background-size:cover;background-position:center;filter:saturate(.85) brightness(.82);opacity:0;animation:tile .9s var(--ease) forwards}
+.strip span:nth-child(2){animation-delay:.08s}.strip span:nth-child(3){animation-delay:.16s}.strip span:nth-child(4){animation-delay:.24s}.strip span:nth-child(5){animation-delay:.32s}.strip span:nth-child(6){animation-delay:.4s}
+@keyframes tile{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.strip svg{position:absolute;inset:-14px -6px;width:calc(100% + 12px);height:calc(100% + 28px);overflow:visible}
+.wire{fill:none;stroke:var(--paper);stroke-width:2;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 2.8s .7s var(--ease2) forwards;filter:drop-shadow(0 0 5px rgba(244,241,234,.75))}
+.node{fill:none;stroke:var(--paper);stroke-width:1.5;opacity:0;animation:fade .8s 3.2s forwards}
+.node-in{fill:var(--paper);opacity:0;animation:fade .8s 3.3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fade{to{opacity:1}}
+.gate h1{font:300 clamp(30px,3.2vw,44px)/1.1 var(--serif);letter-spacing:-.03em;margin:38px 0 6px;text-align:center}
+.gate p{margin:0;color:rgba(244,241,234,.62);font-size:14px;text-align:center}
+.pill{cursor:pointer;margin-top:26px;font:400 12px/1 var(--sans);letter-spacing:.04em;border:1px solid rgba(244,241,234,.55);border-radius:999px;padding:10px 22px;background:transparent;position:relative;overflow:hidden;isolation:isolate;transition:color .5s var(--ease),border-color .5s}
+.pill::before{content:"";position:absolute;inset:0;background:var(--paper);transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1;border-radius:inherit}
+.pill:hover,.pill:focus-visible{color:var(--ink);border-color:var(--paper);outline:none}
+.pill:hover::before,.pill:focus-visible::before{transform:none}
+.gate .glang{position:absolute;bottom:30px;display:flex;gap:4px}
+
+/* ---------- scenes ---------- */
+main{position:relative}
+.scene{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:13vh 6vw 20vh;overflow:hidden;isolation:isolate;background:var(--bg)}
+.bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.bg img{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;transform:translate3d(0,var(--py,0px),0) scale(var(--sc,1.12));transition:transform 2.4s var(--ease);will-change:transform}
+.scene.is-in .bg img{--sc:1.02}
+.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(11,11,11,var(--top,.55)),rgba(11,11,11,var(--mid,.25)) 42%,rgba(11,11,11,var(--bot,.72)));pointer-events:none}
+.shade{position:absolute;inset:0;z-index:5;background:#000;opacity:var(--shade,0);pointer-events:none}
+.plain .bg{background:radial-gradient(ellipse at 50% 0%,#191a19,#0b0b0b 70%)}
+.center{justify-content:center}
+
+/* type */
+.k{font:400 11px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:rgba(244,241,234,.62);margin-bottom:18px;text-align:center}
+.k.red{color:var(--red-l)}
+.t{font:300 clamp(32px,min(4.1vw,7.4vh),64px)/1.08 var(--serif);letter-spacing:-.035em;margin:0 0 12px;text-align:center;max-width:15em;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.t.big{font-size:clamp(54px,min(8.6vw,15vh),138px);line-height:.95;letter-spacing:-.045em}
+.sub{font-size:15px;color:rgba(244,241,234,.72);text-align:center;margin:0}
+.body{max-width:600px;text-align:center;margin:24px auto 0}
+.body p{margin:0 0 14px;font-size:clamp(14.5px,min(1.12vw,2.05vh),17.5px);color:rgba(244,241,234,.84)}
+.lead{font:300 clamp(18px,min(1.55vw,2.8vh),24px)/1.45 var(--serif)!important;letter-spacing:-.015em;color:var(--paper)!important}
+.red{color:var(--red-l)}
+.clock{position:absolute;top:30px;left:34px;font:400 12px/1 var(--type);letter-spacing:.08em;color:rgba(244,241,234,.6);z-index:2}
+
+/* word reveal (titles) + block reveal */
+.w{display:inline-block;opacity:0;transform:translateY(.38em);filter:blur(8px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease),filter 1.1s var(--ease);transition-delay:calc(var(--i)*55ms + 120ms)}
+.scene.is-in .w{opacity:1;transform:none;filter:none}
+.rv{opacity:0;transform:translateY(18px);filter:blur(6px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease),filter 1.2s var(--ease)}
+.scene.is-in .rv{opacity:1;transform:none;filter:none}
+.scene.is-in .d1{transition-delay:.25s}.scene.is-in .d2{transition-delay:.45s}.scene.is-in .d3{transition-delay:.6s}.scene.is-in .d4{transition-delay:.75s}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:min(1080px,100%);margin-top:36px;border-top:1px solid var(--line)}
+.facts div{padding:20px 16px;border-bottom:1px solid var(--line);text-align:center}
+.facts span.k{display:block;margin:0 0 8px;font-size:10px}
+.facts b{font:300 19px/1.3 var(--serif);letter-spacing:-.01em}
+.chip{display:inline-block;font:400 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(244,241,234,.45);border-radius:999px;padding:6px 10px;vertical-align:middle}
+.chip.ok{border-color:var(--paper);background:var(--paper);color:var(--ink)}
+.chip.r{border-color:var(--red);color:var(--red-l)}
+
+.sms{background:rgba(27,29,34,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:18px;padding:16px 18px;max-width:420px;font:400 15px/1.55 var(--type);color:#e6e8ec;text-align:left;margin:28px auto 0;border:1px solid rgba(255,255,255,.08)}
+.sms .from{font:400 11px var(--sans);color:#9aa2b1;margin-bottom:6px;display:flex;justify-content:space-between}
+
+/* triptych */
+.tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:min(1180px,100%);margin-top:30px}
+.frame{position:relative;aspect-ratio:4/5;max-height:46vh;width:100%;overflow:hidden;border-radius:2px;margin:0}
+.frame img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.6s var(--ease),filter 1s var(--ease);filter:brightness(.82)}
+.frame:hover img{transform:scale(1.1);filter:brightness(1)}
+.frame figcaption{position:absolute;left:18px;bottom:16px;font:300 italic 21px/1 var(--serif);color:var(--paper);text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.55));pointer-events:none}
+
+/* hotspots */
+.spots{position:absolute;inset:0;z-index:3}
+.hs{position:absolute;transform:translate(-50%,-50%)}
+.hs>button{cursor:pointer;display:flex;align-items:center;gap:0;background:rgba(11,11,11,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(244,241,234,.55);border-radius:999px;padding:4px;transition:gap .5s var(--ease),padding .5s var(--ease),background .5s}
+.hs .dot{position:relative;width:24px;height:24px;border-radius:50%;border:1px solid rgba(244,241,234,.9);display:grid;place-items:center;font:300 15px/1 var(--sans);transition:background .4s,color .4s,transform .5s var(--ease)}
+.hs .dot::before{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(244,241,234,.7);animation:ping 2.8s infinite}
+@keyframes ping{from{transform:scale(1);opacity:.8}to{transform:scale(2.3);opacity:0}}
+.hs .lbl{max-width:0;overflow:hidden;white-space:nowrap;font:400 13px/1 var(--sans);transition:max-width .6s var(--ease),padding .6s var(--ease);padding:0}
+.hs>button:hover,.hs.open>button,.hs>button:focus-visible{gap:8px;padding:4px 14px 4px 4px;background:rgba(11,11,11,.55);outline:none}
+.hs>button:hover .lbl,.hs.open .lbl,.hs>button:focus-visible .lbl{max-width:120px}
+.hs>button:hover .dot,.hs.open .dot{background:var(--paper);color:var(--ink);transform:rotate(45deg)}
+.hs .lbl.always{max-width:120px;padding-right:10px;margin-left:8px}
+.card{position:absolute;top:46px;left:50%;width:280px;transform:translate(-50%,10px);opacity:0;visibility:hidden;transition:opacity .5s var(--ease),transform .5s var(--ease),visibility .5s;background:rgba(14,14,14,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);padding:16px 18px;border-radius:6px;text-align:left}
+.hs:hover .card,.hs.open .card,.hs:focus-within .card{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.card h4{font:300 28px/1 var(--serif);letter-spacing:-.025em;margin:0 0 6px}
+.card .ev{font:700 10px/1.4 var(--type);letter-spacing:.06em;color:var(--red-l);text-transform:uppercase;margin-bottom:8px}
+.card p{margin:0;font-size:13.5px;color:rgba(244,241,234,.84)}
+
+/* cast */
+.cast{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;width:min(1180px,100%);margin-top:34px}
+.pc .ph{position:relative;aspect-ratio:3/4;max-height:38vh;width:100%;overflow:hidden;background:#141414;border-radius:2px}
+.pc .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.88);transform:scale(1.03);transition:filter 1.1s var(--ease),transform 1.6s var(--ease)}
+.pc:hover .ph img{filter:grayscale(0) contrast(1) brightness(1);transform:scale(1.09)}
+.pc .ph .q{position:absolute;inset:0;display:grid;place-items:center;font:300 italic 54px/1 var(--serif);color:#2c2c2c}
+.pc .role{font:400 10px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:rgba(244,241,234,.58);margin:14px 0 6px}
+.pc .nm{font:300 21px/1.15 var(--serif);letter-spacing:-.02em;margin-bottom:8px}
+.pc .kf{font-size:12.5px;color:rgba(244,241,234,.58);margin-top:8px;line-height:1.4}
+
+.comps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;width:min(1080px,100%);margin-top:34px}
+.comp{border-top:1px solid var(--line);padding-top:18px;text-align:center}
+.comp .nm{font:300 italic 30px/1.1 var(--serif);letter-spacing:-.02em}
+.comp .yr{font:400 12px var(--type);color:rgba(244,241,234,.58);margin:6px 0 10px}
+.comp p{margin:0;font-size:14.5px;color:rgba(244,241,234,.78)}
+
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px;width:min(1120px,100%);margin-top:36px;text-align:left}
+.team .m .ph{width:110px;aspect-ratio:1;overflow:hidden;margin-bottom:16px;background:#141414;border-radius:50%}
+.team .m .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter 1s var(--ease),transform 1.4s var(--ease)}
+.team .m:hover .ph img{filter:none;transform:scale(1.06)}
+.team .m .k{text-align:left;margin-bottom:8px}
+.team .m h3{font:300 27px/1.1 var(--serif);letter-spacing:-.025em;margin:0 0 8px}
+.team .m p{margin:0;font-size:14.5px;color:rgba(244,241,234,.8)}
+.mark{width:110px;aspect-ratio:1;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin-bottom:16px;font:300 italic 24px/1 var(--serif);transition:background .6s var(--ease),color .6s}
+.team .m:hover .mark{background:var(--paper);color:var(--ink)}
+
+.path{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));width:min(1180px,100%);margin-top:44px;position:relative}
+.path::before{content:"";position:absolute;left:0;right:0;top:6px;height:1px;background:var(--line)}
+.path div{position:relative;padding:28px 10px 0;text-align:center;font:300 16px/1.3 var(--serif)}
+.path div::before{content:"";position:absolute;top:0;left:50%;width:13px;height:13px;margin-left:-6.5px;border-radius:50%;border:1px solid var(--paper);background:var(--bg)}
+.path div.now::before{background:var(--red);border-color:var(--red);box-shadow:0 0 0 6px rgba(179,18,27,.22)}
+
+.points{list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 50px;width:min(980px,100%)}
+.points li{border-top:1px solid var(--line);padding-top:16px;font:300 22px/1.35 var(--serif);letter-spacing:-.015em}
+.points li span.n{display:block;font:400 11px var(--type);color:var(--red-l);margin-bottom:8px}
+
+.chips{display:flex;gap:10px;justify-content:center;margin-top:22px}
+.chips i{width:34px;height:34px;border-radius:50%;border:1px solid var(--line)}
+.note{font-size:12.5px;color:rgba(244,241,234,.55);margin-top:22px;text-align:center}
+a.u{color:var(--paper);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .6s var(--ease)}
+a.u:hover{background-size:100% 1px}
+
+/* ---------- floating nav (no band, like the reference) ---------- */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:40;pointer-events:none;padding:0 34px 22px;display:flex;align-items:flex-end;justify-content:space-between;opacity:0;transform:translateY(12px);transition:opacity 1s var(--ease) .6s,transform 1s var(--ease) .6s}
+body:not(.locked) .nav{opacity:1;transform:none}
+.nav>*{pointer-events:auto}
+.nav,.nav button{text-shadow:0 1px 12px rgba(0,0,0,.55)}
+.scroll{display:flex;align-items:center;gap:12px;font:400 11px/1 var(--type);letter-spacing:.08em;color:rgba(244,241,234,.7)}
+.scroll i{position:relative;width:1px;height:34px;background:rgba(244,241,234,.25);overflow:hidden}
+.scroll i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--paper);animation:drip 2.2s var(--ease2) infinite}
+@keyframes drip{to{top:100%}}
+.compass{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;position:absolute;left:50%;bottom:20px;transform:translateX(-50%)}
+.crow{display:flex;align-items:center;gap:18px}
+.crow svg{width:150px;height:22px;overflow:visible}
+.crow .ln{fill:none;stroke:rgba(244,241,234,.55);stroke-width:1}
+.crow circle{fill:transparent;stroke:var(--paper);stroke-width:1;transition:fill .5s var(--ease),r .5s var(--ease)}
+.crow circle.on{fill:var(--paper)}
+.hint{font:400 12px/1 var(--sans);color:rgba(244,241,234,.8);letter-spacing:-.01em;display:flex;gap:8px;align-items:baseline}
+.hint b{font:300 italic 15px/1 var(--serif);color:var(--paper);letter-spacing:-.01em}
+.compass:hover .crow .ln{stroke:var(--paper)}
+.compass:focus-visible{outline:1px solid var(--paper);outline-offset:8px;border-radius:4px}
+.rbtns{display:flex;gap:10px;align-items:center}
+.ic{cursor:pointer;width:38px;height:38px;border-radius:50%;border:1px solid rgba(244,241,234,.55);display:grid;place-items:center;background:rgba(11,11,11,.2);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .5s var(--ease),color .5s,border-color .5s;font:400 10.5px/1 var(--sans);letter-spacing:.12em;color:var(--paper);text-decoration:none}
+.ic:hover,.ic:focus-visible,.ic[aria-expanded="true"]{background:var(--paper);color:var(--ink);border-color:var(--paper);outline:none;text-shadow:none}
+.ic svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.4}
+.langpop{position:absolute;right:82px;bottom:22px;display:flex;gap:6px;opacity:0;visibility:hidden;transform:translateX(8px);transition:opacity .4s var(--ease),transform .4s var(--ease),visibility .4s}
+.langpop.open{opacity:1;visibility:visible;transform:none}
+.langpop button,.glang button{cursor:pointer;border:1px solid rgba(244,241,234,.45);background:rgba(11,11,11,.35);border-radius:999px;padding:9px 11px;font:400 10.5px/1 var(--sans);letter-spacing:.14em;transition:background .4s,color .4s}
+.langpop button[aria-pressed="true"],.glang button[aria-pressed="true"],.langpop button:hover,.glang button:hover{background:var(--paper);color:var(--ink);text-shadow:none}
+
+/* chapter menu */
+.menu{position:fixed;inset:0;z-index:45;background:rgba(8,8,8,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility .7s}
+.menu.open{opacity:1;visibility:visible}
+.menu .pv{position:relative;overflow:hidden}
+.menu .pv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .9s var(--ease),transform 1.6s var(--ease)}
+.menu .pv img.on{opacity:.85;transform:scale(1)}
+.menu ol{list-style:none;margin:0;padding:0 7vw;display:flex;flex-direction:column;justify-content:center;gap:4px;counter-reset:c}
+.menu li button{all:unset;cursor:pointer;display:flex;align-items:baseline;gap:18px;font:300 clamp(34px,4vw,60px)/1.15 var(--serif);letter-spacing:-.035em;color:rgba(244,241,234,.38);transition:color .5s var(--ease),transform .6s var(--ease)}
+.menu li button::before{counter-increment:c;content:"0" counter(c);font:400 12px var(--type);letter-spacing:.06em;color:rgba(244,241,234,.5)}
+.menu li button:hover,.menu li button:focus-visible,.menu li button.cur{color:var(--paper);transform:translateX(10px)}
+.menu .x{position:absolute;top:26px;right:30px}
+
+@media (min-width:861px) and (min-height:640px){
+  .scene{position:sticky;top:0;height:100svh;min-height:0}
+}
+@media (max-width:860px){
+  .scene{padding:96px 20px 130px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts div{padding:16px 8px}.facts b{font-size:17px}
+  .tri,.comps,.team,.points{grid-template-columns:minmax(0,1fr);gap:18px}
+  .tri .frame{aspect-ratio:16/10}
+  .cast{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .spots{position:static;display:grid;gap:10px;width:100%;margin-top:22px}
+  .hs{position:static;transform:none}
+  .hs>button{width:100%;justify-content:flex-start;gap:10px;padding:6px 14px 6px 6px}
+  .hs .lbl{max-width:200px}
+  .card{position:static;transform:none;width:auto;opacity:1;visibility:visible;display:none;margin-top:8px}
+  .hs.open .card{display:block}
+  .path{grid-template-columns:minmax(0,1fr);margin-top:26px}
+  .path::before{left:6px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .path div{text-align:left;padding:0 0 20px 30px}
+  .path div::before{left:0;margin-left:0;top:3px}
+  .points li{font-size:19px}
+  .nav{padding:0 14px 16px}
+  .scroll{display:none}
+  .compass{left:16px;transform:none;align-items:flex-start;bottom:16px}
+  .crow .wm{display:none}
+  .crow svg{width:120px}
+  .clock{top:22px;left:20px}
+  .menu{grid-template-columns:minmax(0,1fr)}
+  .menu .pv{position:absolute;inset:0;z-index:-1}
+  .menu .pv img.on{opacity:.3}
+  .team .m .ph,.mark{width:88px}
+  .langpop{right:62px;bottom:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important}
+  .w,.rv,.bg img{transition:none!important;opacity:1!important;transform:none!important;filter:none!important}
+  .wire{stroke-dashoffset:0}.node,.node-in,.strip span{opacity:1}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- GATE -->
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-t">
+  <div class="wm">One of<br>us knows</div>
+  <div class="strip" aria-hidden="true">
+    <span style="background-image:url(assets/frames/thumb/03-drumul.jpg)"></span>
+    <span style="background-image:url(assets/frames/thumb/01-coperta.jpg)"></span>
+    <span style="background-image:url(assets/frames/thumb/02-telefoane.jpg)"></span>
+    <span style="background-image:url(assets/frames/thumb/04-afisul.jpg)"></span>
+    <span style="background-image:url(assets/frames/thumb/05-padurea.jpg)"></span>
+    <span style="background-image:url(assets/frames/thumb/09-marginea-padurii.jpg)"></span>
+    <svg viewBox="0 0 632 132" preserveAspectRatio="none"><path class="wire" d="M0,96 C60,40 100,118 160,78 S250,22 300,64 S400,120 450,70 S540,30 600,66"/><circle class="node" cx="600" cy="66" r="15"/><circle class="node-in" cx="600" cy="66" r="4"/></svg>
+  </div>
+  <h1 id="gate-t"><span data-l="en">Step into the <em>cabin</em></span><span data-l="ro">Intră în <em>cabană</em></span><span data-l="it">Entra nella <em>baita</em></span></h1>
+  <p><span data-l="en">Four friends. One message. Nobody leaves the same.</span><span data-l="ro">Patru prietene. Un mesaj. Nimeni nu pleacă la fel.</span><span data-l="it">Quattro amiche. Un messaggio. Nessuna ne esce uguale.</span></p>
+  <button class="pill" id="enter"><span data-l="en">Enter</span><span data-l="ro">Intră</span><span data-l="it">Entra</span></button>
+  <div class="glang" role="group" aria-label="Language"><button data-set="en">EN</button><button data-set="ro">RO</button><button data-set="it">IT</button></div>
+</div>
+
+<main id="deck">
+
+<!-- I · STORY -->
+<section class="scene center" data-ch="0" style="--top:.35;--mid:.15;--bot:.6">
+  <div class="bg"><img src="assets/frames/01-coperta.jpg" alt=""></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">A psychological thriller</span><span data-l="ro">Un thriller psihologic</span><span data-l="it">Un thriller psicologico</span></div>
+  <h2 class="t big split"><span data-l="en">One of us <em>knows</em></span><span data-l="ro">Una dintre noi <em>știe</em></span><span data-l="it">Una di noi <em>sa</em></span></h2>
+  <p class="sub rv d2" style="font:300 italic clamp(18px,1.6vw,24px)/1.4 var(--serif);color:var(--paper)"><span data-l="en">For three years, someone kept quiet.</span><span data-l="ro">Trei ani cineva a tăcut.</span><span data-l="it">Per tre anni, qualcuno ha taciuto.</span></p>
+  <p class="sub rv d3" style="margin-top:22px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase"><span data-l="en">Starring Mădălina Ghenea · Original story by Olivia Odaianu</span><span data-l="ro">Cu Mădălina Ghenea · Poveste originală de Olivia Odaianu</span><span data-l="it">Con Mădălina Ghenea · Soggetto originale di Olivia Odaianu</span></p>
+</section>
+
+<section class="scene" data-ch="0" style="--top:.7;--mid:.6;--bot:.8">
+  <div class="bg"><img src="assets/frames/14-scoarta.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">At a glance</span><span data-l="ro">Pe scurt</span><span data-l="it">In breve</span></div>
+  <h2 class="t split"><span data-l="en">A contained thriller. An <em>international</em> cast.</span><span data-l="ro">Un thriller cu spațiu închis. O distribuție <em>internațională</em>.</span><span data-l="it">Un thriller a porte chiuse. Un cast <em>internazionale</em>.</span></h2>
+  <div class="facts rv d2">
+    <div><span class="k"><span data-l="en">Genre</span><span data-l="ro">Gen</span><span data-l="it">Genere</span></span><b><span data-l="en">Psychological ensemble thriller</span><span data-l="ro">Thriller psihologic de ansamblu</span><span data-l="it">Thriller psicologico corale</span></b></div>
+    <div><span class="k"><span data-l="en">Language</span><span data-l="ro">Limbă</span><span data-l="it">Lingua</span></span><b><span data-l="en">English</span><span data-l="ro">Engleză</span><span data-l="it">Inglese</span></b></div>
+    <div><span class="k"><span data-l="en">Running time</span><span data-l="ro">Durată</span><span data-l="it">Durata</span></span><b><span data-l="en">c. 90 min</span><span data-l="ro">cca. 90 min</span><span data-l="it">circa 90 min</span></b></div>
+    <div><span class="k"><span data-l="en">Shooting</span><span data-l="ro">Filmare</span><span data-l="it">Riprese</span></span><b><span data-l="en">Romania &amp; Italy</span><span data-l="ro">România și Italia</span><span data-l="it">Romania e Italia</span></b></div>
+    <div><span class="k"><span data-l="en">Lead</span><span data-l="ro">Rol principal</span><span data-l="it">Protagonista</span></span><b>Mădălina Ghenea</b><br><span class="chip ok" style="margin-top:8px"><span data-l="en">Confirmed</span><span data-l="ro">Confirmată</span><span data-l="it">Confermata</span></span></div>
+    <div><span class="k"><span data-l="en">Producer</span><span data-l="ro">Producător</span><span data-l="it">Produzione</span></span><b>KSM Production</b></div>
+    <div><span class="k"><span data-l="en">Format</span><span data-l="ro">Format</span><span data-l="it">Formato</span></span><b><span data-l="en">European co-production</span><span data-l="ro">Coproducție europeană</span><span data-l="it">Coproduzione europea</span></b></div>
+    <div><span class="k"><span data-l="en">Status</span><span data-l="ro">Stadiu</span><span data-l="it">Stato</span></span><b><span data-l="en">Script complete</span><span data-l="ro">Scenariu finalizat</span><span data-l="it">Sceneggiatura completa</span></b></div>
+  </div>
+</section>
+
+<section class="scene" data-ch="0" style="--top:.72;--mid:.45;--bot:.75">
+  <div class="bg"><img src="assets/frames/02-telefoane.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="clock"><span data-l="en">FRIDAY</span><span data-l="ro">VINERI</span><span data-l="it">VENERDÌ</span> · 21:47</div>
+  <div class="k rv">Logline</div>
+  <h2 class="t split"><span data-l="en">Four friends. Only <em>one</em> is guilty.</span><span data-l="ro">Patru prietene. O <em>singură</em> vinovată.</span><span data-l="it">Quattro amiche. Una <em>sola</em> colpevole.</span></h2>
+  <div class="body rv d2"><p class="lead"><span data-l="en">A bachelorette weekend in a remote cabin in the Romanian Carpathians. An anonymous text: one of them knows what happened three years ago. <span class="red">By tomorrow, they all pay.</span></span><span data-l="ro">Un weekend de burlăcițe într-o cabană izolată din Carpații românești. Un mesaj anonim: una dintre ele știe ce s-a întâmplat acum trei ani. <span class="red">Până mâine, toate plătesc.</span></span><span data-l="it">Un addio al nubilato in una baita isolata sui Carpazi romeni. Un messaggio anonimo: una di loro sa cosa è successo tre anni fa. <span class="red">Entro domani, pagheranno tutte.</span></span></p></div>
+  <div class="sms rv d3"><div class="from"><span>+40 7•• ••• 879</span><span>21:47</span></div><span data-l="en">One of you knows what happened, three years ago. Only one knows the truth. If she doesn't tell it by tomorrow you all pay.</span><span data-l="ro">Una dintre voi știe ce s-a întâmplat, în urmă cu trei ani. Doar una cunoaște adevărul. Dacă nu îl spune până mâine toate plătiți.</span><span data-l="it">Una di voi sa cosa è successo, tre anni fa. Solo una conosce la verità. Se non la dice entro domani pagate tutte.</span></div>
+</section>
+
+<section class="scene" data-ch="0" style="--top:.6;--mid:.3;--bot:.7">
+  <div class="bg"><img src="assets/frames/03-drumul.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="clock"><span data-l="en">FRIDAY</span><span data-l="ro">VINERI</span><span data-l="it">VENERDÌ</span> · 17:30</div>
+  <div class="k rv"><span data-l="en">Synopsis · I</span><span data-l="ro">Sinopsis · I</span><span data-l="it">Sinossi · I</span></div>
+  <h2 class="t split"><span data-l="en">The <em>weekend</em></span><span data-l="ro"><em>Weekendul</em></span><span data-l="it">Il <em>weekend</em></span></h2>
+  <div class="body rv d2">
+    <p><span data-l="en">Ioana, a high-school teacher in her forties, is finally getting married. To celebrate, she takes her three closest friends to an isolated cabin in the Făgăraș Mountains: Sonia, an ER doctor who no longer drinks; Ingrid, an army officer who never travels without her gun; and Vera, an interior designer raising her son alone.</span><span data-l="ro">Ioana, profesoară de liceu trecută de 40 de ani, se mărită în sfârșit. Ca să sărbătorească, își ia cele trei prietene apropiate într-o cabană izolată din munții Făgăraș: Sonia, medic de urgență care nu mai bea; Ingrid, ofițer în armată care nu pleacă nicăieri fără pistol; și Vera, designer de interior care își crește singură băiatul.</span><span data-l="it">Ioana, insegnante di liceo sulla quarantina, finalmente si sposa. Per festeggiare porta le sue tre amiche più care in una baita isolata sui monti Făgăraș: Sonia, medico del pronto soccorso che non beve più; Ingrid, ufficiale dell'esercito che non viaggia mai senza la pistola; e Vera, interior designer che cresce il figlio da sola.</span></p>
+    <p class="lead"><span data-l="en">They have known each other for only a year, yet it feels like a lifetime.</span><span data-l="ro">Se cunosc de doar un an, dar parcă se știu de-o viață.</span><span data-l="it">Si conoscono da appena un anno, eppure sembra una vita.</span></p>
+  </div>
+</section>
+
+<section class="scene" data-ch="0" style="--top:.7;--mid:.55;--bot:.75">
+  <div class="bg"><img src="assets/frames/04-afisul.jpg" alt="" loading="lazy" style="object-position:30% 50%"></div><div class="shade"></div>
+  <div class="clock"><span data-l="en">SATURDAY</span><span data-l="ro">SÂMBĂTĂ</span><span data-l="it">SABATO</span> · 11:05</div>
+  <div class="k rv"><span data-l="en">Synopsis · II</span><span data-l="ro">Sinopsis · II</span><span data-l="it">Sinossi · II</span></div>
+  <h2 class="t split"><span data-l="en">The <em>message</em></span><span data-l="ro"><em>Mesajul</em></span><span data-l="it">Il <em>messaggio</em></span></h2>
+  <div class="body rv d2">
+    <p><span data-l="en">That night, all four phones light up at once with the same anonymous text. None of them knows who Liviu Dima is. By morning the phones are gone, the car has vanished, and a white poster is taped to the cabin wall: his name, and a promise that he will finally be heard.</span><span data-l="ro">În noaptea aceea, toate cele patru telefoane se aprind deodată cu același mesaj anonim. Niciuna nu știe cine e Liviu Dima. Dimineața, telefoanele au dispărut, mașina nu mai e, iar pe peretele cabanei e lipit un afiș alb: numele lui și promisiunea că, în sfârșit, va fi auzit.</span><span data-l="it">Quella notte i quattro telefoni si illuminano insieme con lo stesso messaggio anonimo. Nessuna sa chi sia Liviu Dima. Al mattino i telefoni sono spariti, l'auto non c'è più e sul muro della baita è attaccato un manifesto bianco: il suo nome, e la promessa che finalmente verrà ascoltato.</span></p>
+    <p class="lead"><span data-l="en">Then Vera has a severe asthma attack. <span class="red">Her inhaler is in the missing car.</span></span><span data-l="ro">Apoi Vera face o criză severă de astm. <span class="red">Inhalatorul ei e în mașina dispărută.</span></span><span data-l="it">Poi Vera ha una grave crisi d'asma. <span class="red">Il suo inalatore è nell'auto scomparsa.</span></span></p>
+  </div>
+</section>
+
+<section class="scene" data-ch="0" style="--top:.65;--mid:.4;--bot:.75">
+  <div class="bg"><img src="assets/frames/05-padurea.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="clock"><span data-l="en">SATURDAY</span><span data-l="ro">SÂMBĂTĂ</span><span data-l="it">SABATO</span> · <span class="red">12:25</span></div>
+  <div class="k rv"><span data-l="en">Synopsis · III</span><span data-l="ro">Sinopsis · III</span><span data-l="it">Sinossi · III</span></div>
+  <h2 class="t split"><span data-l="en">The <em>woods</em></span><span data-l="ro"><em>Pădurea</em></span><span data-l="it">Il <em>bosco</em></span></h2>
+  <div class="body rv d2">
+    <p><span data-l="en">With no phones and no car, the survivors set out on foot through the forest, twelve kilometres from the nearest village. Every step strips away another secret. Every confession turns friends into suspects.</span><span data-l="ro">Fără telefoane și fără mașină, supraviețuitoarele pornesc pe jos prin pădure, la doisprezece kilometri de cel mai apropiat sat. Fiecare pas mai dă jos un secret. Fiecare mărturisire transformă prietenele în suspecte.</span><span data-l="it">Senza telefoni né auto, le sopravvissute si incamminano nel bosco, a dodici chilometri dal villaggio più vicino. Ogni passo fa cadere un segreto. Ogni confessione trasforma le amiche in sospettate.</span></p>
+    <p class="lead"><span data-l="en">By nightfall, the question is no longer who sent the message, but which of them will make it out of the woods.</span><span data-l="ro">Până la căderea serii, întrebarea nu mai e cine a trimis mesajul, ci care dintre ele va ieși din pădure.</span><span data-l="it">Al calar della sera la domanda non è più chi ha mandato il messaggio, ma chi di loro uscirà dal bosco.</span></p>
+  </div>
+</section>
+
+<section class="scene" data-ch="0" data-v="investor" style="--top:.75;--mid:.6;--bot:.8">
+  <div class="bg"><img src="assets/frames/06-finalul.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="clock"><span data-l="en">ONE YEAR LATER</span><span data-l="ro">UN AN MAI TÂRZIU</span><span data-l="it">UN ANNO DOPO</span></div>
+  <div class="k red rv"><span data-l="en">Confidential · the ending</span><span data-l="ro">Confidențial · finalul</span><span data-l="it">Riservato · il finale</span></div>
+  <h2 class="t split"><span data-l="en">Ioana planned <em>everything</em>.</span><span data-l="ro">Ioana a plănuit <em>totul</em>.</span><span data-l="it">Ioana ha pianificato <em>tutto</em>.</span></h2>
+  <div class="body rv d2" style="max-width:720px">
+    <p><span data-l="en">Liviu Dima was her son. Three years ago, drunk and heartbroken after Ingrid humiliated him at a party, he fell into an unfenced pit on Vera's land. Sonia, drinking on her ER shift, missed his internal bleeding. Ioana chose each woman, built the friendship and staged the weekend to hear them confess. She wanted the truth, not their deaths.</span><span data-l="ro">Liviu Dima era fiul ei. Acum trei ani, beat și cu inima frântă după ce Ingrid l-a umilit la o petrecere, a căzut într-o groapă neîngrădită de pe terenul Verei. Sonia, care bea în gardă la Urgențe, nu i-a văzut hemoragia internă. Ioana le-a ales pe fiecare, a construit prietenia și a pus la cale weekendul ca să le audă mărturisind. Voia adevărul, nu moartea lor.</span><span data-l="it">Liviu Dima era suo figlio. Tre anni fa, ubriaco e con il cuore spezzato dopo che Ingrid lo aveva umiliato a una festa, è caduto in una fossa non recintata sul terreno di Vera. Sonia, che beveva durante il turno al pronto soccorso, non si è accorta della sua emorragia interna. Ioana ha scelto ognuna di loro, ha costruito l'amicizia e ha organizzato il weekend per sentirle confessare. Voleva la verità, non la loro morte.</span></p>
+    <p><span data-l="en">The weekend spirals. Vera dies without her inhaler. Sonia is stabbed in a struggle. Ingrid shoots Tudor, Ioana's fiancé, then falls to her death. The case is closed as a chain of accidents.</span><span data-l="ro">Weekendul scapă de sub control. Vera moare fără inhalator. Sonia e înjunghiată într-o încăierare. Ingrid îl împușcă pe Tudor, logodnicul Ioanei, apoi cade în râpă. Cazul se închide ca un șir de accidente.</span><span data-l="it">Il weekend precipita. Vera muore senza inalatore. Sonia viene accoltellata in una colluttazione. Ingrid spara a Tudor, il fidanzato di Ioana, poi precipita in un burrone. Il caso viene archiviato come una serie di incidenti.</span></p>
+    <p class="lead"><span data-l="en">One year later, Ioana adopts Vera's son, Darius.</span><span data-l="ro">Un an mai târziu, Ioana îl adoptă pe Darius, fiul Verei.</span><span data-l="it">Un anno dopo, Ioana adotta Darius, il figlio di Vera.</span></p>
+  </div>
+</section>
+
+<!-- II · WORLD -->
+<section class="scene center" data-ch="1" style="--top:.6;--mid:.45;--bot:.75">
+  <div class="bg"><img src="assets/frames/07-livingul.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">The world · story</span><span data-l="ro">Lumea · povestea</span><span data-l="it">Il mondo · la storia</span></div>
+  <h2 class="t split"><span data-l="en">An Agatha Christie puzzle, played at the speed of <em>grief</em>.</span><span data-l="ro">Un puzzle Agatha Christie, jucat în ritmul <em>doliului</em>.</span><span data-l="it">Un enigma alla Agatha Christie, al ritmo del <em>lutto</em>.</span></h2>
+  <div class="body rv d2"><p class="lead"><span data-l="en">A closed circle, a ticking clock and a culprit nobody can name. But here every death is an accident, and that is the horror. Nobody in this story is a monster. <span class="red">Everyone is guilty of looking away.</span></span><span data-l="ro">Un cerc închis, un ceas care ticăie și un vinovat pe care nu-l poate numi nimeni. Dar aici fiecare moarte e un accident, și asta e oroarea. În povestea asta nu există monștri. <span class="red">Toate sunt vinovate că au întors privirea.</span></span><span data-l="it">Un cerchio chiuso, un conto alla rovescia e un colpevole senza nome. Ma qui ogni morte è un incidente, ed è questo l'orrore. In questa storia non ci sono mostri. <span class="red">Tutte sono colpevoli di aver distolto lo sguardo.</span></span></p></div>
+</section>
+
+<section class="scene plain" data-ch="1">
+  <div class="bg"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">The world · tone</span><span data-l="ro">Lumea · tonul</span><span data-l="it">Il mondo · il tono</span></div>
+  <h2 class="t split"><span data-l="en">Warm inside. Nothing but <em>woods</em> outside.</span><span data-l="ro">Cald înăuntru. Afară, doar <em>pădure</em>.</span><span data-l="it">Caldo dentro. Fuori, solo il <em>bosco</em>.</span></h2>
+  <div class="tri">
+    <figure class="frame rv d2"><img src="assets/frames/01-coperta.jpg" alt="" loading="lazy" style="object-position:55% 50%"><figcaption><span data-l="en">The cabin</span><span data-l="ro">Cabana</span><span data-l="it">La baita</span></figcaption></figure>
+    <figure class="frame rv d3"><img src="assets/frames/02-telefoane.jpg" alt="" loading="lazy"><figcaption><span data-l="en">The message</span><span data-l="ro">Mesajul</span><span data-l="it">Il messaggio</span></figcaption></figure>
+    <figure class="frame rv d4"><img src="assets/frames/08-locul-gol.jpg" alt="" loading="lazy" style="object-position:62% 50%"><figcaption><span data-l="en">The empty driveway</span><span data-l="ro">Locul gol al mașinii</span><span data-l="it">Il vialetto vuoto</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="scene" data-ch="1" style="--top:.6;--mid:.3;--bot:.8">
+  <div class="bg"><img src="assets/frames/09-marginea-padurii.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">The world · look</span><span data-l="ro">Lumea · imaginea</span><span data-l="it">Il mondo · lo sguardo</span></div>
+  <h2 class="t split"><span data-l="en">Cold outside. Warm only in the <em>window</em>.</span><span data-l="ro">Rece afară. Cald doar în <em>geam</em>.</span><span data-l="it">Freddo fuori. Caldo solo alla <em>finestra</em>.</span></h2>
+  <div class="body rv d2"><p><span data-l="en">Night exteriors in desaturated teal-black; the cabin's amber windows are the only warmth in frame. Long lenses from the treeline make the audience the watcher. Inside, the camera goes handheld and close as the friendship cracks.</span><span data-l="ro">Exterioare de noapte în negru-verzui desaturat; geamurile chihlimbar ale cabanei sunt singura căldură din cadru. Obiective lungi, de la marginea pădurii, fac din spectator cel care pândește. Înăuntru, camera trece din mână, aproape, pe măsură ce prietenia crapă.</span><span data-l="it">Esterni notturni in un nero-verde desaturato; le finestre ambrate della baita sono l'unico calore nell'inquadratura. Lunghe focali dal limite del bosco fanno dello spettatore l'osservatore. Dentro, macchina a mano e primi piani mentre l'amicizia si incrina.</span></p>
+  <div class="chips"><i style="background:#0b0b0b"></i><i style="background:#0f1d16"></i><i style="background:#E8A33D"></i><i style="background:#F4F1EA"></i><i style="background:#B3121B"></i></div></div>
+</section>
+
+<section class="scene" data-ch="1" style="--top:.6;--mid:.25;--bot:.7">
+  <div class="bg"><img src="assets/frames/10-fagaras.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">The world · place</span><span data-l="ro">Lumea · locul</span><span data-l="it">Il mondo · il luogo</span></div>
+  <h2 class="t split"><span data-l="en">The <em>Făgăraș</em> Mountains</span><span data-l="ro">Munții <em>Făgăraș</em></span><span data-l="it">I monti <em>Făgăraș</em></span></h2>
+  <div class="body rv d2"><p><span data-l="en">Romania's highest range. One road in, no signal, twelve kilometres of forest to the nearest village. Shot in Romania and Italy as a European co-production, around one main location: the cabin.</span><span data-l="ro">Cel mai înalt lanț muntos din România. Un singur drum, fără semnal, doisprezece kilometri de pădure până la cel mai apropiat sat. Filmat în România și Italia, ca o coproducție europeană, în jurul unei singure locații principale: cabana.</span><span data-l="it">La catena più alta della Romania. Una sola strada, niente segnale, dodici chilometri di bosco fino al villaggio più vicino. Girato in Romania e in Italia come coproduzione europea, attorno a una sola location principale: la baita.</span></p></div>
+</section>
+
+<section class="scene" data-ch="1" style="--top:.6;--mid:.3;--bot:.8">
+  <div class="bg"><img src="assets/frames/11-summer-wine.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">The world · sound</span><span data-l="ro">Lumea · sunetul</span><span data-l="it">Il mondo · il suono</span></div>
+  <h2 class="t split"><span data-l="en">One song, played <em>twice</em>.</span><span data-l="ro">Un cântec, cântat de <em>două</em> ori.</span><span data-l="it">Una canzone, suonata <em>due</em> volte.</span></h2>
+  <div class="body rv d2"><p class="lead"><span data-l="en">“Summer Wine” plays on the first night, when they still laugh. It returns at the end, when there is no one left to laugh. In between: wind, pine and silence.</span><span data-l="ro">„Summer Wine” se aude în prima seară, când încă râd. Revine la final, când nu mai e nimeni care să râdă. Între ele: vânt, brazi și liniște.</span><span data-l="it">“Summer Wine” risuona la prima sera, quando ridono ancora. Ritorna alla fine, quando non resta più nessuno a ridere. In mezzo: vento, pini e silenzio.</span></p>
+  <p class="note" data-v="investor"><span data-l="en">Music rights to be cleared.</span><span data-l="ro">Drepturile muzicale urmează să fie obținute.</span><span data-l="it">Diritti musicali da acquisire.</span></p></div>
+</section>
+
+<section class="scene" data-ch="1" style="--top:.78;--mid:.7;--bot:.85">
+  <div class="bg"><img src="assets/frames/15-drum-forestier.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Creative references</span><span data-l="ro">Referințe creative</span><span data-l="it">Riferimenti creativi</span></div>
+  <h2 class="t split"><span data-l="en">In the <em>company</em> of</span><span data-l="ro">În <em>compania</em></span><span data-l="it">In <em>compagnia</em> di</span></h2>
+  <div class="comps">
+    <div class="comp rv d2"><div class="nm">The Descent</div><div class="yr">2005</div><p><span data-l="en">Women, isolation, and the friendship that breaks first.</span><span data-l="ro">Femei, izolare și prietenia care cedează prima.</span><span data-l="it">Donne, isolamento e l'amicizia che si spezza per prima.</span></p></div>
+    <div class="comp rv d3"><div class="nm">Bodies Bodies Bodies</div><div class="yr">2022</div><p><span data-l="en">A weekend among friends turns into a game of accusations.</span><span data-l="ro">Un weekend între prieteni devine un joc al acuzațiilor.</span><span data-l="it">Un weekend tra amici diventa un gioco di accuse.</span></p></div>
+    <div class="comp rv d4"><div class="nm">The Invitation</div><div class="yr">2015</div><p><span data-l="en">A dinner party where the real threat is the past.</span><span data-l="ro">O cină la care adevărata amenințare e trecutul.</span><span data-l="it">Una cena in cui la vera minaccia è il passato.</span></p></div>
+  </div>
+  <p class="note rv d4"><span data-l="en">Financial comparables available on request.</span><span data-l="ro">Comparabilele financiare sunt disponibile la cerere.</span><span data-l="it">Comparabili finanziari disponibili su richiesta.</span></p>
+</section>
+
+<!-- III · PEOPLE -->
+<section class="scene" data-ch="2" style="--top:.6;--mid:.15;--bot:.55">
+  <div class="bg"><img src="assets/frames/12-living-sus.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Characters</span><span data-l="ro">Personaje</span><span data-l="it">Personaggi</span></div>
+  <h2 class="t split"><span data-l="en">Four women. Four <em>secrets</em>.</span><span data-l="ro">Patru femei. Patru <em>secrete</em>.</span><span data-l="it">Quattro donne. Quattro <em>segreti</em>.</span></h2>
+  <p class="sub rv d2"><span data-l="en">Explore the room.</span><span data-l="ro">Explorează camera.</span><span data-l="it">Esplora la stanza.</span></p>
+  <div class="spots rv d3">
+    <div class="hs" style="left:72%;top:52%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Ioana</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 01 · the engagement ring</span><span data-l="ro">Proba 01 · inelul de logodnă</span><span data-l="it">Reperto 01 · l'anello di fidanzamento</span></div><h4>Ioana</h4><p><span data-l="en">The teacher. The bride. Over forty, finally happy, and the only one who never says what she was doing three years ago.</span><span data-l="ro">Profesoara. Mireasa. Trecută de 40 de ani, fericită în sfârșit, și singura care nu spune niciodată ce făcea acum trei ani.</span><span data-l="it">L'insegnante. La sposa. Più di quarant'anni, finalmente felice, e l'unica che non dice mai cosa faceva tre anni fa.</span></p></div></div>
+    <div class="hs" style="left:56%;top:70%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Sonia</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 02 · the orange juice</span><span data-l="ro">Proba 02 · sucul de portocale</span><span data-l="it">Reperto 02 · il succo d'arancia</span></div><h4>Sonia</h4><p><span data-l="en">The doctor. Sober, precise, calm in a crisis. Too calm, the others start to think.</span><span data-l="ro">Medicul. Trează, precisă, calmă în criză. Prea calmă, încep să creadă celelalte.</span><span data-l="it">La dottoressa. Sobria, precisa, calma nelle emergenze. Troppo calma, cominciano a pensare le altre.</span></p></div></div>
+    <div class="hs" style="left:17%;top:46%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Ingrid</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 03 · the holster</span><span data-l="ro">Proba 03 · tocul pistolului</span><span data-l="it">Reperto 03 · la fondina</span></div><h4>Ingrid</h4><p><span data-l="en">The soldier. Ironic, hard, armed. She sees a hooded figure in the trees and tells no one.</span><span data-l="ro">Militarul. Ironică, dură, înarmată. Vede o siluetă cu glugă printre copaci și nu spune nimănui.</span><span data-l="it">La soldatessa. Ironica, dura, armata. Vede una figura incappucciata tra gli alberi e non lo dice a nessuno.</span></p></div></div>
+    <div class="hs" style="left:36%;top:74%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Vera</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 04 · Vera's inhaler</span><span data-l="ro">Proba 04 · inhalatorul Verei</span><span data-l="it">Reperto 04 · l'inalatore di Vera</span></div><h4>Vera</h4><p><span data-l="en">The mother. Raising Darius alone, forgetting everything except him. She is the first to fall.</span><span data-l="ro">Mama. Îl crește singură pe Darius și uită orice, în afară de el. E prima care cade.</span><span data-l="it">La madre. Cresce Darius da sola e dimentica tutto tranne lui. È la prima a cadere.</span></p></div></div>
+    <div class="hs" style="left:30%;top:28%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Tudor</span></button><div class="card"><div class="ev"><span data-l="en">The voice on the phone</span><span data-l="ro">Vocea din telefon</span><span data-l="it">La voce al telefono</span></div><h4>Tudor</h4><p><span data-l="en">The fiancé. A lawyer, two hours away, who keeps calling.</span><span data-l="ro">Logodnicul. Avocat, la două ore distanță, care tot sună.</span><span data-l="it">Il fidanzato. Avvocato, a due ore di distanza, continua a chiamare.</span></p></div></div>
+  </div>
+</section>
+
+<section class="scene plain" data-ch="2">
+  <div class="bg"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Cast</span><span data-l="ro">Distribuție</span><span data-l="it">Cast</span></div>
+  <h2 class="t split"><span data-l="en">Who plays <em>whom</em></span><span data-l="ro">Cine pe cine <em>joacă</em></span><span data-l="it">Chi interpreta <em>chi</em></span></h2>
+  <div class="cast">
+    <div class="pc rv d2"><div class="ph"><img src="assets/cast/ghenea.jpg" alt="Mădălina Ghenea" loading="lazy" style="object-position:50% 25%"></div><div class="role">Ioana</div><div class="nm">Mădălina Ghenea</div><span class="chip ok"><span data-l="en">Confirmed</span><span data-l="ro">Confirmată</span><span data-l="it">Confermata</span></span><div class="kf">Youth · House of Gucci</div></div>
+    <div class="pc rv d2"><div class="ph"><img src="assets/cast/etura.jpg" alt="Marta Etura" loading="lazy" style="object-position:50% 20%"></div><div class="role">Sonia</div><div class="nm">Marta Etura</div><span class="chip">Wishlist</span><div class="kf">The Invisible Guardian · Offering to the Storm</div></div>
+    <div class="pc rv d3"><div class="ph"><img src="assets/cast/sieklucka.jpg" alt="Anna Maria Sieklucka" loading="lazy" style="object-position:50% 30%"></div><div class="role">Ingrid</div><div class="nm">Anna Maria Sieklucka</div><span class="chip">Wishlist</span><div class="kf">365 Days (Netflix)</div></div>
+    <div class="pc rv d3"><div class="ph"><span class="q">?</span></div><div class="role">Vera</div><div class="nm"><span data-l="en">To be cast</span><span data-l="ro">De distribuit</span><span data-l="it">Da definire</span></div></div>
+    <div class="pc rv d4"><div class="ph"><span class="q">?</span></div><div class="role">Tudor</div><div class="nm"><span data-l="en">To be cast</span><span data-l="ro">De distribuit</span><span data-l="it">Da definire</span></div></div>
+  </div>
+</section>
+
+<!-- IV · MAKERS -->
+<section class="scene center" data-ch="3" style="--top:.6;--mid:.4;--bot:.75">
+  <div class="bg"><img src="assets/frames/13-ravena.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Producers' statement</span><span data-l="ro">Nota producătorilor</span><span data-l="it">Nota dei produttori</span></div>
+  <h2 class="t split"><span data-l="en">Why this <em>story</em></span><span data-l="ro">De ce povestea <em>asta</em></span><span data-l="it">Perché questa <em>storia</em></span></h2>
+  <div class="body rv d2" style="max-width:700px">
+    <p class="lead"><span data-l="en">We all keep one story we never tell. <em>One of Us Knows</em> asks what happens when silence has a body count.</span><span data-l="ro">Fiecare dintre noi păstrează o poveste pe care n-o spune niciodată. <em>Una dintre noi știe</em> întreabă ce se întâmplă când tăcerea face victime.</span><span data-l="it">Tutti custodiamo una storia che non raccontiamo mai. <em>Una di noi sa</em> si chiede cosa succede quando il silenzio fa delle vittime.</span></p>
+    <p><span data-l="en">It is a thriller about guilt rather than evil: four women who each looked away once, and a mother who could not. We want audiences to leave the cinema arguing about who was to blame, and quietly asking themselves what they have never said.</span><span data-l="ro">E un thriller despre vinovăție, nu despre rău: patru femei care au întors privirea o dată și o mamă care n-a putut. Vrem ca publicul să iasă din sală certându-se cine e de vină și întrebându-se, în gând, ce n-a spus niciodată.</span><span data-l="it">È un thriller sulla colpa, non sul male: quattro donne che una volta hanno distolto lo sguardo, e una madre che non ci è riuscita. Vogliamo che il pubblico esca dalla sala discutendo di chi sia la colpa, e chiedendosi in silenzio cosa non ha mai detto.</span></p>
+  </div>
+</section>
+
+<section class="scene" data-ch="3" style="--top:.8;--mid:.72;--bot:.85">
+  <div class="bg"><img src="assets/frames/14-scoarta.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Team</span><span data-l="ro">Echipa</span><span data-l="it">Il team</span></div>
+  <h2 class="t split"><span data-l="en">Who <em>makes</em> it</span><span data-l="ro">Cine îl <em>face</em></span><span data-l="it">Chi lo <em>realizza</em></span></h2>
+  <div class="team">
+    <div class="m rv d2"><div class="mark">KSM</div><div class="k"><span data-l="en">Production</span><span data-l="ro">Producție</span><span data-l="it">Produzione</span></div><h3>KSM Production</h3><p><span data-l="en">Cluj-Napoca. Two features released in 2026: <em>Acel martie</em>, a thriller shot in Romania and Spain with Esther Acebo and Costas Mandylor, and <em>Dosarele Orașului Alb</em>, a mystery released in cinemas.</span><span data-l="ro">Cluj-Napoca. Două lungmetraje lansate în 2026: <em>Acel martie</em>, thriller filmat în România și Spania, cu Esther Acebo și Costas Mandylor, și <em>Dosarele Orașului Alb</em>, mystery lansat în cinematografe.</span><span data-l="it">Cluj-Napoca. Due lungometraggi usciti nel 2026: <em>Acel martie</em>, thriller girato in Romania e Spagna con Esther Acebo e Costas Mandylor, e <em>Dosarele Orașului Alb</em>, mystery uscito in sala.</span></p></div>
+    <div class="m rv d3"><div class="mark">O.O.</div><div class="k"><span data-l="en">Original story</span><span data-l="ro">Poveste originală</span><span data-l="it">Soggetto originale</span></div><h3>Olivia Odaianu</h3><p><span data-l="en">Author of the original screenplay.</span><span data-l="ro">Autoarea scenariului original.</span><span data-l="it">Autrice della sceneggiatura originale.</span></p></div>
+    <div class="m rv d4"><div class="ph"><img src="assets/cast/paulo.jpg" alt="Oriol Paulo" loading="lazy"></div><div class="k"><span data-l="en">Writer–director</span><span data-l="ro">Scenariu și regie</span><span data-l="it">Sceneggiatura e regia</span> · <span class="red">Wishlist</span></div><h3>Oriol Paulo</h3><p><span data-l="en"><em>The Invisible Guest</em>, <em>The Body</em>, <em>Mirage</em>; <em>The Innocent</em> (Netflix). His films have been remade in India and Italy.</span><span data-l="ro"><em>The Invisible Guest</em>, <em>The Body</em>, <em>Mirage</em>; <em>The Innocent</em> (Netflix). Filmele lui au fost refăcute în India și Italia.</span><span data-l="it"><em>The Invisible Guest</em>, <em>The Body</em>, <em>Mirage</em>; <em>The Innocent</em> (Netflix). I suoi film sono stati rifatti in India e in Italia (<em>Il testimone invisibile</em>).</span></p></div>
+  </div>
+</section>
+
+<section class="scene plain center" data-ch="3">
+  <div class="bg" style="background:radial-gradient(ellipse at 50% 110%,rgba(179,18,27,.22),transparent 55%),#0b0b0b"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Financing</span><span data-l="ro">Finanțare</span><span data-l="it">Finanziamento</span></div>
+  <h2 class="t split"><span data-l="en">Financial plan, waterfall and <em>terms</em></span><span data-l="ro">Plan financiar, waterfall și <em>termeni</em></span><span data-l="it">Piano finanziario, waterfall e <em>condizioni</em></span></h2>
+  <p class="sub rv d2" style="margin-top:8px"><span class="chip r"><span data-l="en">Available on request</span><span data-l="ro">Disponibile la cerere</span><span data-l="it">Disponibili su richiesta</span></span></p>
+  <p class="sub rv d3" style="margin-top:22px"><span data-l="en">European co-production · shooting in Romania and Italy</span><span data-l="ro">Coproducție europeană · filmare în România și Italia</span><span data-l="it">Coproduzione europea · riprese in Romania e in Italia</span></p>
+</section>
+
+<section class="scene" data-ch="3" style="--top:.7;--mid:.5;--bot:.8">
+  <div class="bg"><img src="assets/frames/03-drumul.jpg" alt="" loading="lazy" style="object-position:50% 70%"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Path to screen</span><span data-l="ro">Drumul spre ecran</span><span data-l="it">Il percorso verso lo schermo</span></div>
+  <h2 class="t split"><span data-l="en">From script to <em>cinema</em></span><span data-l="ro">De la scenariu la <em>cinema</em></span><span data-l="it">Dalla sceneggiatura alla <em>sala</em></span></h2>
+  <div class="path rv d2">
+    <div class="now"><span data-l="en">Script complete</span><span data-l="ro">Scenariu finalizat</span><span data-l="it">Sceneggiatura completa</span></div>
+    <div class="now"><span data-l="en">Packaging &amp; financing</span><span data-l="ro">Packaging și finanțare</span><span data-l="it">Packaging e finanziamento</span></div>
+    <div><span data-l="en">Pre-production</span><span data-l="ro">Pre-producție</span><span data-l="it">Pre-produzione</span></div>
+    <div><span data-l="en">Shoot · Romania &amp; Italy</span><span data-l="ro">Filmare · România și Italia</span><span data-l="it">Riprese · Romania e Italia</span></div>
+    <div><span data-l="en">Post-production</span><span data-l="ro">Post-producție</span><span data-l="it">Post-produzione</span></div>
+    <div><span data-l="en">Festivals</span><span data-l="ro">Festivaluri</span><span data-l="it">Festival</span></div>
+    <div><span data-l="en">Cinema &amp; streaming</span><span data-l="ro">Cinema și streaming</span><span data-l="it">Sala e streaming</span></div>
+  </div>
+  <p class="note rv d3"><span data-l="en">Dates are set once financing closes. Red marks where we are now.</span><span data-l="ro">Datele se fixează după închiderea finanțării. Roșul arată unde suntem acum.</span><span data-l="it">Le date si fissano alla chiusura del finanziamento. Il rosso indica dove siamo ora.</span></p>
+</section>
+
+<section class="scene plain" data-ch="3">
+  <div class="bg"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Why now</span><span data-l="ro">De ce acum</span><span data-l="it">Perché ora</span></div>
+  <h2 class="t split"><span data-l="en">Built to <em>travel</em></span><span data-l="ro">Făcut să <em>circule</em></span><span data-l="it">Pensato per <em>viaggiare</em></span></h2>
+  <ul class="points">
+    <li class="rv d2"><span class="n">01</span><span data-l="en">Female-led ensemble thrillers travel across borders.</span><span data-l="ro">Thrillerele de ansamblu cu femei în prim-plan trec granițele.</span><span data-l="it">I thriller corali al femminile viaggiano oltre i confini.</span></li>
+    <li class="rv d2"><span class="n">02</span><span data-l="en">An international lead is already confirmed.</span><span data-l="ro">Rolul principal internațional e deja confirmat.</span><span data-l="it">Una protagonista internazionale è già confermata.</span></li>
+    <li class="rv d3"><span class="n">03</span><span data-l="en">A contained production around one main location.</span><span data-l="ro">O producție concentrată, în jurul unei singure locații principale.</span><span data-l="it">Una produzione contenuta, attorno a una sola location principale.</span></li>
+    <li class="rv d3"><span class="n">04</span><span data-l="en">English-language, European cast, made for international sales.</span><span data-l="ro">În engleză, cu distribuție europeană, gândit pentru vânzări internaționale.</span><span data-l="it">In inglese, con cast europeo, pensato per le vendite internazionali.</span></li>
+  </ul>
+</section>
+
+<!-- V · CONTACT -->
+<section class="scene center" data-ch="4" style="--top:.45;--mid:.3;--bot:.75">
+  <div class="bg"><img src="assets/frames/16-cabana-zori.jpg" alt="" loading="lazy"></div><div class="shade"></div>
+  <div class="k rv"><span data-l="en">Thank you for considering</span><span data-l="ro">Vă mulțumim pentru atenție</span><span data-l="it">Grazie per l'attenzione</span></div>
+  <h2 class="t big split"><span data-l="en">One of us <em>knows</em></span><span data-l="ro">Una dintre noi <em>știe</em></span><span data-l="it">Una di noi <em>sa</em></span></h2>
+  <p class="sub rv d2" style="font-size:15px;color:var(--paper)">KSM Production · Cluj-Napoca<br><a class="u" href="mailto:bogdan.marginean@ksmproduction.ro">bogdan.marginean@ksmproduction.ro</a></p>
+  <p class="note rv d3" style="max-width:640px"><span data-l="en">This presentation is for information only and does not constitute an offer of securities. Names marked “wishlist” are not attached. Forward-looking statements are not guarantees. Cast photos: IMDb, for presentation only. Images: concept frames.</span><span data-l="ro">Această prezentare are caracter informativ și nu constituie o ofertă de valori mobiliare. Numele marcate „wishlist” nu sunt atașate proiectului. Declarațiile despre viitor nu reprezintă garanții. Fotografiile actorilor: IMDb, doar pentru prezentare. Imaginile: cadre de concept.</span><span data-l="it">Questa presentazione ha carattere informativo e non costituisce un'offerta di strumenti finanziari. I nomi indicati come “wishlist” non sono contrattualizzati. Le dichiarazioni previsionali non costituiscono garanzia. Foto del cast: IMDb, solo per presentazione. Immagini: frame di concept.</span></p>
+</section>
+
+</main>
+
+<!-- floating nav -->
+<nav class="nav" aria-label="Chapters">
+  <div class="scroll" aria-hidden="true"><i></i><span id="count">01 / 20</span></div>
+  <button class="compass" id="compass" aria-haspopup="dialog" aria-controls="menu">
+    <span class="crow"><span class="wm">One of</span>
+      <svg viewBox="0 0 150 22" aria-hidden="true"><path class="ln" d="M7,11 C20,3 28,19 41,11 S62,3 75,11 S96,19 109,11 S130,3 143,11"/><circle cx="7" cy="11" r="4.5"/><circle cx="41" cy="11" r="4.5"/><circle cx="75" cy="11" r="4.5"/><circle cx="109" cy="11" r="4.5"/><circle cx="143" cy="11" r="4.5"/></svg>
+    <span class="wm">us knows</span></span>
+    <span class="hint"><b id="chap">The story</b><span id="hintx"><span data-l="en">· click to explore</span><span data-l="ro">· apasă ca să explorezi</span><span data-l="it">· clicca per esplorare</span></span></span>
+  </button>
+  <div class="rbtns">
+    <div class="langpop" id="langpop" role="group" aria-label="Language"><button data-set="en">EN</button><button data-set="ro">RO</button><button data-set="it">IT</button></div>
+    <button class="ic" id="langbtn" aria-expanded="false" aria-controls="langpop" aria-label="Language"><span id="langcur">EN</span></button>
+    <a class="ic" href="mailto:bogdan.marginean@ksmproduction.ro" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></a>
+  </div>
+</nav>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Chapters">
+  <div class="pv" aria-hidden="true">
+    <img src="assets/frames/01-coperta.jpg" alt="" loading="lazy"><img src="assets/frames/09-marginea-padurii.jpg" alt="" loading="lazy"><img src="assets/frames/12-living-sus.jpg" alt="" loading="lazy"><img src="assets/frames/13-ravena.jpg" alt="" loading="lazy"><img src="assets/frames/16-cabana-zori.jpg" alt="" loading="lazy">
+  </div>
+  <ol id="menulist"></ol>
+  <button class="ic x" id="menux" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, P=new URLSearchParams(location.search), body=document.body;
+  var titles={en:"One of Us Knows",ro:"Una dintre noi știe",it:"Una di noi sa"};
+  var CH={en:["The story","The world","The people","The makers","Contact"],ro:["Povestea","Lumea","Oamenii","Echipa","Contact"],it:["La storia","Il mondo","Le persone","Chi lo fa","Contatti"]};
+  var lang="en", cur=0, reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function st(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+
+  if(P.get("v")==="investor") root.classList.add("inv");
+  var scenes=[].slice.call(document.querySelectorAll(".scene")).filter(function(s){return getComputedStyle(s).display!=="none"});
+
+  /* split titles into words, keeping <em> */
+  document.querySelectorAll(".split [data-l]").forEach(function(span){
+    var i=0;
+    (function walk(node){
+      [].slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){
+          var frag=document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach(function(part){
+            if(!part) return;
+            if(/^\s+$/.test(part)){frag.appendChild(document.createTextNode(part));return}
+            var w=document.createElement("span"); w.className="w"; w.style.setProperty("--i",i++); w.textContent=part; frag.appendChild(w);
+          });
+          n.parentNode.replaceChild(frag,n);
+        } else if(n.nodeType===1) walk(n);
+      });
+    })(span);
+  });
+
+  /* nav + menu */
+  var circles=document.querySelectorAll(".crow circle"), menu=document.getElementById("menu"), list=document.getElementById("menulist"), pv=menu.querySelectorAll(".pv img");
+  function firstOf(ch){return scenes.findIndex(function(s){return +s.dataset.ch===ch})}
+  /* sticky scenes stay pinned, so positions come from the flow, not from the element */
+  function isSticky(){return getComputedStyle(scenes[0]).position==="sticky"}
+  function topOf(i){if(isSticky()){var y=0;for(var j=0;j<i;j++)y+=scenes[j].offsetHeight;return y}return scenes[i].offsetTop}
+  function goTo(i){i=Math.max(0,Math.min(scenes.length-1,i));scrollTo({top:topOf(i),behavior:reduce?"auto":"smooth"})}
+  function buildMenu(){
+    list.innerHTML="";
+    CH[lang].forEach(function(name,i){
+      var li=document.createElement("li"), b=document.createElement("button"); b.textContent=name;
+      b.addEventListener("mouseenter",function(){showPv(i)}); b.addEventListener("focus",function(){showPv(i)});
+      b.addEventListener("click",function(){closeMenu();var t=firstOf(i);if(t>-1)goTo(t)});
+      li.appendChild(b); list.appendChild(li);
+    });
+  }
+  function showPv(i){pv.forEach(function(im,j){im.classList.toggle("on",j===i)})}
+  function openMenu(){var ch=+scenes[cur].dataset.ch; menu.classList.add("open"); showPv(ch); [].forEach.call(list.querySelectorAll("button"),function(b,i){b.classList.toggle("cur",i===ch)}); var c=list.querySelectorAll("button")[ch]; if(c)c.focus({preventScroll:true})}
+  function closeMenu(){menu.classList.remove("open"); document.getElementById("compass").focus({preventScroll:true})}
+  document.getElementById("compass").addEventListener("click",openMenu);
+  document.getElementById("menux").addEventListener("click",closeMenu);
+  menu.addEventListener("click",function(e){if(e.target===menu)closeMenu()});
+
+  function paint(){
+    var ch=+scenes[cur].dataset.ch;
+    document.getElementById("chap").textContent=CH[lang][ch];
+    document.getElementById("count").textContent=String(cur+1).padStart(2,"0")+" / "+String(scenes.length).padStart(2,"0");
+    circles.forEach(function(c,i){c.classList.toggle("on",i===ch)});
+  }
+  function setLang(l){
+    if(!titles[l]) l="en"; lang=l;
+    root.lang=l; root.setAttribute("data-lang",l); document.title=titles[l];
+    document.querySelectorAll("[data-set]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.set===l?"true":"false")});
+    document.getElementById("langcur").textContent=l.toUpperCase();
+    st("udns-deck-lang",l); buildMenu(); paint();
+  }
+  document.querySelectorAll("[data-set]").forEach(function(b){b.addEventListener("click",function(){
+    setLang(b.dataset.set); var u=new URL(location); u.searchParams.set("lang",b.dataset.set); history.replaceState(null,"",u);
+  })});
+  var lb=document.getElementById("langbtn"), lp=document.getElementById("langpop");
+  lb.addEventListener("click",function(){var o=!lp.classList.contains("open");lp.classList.toggle("open",o);lb.setAttribute("aria-expanded",o)});
+  document.addEventListener("click",function(e){if(!e.target.closest(".rbtns")){lp.classList.remove("open");lb.setAttribute("aria-expanded","false")}});
+  setLang(P.get("lang")||st("udns-deck-lang")||"en");
+
+  /* gate */
+  var gate=document.getElementById("gate");
+  function enter(){if(gate.classList.contains("gone"))return;gate.classList.add("gone");body.classList.remove("locked");scenes[0].classList.add("is-in");setTimeout(function(){gate.setAttribute("aria-hidden","true")},1200)}
+  document.getElementById("enter").addEventListener("click",enter);
+  document.getElementById("enter").focus({preventScroll:true});
+
+  /* reveal + current scene */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting&&!body.classList.contains("locked")) e.target.classList.add("is-in");
+  })},{threshold:.3});
+  scenes.forEach(function(s){io.observe(s)});
+
+  /* scroll: current scene, parallax, stacking shade */
+  var ticking=false;
+  function onScroll(){
+    ticking=false; var vh=innerHeight, best=0;
+    scenes.forEach(function(s,i){
+      var r=s.getBoundingClientRect();
+      if(r.top<=vh*.5) best=i;
+      var img=s.querySelector(".bg img");
+      if(img&&!reduce){var p=Math.max(-1,Math.min(1,r.top/vh)); img.style.setProperty("--py",(p*6).toFixed(2)+"vh")}
+      var next=scenes[i+1];
+      if(next){var nt=next.getBoundingClientRect().top; var k=Math.max(0,Math.min(1,1-nt/vh)); s.style.setProperty("--shade",(k*.75).toFixed(3))}
+    });
+    if(best!==cur){cur=best;paint()}
+  }
+  addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+  addEventListener("resize",onScroll);
+
+  /* hotspots */
+  document.querySelectorAll(".hs>button").forEach(function(b){b.addEventListener("click",function(){
+    var hs=b.parentNode, open=!hs.classList.contains("open");
+    document.querySelectorAll(".hs.open").forEach(function(o){o.classList.remove("open");o.querySelector("button").setAttribute("aria-expanded","false")});
+    if(open){hs.classList.add("open");b.setAttribute("aria-expanded","true")}
+  })});
+
+  /* keyboard */
+  addEventListener("keydown",function(e){
+    if(e.key==="Escape"){if(menu.classList.contains("open"))closeMenu();lp.classList.remove("open");return}
+    if(!gate.classList.contains("gone")||menu.classList.contains("open"))return;
+    if(e.target.closest&&e.target.closest("button,a")&&(e.key===" "||e.key==="Enter"))return;
+    var dir=({ArrowDown:1,ArrowRight:1,PageDown:1," ":1,ArrowUp:-1,ArrowLeft:-1,PageUp:-1})[e.key]; if(!dir)return;
+    e.preventDefault(); goTo(cur+dir);
+  });
+  onScroll(); paint();
+})();
+</script>
+</body>
+</html>

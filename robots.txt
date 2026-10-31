@@ -3,3 +3,4 @@ Disallow: /500-dosar.html
 Disallow: /500-dosar-og.jpg
 Disallow: /500-dosar-icon.png
 Disallow: /echoes-prezentare.html
+Disallow: /una-dintre-noi-stie/
