@@ -307,8 +307,18 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .scene.is-in .logo .ltr{opacity:1}.scene.is-in .logo .bar{transform:none}
 .logo:hover .bar{fill-opacity:.5}
 .logo{cursor:default}
-/* torch on the cover */
-.torch{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle 34vmax at var(--tx,50%) var(--ty,45%),rgba(255,190,120,.10),rgba(0,0,0,0) 40%,rgba(0,0,0,.5) 100%);transition:opacity 1.2s}
+/* torch: the cover is night; the beam reveals the lit frame underneath */
+.night .bg img{filter:brightness(.38) saturate(.7) contrast(1.05)}
+.lit{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;--br:190px;
+  -webkit-mask-image:radial-gradient(circle var(--br) at var(--tx,50%) var(--ty,46%),#000 0,#000 34%,rgba(0,0,0,.55) 62%,rgba(0,0,0,.18) 82%,transparent 100%);
+          mask-image:radial-gradient(circle var(--br) at var(--tx,50%) var(--ty,46%),#000 0,#000 34%,rgba(0,0,0,.55) 62%,rgba(0,0,0,.18) 82%,transparent 100%);
+  opacity:0;transition:opacity 1.6s ease .6s}
+.scene.is-in .lit{opacity:1}
+.lit img{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;transform:translate3d(0,var(--py,0px),0) scale(var(--sc,1.12));translate:var(--bx,0px) var(--by,0px);transition:transform 2.4s var(--ease),translate 1.4s cubic-bezier(.19,1,.22,1);filter:brightness(1.35) saturate(1.15) sepia(.18) contrast(1.06)}
+.scene.is-in .lit img{--sc:1.02}
+.lit::after{content:"";position:absolute;inset:0;background:radial-gradient(circle calc(var(--br)*.7) at var(--tx,50%) var(--ty,46%),rgba(255,206,150,.16),transparent 70%)}
+.night{cursor:none}.night a,.night button{cursor:pointer}
+@media (prefers-reduced-motion:reduce){.lit{display:none}.night .bg img{filter:brightness(.6)}}
 /* parallax by mouse */
 .bg img{translate:var(--bx,0px) var(--by,0px);transition:transform 2.4s var(--ease),translate 1.4s cubic-bezier(.19,1,.22,1)}
 /* magnetic */
@@ -329,18 +339,7 @@ html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!
 .scene.done .rv,.scene.done .rv .ph,.scene.done .frame{transition-delay:0s!important}
 #prog{position:fixed;left:0;top:0;height:2px;width:100%;background:#B3121B;transform:scaleX(var(--p,0));transform-origin:0 50%;z-index:41;pointer-events:none;opacity:.9}
 body.locked #prog{opacity:0}
-/* cursor */
-#cdot,#cring{position:fixed;left:0;top:0;pointer-events:none;z-index:70;border-radius:50%;opacity:0;transition:opacity .4s}
-#cdot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--paper)}
-#cring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid rgba(244,241,234,.6);display:grid;place-items:center;transition:opacity .4s,width .5s cubic-bezier(.19,1,.22,1),height .5s cubic-bezier(.19,1,.22,1),margin .5s cubic-bezier(.19,1,.22,1),background .5s,border-color .5s}
-#cring b{font:500 9.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink,#0b0b0b);opacity:0;transition:opacity .3s}
-html.cur #cdot,html.cur #cring{opacity:1}
-html.cur,html.cur *{cursor:none!important}
-#cring.big{width:86px;height:86px;margin:-43px 0 0 -43px;background:var(--paper);border-color:var(--paper)}
-#cring.big b{opacity:1}
-#cring.mid{width:58px;height:58px;margin:-29px 0 0 -29px;border-color:var(--paper);background:rgba(244,241,234,.08)}
-#cring.down{width:30px;height:30px;margin:-15px 0 0 -15px}
-@media (max-width:860px),(pointer:coarse){#cdot,#cring{display:none}.torch{display:none}}
+
 @media (prefers-reduced-motion:reduce){.w,.frame,.pc .ph,.team .m .ph,.mark,.logo .ltr,.logo .bar{transition:none!important;transform:none!important;clip-path:none!important;opacity:1!important}}
 </style>
 </head>
@@ -367,8 +366,8 @@ html.cur,html.cur *{cursor:none!important}
 <main id="deck">
 
 <!-- I · STORY -->
-<section class="scene center" data-ch="0" style="--top:.35;--mid:.15;--bot:.6">
-  <div class="bg"><img src="assets/frames/01-coperta.jpg" alt=""></div><div class="torch"></div><div class="shade"></div>
+<section class="scene center night" data-ch="0" style="--top:.35;--mid:.15;--bot:.6">
+  <div class="bg"><img src="assets/frames/01-coperta.jpg" alt=""></div><div class="lit" aria-hidden="true"><img src="assets/frames/01-coperta.jpg" alt=""></div><div class="shade"></div>
   <div class="k rv"><span data-l="en">A psychological thriller</span><span data-l="ro">Un thriller psihologic</span><span data-l="it">Un thriller psicologico</span></div>
   <h1 class="logo rv d1"><svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One of Us Knows" viewBox="0 0 2012 445"><g transform="translate(0.000000,445.000000) scale(0.100000,-0.100000)" class="ltr" fill="#F4F1EA"> <path d="M565 4381 c-253 -42 -416 -187 -482 -431 -17 -61 -18 -172 -18 -1740 l0 -1675 27 -81 c83 -245 265 -378 534 -391 342 -17 581 159 639 472 25 132 17 3334 -8 3420 -63 217 -200 359 -395 410 -74 19 -228 27 -297 16z m185 -406 c38 -20 68 -59 81 -109 8 -30 11 -485 11 -1654 l0 -1613 -26 -54 c-57 -115 -220 -127 -286 -21 -39 65 -41 131 -38 1756 l3 1565 25 50 c44 87 147 123 230 80z"/> <path d="M5566 4375 c-224 -43 -381 -190 -443 -416 -28 -101 -28 -3370 0 -3469 78 -277 287 -430 586 -430 307 0 498 143 583 437 l23 78 0 1650 c0 1847 6 1704 -72 1865 -109 226 -382 341 -677 285z m234 -408 c19 -12 43 -38 54 -57 21 -35 21 -41 24 -1665 2 -1461 1 -1634 -14 -1677 -50 -151 -254 -158 -311 -11 -17 46 -18 119 -18 1673 l0 1625 21 40 c38 71 76 93 160 94 37 1 60 -5 84 -22z"/> <path d="M10525 4384 c-11 -2 -45 -9 -75 -15 -210 -41 -371 -207 -426 -439 -39 -168 -29 -724 17 -955 53 -264 130 -432 379 -825 337 -532 374 -656 368 -1230 l-3 -326 -26 -49 c-70 -137 -250 -122 -304 26 -18 50 -19 88 -23 547 l-4 492 -214 0 -215 0 3 -522 c4 -585 3 -571 78 -725 103 -209 298 -312 570 -300 291 12 472 158 552 444 31 108 34 672 5 873 -53 371 -134 564 -430 1024 -194 302 -254 426 -305 623 -27 108 -27 109 -27 468 l0 361 25 48 c58 112 219 118 281 11 33 -55 39 -151 39 -587 l0 -428 213 0 212 0 3 413 c4 450 -4 570 -44 697 -56 179 -188 307 -365 356 -54 15 -246 27 -284 18z"/> <path d="M15715 4376 c-243 -48 -394 -196 -452 -446 -28 -117 -28 -3317 0 -3425 73 -285 285 -445 592 -445 253 0 435 106 533 310 78 163 73 36 70 1885 l-3 1650 -27 80 c-70 204 -199 331 -385 380 -84 22 -244 27 -328 11z m226 -409 c19 -12 45 -44 59 -72 l25 -50 -2 -1610 c-1 -885 -5 -1623 -9 -1640 -34 -161 -225 -196 -304 -55 l-25 45 -3 1618 c-1 1099 1 1631 8 1657 30 110 162 167 251 107z"/> <path d="M19300 4375 c-176 -33 -314 -139 -390 -297 -62 -129 -71 -186 -77 -484 -12 -623 54 -870 362 -1359 276 -437 334 -553 393 -785 27 -105 27 -107 27 -475 0 -419 -3 -440 -73 -493 -54 -41 -145 -39 -199 4 -77 62 -78 70 -78 634 l-1 495 -218 3 -217 2 3 -522 c5 -589 6 -600 85 -751 190 -361 802 -392 1027 -52 97 145 116 253 116 641 0 650 -66 877 -408 1411 -343 536 -382 657 -382 1192 0 253 9 341 38 381 76 102 225 94 282 -16 l25 -48 3 -478 3 -478 215 0 215 0 -4 503 c-4 558 -3 549 -74 695 -109 222 -379 333 -673 277z"/> <path d="M1580 2230 l0 -2120 205 0 205 0 0 688 c0 378 -5 878 -10 1112 -5 234 -11 544 -14 690 l-6 265 64 -350 c167 -914 429 -2325 443 -2382 5 -23 6 -23 209 -23 l204 0 0 2120 0 2120 -211 0 -211 0 6 -637 c9 -922 25 -1907 32 -1988 10 -116 -3 -70 -41 145 -51 290 -104 583 -285 1583 -88 483 -160 882 -160 887 0 6 -83 10 -215 10 l-215 0 0 -2120z"/> <path d="M3180 2230 l0 -2120 505 0 505 0 -2 198 -3 197 -282 3 -283 2 0 785 0 785 235 0 235 0 0 205 0 205 -235 0 -235 0 0 730 0 730 280 0 280 0 0 200 0 200 -500 0 -500 0 0 -2120z"/> <path d="M6620 2230 l0 -2120 215 0 215 0 0 970 0 970 235 0 235 0 0 200 0 200 -235 0 -235 0 0 750 0 750 280 0 280 0 0 200 0 200 -495 0 -495 0 0 -2120z"/> <path d="M8522 2453 c3 -1776 4 -1902 21 -1958 82 -282 289 -435 587 -435 302 0 506 160 580 454 25 98 24 14 22 2179 l-2 1657 -213 0 -214 0 1 -1857 c1 -1742 0 -1862 -16 -1914 -52 -168 -259 -172 -314 -7 -21 64 -21 67 -23 2176 l-1 1602 -215 0 -215 0 2 -1897z"/> <path d="M12180 2230 l0 -2120 220 0 220 0 0 801 c0 754 1 810 21 958 11 86 22 157 23 158 1 1 10 -46 20 -105 19 -111 233 -1214 309 -1592 l43 -215 228 -3 c214 -2 227 -1 222 15 -7 23 -231 1136 -291 1443 -26 129 -71 357 -102 505 -50 243 -55 275 -46 325 12 69 381 1892 389 1926 l6 24 -223 -2 -224 -3 -18 -100 c-102 -569 -284 -1497 -329 -1685 l-23 -95 -3 943 -2 942 -220 0 -220 0 0 -2120z"/> <path d="M13645 4340 c-6 -10 -3 -3988 3 -4147 l4 -83 199 0 199 0 0 43 c2 707 -5 1764 -13 2169 -7 290 -9 524 -6 520 4 -4 20 -83 37 -177 17 -93 62 -341 100 -550 39 -209 84 -461 102 -560 17 -99 53 -297 80 -440 27 -143 79 -420 115 -615 36 -195 68 -363 71 -372 5 -16 24 -18 210 -18 l204 0 0 2120 0 2120 -210 0 -210 0 0 -337 c0 -186 5 -624 10 -973 5 -349 11 -797 14 -995 l5 -360 -19 110 c-11 61 -47 259 -80 440 -33 182 -91 503 -130 715 -73 397 -250 1386 -250 1395 0 10 -429 5 -435 -5z"/> <path d="M16650 4318 c0 -18 5 -85 10 -148 6 -63 26 -315 45 -560 19 -245 64 -803 100 -1240 36 -437 90 -1101 120 -1475 30 -374 57 -704 61 -732 l5 -53 224 0 224 0 5 33 c11 70 164 2027 199 2540 8 108 16 199 18 202 3 2 11 -75 17 -173 18 -258 137 -1777 172 -2195 17 -197 30 -369 30 -382 l0 -25 225 0 c201 0 225 2 225 16 0 9 7 89 15 178 13 144 75 899 195 2376 34 422 105 1315 126 1588 l7 82 -211 0 -211 0 -5 -52 c-7 -65 -46 -710 -86 -1443 -68 -1235 -81 -1449 -85 -1454 -3 -2 -5 11 -5 30 0 18 -11 189 -25 379 -13 190 -38 541 -55 780 -17 239 -53 725 -80 1078 -28 354 -50 653 -50 663 0 18 -10 19 -195 19 -107 0 -195 -2 -195 -4 0 -2 -16 -201 -35 -442 -19 -242 -48 -623 -65 -849 -17 -225 -48 -646 -70 -935 -21 -289 -42 -570 -46 -625 -8 -98 -8 -95 -21 145 -39 766 -87 1594 -128 2247 -14 215 -25 408 -25 427 l0 36 -215 0 -215 0 0 -32z"/> </g><rect class="bar" x="838" y="0" width="299" height="445" fill="#B3121B" fill-opacity="0.94"/></svg></h1><p class="loc rv d2"><span data-l="ro">Una dintre noi știe</span><span data-l="it">Una di noi sa</span></p>
   <p class="sub rv d2" style="font:300 italic clamp(18px,1.6vw,24px)/1.4 var(--serif);color:var(--paper)"><span data-l="en">For three years, someone kept quiet.</span><span data-l="ro">Trei ani cineva a tăcut.</span><span data-l="it">Per tre anni, qualcuno ha taciuto.</span></p>
@@ -715,7 +714,7 @@ html.cur,html.cur *{cursor:none!important}
       var r=s.getBoundingClientRect();
       if(r.top<=vh*.5) best=i;
       var img=s.querySelector(".bg img");
-      if(img&&!reduce){var p=Math.max(-1,Math.min(1,r.top/vh)); img.style.setProperty("--py",(p*6).toFixed(2)+"vh")}
+      if(img&&!reduce){var p=Math.max(-1,Math.min(1,r.top/vh)); s.style.setProperty("--py",(p*6).toFixed(2)+"vh")}
       var next=scenes[i+1];
       if(next){var nt=next.getBoundingClientRect().top; var k=Math.max(0,Math.min(1,1-nt/vh)); s.style.setProperty("--shade",(k*.75).toFixed(3))}
     });
@@ -738,29 +737,6 @@ html.cur,html.cur *{cursor:none!important}
   addEventListener("scroll",setProg,{passive:true}); setProg();
   if(lenis) lenis.on("scroll",function(e){var v=Math.max(-3,Math.min(3,e.velocity*.12)); root.style.setProperty("--skew",v.toFixed(2)+"deg")});
   if(fine&&!reduce&&innerWidth>860){
-    var cd=document.createElement("div"),cr=document.createElement("div"),cl=document.createElement("b"); cd.id="cdot"; cr.id="cring"; cr.appendChild(cl); body.appendChild(cd); body.appendChild(cr);
-    var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-    var L={view:{en:"View",ro:"Vezi",it:"Vedi"},open:{en:"Open",ro:"Deschide",it:"Apri"},enter:{en:"Enter",ro:"Intră",it:"Entra"},menu:{en:"Menu",ro:"Meniu",it:"Menu"},peek:{en:"Peek",ro:"Privește",it:"Guarda"},drag:{en:"Explore",ro:"Explorează",it:"Esplora"}};
-    function label(el){
-      if(!el) return null;
-      if(el.closest("#enter")) return ["big","enter"];
-      if(el.closest(".imdb")) return ["big",null,"IMDb"];
-      if(el.closest(".compass")) return ["big","menu"];
-      if(el.closest(".logo")) return ["big","peek"];
-      if(el.closest(".hs")) return ["big","drag"];
-      if(el.closest(".frame,.pc .ph,.team .m .ph")) return ["big","view"];
-      if(el.closest("a,button")) return ["mid"];
-      return null;
-    }
-    addEventListener("mousemove",function(e){
-      mx=e.clientX;my=e.clientY; root.classList.add("cur");
-      var l=label(e.target); cr.classList.remove("big","mid");
-      if(l){cr.classList.add(l[0]); cl.textContent=l[2]||(l[1]?L[l[1]][lang]:"")}
-    },{passive:true});
-    addEventListener("mousedown",function(){cr.classList.add("down")}); addEventListener("mouseup",function(){cr.classList.remove("down")});
-    document.addEventListener("mouseleave",function(){root.classList.remove("cur")});
-    (function loop(){rx+=(mx-rx)*.16; ry+=(my-ry)*.16; cd.style.transform="translate("+mx+"px,"+my+"px)"; cr.style.transform="translate("+rx.toFixed(1)+"px,"+ry.toFixed(1)+"px)"; requestAnimationFrame(loop)})();
-
     /* magnetic buttons */
     document.querySelectorAll(".pill,.ic,.imdb,.hs>button,#menux,.langpop button,.glang button").forEach(function(el){
       el.classList.add("mag");
@@ -773,14 +749,35 @@ html.cur,html.cur *{cursor:none!important}
       el.addEventListener("mousemove",function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height; el.classList.add("hov"); el.style.setProperty("--ry",((x-.5)*14).toFixed(2)+"deg"); el.style.setProperty("--rx",((.5-y)*12).toFixed(2)+"deg"); el.style.setProperty("--gx",(x*100).toFixed(1)+"%"); el.style.setProperty("--gy",(y*100).toFixed(1)+"%")});
       el.addEventListener("mouseleave",function(){el.classList.remove("hov"); el.style.setProperty("--rx","0deg"); el.style.setProperty("--ry","0deg")});
     });
-    /* background drifts against the mouse; torch follows it on the cover */
-    var torch=document.querySelector(".torch");
+    /* background drifts against the mouse */
     addEventListener("mousemove",function(e){
-      var nx=e.clientX/innerWidth-.5, ny=e.clientY/innerHeight-.5;
-      var img=scenes[cur]&&scenes[cur].querySelector(".bg img"); if(img){img.style.setProperty("--bx",(-nx*22).toFixed(1)+"px"); img.style.setProperty("--by",(-ny*14).toFixed(1)+"px")}
-      if(torch){torch.style.setProperty("--tx",e.clientX+"px"); torch.style.setProperty("--ty",e.clientY+"px")}
+      var nx=e.clientX/innerWidth-.5, ny=e.clientY/innerHeight-.5, sc=scenes[cur];
+      if(sc){sc.style.setProperty("--bx",(-nx*22).toFixed(1)+"px"); sc.style.setProperty("--by",(-ny*14).toFixed(1)+"px")}
     },{passive:true});
   }
+
+
+  /* torch beam on the cover: follows the pointer with lag, flickers, searches the woods when idle */
+  (function(){
+    var lit=document.querySelector(".lit"); if(!lit||reduce) return;
+    var cover=lit.parentNode, tx=innerWidth*.5, ty=innerHeight*.46, x=tx, y=ty, last=-1e9, t0=performance.now();
+    function aim(px,py){var r=cover.getBoundingClientRect(); tx=px-r.left; ty=py-r.top; last=performance.now()}
+    addEventListener("mousemove",function(e){aim(e.clientX,e.clientY)},{passive:true});
+    addEventListener("touchmove",function(e){var t=e.touches[0]; if(t) aim(t.clientX,t.clientY)},{passive:true});
+    (function loop(now){
+      var r=cover.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight){
+        if(now-last>2600){ /* idle: sweep the treeline */
+          var k=(now-t0)/1000; tx=r.width*(.5+.36*Math.sin(k*.33)+.08*Math.sin(k*1.1)); ty=r.height*(.5+.16*Math.sin(k*.51+1.3));
+        }
+        x+=(tx-x)*.09; y+=(ty-y)*.09;
+        var fl=1+.035*Math.sin(now*.031)+.025*Math.sin(now*.0173)+(Math.random()<.012?-.12:0);
+        var base=Math.max(150,Math.min(260,r.width*.15));
+        lit.style.setProperty("--tx",x.toFixed(1)+"px"); lit.style.setProperty("--ty",y.toFixed(1)+"px"); lit.style.setProperty("--br",(base*fl).toFixed(1)+"px");
+      }
+      requestAnimationFrame(loop);
+    })(performance.now());
+  })();
 
   /* keyboard */
   addEventListener("keydown",function(e){
