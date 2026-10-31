@@ -533,11 +533,35 @@ html .pdfs .pill{margin:0;padding:8px 2px;gap:10px;font-size:12px}html .pdfs .pi
 html.print .pdfs{display:none}
 .pc .role .age{letter-spacing:.12em;color:rgba(244,241,234,.4)}
 .pc .kf{min-height:2.8em}
+
+/* ================= v12: investor lock ================= */
+.lock{position:fixed;inset:0;z-index:80;background:#050505;display:flex;align-items:center;justify-content:center;padding:20px;transition:opacity .9s ease}
+.lock.gone{opacity:0;pointer-events:none}
+.lock[hidden]{display:none}
+.lbox{display:flex;flex-direction:column;align-items:center;width:min(380px,100%);text-align:center}
+.lk{margin:26px 0 22px;font:300 italic clamp(22px,2vw,28px)/1.2 var(--serif);color:var(--paper)}
+.lbox input{width:100%;background:none;border:0;border-bottom:1px solid rgba(244,241,234,.35);color:var(--paper);font:400 18px/1 var(--type);letter-spacing:.3em;text-align:center;padding:12px 4px;outline:none;transition:border-color .4s}
+.lbox input:focus{border-color:var(--red)}
+.lbox .pill{margin-top:24px}
+.lerr{margin:14px 0 0;font:600 12px/1 var(--cond);letter-spacing:.2em;text-transform:uppercase;color:var(--red-l)}
+.lnote{margin:26px 0 0;font-size:12.5px;line-height:1.5;color:rgba(244,241,234,.45);max-width:320px}
+.lock.shake .lbox{animation:buzz .42s ease 1}
+.gate.held .gs0{visibility:hidden}
 </style>
 </head>
 <body class="locked">
 
 <!-- GATE -->
+<div class="lock" id="lock" hidden>
+  <form class="lbox" autocomplete="off">
+    <div class="g0w">One of us knows</div>
+    <p class="lk"><span data-l="en">Investor access</span><span data-l="ro">Acces investitori</span><span data-l="it">Accesso investitori</span></p>
+    <input type="password" name="pw" aria-label="Password" placeholder="••••••••" autocomplete="off" spellcheck="false">
+    <button class="pill" type="submit"><span data-l="en">Open</span><span data-l="ro">Deschide</span><span data-l="it">Apri</span></button>
+    <p class="lerr" hidden><span data-l="en">Wrong password.</span><span data-l="ro">Parolă greșită.</span><span data-l="it">Password errata.</span></p>
+    <p class="lnote"><span data-l="en">The confidential pages are encrypted. Ask KSM Production for the password.</span><span data-l="ro">Paginile confidențiale sunt criptate. Parola o primiți de la KSM Production.</span><span data-l="it">Le pagine riservate sono criptate. La password è fornita da KSM Production.</span></p>
+  </form>
+</div>
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="One of Us Knows">
   <div class="gbg" aria-hidden="true"></div>
   <button class="gskip" id="gskip" type="button"><span data-l="en">Skip</span><span data-l="ro">Sari peste</span><span data-l="it">Salta</span> ›</button>
@@ -631,17 +655,7 @@ html.print .pdfs{display:none}
   </div>
 </section>
 
-<section class="scene" data-ch="0" data-v="investor" style="--top:.75;--mid:.6;--bot:.8">
-  <div class="bg"><img src="assets/frames/06-finalul.jpg" alt="" loading="lazy"></div><div class="shade"></div>
-  <div class="clock"><span data-l="en">ONE YEAR LATER</span><span data-l="ro">UN AN MAI TÂRZIU</span><span data-l="it">UN ANNO DOPO</span></div>
-  <div class="k red rv"><span data-l="en">Confidential · the ending</span><span data-l="ro">Confidențial · finalul</span><span data-l="it">Riservato · il finale</span></div>
-  <h2 class="t split"><span data-l="en">Ioana planned <em>everything</em>.</span><span data-l="ro">Ioana a plănuit <em>totul</em>.</span><span data-l="it">Ioana ha pianificato <em>tutto</em>.</span></h2>
-  <div class="body rv d2 redact" style="max-width:720px">
-    <p><span data-l="en">Liviu Dima was her son. Three years ago, drunk and heartbroken after Ingrid humiliated him at a party, he fell into an unfenced pit on Vera's land. Sonia, drinking on her ER shift, missed his internal bleeding. Ioana chose each woman, built the friendship and staged the weekend to hear them confess. She wanted the truth, not their deaths.</span><span data-l="ro">Liviu Dima era fiul ei. Acum trei ani, beat și cu inima frântă după ce Ingrid l-a umilit la o petrecere, a căzut într-o groapă neîngrădită de pe terenul Verei. Sonia, care bea în gardă la Urgențe, nu i-a văzut hemoragia internă. Ioana le-a ales pe fiecare, a construit prietenia și a pus la cale weekendul ca să le audă mărturisind. Voia adevărul, nu moartea lor.</span><span data-l="it">Liviu Dima era suo figlio. Tre anni fa, ubriaco e con il cuore spezzato dopo che Ingrid lo aveva umiliato a una festa, è caduto in una fossa non recintata sul terreno di Vera. Sonia, che beveva durante il turno al pronto soccorso, non si è accorta della sua emorragia interna. Ioana ha scelto ognuna di loro, ha costruito l'amicizia e ha organizzato il weekend per sentirle confessare. Voleva la verità, non la loro morte.</span></p>
-    <p><span data-l="en">The weekend spirals. Vera dies without her inhaler. Sonia is stabbed in a struggle. Ingrid shoots Tudor, Ioana's fiancé, then falls to her death. The case is closed as a chain of accidents.</span><span data-l="ro">Weekendul scapă de sub control. Vera moare fără inhalator. Sonia e înjunghiată într-o încăierare. Ingrid îl împușcă pe Tudor, logodnicul Ioanei, apoi cade în râpă. Cazul se închide ca un șir de accidente.</span><span data-l="it">Il weekend precipita. Vera muore senza inalatore. Sonia viene accoltellata in una colluttazione. Ingrid spara a Tudor, il fidanzato di Ioana, poi precipita in un burrone. Il caso viene archiviato come una serie di incidenti.</span></p>
-    <p class="lead"><span data-l="en">One year later, Ioana adopts Vera's son, Darius.</span><span data-l="ro">Un an mai târziu, Ioana îl adoptă pe Darius, fiul Verei.</span><span data-l="it">Un anno dopo, Ioana adotta Darius, il figlio di Vera.</span></p>
-  </div>
-</section>
+<div class="slot" data-slot="0"></div>
 
 <!-- II · WORLD -->
 <section class="scene center" data-ch="1" style="--top:.6;--mid:.45;--bot:.75">
@@ -796,18 +810,7 @@ html.print .pdfs{display:none}
   </ul>
 </section>
 
-<section class="scene plain" data-ch="3" data-v="investor">
-  <div class="bg"></div><div class="shade"></div>
-  <div class="k red rv"><span data-l="en">Risks · for investors</span><span data-l="ro">Riscuri · pentru investitori</span><span data-l="it">Rischi · per gli investitori</span></div>
-  <h2 class="t split"><span data-l="en">What is not <em>settled</em> yet</span><span data-l="ro">Ce nu e încă <em>stabilit</em></span><span data-l="it">Cosa non è ancora <em>definito</em></span></h2>
-  <ul class="rows">
-    <li class="rv d2"><span class="n">01</span><h3><span data-l="en">Director not attached</span><span data-l="ro">Regizorul nu e atașat</span><span data-l="it">Regista non confermato</span></h3><p><span data-l="en">Oriol Paulo is on our wishlist, not attached. A shortlist of alternatives is being prepared; the confirmed cast anchors the package.</span><span data-l="ro">Oriol Paulo e pe lista noastră de dorințe, nu e atașat. Pregătim o listă de alternative; actrița confirmată ține pachetul.</span><span data-l="it">Oriol Paulo è nella nostra wishlist, non è confermato. Prepariamo una rosa di alternative; l'attrice confermata tiene il pacchetto.</span></p></li>
-    <li class="rv d2"><span class="n">02</span><h3><span data-l="en">Co-production country</span><span data-l="ro">Țara de coproducție</span><span data-l="it">Paese di coproduzione</span></h3><p><span data-l="en">Italy is the plan; Spain is the ready alternative, with a KSM precedent (The Handler).</span><span data-l="ro">Italia e planul; Spania e alternativa pregătită, cu un precedent KSM (The Handler).</span><span data-l="it">Il piano è l'Italia; la Spagna è l'alternativa pronta, con un precedente KSM (The Handler).</span></p></li>
-    <li class="rv d3"><span class="n">03</span><h3><span data-l="en">Music rights</span><span data-l="ro">Drepturile muzicale</span><span data-l="it">Diritti musicali</span></h3><p><span data-l="en">“Summer Wine” is not cleared yet; a cover or an original theme is the fallback.</span><span data-l="ro">„Summer Wine” nu are încă drepturile; varianta de rezervă e o cover sau o temă originală.</span><span data-l="it">“Summer Wine” non è ancora liberata; il piano B è una cover o un tema originale.</span></p></li>
-    <li class="rv d4"><span class="n">04</span><h3><span data-l="en">Mountain shoot</span><span data-l="ro">Filmare la munte</span><span data-l="it">Riprese in montagna</span></h3><p><span data-l="en">Weather and access in the Făgăraș: one main location, contingency days and insurance in the schedule.</span><span data-l="ro">Vremea și accesul în Făgăraș: o locație principală, zile de rezervă și asigurare în plan.</span><span data-l="it">Meteo e accesso nei Făgăraș: una location principale, giorni di riserva e assicurazione nel piano.</span></p></li>
-    <li class="rv d4"><span class="n">05</span><h3><span data-l="en">Market</span><span data-l="ro">Piața</span><span data-l="it">Mercato</span></h3><p><span data-l="en">Genre results vary widely ($0.35M–$57M). A €1M budget and several revenue windows limit the downside.</span><span data-l="ro">Rezultatele în gen variază mult (0,35–57 mil. $). Bugetul de 1 mil. € și mai multe ferestre de venit limitează riscul.</span><span data-l="it">I risultati del genere variano molto (0,35–57 mln $). Un budget di 1 mln € e più finestre di ricavo limitano il rischio.</span></p></li>
-  </ul>
-</section>
+<div class="slot" data-slot="1"></div>
 
 <section class="scene plain" data-ch="3">
   <div class="bg"></div><div class="shade"></div>
@@ -859,8 +862,9 @@ html.print .pdfs{display:none}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script type="application/json" id="vault">{"s": "LOLvOx+MpKcE7y0LcdS4Lg==", "i": "B3rXxyubVqpOgRSo", "c": "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", "n": 250000}</script>
 <script>
-(function(){
+function __boot(){
   var root=document.documentElement, P=new URLSearchParams(location.search), body=document.body;
   var titles={en:"One of Us Knows",ro:"Una dintre noi știe",it:"Una di noi sa"};
   var CH={en:["The story","The world","The people","The makers","Contact"],ro:["Povestea","Lumea","Oamenii","Echipa","Contact"],it:["La storia","Il mondo","Le persone","Chi lo fa","Contatti"]};
@@ -1171,6 +1175,35 @@ html.print .pdfs{display:none}
     e.preventDefault(); goTo(cur+dir);
   });
   onScroll(); paint();
+}
+/* investor link: decrypt the confidential slides first, then start the deck */
+(function(){
+  var P=new URLSearchParams(location.search), v=document.getElementById("vault");
+  if(P.get("v")!=="investor"||!v){__boot();return}
+  var lock=document.getElementById("lock"), f=lock.querySelector("form"), inp=lock.querySelector("input"), err=lock.querySelector(".lerr"), gate=document.getElementById("gate");
+  var lg=P.get("lang"); if(!lg){try{lg=localStorage.getItem("udns-deck-lang")}catch(e){}} document.documentElement.setAttribute("data-lang",lg||"en");
+  lock.hidden=false; gate.classList.add("held");
+  function b64(x){return Uint8Array.from(atob(x),function(c){return c.charCodeAt(0)})}
+  function open(pw){
+    var d=JSON.parse(v.textContent), enc=new TextEncoder();
+    return crypto.subtle.importKey("raw",enc.encode(pw),"PBKDF2",false,["deriveKey"])
+      .then(function(base){return crypto.subtle.deriveKey({name:"PBKDF2",salt:b64(d.s),iterations:d.n,hash:"SHA-256"},base,{name:"AES-GCM",length:256},false,["decrypt"])})
+      .then(function(key){return crypto.subtle.decrypt({name:"AES-GCM",iv:b64(d.i)},key,b64(d.c))})
+      .then(function(buf){return JSON.parse(new TextDecoder().decode(buf))});
+  }
+  function attempt(pw,quiet){
+    return open(pw).then(function(parts){
+      document.querySelectorAll(".slot").forEach(function(sl){var t=document.createElement("template"); t.innerHTML=parts[+sl.dataset.slot]; sl.replaceWith(t.content)});
+      try{sessionStorage.setItem("udns-k",pw)}catch(e){}
+      lock.classList.add("gone"); setTimeout(function(){lock.hidden=true},900); gate.classList.remove("held"); __boot(); return true;
+    },function(){
+      if(!quiet){err.hidden=false; lock.classList.remove("shake"); void lock.offsetWidth; lock.classList.add("shake"); inp.select()}
+      return false;
+    });
+  }
+  f.addEventListener("submit",function(e){e.preventDefault(); if(inp.value) attempt(inp.value)});
+  var saved=null; try{saved=sessionStorage.getItem("udns-k")}catch(e){}
+  if(saved) attempt(saved,true).then(function(ok){if(!ok)inp.focus()}); else setTimeout(function(){inp.focus()},50);
 })();
 </script>
 </body>
