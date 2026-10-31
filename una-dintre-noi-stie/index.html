@@ -454,6 +454,26 @@ html[data-pal="amber"]{--bg:#0D0A08;--paper:#F3E9D9;--red:#C2702A;--red-l:#E79A4
 html[data-pal="oxblood"]{--bg:#0A0909;--paper:#EAE3D6;--red:#7A1218;--red-l:#B8464E;--line:rgba(234,227,214,.15);--imgf:grayscale(.6) contrast(1.06)}
 html[data-pal="ice"]{--bg:#070B0E;--paper:#E8EEF0;--red:#8FB4C2;--red-l:#B5D3DE;--line:rgba(232,238,240,.15);--imgf:saturate(.65) brightness(.95) hue-rotate(-6deg)}
 html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
+
+/* ================= v8: film palette ================= */
+.palette{display:flex;gap:4px;width:min(1040px,100%);height:clamp(120px,22vh,200px);margin-top:26px}
+.sw{position:relative;flex:var(--f) 1 0;min-width:0;background:var(--c);border:1px solid rgba(244,241,234,.12);overflow:hidden;color:var(--paper);padding:12px 12px 11px;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;cursor:default;
+  clip-path:inset(100% 0 0 0);transition:clip-path 1.3s cubic-bezier(.77,0,.18,1) calc(.45s + var(--i)*.12s),flex-grow .9s cubic-bezier(.19,1,.22,1)}
+.scene.is-in .sw{clip-path:inset(0 0 0 0)}
+.scene.done .sw{transition-delay:0s,0s}
+.sw.lt{color:#111;border-color:transparent}
+.sw:hover,.sw.open{flex-grow:calc(var(--f) * 1.9 + 8)}
+.sw .pc{position:absolute;top:10px;right:11px;font:600 12px/1 var(--cond);letter-spacing:.12em;opacity:.55}
+.sw b{display:block;font:600 14px/1 var(--cond);letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
+.sw .hx{display:block;font:400 10.5px/1 var(--type);letter-spacing:.06em;opacity:.6;margin-top:6px;white-space:nowrap}
+.sw em{display:block;font:300 italic 13px/1.3 var(--serif);margin-top:8px;max-height:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-height .7s cubic-bezier(.19,1,.22,1),opacity .5s}
+.sw:hover em,.sw.open em{max-height:2em;opacity:.85}
+@media (max-width:860px){
+  .palette{flex-direction:column;height:auto;gap:3px}
+  .sw{flex:none;height:auto;min-height:52px;flex-direction:row;align-items:center;gap:12px;padding:10px 12px}
+  .sw .hx{margin:0}.sw em{max-height:none;opacity:.8;margin:0 0 0 auto}
+  .sw .pc{position:static;order:-1;min-width:2.4em}
+}
 </style>
 </head>
 <body class="locked">
@@ -582,8 +602,8 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
   <div class="bg"><img src="assets/frames/09-marginea-padurii.jpg" alt="" loading="lazy"></div><div class="shade"></div>
   <div class="k rv"><span data-l="en">The world · look</span><span data-l="ro">Lumea · imaginea</span><span data-l="it">Il mondo · lo sguardo</span></div>
   <h2 class="t split one"><span data-l="en">Cold outside. Warm only in the <em>window</em>.</span><span data-l="ro">Rece afară. Cald doar în <em>geam</em>.</span><span data-l="it">Freddo fuori. Caldo solo alla <em>finestra</em>.</span></h2>
-  <div class="body rv d2"><p><span data-l="en">Night exteriors in desaturated teal-black; the cabin's amber windows are the only warmth in frame. Long lenses from the treeline make the audience the watcher. Inside, the camera goes handheld and close as the friendship cracks.</span><span data-l="ro">Exterioare de noapte în negru-verzui desaturat; geamurile chihlimbar ale cabanei sunt singura căldură din cadru. Obiective lungi, de la marginea pădurii, fac din spectator cel care pândește. Înăuntru, camera trece din mână, aproape, pe măsură ce prietenia crapă.</span><span data-l="it">Esterni notturni in un nero-verde desaturato; le finestre ambrate della baita sono l'unico calore nell'inquadratura. Lunghe focali dal limite del bosco fanno dello spettatore l'osservatore. Dentro, macchina a mano e primi piani mentre l'amicizia si incrina.</span></p>
-  <div class="chips"><i style="background:#0b0b0b"></i><i style="background:#0f1d16"></i><i style="background:#E8A33D"></i><i style="background:#F4F1EA"></i><i style="background:#B3121B"></i></div></div>
+  <div class="body rv d2"><p><span data-l="en">Night exteriors in desaturated teal-black; the cabin's amber windows are the only warmth in frame. Long lenses from the treeline make the audience the watcher. Inside, the camera goes handheld and close as the friendship cracks.</span><span data-l="ro">Exterioare de noapte în negru-verzui desaturat; geamurile chihlimbar ale cabanei sunt singura căldură din cadru. Obiective lungi, de la marginea pădurii, fac din spectator cel care pândește. Înăuntru, camera trece din mână, aproape, pe măsură ce prietenia crapă.</span><span data-l="it">Esterni notturni in un nero-verde desaturato; le finestre ambrate della baita sono l'unico calore nell'inquadratura. Lunghe focali dal limite del bosco fanno dello spettatore l'osservatore. Dentro, macchina a mano e primi piani mentre l'amicizia si incrina.</span></p></div>
+  <div class="palette rv d3"><div class="sw" style="--c:#0B0B0B;--f:38;--i:0"><span class="pc">38%</span><b><span data-l="en">Night</span><span data-l="ro">Noapte</span><span data-l="it">Notte</span></b><span class="hx">#0B0B0B</span><em><span data-l="en">Exteriors after dark</span><span data-l="ro">Exterioarele de noapte</span><span data-l="it">Esterni notturni</span></em></div><div class="sw" style="--c:#16302A;--f:28;--i:1"><span class="pc">28%</span><b><span data-l="en">Forest</span><span data-l="ro">Pădure</span><span data-l="it">Bosco</span></b><span class="hx">#16302A</span><em><span data-l="en">Pines, fog, shadows</span><span data-l="ro">Brazi, ceață, umbre</span><span data-l="it">Pini, nebbia, ombre</span></em></div><div class="sw lt" style="--c:#E8A33D;--f:14;--i:2"><span class="pc">14%</span><b><span data-l="en">Window</span><span data-l="ro">Geam</span><span data-l="it">Finestra</span></b><span class="hx">#E8A33D</span><em><span data-l="en">The only warmth</span><span data-l="ro">Singura căldură</span><span data-l="it">L'unico calore</span></em></div><div class="sw lt" style="--c:#F4F1EA;--f:12;--i:3"><span class="pc">12%</span><b><span data-l="en">Paper</span><span data-l="ro">Hârtie</span><span data-l="it">Carta</span></b><span class="hx">#F4F1EA</span><em><span data-l="en">The poster, the faces</span><span data-l="ro">Afișul, chipurile</span><span data-l="it">Il manifesto, i volti</span></em></div><div class="sw" style="--c:#B3121B;--f:8;--i:4"><span class="pc">8%</span><b><span data-l="en">Blood</span><span data-l="ro">Sânge</span><span data-l="it">Sangue</span></b><span class="hx">#B3121B</span><em><span data-l="en">Only when there is danger</span><span data-l="ro">Doar când e pericol</span><span data-l="it">Solo quando c'è pericolo</span></em></div></div>
 </section>
 
 <section class="scene" data-ch="1" style="--top:.6;--mid:.25;--bot:.7">
@@ -947,6 +967,7 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
     var l=sp.dataset.l, parts=sp.textContent.split(/(?<=[.!?])\s+/); sp.textContent=""; dn[l]=dn[l]||0;
     parts.forEach(function(t,k){var r=document.createElement("span"); r.className="rd"; r.style.setProperty("--d",dn[l]++); r.textContent=t; sp.appendChild(r); if(k<parts.length-1) sp.appendChild(document.createTextNode(" "))});
   });
+  document.querySelectorAll(".sw").forEach(function(w){w.addEventListener("click",function(){var o=!w.classList.contains("open");document.querySelectorAll(".sw.open").forEach(function(x){x.classList.remove("open")});if(o)w.classList.add("open")})});
   /* tap to lift a single redaction on touch screens */
   document.querySelectorAll(".rd").forEach(function(r){if(!r.closest(".redact"))r.addEventListener("click",function(){r.classList.toggle("open")})});
 
