@@ -90,7 +90,7 @@ main{position:relative}
 .sub{font-size:15px;color:rgba(244,241,234,.72);text-align:center;margin:0}
 .body{max-width:780px;text-align:center;margin:24px auto 0}
 .body p{margin:0 0 14px;font-size:clamp(14.5px,min(1.12vw,2.05vh),17.5px);color:rgba(244,241,234,.84)}
-@media (min-width:861px){.lead.one{white-space:nowrap}.t.one{white-space:nowrap;max-width:none;font-size:clamp(28px,min(3.7vw,7vh),60px)}}
+@media (min-width:861px), print{.lead.one{white-space:nowrap}.t.one{white-space:nowrap;max-width:none;font-size:clamp(28px,min(3.7vw,7vh),60px)}}
 .lead{font:300 clamp(18px,min(1.55vw,2.8vh),24px)/1.45 var(--serif)!important;letter-spacing:-.015em;color:var(--paper)!important}
 .red{color:var(--red-l)}
 .clock{position:absolute;top:30px;left:34px;font:400 12px/1 var(--type);letter-spacing:.08em;color:rgba(244,241,234,.6);z-index:2}
@@ -228,11 +228,11 @@ body:not(.locked) .nav{opacity:1;transform:none}
 .menu .x{position:absolute;top:26px;right:30px}
 
 .scene{position:sticky;top:var(--stick,0px)}
-@media (min-width:861px) and (min-height:640px){
+@media (min-width:861px) and (min-height:640px), print{
   .scene{height:100svh;min-height:0}
 }
 .scene.buried{visibility:hidden}
-@media (max-width:860px){
+@media screen and (max-width:860px){
   .scene{padding:96px 20px 130px}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .facts div{padding:16px 8px}.facts b{font-size:17px}
@@ -399,7 +399,7 @@ body.locked #clk{opacity:0}
 
 /* mobile: bottom bar sits on its own band, buttons right */
 .rbtns{margin-left:auto}
-@media (max-width:860px){
+@media screen and (max-width:860px){
   .nav::before{content:"";position:fixed;left:0;right:0;bottom:0;height:118px;background:linear-gradient(rgba(11,11,11,0),rgba(11,11,11,.9) 55%);pointer-events:none;z-index:-1}
   #clk{top:20px;left:20px}
   .gskip{top:22px;right:20px}
@@ -440,7 +440,7 @@ html .gate .glang{gap:2px}
 .rows p{margin:0;font-size:clamp(13px,min(1vw,1.85vh),14.5px);line-height:1.5;color:rgba(244,241,234,.66)}
 .comp .fig{font:600 12px/1.4 var(--cond);letter-spacing:.14em;text-transform:uppercase;color:var(--red-l);margin:10px 0 2px}
 .rows.r3{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 40px}
-@media (max-width:860px){.rows,.rows.r3{grid-template-columns:minmax(0,1fr);gap:16px}}
+@media screen and (max-width:860px){.rows,.rows.r3{grid-template-columns:minmax(0,1fr);gap:16px}}
 
 /* ================= v7: device profiles, palettes ================= */
 .logo .bar{fill:var(--red)}.logo .ltr{fill:var(--paper)}
@@ -468,12 +468,65 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
 .sw .hx{display:block;font:400 10.5px/1 var(--type);letter-spacing:.06em;opacity:.6;margin-top:6px;white-space:nowrap}
 .sw em{display:block;font:300 italic 13px/1.3 var(--serif);margin-top:8px;max-height:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-height .7s cubic-bezier(.19,1,.22,1),opacity .5s}
 .sw:hover em,.sw.open em{max-height:2em;opacity:.85}
-@media (max-width:860px){
+@media screen and (max-width:860px){
   .palette{flex-direction:column;height:auto;gap:3px}
   .sw{flex:none;height:auto;min-height:52px;flex-direction:row;align-items:center;gap:12px;padding:10px 12px}
   .sw .hx{margin:0}.sw em{max-height:none;opacity:.8;margin:0 0 0 auto}
   .sw .pc{position:static;order:-1;min-width:2.4em}
 }
+
+/* ================= v9: character card shows the actress ================= */
+.card .actor{display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.card .actor img{width:42px;height:42px;border-radius:50%;object-fit:cover;object-position:50% 25%;filter:grayscale(1);transition:filter .8s}
+.hs:hover .card .actor img,.hs.open .card .actor img{filter:none}
+.card .actor small{display:block;font:400 9.5px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(244,241,234,.5);margin-bottom:4px}
+.card .actor b{font:300 15px/1.15 var(--serif);letter-spacing:-.01em}
+.card .actor .chip{margin-left:auto;flex:none}
+
+/* ================= v10: sound ================= */
+.gs0{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transition:opacity .8s ease,filter .8s ease;z-index:1}
+.gate.go .gs0{opacity:0;filter:blur(8px);pointer-events:none}
+.g0w{font:400 12px/1.6 var(--serif);letter-spacing:.62em;text-transform:uppercase;color:rgba(244,241,234,.7);padding-left:.62em}
+.g0q{margin:26px 0 8px;font:300 italic clamp(18px,1.6vw,22px)/1.3 var(--serif);color:rgba(244,241,234,.8);text-align:center}
+.g0b{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:center}
+html .gate .gs0 .pill{opacity:1;transform:none;transition:color .4s;margin-top:18px}
+.g0off{all:unset;cursor:pointer;margin-top:18px;font:600 12px/1 var(--cond);letter-spacing:.3em;text-transform:uppercase;color:rgba(244,241,234,.45);padding:12px 2px;transition:color .4s}
+.g0off:hover,.g0off:focus-visible{color:var(--paper)}
+.gate:not(.go) .gskip{opacity:0;pointer-events:none}
+.gs1{opacity:1}
+.gate:not(.go) .gs1{opacity:0}
+html .ic.snd{display:inline-flex;align-items:flex-end;gap:2px;height:30px;padding:8px 6px}
+.ic.snd i{display:block;width:2px;height:3px;background:currentColor;border-radius:1px;transition:height .3s}
+html.snd-on .ic.snd i{animation:eq 1s ease-in-out infinite}
+html.snd-on .ic.snd i:nth-child(2){animation-delay:-.3s}html.snd-on .ic.snd i:nth-child(3){animation-delay:-.6s}html.snd-on .ic.snd i:nth-child(4){animation-delay:-.15s}
+@keyframes eq{0%,100%{height:4px}50%{height:13px}}
+
+/* ================= v11: print / PDF (?print=1) ================= */
+@page{size:1600px 900px;margin:0}
+html.print,html.print body{background:#0B0B0B;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html.print body::after,html.print .gate,html.print .nav,html.print #prog,html.print #clk,html.print .menu,html.print .lit{display:none!important}
+html.print .scene{position:relative!important;top:0!important;width:1600px;height:900px!important;min-height:0!important;padding:96px 90px 70px!important;break-after:page;page-break-after:always;break-inside:avoid;visibility:visible!important}
+html.print .scene .clock{display:block}
+html.print .bg,html.print .lit{top:0;bottom:0;transform:none}
+html.print .bg img{translate:none;--sc:1}
+html.print .night .bg img{filter:brightness(.62) saturate(.85)}
+html.print *,html.print *::before,html.print *::after{transition:none!important;animation:none!important}
+html.print .rv,html.print .w{opacity:1!important;transform:none!important;filter:none!important}
+html.print .frame,html.print .pc .ph,html.print .sw{clip-path:none!important}
+html.print .team .m .ph,html.print .mark{clip-path:inset(0 round 50%)!important}
+html.print .logo .ltr{opacity:1}html.print .logo .bar{transform:none}
+html.print .rd{background-size:0% 100%;color:inherit}
+html.print .shade{display:none}
+html.print .spots{position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;width:min(1240px,100%);margin-top:18px;inset:auto}
+html.print .hs{position:static!important;transform:none!important}
+html.print .hs>button{display:none}
+html.print .card{position:static;opacity:1;visibility:visible;transform:none;width:auto;display:block;background:rgba(14,14,14,.78)}
+html.print .card .actor img{filter:none}
+html.print .t.one,html.print .lead.one{white-space:nowrap}
+
+.pdfs{margin:18px 0 0;display:flex;align-items:center;justify-content:center;gap:4px 18px;flex-wrap:wrap;font:400 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:rgba(244,241,234,.55)}
+html .pdfs .pill{margin:0;padding:8px 2px;gap:10px;font-size:12px}html .pdfs .pill::before{width:18px}html .pdfs .pill:hover::before{width:34px}html .pdfs .pill::after{content:"↓";font-size:13px}html .pdfs .pill:hover::after{transform:translateY(3px)}
+html.print .pdfs{display:none}
 </style>
 </head>
 <body class="locked">
@@ -482,6 +535,11 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="One of Us Knows">
   <div class="gbg" aria-hidden="true"></div>
   <button class="gskip" id="gskip" type="button"><span data-l="en">Skip</span><span data-l="ro">Sari peste</span><span data-l="it">Salta</span> ›</button>
+  <div class="gs0">
+    <div class="g0w">One of us knows</div>
+    <p class="g0q"><span data-l="en">Best experienced with sound.</span><span data-l="ro">Recomandat cu sunet.</span><span data-l="it">Meglio con l'audio.</span></p>
+    <div class="g0b"><button class="pill" id="snd-on" type="button"><span data-l="en">With sound</span><span data-l="ro">Cu sunet</span><span data-l="it">Con audio</span></button><button class="g0off" id="snd-off" type="button"><span data-l="en">Without sound</span><span data-l="ro">Fără sunet</span><span data-l="it">Senza audio</span></button></div>
+  </div>
   <div class="gs1" aria-hidden="true">
     <div class="gday"><span data-l="en">Friday</span><span data-l="ro">Vineri</span><span data-l="it">Venerdì</span></div>
     <div class="gclock">21:47</div>
@@ -640,9 +698,9 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
   <h2 class="t split"><span data-l="en">Four women. Four <em>secrets</em>.</span><span data-l="ro">Patru femei. Patru <em>secrete</em>.</span><span data-l="it">Quattro donne. Quattro <em>segreti</em>.</span></h2>
   <p class="sub rv d2"><span data-l="en">Explore the room.</span><span data-l="ro">Explorează camera.</span><span data-l="it">Esplora la stanza.</span></p>
   <div class="spots rv d3">
-    <div class="hs" style="left:72%;top:52%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Ioana</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 01 · the engagement ring</span><span data-l="ro">Proba 01 · inelul de logodnă</span><span data-l="it">Reperto 01 · l'anello di fidanzamento</span></div><h4>Ioana</h4><p><span data-l="en">The teacher. The bride. Over forty, finally happy, and the only one who never says what she was doing three years ago.</span><span data-l="ro">Profesoara. Mireasa. Trecută de 40 de ani, fericită în sfârșit, și singura care nu spune niciodată ce făcea acum trei ani.</span><span data-l="it">L'insegnante. La sposa. Più di quarant'anni, finalmente felice, e l'unica che non dice mai cosa faceva tre anni fa.</span></p></div></div>
-    <div class="hs" style="left:56%;top:70%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Sonia</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 02 · the orange juice</span><span data-l="ro">Proba 02 · sucul de portocale</span><span data-l="it">Reperto 02 · il succo d'arancia</span></div><h4>Sonia</h4><p><span data-l="en">The doctor. Sober, precise, calm in a crisis. Too calm, the others start to think.</span><span data-l="ro">Medicul. Trează, precisă, calmă în criză. Prea calmă, încep să creadă celelalte.</span><span data-l="it">La dottoressa. Sobria, precisa, calma nelle emergenze. Troppo calma, cominciano a pensare le altre.</span></p></div></div>
-    <div class="hs" style="left:17%;top:46%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Ingrid</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 03 · the holster</span><span data-l="ro">Proba 03 · tocul pistolului</span><span data-l="it">Reperto 03 · la fondina</span></div><h4>Ingrid</h4><p><span data-l="en">The soldier. Ironic, hard, armed. She sees a hooded figure in the trees and tells no one.</span><span data-l="ro">Militarul. Ironică, dură, înarmată. Vede o siluetă cu glugă printre copaci și nu spune nimănui.</span><span data-l="it">La soldatessa. Ironica, dura, armata. Vede una figura incappucciata tra gli alberi e non lo dice a nessuno.</span></p></div></div>
+    <div class="hs" style="left:72%;top:52%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Ioana</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 01 · the engagement ring</span><span data-l="ro">Proba 01 · inelul de logodnă</span><span data-l="it">Reperto 01 · l'anello di fidanzamento</span></div><h4>Ioana</h4><p><span data-l="en">The teacher. The bride. Over forty, finally happy, and the only one who never says what she was doing three years ago.</span><span data-l="ro">Profesoara. Mireasa. Trecută de 40 de ani, fericită în sfârșit, și singura care nu spune niciodată ce făcea acum trei ani.</span><span data-l="it">L'insegnante. La sposa. Più di quarant'anni, finalmente felice, e l'unica che non dice mai cosa faceva tre anni fa.</span></p><div class="actor"><img src="assets/cast/ghenea.jpg" alt="Mădălina Ghenea" loading="lazy"><span><small><span data-l="en">Played by</span><span data-l="ro">În rol</span><span data-l="it">Interpretata da</span></small><b>Mădălina Ghenea</b></span><span class="chip ok"><span data-l="en">Confirmed</span><span data-l="ro">Confirmată</span><span data-l="it">Confermata</span></span></div></div></div>
+    <div class="hs" style="left:56%;top:70%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Sonia</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 02 · the orange juice</span><span data-l="ro">Proba 02 · sucul de portocale</span><span data-l="it">Reperto 02 · il succo d'arancia</span></div><h4>Sonia</h4><p><span data-l="en">The doctor. Sober, precise, calm in a crisis. Too calm, the others start to think.</span><span data-l="ro">Medicul. Trează, precisă, calmă în criză. Prea calmă, încep să creadă celelalte.</span><span data-l="it">La dottoressa. Sobria, precisa, calma nelle emergenze. Troppo calma, cominciano a pensare le altre.</span></p><div class="actor"><img src="assets/cast/etura.jpg" alt="Marta Etura" loading="lazy"><span><small><span data-l="en">Played by</span><span data-l="ro">În rol</span><span data-l="it">Interpretata da</span></small><b>Marta Etura</b></span><span class="chip">Wishlist</span></div></div></div>
+    <div class="hs" style="left:17%;top:46%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Ingrid</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 03 · the holster</span><span data-l="ro">Proba 03 · tocul pistolului</span><span data-l="it">Reperto 03 · la fondina</span></div><h4>Ingrid</h4><p><span data-l="en">The soldier. Ironic, hard, armed. She sees a hooded figure in the trees and tells no one.</span><span data-l="ro">Militarul. Ironică, dură, înarmată. Vede o siluetă cu glugă printre copaci și nu spune nimănui.</span><span data-l="it">La soldatessa. Ironica, dura, armata. Vede una figura incappucciata tra gli alberi e non lo dice a nessuno.</span></p><div class="actor"><img src="assets/cast/sieklucka.jpg" alt="Anna Maria Sieklucka" loading="lazy"><span><small><span data-l="en">Played by</span><span data-l="ro">În rol</span><span data-l="it">Interpretata da</span></small><b>Anna Maria Sieklucka</b></span><span class="chip">Wishlist</span></div></div></div>
     <div class="hs" style="left:36%;top:74%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Vera</span></button><div class="card"><div class="ev"><span data-l="en">Exhibit 04 · Vera's inhaler</span><span data-l="ro">Proba 04 · inhalatorul Verei</span><span data-l="it">Reperto 04 · l'inalatore di Vera</span></div><h4>Vera</h4><p><span data-l="en">The mother. Raising Darius alone, forgetting everything except him. She is the first to fall.</span><span data-l="ro">Mama. Îl crește singură pe Darius și uită orice, în afară de el. E prima care cade.</span><span data-l="it">La madre. Cresce Darius da sola e dimentica tutto tranne lui. È la prima a cadere.</span></p></div></div>
     <div class="hs" style="left:30%;top:28%"><button aria-expanded="false"><span class="dot">+</span><span class="lbl">Tudor</span></button><div class="card"><div class="ev"><span data-l="en">The voice on the phone</span><span data-l="ro">Vocea din telefon</span><span data-l="it">La voce al telefono</span></div><h4>Tudor</h4><p><span data-l="en">The fiancé. A lawyer, two hours away, who keeps calling.</span><span data-l="ro">Logodnicul. Avocat, la două ore distanță, care tot sună.</span><span data-l="it">Il fidanzato. Avvocato, a due ore di distanza, continua a chiamare.</span></p></div></div>
   </div>
@@ -761,6 +819,7 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
   <div class="k rv"><span data-l="en">Thank you for considering</span><span data-l="ro">Vă mulțumim pentru atenție</span><span data-l="it">Grazie per l'attenzione</span></div>
   <h1 class="logo rv d1"><svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One of Us Knows" viewBox="0 0 2012 445"><g transform="translate(0.000000,445.000000) scale(0.100000,-0.100000)" class="ltr" fill="#F4F1EA"> <path d="M565 4381 c-253 -42 -416 -187 -482 -431 -17 -61 -18 -172 -18 -1740 l0 -1675 27 -81 c83 -245 265 -378 534 -391 342 -17 581 159 639 472 25 132 17 3334 -8 3420 -63 217 -200 359 -395 410 -74 19 -228 27 -297 16z m185 -406 c38 -20 68 -59 81 -109 8 -30 11 -485 11 -1654 l0 -1613 -26 -54 c-57 -115 -220 -127 -286 -21 -39 65 -41 131 -38 1756 l3 1565 25 50 c44 87 147 123 230 80z"/> <path d="M5566 4375 c-224 -43 -381 -190 -443 -416 -28 -101 -28 -3370 0 -3469 78 -277 287 -430 586 -430 307 0 498 143 583 437 l23 78 0 1650 c0 1847 6 1704 -72 1865 -109 226 -382 341 -677 285z m234 -408 c19 -12 43 -38 54 -57 21 -35 21 -41 24 -1665 2 -1461 1 -1634 -14 -1677 -50 -151 -254 -158 -311 -11 -17 46 -18 119 -18 1673 l0 1625 21 40 c38 71 76 93 160 94 37 1 60 -5 84 -22z"/> <path d="M10525 4384 c-11 -2 -45 -9 -75 -15 -210 -41 -371 -207 -426 -439 -39 -168 -29 -724 17 -955 53 -264 130 -432 379 -825 337 -532 374 -656 368 -1230 l-3 -326 -26 -49 c-70 -137 -250 -122 -304 26 -18 50 -19 88 -23 547 l-4 492 -214 0 -215 0 3 -522 c4 -585 3 -571 78 -725 103 -209 298 -312 570 -300 291 12 472 158 552 444 31 108 34 672 5 873 -53 371 -134 564 -430 1024 -194 302 -254 426 -305 623 -27 108 -27 109 -27 468 l0 361 25 48 c58 112 219 118 281 11 33 -55 39 -151 39 -587 l0 -428 213 0 212 0 3 413 c4 450 -4 570 -44 697 -56 179 -188 307 -365 356 -54 15 -246 27 -284 18z"/> <path d="M15715 4376 c-243 -48 -394 -196 -452 -446 -28 -117 -28 -3317 0 -3425 73 -285 285 -445 592 -445 253 0 435 106 533 310 78 163 73 36 70 1885 l-3 1650 -27 80 c-70 204 -199 331 -385 380 -84 22 -244 27 -328 11z m226 -409 c19 -12 45 -44 59 -72 l25 -50 -2 -1610 c-1 -885 -5 -1623 -9 -1640 -34 -161 -225 -196 -304 -55 l-25 45 -3 1618 c-1 1099 1 1631 8 1657 30 110 162 167 251 107z"/> <path d="M19300 4375 c-176 -33 -314 -139 -390 -297 -62 -129 -71 -186 -77 -484 -12 -623 54 -870 362 -1359 276 -437 334 -553 393 -785 27 -105 27 -107 27 -475 0 -419 -3 -440 -73 -493 -54 -41 -145 -39 -199 4 -77 62 -78 70 -78 634 l-1 495 -218 3 -217 2 3 -522 c5 -589 6 -600 85 -751 190 -361 802 -392 1027 -52 97 145 116 253 116 641 0 650 -66 877 -408 1411 -343 536 -382 657 -382 1192 0 253 9 341 38 381 76 102 225 94 282 -16 l25 -48 3 -478 3 -478 215 0 215 0 -4 503 c-4 558 -3 549 -74 695 -109 222 -379 333 -673 277z"/> <path d="M1580 2230 l0 -2120 205 0 205 0 0 688 c0 378 -5 878 -10 1112 -5 234 -11 544 -14 690 l-6 265 64 -350 c167 -914 429 -2325 443 -2382 5 -23 6 -23 209 -23 l204 0 0 2120 0 2120 -211 0 -211 0 6 -637 c9 -922 25 -1907 32 -1988 10 -116 -3 -70 -41 145 -51 290 -104 583 -285 1583 -88 483 -160 882 -160 887 0 6 -83 10 -215 10 l-215 0 0 -2120z"/> <path d="M3180 2230 l0 -2120 505 0 505 0 -2 198 -3 197 -282 3 -283 2 0 785 0 785 235 0 235 0 0 205 0 205 -235 0 -235 0 0 730 0 730 280 0 280 0 0 200 0 200 -500 0 -500 0 0 -2120z"/> <path d="M6620 2230 l0 -2120 215 0 215 0 0 970 0 970 235 0 235 0 0 200 0 200 -235 0 -235 0 0 750 0 750 280 0 280 0 0 200 0 200 -495 0 -495 0 0 -2120z"/> <path d="M8522 2453 c3 -1776 4 -1902 21 -1958 82 -282 289 -435 587 -435 302 0 506 160 580 454 25 98 24 14 22 2179 l-2 1657 -213 0 -214 0 1 -1857 c1 -1742 0 -1862 -16 -1914 -52 -168 -259 -172 -314 -7 -21 64 -21 67 -23 2176 l-1 1602 -215 0 -215 0 2 -1897z"/> <path d="M12180 2230 l0 -2120 220 0 220 0 0 801 c0 754 1 810 21 958 11 86 22 157 23 158 1 1 10 -46 20 -105 19 -111 233 -1214 309 -1592 l43 -215 228 -3 c214 -2 227 -1 222 15 -7 23 -231 1136 -291 1443 -26 129 -71 357 -102 505 -50 243 -55 275 -46 325 12 69 381 1892 389 1926 l6 24 -223 -2 -224 -3 -18 -100 c-102 -569 -284 -1497 -329 -1685 l-23 -95 -3 943 -2 942 -220 0 -220 0 0 -2120z"/> <path d="M13645 4340 c-6 -10 -3 -3988 3 -4147 l4 -83 199 0 199 0 0 43 c2 707 -5 1764 -13 2169 -7 290 -9 524 -6 520 4 -4 20 -83 37 -177 17 -93 62 -341 100 -550 39 -209 84 -461 102 -560 17 -99 53 -297 80 -440 27 -143 79 -420 115 -615 36 -195 68 -363 71 -372 5 -16 24 -18 210 -18 l204 0 0 2120 0 2120 -210 0 -210 0 0 -337 c0 -186 5 -624 10 -973 5 -349 11 -797 14 -995 l5 -360 -19 110 c-11 61 -47 259 -80 440 -33 182 -91 503 -130 715 -73 397 -250 1386 -250 1395 0 10 -429 5 -435 -5z"/> <path d="M16650 4318 c0 -18 5 -85 10 -148 6 -63 26 -315 45 -560 19 -245 64 -803 100 -1240 36 -437 90 -1101 120 -1475 30 -374 57 -704 61 -732 l5 -53 224 0 224 0 5 33 c11 70 164 2027 199 2540 8 108 16 199 18 202 3 2 11 -75 17 -173 18 -258 137 -1777 172 -2195 17 -197 30 -369 30 -382 l0 -25 225 0 c201 0 225 2 225 16 0 9 7 89 15 178 13 144 75 899 195 2376 34 422 105 1315 126 1588 l7 82 -211 0 -211 0 -5 -52 c-7 -65 -46 -710 -86 -1443 -68 -1235 -81 -1449 -85 -1454 -3 -2 -5 11 -5 30 0 18 -11 189 -25 379 -13 190 -38 541 -55 780 -17 239 -53 725 -80 1078 -28 354 -50 653 -50 663 0 18 -10 19 -195 19 -107 0 -195 -2 -195 -4 0 -2 -16 -201 -35 -442 -19 -242 -48 -623 -65 -849 -17 -225 -48 -646 -70 -935 -21 -289 -42 -570 -46 -625 -8 -98 -8 -95 -21 145 -39 766 -87 1594 -128 2247 -14 215 -25 408 -25 427 l0 36 -215 0 -215 0 0 -32z"/> </g><rect class="bar" x="838" y="0" width="299" height="445" fill="#B3121B" fill-opacity="0.94"/></svg></h1><p class="loc rv d2"><span data-l="ro">Una dintre noi știe</span><span data-l="it">Una di noi sa</span></p>
   <p class="sub rv d2" style="font-size:15px;color:var(--paper)"><span style="font:300 24px/1.2 var(--serif);letter-spacing:-.02em">Nicu Claudiu Moldovan</span><br><span style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,241,234,.6)"><span data-l="en">Producer</span><span data-l="ro">Producător</span><span data-l="it">Produttore</span> · KSM Production · Cluj-Napoca</span><br><a class="u" href="tel:+40755728734">+40 755 728 734</a> &nbsp;·&nbsp; <a class="u" href="mailto:claudiu.moldovan@ksmproduction.ro">claudiu.moldovan@ksmproduction.ro</a></p>
+  <p class="pdfs rv d3"><span data-l="en">Download the deck (PDF)</span><span data-l="ro">Descarcă prezentarea (PDF)</span><span data-l="it">Scarica la presentazione (PDF)</span> <a class="pill" data-pdf="EN" download>EN</a><a class="pill" data-pdf="RO" download>RO</a><a class="pill" data-pdf="IT" download>IT</a></p>
   <p class="note rv d3" style="max-width:640px"><span data-l="en">This presentation is for information only and does not constitute an offer of securities.</span><span data-l="ro">Această prezentare are caracter informativ și nu constituie o ofertă de valori mobiliare.</span><span data-l="it">Questa presentazione ha carattere informativo e non costituisce un'offerta di strumenti finanziari.</span></p>
 </section>
 
@@ -777,6 +836,7 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
   </button>
   <div class="rbtns">
     <div class="langpop" id="langpop" role="group" aria-label="Language"><button data-set="en">EN</button><button data-set="ro">RO</button><button data-set="it">IT</button></div>
+    <button class="ic snd" id="sndbtn" type="button" aria-pressed="false" aria-label="Sound"><i></i><i></i><i></i><i></i></button>
     <button class="ic" id="langbtn" aria-expanded="false" aria-controls="langpop" aria-label="Language"><span id="langcur">EN</span></button>
     <a class="ic" href="mailto:claudiu.moldovan@ksmproduction.ro" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></a>
   </div>
@@ -806,7 +866,8 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
   var low=(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4)||(navigator.deviceMemory&&navigator.deviceMemory<=3)||(navigator.connection&&navigator.connection.saveData);
   [["touch",touch],["mouse",!touch],["ios",ios],["android",android],["win",win],["mac",mac],["phone",phone],["tablet",tablet],["desk",!touch],["low",low]].forEach(function(c){if(c[1])root.classList.add("d-"+c[0])});
   var pal=P.get("pal"); if(pal) root.setAttribute("data-pal",pal);
-  var lenis=(window.Lenis&&!reduce&&!touch)?new Lenis({lerp:.085,wheelMultiplier:.95,smoothWheel:true}):null;
+  var PRINT=P.get("print")==="1"; if(PRINT){root.classList.add("print");reduce=true;document.querySelectorAll("img[loading]").forEach(function(i){i.loading="eager"})}
+  var lenis=(window.Lenis&&!reduce&&!touch&&!PRINT)?new Lenis({lerp:.085,wheelMultiplier:.95,smoothWheel:true}):null;
   if(lenis){lenis.stop();(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(performance.now())}
   function st(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 
@@ -875,9 +936,69 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
   document.addEventListener("click",function(e){if(!e.target.closest(".rbtns")){lp.classList.remove("open");lb.setAttribute("aria-expanded","false")}});
   setLang(P.get("lang")||st("udns-deck-lang")||"en");
 
+
+  /* sound: synthesized in the browser (wind, crickets, phone buzz, censor slam); off until the viewer opts in */
+  var SND=(function(){
+    var ctx=null, master=null, on=false, nb=null, cr=null;
+    function noise(){var b=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b}
+    function init(){
+      var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
+      ctx=new AC(); master=ctx.createGain(); master.gain.value=0; master.connect(ctx.destination); nb=noise();
+      /* wind: looping noise through a slowly breathing low-pass */
+      var n=ctx.createBufferSource(); n.buffer=nb; n.loop=true;
+      var lp=ctx.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=420; lp.Q.value=.6;
+      var g=ctx.createGain(); g.gain.value=.07;
+      var l1=ctx.createOscillator(), l1g=ctx.createGain(); l1.frequency.value=.06; l1g.gain.value=260; l1.connect(l1g); l1g.connect(lp.frequency);
+      var l2=ctx.createOscillator(), l2g=ctx.createGain(); l2.frequency.value=.11; l2g.gain.value=.035; l2.connect(l2g); l2g.connect(g.gain);
+      n.connect(lp); lp.connect(g); g.connect(master); n.start(); l1.start(); l2.start();
+      /* crickets: short chirp trains at random intervals */
+      (function next(){cr=setTimeout(function(){if(on&&ctx.state==="running")chirp(); next()},1400+Math.random()*3200)})();
+      document.addEventListener("visibilitychange",function(){if(!ctx)return; if(document.hidden)ctx.suspend(); else if(on)ctx.resume()});
+      return true;
+    }
+    function chirp(){
+      var t=ctx.currentTime, o=ctx.createOscillator(), g=ctx.createGain(), f=4200+Math.random()*400, k=2+Math.floor(Math.random()*3);
+      o.frequency.value=f; g.gain.value=0; o.connect(g); g.connect(master);
+      for(var i=0;i<k;i++){var a=t+i*.07; g.gain.setValueAtTime(0,a); g.gain.linearRampToValueAtTime(.008,a+.012); g.gain.linearRampToValueAtTime(0,a+.045)}
+      o.start(t); o.stop(t+k*.07+.05);
+    }
+    function buzz(){
+      if(!on||!ctx) return; var t=ctx.currentTime+.02;
+      [0,.55].forEach(function(d){
+        var o=ctx.createOscillator(), lp=ctx.createBiquadFilter(), g=ctx.createGain(), am=ctx.createOscillator(), ag=ctx.createGain();
+        o.type="sawtooth"; o.frequency.value=160; lp.type="lowpass"; lp.frequency.value=260; am.frequency.value=34; ag.gain.value=.12;
+        g.gain.setValueAtTime(0,t+d); g.gain.linearRampToValueAtTime(.28,t+d+.02); g.gain.setValueAtTime(.28,t+d+.36); g.gain.linearRampToValueAtTime(0,t+d+.42);
+        am.connect(ag); ag.connect(g.gain); o.connect(lp); lp.connect(g); g.connect(master); o.start(t+d); am.start(t+d); o.stop(t+d+.45); am.stop(t+d+.45);
+      });
+    }
+    function slam(){
+      if(!on||!ctx) return; var t=ctx.currentTime+.01;
+      var o=ctx.createOscillator(), g=ctx.createGain(); o.frequency.setValueAtTime(90,t); o.frequency.exponentialRampToValueAtTime(34,t+.5);
+      g.gain.setValueAtTime(.55,t); g.gain.exponentialRampToValueAtTime(.001,t+1.1); o.connect(g); g.connect(master); o.start(t); o.stop(t+1.2);
+      var n=ctx.createBufferSource(), bp=ctx.createBiquadFilter(), ng=ctx.createGain(); n.buffer=nb; bp.type="bandpass"; bp.frequency.value=900; bp.Q.value=.8;
+      ng.gain.setValueAtTime(.22,t); ng.gain.exponentialRampToValueAtTime(.001,t+.14); n.connect(bp); bp.connect(ng); ng.connect(master); n.start(t); n.stop(t+.16);
+    }
+    function key(){
+      if(!on||!ctx) return; var t=ctx.currentTime, n=ctx.createBufferSource(), hp=ctx.createBiquadFilter(), g=ctx.createGain();
+      n.buffer=nb; hp.type="highpass"; hp.frequency.value=2500; g.gain.setValueAtTime(.05+Math.random()*.03,t); g.gain.exponentialRampToValueAtTime(.001,t+.025);
+      n.connect(hp); hp.connect(g); g.connect(master); n.start(t,Math.random()*1.5); n.stop(t+.03);
+    }
+    function tick(){
+      if(!on||!ctx) return; var t=ctx.currentTime, o=ctx.createOscillator(), g=ctx.createGain(); o.frequency.value=196;
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.05,t+.01); g.gain.exponentialRampToValueAtTime(.001,t+.5); o.connect(g); g.connect(master); o.start(t); o.stop(t+.55);
+    }
+    function set(v){
+      on=!!v; if(on&&!ctx&&!init()) on=false;
+      if(ctx){ if(on&&ctx.state!=="running") ctx.resume(); var t=ctx.currentTime; master.gain.cancelScheduledValues(t); master.gain.setValueAtTime(master.gain.value,t); master.gain.linearRampToValueAtTime(on?1:0,t+(on?1.4:.35)); }
+      root.classList.toggle("snd-on",on); var b=document.getElementById("sndbtn"); if(b) b.setAttribute("aria-pressed",on?"true":"false");
+    }
+    return {set:set,on:function(){return on},buzz:buzz,slam:slam,key:key,tick:tick};
+  })();
+  document.getElementById("sndbtn").addEventListener("click",function(){SND.set(!SND.on())});
+
   /* gate */
   var gate=document.getElementById("gate");
-  function enter(){if(gate.classList.contains("gone"))return;gate.classList.add("gone");body.classList.remove("locked");if(lenis)lenis.start();scenes[0].classList.add("is-in");setTimeout(function(){scenes[0].classList.add("done")},3200);setTimeout(function(){gate.setAttribute("aria-hidden","true")},1200)}
+  function enter(){if(gate.classList.contains("gone"))return;gate.classList.add("gone");body.classList.remove("locked");if(lenis)lenis.start();scenes[0].classList.add("is-in");setTimeout(function(){scenes[0].classList.add("done")},3200);setTimeout(SND.slam,1250);setTimeout(function(){gate.setAttribute("aria-hidden","true")},1200)}
   document.getElementById("enter").addEventListener("click",enter);
   /* cold open: lock screen, the anonymous text arrives, the title censors itself */
   (function(){
@@ -886,25 +1007,32 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
     function at(ms,fn){timers.push(setTimeout(fn,ms))}
     function fill(r){spans.forEach(function(sp){var m=sp.dataset.msg; sp.textContent=m.slice(0,Math.round(m.length*r))})}
     function finish(){
-      if(done) return; done=true; timers.forEach(clearTimeout); if(typing) cancelAnimationFrame(typing);
-      fill(1); gate.classList.add("s1","s2","s3"); document.getElementById("enter").focus({preventScroll:true});
+      if(done) return; done=true; timers.forEach(clearTimeout); if(typing) clearTimeout(typing);
+      fill(1); if(!started){started=true;gate.classList.add("go")} gate.classList.add("s1","s2","s3"); document.getElementById("enter").focus({preventScroll:true});
     }
-    if(reduce){finish();}
-    else{
+    var started=false;
+    function start(withSound){
+      if(started) return; started=true; SND.set(withSound); gate.classList.add("go");
+      if(reduce){finish();return}
       at(150,function(){gate.classList.add("s1")});
-      at(1300,function(){gate.classList.add("s2")});
-      at(1900,function(){var t0=performance.now(),dur=3400;(function step(now){var r=Math.min(1,(now-t0)/dur);fill(r);if(r<1)typing=requestAnimationFrame(step)})(t0)});
-      at(6400,function(){gate.classList.add("s3")});
+      at(1300,function(){gate.classList.add("s2"); SND.buzz()});
+      at(1900,function(){var t0=performance.now(),dur=3400,last=0;(function step(){var now=performance.now(),r=Math.min(1,(now-t0)/dur);fill(r);var n=Math.round(r*90);if(n>last){last=n;SND.key()}if(r<1)typing=setTimeout(step,16)})()});
+      at(6400,function(){gate.classList.add("s3"); setTimeout(SND.slam,1250)});
       at(6500,function(){done=true;document.getElementById("enter").focus({preventScroll:true})});
     }
+    document.getElementById("snd-on").addEventListener("click",function(){start(true)});
+    document.getElementById("snd-off").addEventListener("click",function(){start(false)});
+    setTimeout(function(){document.getElementById("snd-on").focus({preventScroll:true})},50);
     document.getElementById("gskip").addEventListener("click",finish);
-    gate.addEventListener("click",function(e){if(!e.target.closest("button")&&!gate.classList.contains("s3"))finish()});
-    addEventListener("keydown",function(e){if(!gate.classList.contains("gone")&&!gate.classList.contains("s3")&&(e.key==="Enter"||e.key===" "||e.key==="Escape")){e.preventDefault();finish()}});
+    gate.addEventListener("click",function(e){if(started&&!e.target.closest("button")&&!gate.classList.contains("s3"))finish()});
+    addEventListener("keydown",function(e){if(started&&!gate.classList.contains("gone")&&!gate.classList.contains("s3")&&(e.key==="Enter"||e.key===" "||e.key==="Escape")){e.preventDefault();finish()}});
   })();
 
+  if(PRINT){gate.classList.add("gone","go","s1","s2","s3");body.classList.remove("locked");scenes.forEach(function(sc){sc.classList.add("is-in","done")});document.querySelectorAll(".rd,.sw").forEach(function(r){r.classList.add("open")})}
+  document.querySelectorAll("[data-pdf]").forEach(function(a){a.href="pdf/One-of-Us-Knows_"+(root.classList.contains("inv")?"investor":"public")+"_"+a.dataset.pdf+".pdf"});
   /* reveal + current scene */
   var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting&&!body.classList.contains("locked")&&!e.target.classList.contains("is-in")){var t=e.target;t.classList.add("is-in");setTimeout(function(){t.classList.add("done")},2600)}
+    if(e.isIntersecting&&!body.classList.contains("locked")&&!e.target.classList.contains("is-in")){var t=e.target;t.classList.add("is-in");setTimeout(function(){t.classList.add("done")},2600);if(t.querySelector(".logo"))setTimeout(SND.slam,1250)}
   })},{threshold:.3});
   scenes.forEach(function(s){io.observe(s)});
 
@@ -920,7 +1048,7 @@ html[data-pal] .scene,html[data-pal] .gate{background:var(--bg)}
       var next=scenes[i+1];
       if(next){var nt=next.getBoundingClientRect().top; var k=Math.max(0,Math.min(1,1-nt/vh)); s.style.setProperty("--shade",(k*.75).toFixed(3))}
     });
-    if(best!==cur){cur=best;paint()}
+    if(best!==cur){cur=best;paint();SND.tick()}
     scenes.forEach(function(s,i){var b=i<cur-1; if(s.classList.contains("buried")!==b) s.classList.toggle("buried",b)});
   }
   addEventListener("scroll",function(){if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
